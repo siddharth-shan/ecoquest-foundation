@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import { FaGamepad, FaBook, FaHandsHelping, FaSeedling } from 'react-icons/fa'
+import ImpactDashboard from '@/components/shared/ImpactDashboard'
+import Testimonials from '@/components/shared/Testimonials'
+import NewsletterSignup from '@/components/shared/NewsletterSignup'
 
 export default function Home() {
   return (
@@ -190,6 +193,27 @@ export default function Home() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Impact Dashboard */}
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <ImpactDashboard />
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <Testimonials />
+        </div>
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="section-padding bg-gradient-to-br from-green-50 to-emerald-50">
+        <div className="container-custom max-w-4xl">
+          <NewsletterSignup />
         </div>
       </section>
 

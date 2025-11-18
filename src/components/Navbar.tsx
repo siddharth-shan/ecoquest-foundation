@@ -10,6 +10,7 @@ const navLinks = [
   { name: 'About', path: '/about' },
   { name: 'Programs', path: '/programs' },
   { name: 'Games', path: '/games' },
+  { name: 'Blog', path: '/blog' },
   { name: 'Events', path: '/events' },
   { name: 'Resources', path: '/resources' },
   { name: 'Get Involved', path: '/get-involved' },
@@ -86,6 +87,14 @@ export default function Navbar() {
                 </div>
               )}
             </div>
+
+            {/* Donate Button - Desktop */}
+            <Link
+              href="/donate"
+              className="bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-2 rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105"
+            >
+              💚 Donate
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -133,6 +142,17 @@ export default function Navbar() {
                     <span>{app.name}</span>
                   </a>
                 ))}
+              </div>
+
+              {/* Donate Button - Mobile */}
+              <div className="pt-4">
+                <Link
+                  href="/donate"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-3 rounded-lg transition-colors shadow-md"
+                >
+                  💚 Donate
+                </Link>
               </div>
             </div>
           </div>
