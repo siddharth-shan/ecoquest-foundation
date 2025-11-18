@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import EventCarousel from '@/components/shared/EventCarousel'
 
 export const metadata = {
   title: 'Events - EcoQuest Foundation',
@@ -59,6 +60,20 @@ export default function Events() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Photo Carousel */}
+      <section className="section-padding bg-gradient-to-br from-green-50 to-emerald-50">
+        <div className="container-custom">
+          <div className="section-header">
+            <h2 className="section-title">Past Activities Gallery</h2>
+            <div className="section-underline" />
+            <p className="text-gray-600 text-lg">
+              Explore moments from our community conservation events and environmental education programs
+            </p>
+          </div>
+          <EventCarousel />
         </div>
       </section>
 
