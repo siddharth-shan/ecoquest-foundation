@@ -63,24 +63,26 @@ export default function Navbar() {
 
             {/* Apps Dropdown */}
             <div className="relative" onMouseEnter={() => setAppsDropdownOpen(true)} onMouseLeave={() => setAppsDropdownOpen(false)}>
-              <button className="font-semibold text-gray-700 hover:text-primary-green transition-colors flex items-center gap-1">
+              <button className="font-semibold text-gray-700 hover:text-primary-green transition-colors flex items-center gap-1 py-2">
                 Our Apps
                 <HiChevronDown className={`transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {appsDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
-                  {apps.map((app) => (
-                    <a
-                      key={app.name}
-                      href={app.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-2xl">{app.icon}</span>
-                      <span className="font-semibold text-gray-700 hover:text-primary-green">{app.name}</span>
-                    </a>
-                  ))}
+                <div className="absolute top-full right-0 pt-2 w-64">
+                  <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2">
+                    {apps.map((app) => (
+                      <a
+                        key={app.name}
+                        href={app.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="text-2xl">{app.icon}</span>
+                        <span className="font-semibold text-gray-700 hover:text-primary-green">{app.name}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
