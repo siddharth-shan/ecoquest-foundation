@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { HiMenu, HiX } from 'react-icons/hi'
+import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
 
 const navLinks = [
   { name: 'Home', path: '/' },
@@ -15,8 +15,15 @@ const navLinks = [
   { name: 'Contact', path: '/contact' },
 ]
 
+const apps = [
+  { name: 'Wildfire Watch', url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net', icon: '🔥' },
+  { name: 'Oceanaware Guardian', url: 'https://oceanaware-guardian.vercel.app', icon: '🌊' },
+  { name: 'MindMirror', url: 'https://mindmirror-pilot.vercel.app/', icon: '🧠' },
+]
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [appsDropdownOpen, setAppsDropdownOpen] = useState(false)
   const pathname = usePathname()
 
   return (
@@ -33,7 +40,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -52,6 +59,30 @@ export default function Navbar() {
                 />
               </Link>
             ))}
+
+            {/* Apps Dropdown */}
+            <div className="relative" onMouseEnter={() => setAppsDropdownOpen(true)} onMouseLeave={() => setAppsDropdownOpen(false)}>
+              <button className="font-semibold text-gray-700 hover:text-primary-green transition-colors flex items-center gap-1">
+                Our Apps
+                <HiChevronDown className={`transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {appsDropdownOpen && (
+                <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
+                  {apps.map((app) => (
+                    <a
+                      key={app.name}
+                      href={app.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                    >
+                      <span className="text-2xl">{app.icon}</span>
+                      <span className="font-semibold text-gray-700 hover:text-primary-green">{app.name}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -82,6 +113,24 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+
+              {/* Apps in Mobile Menu */}
+              <div className="pt-4 border-t border-gray-200">
+                <div className="text-sm font-semibold text-gray-500 mb-3">Our Apps</div>
+                {apps.map((app) => (
+                  <a
+                    key={app.name}
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-3 py-2 font-semibold text-gray-700 hover:text-primary-green transition-colors"
+                  >
+                    <span className="text-xl">{app.icon}</span>
+                    <span>{app.name}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         )}

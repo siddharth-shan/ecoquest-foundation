@@ -125,6 +125,126 @@ export default function Programs() {
           </div>
         </div>
       </section>
+
+      <section className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <span className="text-primary-blue font-semibold uppercase text-sm">Digital Initiatives</span>
+            <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Interactive Web Applications</h2>
+            <div className="section-underline" />
+            <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+              Explore our suite of interactive web applications designed to raise awareness and provide real-time environmental data and insights.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Wildfire Watch */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+              <div className="bg-gradient-to-br from-orange-500 to-red-600 p-8 text-white text-center">
+                <div className="text-6xl mb-3">🔥</div>
+                <h3 className="text-2xl font-bold">Wildfire Watch</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-700 mb-4">
+                  Real-time wildfire monitoring and tracking system providing critical environmental awareness and safety information for communities.
+                </p>
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Live wildfire tracking</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Environmental impact data</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Community safety alerts</span>
+                  </li>
+                </ul>
+                <a
+                  href="https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary w-full text-center inline-block"
+                >
+                  Launch App
+                </a>
+              </div>
+            </div>
+
+            {/* Oceanaware Guardian */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+              <div className="bg-gradient-to-br from-blue-500 to-cyan-600 p-8 text-white text-center">
+                <div className="text-6xl mb-3">🌊</div>
+                <h3 className="text-2xl font-bold">Oceanaware Guardian</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-700 mb-4">
+                  Ocean conservation platform dedicated to raising awareness about marine ecosystems, pollution, and the importance of protecting our oceans.
+                </p>
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Marine ecosystem insights</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Ocean pollution tracking</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Conservation resources</span>
+                  </li>
+                </ul>
+                <a
+                  href="https://oceanaware-guardian.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary w-full text-center inline-block"
+                >
+                  Launch App
+                </a>
+              </div>
+            </div>
+
+            {/* MindMirror */}
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
+              <div className="bg-gradient-to-br from-purple-500 to-indigo-600 p-8 text-white text-center">
+                <div className="text-6xl mb-3">🧠</div>
+                <h3 className="text-2xl font-bold">MindMirror</h3>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-700 mb-4">
+                  Mental wellness and environmental connection platform exploring the relationship between environmental health and personal well-being.
+                </p>
+                <ul className="space-y-2 mb-6 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Wellness tracking</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Nature connection insights</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-purple-500 mr-2 font-bold">✓</span>
+                    <span className="text-gray-600">Mindfulness resources</span>
+                  </li>
+                </ul>
+                <a
+                  href="https://mindmirror-pilot.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary w-full text-center inline-block"
+                >
+                  Launch App
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
