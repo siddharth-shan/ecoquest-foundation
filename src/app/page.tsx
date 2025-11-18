@@ -76,6 +76,60 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Interactive Apps Section */}
+      <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
+        <div className="container-custom">
+          <div className="section-header">
+            <h2 className="section-title">Our Interactive Apps</h2>
+            <div className="section-underline" />
+            <p className="text-gray-600 text-lg">Real-time environmental data and awareness tools built for the community</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Wildfire Watch',
+                desc: 'Track wildfires in real-time and access critical environmental safety information for your community',
+                icon: '🔥',
+                url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
+                gradient: 'from-orange-500 to-red-600',
+              },
+              {
+                title: 'Oceanaware Guardian',
+                desc: 'Explore marine ecosystems, track ocean pollution, and learn how to protect our oceans',
+                icon: '🌊',
+                url: 'https://oceanaware-guardian.vercel.app',
+                gradient: 'from-blue-500 to-cyan-600',
+              },
+              {
+                title: 'MindMirror',
+                desc: 'Discover the connection between environmental health and personal well-being through mindfulness',
+                icon: '🧠',
+                url: 'https://mindmirror-pilot.vercel.app/',
+                gradient: 'from-purple-500 to-indigo-600',
+              },
+            ].map((app, i) => (
+              <div key={i} className="card card-hover overflow-hidden group">
+                <div className={`h-48 bg-gradient-to-br ${app.gradient} flex items-center justify-center text-white relative transition-transform group-hover:scale-105`}>
+                  <div className="text-7xl">{app.icon}</div>
+                </div>
+                <div className="p-6">
+                  <h3 className="font-heading font-bold text-xl mb-3 text-primary-green">{app.title}</h3>
+                  <p className="text-gray-600 mb-6">{app.desc}</p>
+                  <a
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary text-sm w-full text-center inline-block"
+                  >
+                    Launch App →
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured Programs */}
       <section className="section-padding">
         <div className="container-custom">
