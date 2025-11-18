@@ -25,7 +25,7 @@ export default function BlogPage() {
       title: 'Monarch Butterfly Conservation: A California Native Plants Guide',
       excerpt:
         'A comprehensive student-written guide to saving monarch butterflies through California native plant gardening. Learn which milkweed species to plant, essential nectar sources, and how to create your own monarch waystation.',
-      date: 'December 20, 2024',
+      date: 'December 18, 2024',
       category: 'Student Story',
       author: 'Student Conservation Team',
       image: '🦋',
@@ -49,7 +49,7 @@ export default function BlogPage() {
       title: 'Creating Defensible Space: A Student\'s Guide to Wildfire Prevention in California',
       excerpt:
         'Everything you need to know about protecting your home from wildfires. A comprehensive guide covering defensible space zones, fire-resistant landscaping, home hardening, and community action.',
-      date: 'December 16, 2024',
+      date: 'December 18, 2024',
       category: 'Student Story',
       author: 'Student Conservation Team',
       image: '🔥',

@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: 'EcoQuest Foundation - Interactive Environmental Education',
   description: 'Inspiring youth through interactive environmental education, games, and community conservation events.',
   keywords: 'environmental education, conservation, youth programs, EcoQuest, sustainability',
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/logo.png',
+  },
 }
 
 export default function RootLayout({
