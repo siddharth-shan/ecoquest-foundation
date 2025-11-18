@@ -66,9 +66,9 @@ export default function Programs() {
               </p>
               <div className="space-y-3 mb-6">
                 {[
-                  { month: 'November 2024', title: 'Zero-Waste Week', desc: 'Reduce personal waste to near-zero for one week.' },
-                  { month: 'October 2024', title: 'Native Plant Garden', desc: 'Create a garden supporting local pollinators.' },
-                  { month: 'September 2024', title: 'Plastic-Free Lunch', desc: 'Pack waste-free lunches for a month.' },
+                  { month: 'January 2026', title: 'Energy Conservation Challenge', desc: 'Reduce household energy use by 20% through mindful habits.' },
+                  { month: 'February 2026', title: 'Zero-Waste Week', desc: 'Reduce personal waste to near-zero for one week.' },
+                  { month: 'March 2026', title: 'Water Conservation Mission', desc: 'Track and reduce water usage at home and school.' },
                 ].map((challenge, i) => (
                   <div key={i} className="border-l-4 border-primary-blue bg-white p-4 rounded">
                     <div className="text-primary-blue text-sm font-semibold">{challenge.month}</div>
@@ -77,7 +77,9 @@ export default function Programs() {
                   </div>
                 ))}
               </div>
-              <button className="btn btn-primary">Join This Month's Challenge</button>
+              <Link href="/ecochallenge/join?challenge=Energy%20Conservation%20Challenge" className="btn btn-primary inline-block">
+                Join This Month's Challenge
+              </Link>
             </div>
             <div className="bg-gradient-to-br from-primary-blue to-blue-600 rounded-2xl p-12 text-white h-96 flex items-center justify-center order-1 md:order-2">
               <div className="text-center">

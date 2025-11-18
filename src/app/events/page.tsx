@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: 'Events - EcoQuest Foundation',
   description: 'Join community conservation events including beach cleanups, park restoration, and educational workshops.',
@@ -5,9 +7,12 @@ export const metadata = {
 
 export default function Events() {
   const upcomingEvents = [
-    { date: { month: 'DEC', day: '14', year: '2024' }, type: 'Beach Cleanup', title: 'Santa Monica Beach Cleanup', location: 'Santa Monica Pier, CA', time: '9:00 AM - 12:00 PM' },
-    { date: { month: 'DEC', day: '21', year: '2024' }, type: 'Workshop', title: 'Winter Solstice Nature Walk', location: 'Griffith Park, Los Angeles', time: '2:00 PM - 4:30 PM' },
-    { date: { month: 'JAN', day: '11', year: '2025' }, type: 'Park Cleanup', title: 'Huntington Beach State Park Restoration', location: 'Huntington Beach State Park', time: '8:00 AM - 1:00 PM' },
+    { date: { month: 'JAN', day: '18', year: '2026' }, type: 'Beach Cleanup', title: 'Santa Monica Beach Cleanup', location: 'Santa Monica Pier, CA', time: '9:00 AM - 12:00 PM' },
+    { date: { month: 'FEB', day: '08', year: '2026' }, type: 'Workshop', title: 'Marine Life Conservation Workshop', location: 'Aquarium of the Pacific, Long Beach', time: '10:00 AM - 2:00 PM' },
+    { date: { month: 'FEB', day: '22', year: '2026' }, type: 'Park Cleanup', title: 'Huntington Beach State Park Restoration', location: 'Huntington Beach State Park', time: '8:00 AM - 1:00 PM' },
+    { date: { month: 'MAR', day: '14', year: '2026' }, type: 'Beach Cleanup', title: 'Venice Beach Spring Cleanup', location: 'Venice Beach, CA', time: '9:00 AM - 12:30 PM' },
+    { date: { month: 'MAR', day: '28', year: '2026' }, type: 'Workshop', title: 'Native Plant Gardening Workshop', location: 'LA County Arboretum, Arcadia', time: '1:00 PM - 4:00 PM' },
+    { date: { month: 'APR', day: '18', year: '2026' }, type: 'Park Cleanup', title: 'Earth Day Park Restoration', location: 'Griffith Park, Los Angeles', time: '8:00 AM - 2:00 PM' },
   ]
 
   const pastEvents = [
@@ -33,7 +38,7 @@ export default function Events() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {upcomingEvents.map((event, i) => (
-              <div key={i} className="card flex">
+              <div key={i} className="card flex flex-col md:flex-row">
                 <div className="bg-primary-green text-white p-6 flex flex-col items-center justify-center min-w-[100px]">
                   <div className="text-sm font-semibold">{event.date.month}</div>
                   <div className="text-4xl font-bold my-1">{event.date.day}</div>
@@ -44,7 +49,12 @@ export default function Events() {
                   <h3 className="font-bold text-xl mt-1 mb-3 text-primary-green">{event.title}</h3>
                   <p className="text-gray-600 text-sm mb-2">📍 {event.location}</p>
                   <p className="text-gray-600 text-sm mb-4">🕐 {event.time}</p>
-                  <button className="btn btn-primary text-sm">Register Now</button>
+                  <Link
+                    href={`/events/register?event=${encodeURIComponent(event.title)}`}
+                    className="btn btn-primary text-sm inline-block text-center"
+                  >
+                    Register Now
+                  </Link>
                 </div>
               </div>
             ))}
