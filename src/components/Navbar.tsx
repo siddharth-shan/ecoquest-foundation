@@ -10,6 +10,7 @@ const navLinks = [
   { name: 'About', path: '/about' },
   { name: 'Programs', path: '/programs' },
   { name: 'Games', path: '/games' },
+  { name: 'Blog', path: '/blog' },
   { name: 'Events', path: '/events' },
   { name: 'Resources', path: '/resources' },
   { name: 'Get Involved', path: '/get-involved' },
@@ -63,27 +64,37 @@ export default function Navbar() {
 
             {/* Apps Dropdown */}
             <div className="relative" onMouseEnter={() => setAppsDropdownOpen(true)} onMouseLeave={() => setAppsDropdownOpen(false)}>
-              <button className="font-semibold text-gray-700 hover:text-primary-green transition-colors flex items-center gap-1">
+              <button className="font-semibold text-gray-700 hover:text-primary-green transition-colors flex items-center gap-1 py-2">
                 Our Apps
                 <HiChevronDown className={`transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               {appsDropdownOpen && (
-                <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2">
-                  {apps.map((app) => (
-                    <a
-                      key={app.name}
-                      href={app.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
-                    >
-                      <span className="text-2xl">{app.icon}</span>
-                      <span className="font-semibold text-gray-700 hover:text-primary-green">{app.name}</span>
-                    </a>
-                  ))}
+                <div className="absolute top-full right-0 pt-2 w-64">
+                  <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2">
+                    {apps.map((app) => (
+                      <a
+                        key={app.name}
+                        href={app.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="text-2xl">{app.icon}</span>
+                        <span className="font-semibold text-gray-700 hover:text-primary-green">{app.name}</span>
+                      </a>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
+
+            {/* Donate Button - Desktop */}
+            <Link
+              href="/donate"
+              className="bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-2 rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105"
+            >
+              💚 Donate
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -131,6 +142,17 @@ export default function Navbar() {
                     <span>{app.name}</span>
                   </a>
                 ))}
+              </div>
+
+              {/* Donate Button - Mobile */}
+              <div className="pt-4">
+                <Link
+                  href="/donate"
+                  onClick={() => setIsOpen(false)}
+                  className="block text-center bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-3 rounded-lg transition-colors shadow-md"
+                >
+                  💚 Donate
+                </Link>
               </div>
             </div>
           </div>

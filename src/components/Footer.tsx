@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa'
+import NewsletterSignup from './shared/NewsletterSignup'
 
 export default function Footer() {
   return (
@@ -34,6 +35,8 @@ export default function Footer() {
             <ul className="space-y-2">
               <li><Link href="/about" className="text-gray-400 hover:text-primary-green transition-colors">About Us</Link></li>
               <li><Link href="/programs" className="text-gray-400 hover:text-primary-green transition-colors">Our Programs</Link></li>
+              <li><Link href="/games" className="text-gray-400 hover:text-primary-green transition-colors">Educational Games</Link></li>
+              <li><Link href="/blog" className="text-gray-400 hover:text-primary-green transition-colors">Blog & News</Link></li>
               <li><Link href="/events" className="text-gray-400 hover:text-primary-green transition-colors">Events</Link></li>
               <li><Link href="/resources" className="text-gray-400 hover:text-primary-green transition-colors">Resources</Link></li>
             </ul>
@@ -43,28 +46,16 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-xl mb-4">Get Involved</h4>
             <ul className="space-y-2">
-              <li><Link href="/get-involved#volunteer" className="text-gray-400 hover:text-primary-green transition-colors">Volunteer</Link></li>
-              <li><Link href="/get-involved#partner" className="text-gray-400 hover:text-primary-green transition-colors">Partner With Us</Link></li>
-              <li><Link href="/get-involved#donate" className="text-gray-400 hover:text-primary-green transition-colors">Donate</Link></li>
+              <li><Link href="/get-involved" className="text-gray-400 hover:text-primary-green transition-colors">Volunteer</Link></li>
+              <li><Link href="/donate" className="text-gray-400 hover:text-primary-green transition-colors font-bold">💚 Donate</Link></li>
+              <li><Link href="/contact" className="text-gray-400 hover:text-primary-green transition-colors">Partner With Us</Link></li>
               <li><Link href="/contact" className="text-gray-400 hover:text-primary-green transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-heading font-bold text-xl mb-4">Newsletter</h4>
-            <p className="text-gray-400 mb-4">Stay updated on our latest programs and events.</p>
-            <form className="flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                className="flex-1 px-4 py-2 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-green"
-                required
-              />
-              <button type="submit" className="btn btn-primary px-6 py-2">
-                Subscribe
-              </button>
-            </form>
+            <NewsletterSignup variant="footer" />
           </div>
         </div>
 
