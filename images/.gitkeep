@@ -1,0 +1,52 @@
+# Images Directory
+
+Place your images in this folder:
+
+## Recommended Images:
+
+### Homepage:
+- Hero background image (1920x1080px)
+
+### Programs:
+- guardians-of-green.jpg
+- guardians-of-green-detail.jpg
+- ecochallenge.jpg
+- ecochallenge-detail.jpg
+- digital-hub.jpg
+- community-cleanup.jpg
+- cleanup-events.jpg
+
+### About:
+- mission-image.jpg
+
+### Events:
+- event-past-1.jpg (Venice Beach Cleanup)
+- event-past-2.jpg (Topanga State Park)
+- event-past-3.jpg (Dockweiler Beach)
+
+### Resources:
+- resource-video-climate.jpg
+- resource-video-ocean.jpg
+- resource-video-biodiversity.jpg
+- infographic-recycling.jpg
+- infographic-carbon.jpg
+- infographic-energy.jpg
+- activity-audit.jpg
+- activity-ecosystem.jpg
+- activity-waste.jpg
+- blog-monarch.jpg
+- blog-cleanup.jpg
+- blog-native-plants.jpg
+
+### Get Involved:
+- volunteers.jpg
+- partnership.jpg
+
+## Image Guidelines:
+- Use high-quality images (at least 1200px width for full-width images)
+- Optimize images for web (compress to reduce file size)
+- Use descriptive filenames
+- Recommended formats: JPG for photos, PNG for graphics with transparency
+- Include alt text in HTML for accessibility
+
+The website includes fallback placeholder images, so it will work even without actual images uploaded.
