@@ -64,7 +64,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { number: '1', label: 'Educational Game Launched', desc: 'EcoQuest: Guardians of the Green' },
+              { number: '4', label: 'Educational Games Launched', desc: 'Interactive learning experiences' },
               { number: '3+', label: 'Beach Cleanups Organized', desc: 'Along California Coast' },
               { number: '100+', label: 'Youth Engaged', desc: 'Through programs & events' },
               { number: '12', label: 'Monthly EcoChallenges', desc: 'Interactive missions' },

@@ -22,14 +22,6 @@ export default function ImpactDashboard() {
       description: 'Through our educational programs and games',
     },
     {
-      icon: '🏫',
-      value: 0,
-      label: 'Schools Partnered',
-      suffix: '',
-      color: 'from-green-500 to-emerald-600',
-      description: 'Active partnerships across California',
-    },
-    {
       icon: '🏖️',
       value: 0,
       label: 'Beach Cleanups',
@@ -63,7 +55,7 @@ export default function ImpactDashboard() {
     },
   ])
 
-  const targetValues = [500, 15, 12, 2500, 150, 3200]
+  const targetValues = [500, 12, 2500, 150, 3200]
 
   useEffect(() => {
     // Animate numbers on mount
@@ -131,9 +123,9 @@ export default function ImpactDashboard() {
         <div className="flex items-center gap-4">
           <div className="text-4xl">🎯</div>
           <div>
-            <h3 className="text-xl font-bold text-primary-green mb-1">Our 2025 Goal</h3>
+            <h3 className="text-xl font-bold text-primary-green mb-1">Our 2026 Goal</h3>
             <p className="text-gray-700">
-              Reach <strong>1,000+ students</strong>, partner with <strong>25+ schools</strong>, and complete
+              Reach <strong>500+ students</strong>, partner with schools, and complete
               <strong> 20+ cleanup events</strong> while expanding our educational game library
             </p>
           </div>

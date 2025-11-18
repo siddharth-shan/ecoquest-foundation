@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
 
@@ -30,12 +31,22 @@ export default function Navbar() {
       <div className="container-custom">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <div className="text-2xl md:text-3xl font-bold font-heading leading-none">
-              <span className="text-primary-green">Eco</span>
-              <span className="text-primary-blue">Quest</span>
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo.png"
+              alt="EcoQuest Foundation Logo"
+              width={50}
+              height={50}
+              className="rounded-lg"
+              priority
+            />
+            <div className="flex flex-col">
+              <div className="text-xl md:text-2xl font-bold font-heading leading-none">
+                <span className="text-primary-green">Eco</span>
+                <span className="text-primary-blue">Quest</span>
+              </div>
+              <span className="text-xs font-semibold text-gray-600">Foundation</span>
             </div>
-            <span className="text-xs font-semibold text-gray-600">Foundation</span>
           </Link>
 
           {/* Desktop Menu */}
