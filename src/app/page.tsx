@@ -138,14 +138,23 @@ export default function Home() {
             <div className="section-underline" />
             <p className="text-gray-600 text-lg">Explore our innovative digital experiences and community initiatives</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 title: 'EcoQuest: Guardians of the Green',
                 desc: 'Our flagship educational game teaching about ecosystems, pollution, and conservation',
                 badge: 'Flagship Game',
-                link: '/programs#guardians',
+                link: '/games/guardians',
                 color: 'bg-primary-green',
+                emoji: '🎮',
+              },
+              {
+                title: 'Educational Games',
+                desc: 'Four interactive games teaching recycling, ocean cleanup, carbon footprint, and more',
+                badge: 'K-12 Games',
+                link: '/games',
+                color: 'bg-purple-500',
+                emoji: '♻️',
               },
               {
                 title: 'EcoChallenge',
@@ -153,6 +162,7 @@ export default function Home() {
                 badge: 'Monthly',
                 link: '/programs#ecochallenge',
                 color: 'bg-primary-blue',
+                emoji: '📅',
               },
               {
                 title: 'Community Cleanup Events',
@@ -160,6 +170,7 @@ export default function Home() {
                 badge: 'Hands-On',
                 link: '/events',
                 color: 'bg-accent-yellow',
+                emoji: '🏖️',
               },
             ].map((program, i) => (
               <div key={i} className="card card-hover">
@@ -167,13 +178,13 @@ export default function Home() {
                   <div className="absolute top-4 right-4 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                     {program.badge}
                   </div>
-                  <div className="text-6xl opacity-50">🌱</div>
+                  <div className="text-6xl opacity-90">{program.emoji}</div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading font-bold text-xl mb-3 text-primary-green">{program.title}</h3>
                   <p className="text-gray-600 mb-4">{program.desc}</p>
                   <Link href={program.link} className="btn btn-outline text-sm">
-                    Learn More →
+                    {program.link.startsWith('/games') ? 'Play Now →' : 'Learn More →'}
                   </Link>
                 </div>
               </div>
