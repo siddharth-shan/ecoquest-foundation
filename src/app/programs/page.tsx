@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: 'Our Programs - EcoQuest Foundation',
   description: 'Explore educational programs including games, challenges, and hands-on conservation activities.',
@@ -44,8 +46,8 @@ export default function Programs() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <button className="btn btn-primary">Play Now</button>
-                <button className="btn btn-outline">Educator Guide</button>
+                <Link href="/games/guardians" className="btn btn-primary">Play Now</Link>
+                <Link href="/games" className="btn btn-outline">All Games</Link>
               </div>
             </div>
           </div>
