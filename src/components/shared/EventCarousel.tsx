@@ -15,6 +15,16 @@ export default function EventCarousel() {
 
   const photos: EventPhoto[] = [
     {
+      src: '/images/events/beach_cleanup1.jpeg',
+      alt: 'Scout troop beach cleanup event',
+      caption: 'Scout Beach Cleanup - Partnering with local scout troops for coastal conservation',
+    },
+    {
+      src: '/images/events/beach_cleanup2.jpeg',
+      alt: 'Scouts collecting trash at beach cleanup',
+      caption: 'Youth in Action - Scouts making a difference through hands-on environmental stewardship',
+    },
+    {
       src: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',
       alt: 'Beach cleanup volunteers collecting trash',
       caption: 'Beach Cleanup - Volunteers working together to clean our California coastline',
@@ -101,7 +111,7 @@ export default function EventCarousel() {
 
         {/* Thumbnail Navigation */}
         <div className="bg-gray-50 p-4">
-          <div className="grid grid-cols-6 gap-2 max-w-4xl mx-auto">
+          <div className="grid grid-cols-4 md:grid-cols-8 gap-2 max-w-5xl mx-auto">
             {photos.map((photo, index) => (
               <button
                 key={index}
