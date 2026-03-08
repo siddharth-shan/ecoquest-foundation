@@ -141,19 +141,13 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* CTA Buttons - Desktop */}
-          <div className="hidden xl:flex items-center gap-2 flex-shrink-0 ml-4">
+          {/* CTA Button - Desktop */}
+          <div className="hidden xl:flex items-center flex-shrink-0 ml-4">
             <Link
               href="/get-involved"
               className="bg-primary-green hover:bg-primary-green-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-all hover:shadow-lg whitespace-nowrap"
             >
               Get Involved
-            </Link>
-            <Link
-              href="/donate"
-              className="bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold text-sm px-5 py-2 rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105 whitespace-nowrap"
-            >
-              Donate
             </Link>
           </div>
 
@@ -229,16 +223,6 @@ export default function Navbar() {
                 Get Involved
               </Link>
 
-              {/* Donate Button - Mobile */}
-              <div className="pt-4">
-                <Link
-                  href="/donate"
-                  onClick={() => setIsOpen(false)}
-                  className="block text-center bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-3.5 rounded-lg transition-colors shadow-md"
-                >
-                  Donate
-                </Link>
-              </div>
             </div>
           </div>
         )}
