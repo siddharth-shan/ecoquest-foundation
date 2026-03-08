@@ -6,14 +6,18 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { HiMenu, HiX, HiChevronDown } from 'react-icons/hi'
 
-const navLinks = [
+const mainNavLinks = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
   { name: 'Programs', path: '/programs' },
   { name: 'Events', path: '/events' },
   { name: 'Blog', path: '/blog' },
-  { name: 'Impact', path: '/impact' },
+]
+
+const moreLinks = [
+  { name: 'Impact Portfolio', path: '/impact' },
   { name: 'Resources', path: '/resources' },
+  { name: 'Contact', path: '/contact' },
 ]
 
 const apps = [
@@ -25,93 +29,132 @@ const apps = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [appsDropdownOpen, setAppsDropdownOpen] = useState(false)
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false)
   const pathname = usePathname()
+
+  const isMoreActive = moreLinks.some((link) => pathname === link.path)
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container-custom">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 flex-shrink-0 mr-6">
             <Image
               src="/logo.png"
               alt="EcoQuest Foundation Logo"
-              width={50}
-              height={50}
+              width={44}
+              height={44}
               className="rounded-lg"
               priority
             />
             <div className="flex flex-col">
-              <div className="text-xl md:text-2xl font-bold font-heading leading-none">
+              <div className="text-xl font-bold font-heading leading-none whitespace-nowrap">
                 <span className="text-primary-green">Eco</span>
                 <span className="text-primary-blue">Quest</span>
               </div>
-              <span className="text-xs font-semibold text-gray-600">Foundation</span>
+              <span className="text-[10px] font-semibold text-gray-500 tracking-wide">FOUNDATION</span>
             </div>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden xl:flex items-center gap-10">
-            {navLinks.map((link) => (
+          <div className="hidden xl:flex items-center gap-1 flex-1 justify-center">
+            {mainNavLinks.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
-                className={`font-semibold text-[15px] transition-colors relative group py-2 ${
+                className={`font-medium text-sm px-3 py-2 rounded-md transition-colors relative group whitespace-nowrap ${
                   pathname === link.path
-                    ? 'text-primary-green'
-                    : 'text-gray-700 hover:text-primary-green'
+                    ? 'text-primary-green bg-green-50'
+                    : 'text-gray-700 hover:text-primary-green hover:bg-gray-50'
                 }`}
               >
                 {link.name}
-                <span
-                  className={`absolute -bottom-1 left-0 w-full h-0.5 bg-primary-green transition-transform origin-left ${
-                    pathname === link.path ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
-                  }`}
-                />
               </Link>
             ))}
 
-            {/* Apps Dropdown */}
-            <div className="relative" onMouseEnter={() => setAppsDropdownOpen(true)} onMouseLeave={() => setAppsDropdownOpen(false)}>
-              <button className="font-semibold text-[15px] text-gray-700 hover:text-primary-green transition-colors flex items-center gap-1 py-2">
-                Our Apps
-                <HiChevronDown className={`transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
+            {/* More Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setMoreDropdownOpen(true)}
+              onMouseLeave={() => setMoreDropdownOpen(false)}
+            >
+              <button
+                className={`font-medium text-sm px-3 py-2 rounded-md transition-colors flex items-center gap-1 whitespace-nowrap ${
+                  isMoreActive
+                    ? 'text-primary-green bg-green-50'
+                    : 'text-gray-700 hover:text-primary-green hover:bg-gray-50'
+                }`}
+              >
+                More
+                <HiChevronDown className={`w-4 h-4 transition-transform ${moreDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-              {appsDropdownOpen && (
-                <div className="absolute top-full right-0 pt-2 w-64">
-                  <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-2">
-                    {apps.map((app) => (
-                      <a
-                        key={app.name}
-                        href={app.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+              {moreDropdownOpen && (
+                <div className="absolute top-full left-0 pt-1 w-48 z-50">
+                  <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-1">
+                    {moreLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        href={link.path}
+                        className={`block px-4 py-2.5 text-sm font-medium transition-colors ${
+                          pathname === link.path
+                            ? 'text-primary-green bg-green-50'
+                            : 'text-gray-700 hover:text-primary-green hover:bg-gray-50'
+                        }`}
                       >
-                        <span className="text-2xl">{app.icon}</span>
-                        <span className="font-semibold text-gray-700 hover:text-primary-green">{app.name}</span>
-                      </a>
+                        {link.name}
+                      </Link>
                     ))}
                   </div>
                 </div>
               )}
             </div>
 
-            {/* CTA Buttons - Desktop */}
-            <div className="flex items-center gap-3 ml-2">
-              <Link
-                href="/get-involved"
-                className="bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-5 py-2.5 rounded-lg transition-all hover:shadow-lg"
-              >
-                Get Involved
-              </Link>
-              <Link
-                href="/donate"
-                className="bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-2.5 rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105"
-              >
-                💚 Donate
-              </Link>
+            {/* Apps Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setAppsDropdownOpen(true)}
+              onMouseLeave={() => setAppsDropdownOpen(false)}
+            >
+              <button className="font-medium text-sm px-3 py-2 rounded-md text-gray-700 hover:text-primary-green hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap">
+                Our Apps
+                <HiChevronDown className={`w-4 h-4 transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {appsDropdownOpen && (
+                <div className="absolute top-full right-0 pt-1 w-56 z-50">
+                  <div className="bg-white rounded-lg shadow-xl border border-gray-100 py-1">
+                    {apps.map((app) => (
+                      <a
+                        key={app.name}
+                        href={app.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-50 transition-colors"
+                      >
+                        <span className="text-lg">{app.icon}</span>
+                        <span className="font-medium text-sm text-gray-700 hover:text-primary-green">{app.name}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
+          </div>
+
+          {/* CTA Buttons - Desktop */}
+          <div className="hidden xl:flex items-center gap-2 flex-shrink-0 ml-4">
+            <Link
+              href="/get-involved"
+              className="bg-primary-green hover:bg-primary-green-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-all hover:shadow-lg whitespace-nowrap"
+            >
+              Get Involved
+            </Link>
+            <Link
+              href="/donate"
+              className="bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold text-sm px-5 py-2 rounded-lg transition-all shadow-md hover:shadow-lg hover:scale-105 whitespace-nowrap"
+            >
+              Donate
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -128,7 +171,23 @@ export default function Navbar() {
         {isOpen && (
           <div className="xl:hidden pb-4 border-t border-gray-100">
             <div className="flex flex-col space-y-1 pt-4">
-              {navLinks.map((link) => (
+              {mainNavLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`font-semibold py-3 px-2 rounded-lg transition-colors ${
+                    pathname === link.path
+                      ? 'text-primary-green bg-green-50'
+                      : 'text-gray-700 hover:text-primary-green hover:bg-gray-50'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+
+              {/* More Links in Mobile */}
+              {moreLinks.map((link) => (
                 <Link
                   key={link.path}
                   href={link.path}
@@ -161,20 +220,13 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Additional Links */}
+              {/* CTA Links */}
               <Link
                 href="/get-involved"
                 onClick={() => setIsOpen(false)}
                 className="font-semibold py-3 px-2 rounded-lg text-gray-700 hover:text-primary-green hover:bg-gray-50 transition-colors"
               >
                 Get Involved
-              </Link>
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="font-semibold py-3 px-2 rounded-lg text-gray-700 hover:text-primary-green hover:bg-gray-50 transition-colors"
-              >
-                Contact Us
               </Link>
 
               {/* Donate Button - Mobile */}
@@ -184,7 +236,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className="block text-center bg-accent-yellow hover:bg-accent-orange text-gray-800 font-bold px-6 py-3.5 rounded-lg transition-colors shadow-md"
                 >
-                  💚 Donate
+                  Donate
                 </Link>
               </div>
             </div>
