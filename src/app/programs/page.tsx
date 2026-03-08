@@ -166,6 +166,9 @@ export default function Programs() {
                     <span className="text-gray-600">Community safety alerts</span>
                   </li>
                 </ul>
+                <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 mb-4">
+                  <p className="text-xs font-semibold text-orange-700">🏛️ Submitted to Congressional App Challenge</p>
+                </div>
                 <a
                   href="https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net"
                   target="_blank"
@@ -201,6 +204,9 @@ export default function Programs() {
                     <span className="text-gray-600">Conservation resources</span>
                   </li>
                 </ul>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+                  <p className="text-xs font-semibold text-blue-700">🌊 Created for Bowseat Ocean Awareness Contest</p>
+                </div>
                 <a
                   href="https://oceanaware-guardian.vercel.app"
                   target="_blank"
@@ -236,6 +242,9 @@ export default function Programs() {
                     <span className="text-gray-600">Mindfulness resources</span>
                   </li>
                 </ul>
+                <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
+                  <p className="text-xs font-semibold text-purple-700">💡 Submitted to Blue Ocean Entrepreneurship Competition</p>
+                </div>
                 <a
                   href="https://mindmirror-pilot.vercel.app/"
                   target="_blank"

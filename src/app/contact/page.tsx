@@ -97,13 +97,6 @@ export default function Contact() {
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <span className="text-2xl mr-3">📱</span>
-                    <div>
-                      <h4 className="font-semibold">Phone</h4>
-                      <a href="tel:+15555551234" className="text-primary-blue">(555) 555-1234</a>
-                    </div>
-                  </div>
-                  <div className="flex items-start">
                     <span className="text-2xl mr-3">📍</span>
                     <div>
                       <h4 className="font-semibold">Location</h4>
@@ -113,10 +106,6 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="bg-primary-green/10 p-6 rounded-xl">
-                <h3 className="font-bold text-xl mb-4 text-primary-green">Office Hours</h3>
-                <p className="text-gray-700">Monday - Friday<br/>9:00 AM - 5:00 PM PST</p>
-              </div>
             </div>
           </div>
         </div>

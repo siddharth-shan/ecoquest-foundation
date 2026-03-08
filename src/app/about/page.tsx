@@ -44,10 +44,10 @@ export default function About() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: '🎮', title: 'Launched Guardians of the Green', desc: 'Our flagship NGSS-aligned educational game teaching ecosystems, pollution, and conservation.' },
-              { icon: '💻', title: 'Built Digital Learning Hub', desc: 'EcoChallenge missions, infographics, videos, and student-created blog posts.' },
-              { icon: '🤝', title: 'Partnered with Scouts & Communities', desc: 'Three beach cleanups along California coast and local park restoration events.' },
-              { icon: '🧠', title: 'Youth-Driven Initiative', desc: 'All programs designed by students, for students, fostering leadership and environmental responsibility.' },
+              { icon: '🎮', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup Challenge, Recycling Hero, and Carbon Footprint Quest for K-12 students.' },
+              { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to Congressional App Challenge, Blue Ocean Entrepreneurship Competition, and Bowseat Ocean Awareness Contest.' },
+              { icon: '🏖️', title: '3 Community Cleanups', desc: 'Organized cleanups at Seal Beach, Cerritos Heritage Park, and Cerritos Park East with 35+ volunteers.' },
+              { icon: '✍️', title: 'Student-Published Research', desc: 'Original articles on monarch conservation, ocean plastic crisis, and wildfire prevention published on Medium.' },
             ].map((item, i) => (
               <div key={i} className="card p-6">
                 <div className="text-5xl mb-4">{item.icon}</div>

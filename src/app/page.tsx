@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { FaGamepad, FaBook, FaHandsHelping, FaSeedling } from 'react-icons/fa'
 import ImpactDashboard from '@/components/shared/ImpactDashboard'
-import Testimonials from '@/components/shared/Testimonials'
+import CommunityVoices from '@/components/shared/Testimonials'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
 
 export default function Home() {
@@ -64,10 +64,10 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { number: '4', label: 'Educational Games Launched', desc: 'Interactive learning experiences' },
-              { number: '3+', label: 'Beach Cleanups Organized', desc: 'Along California Coast' },
-              { number: '100+', label: 'Youth Engaged', desc: 'Through programs & events' },
-              { number: '12', label: 'Monthly EcoChallenges', desc: 'Interactive missions' },
+              { number: '4', label: 'Educational Games Built', desc: 'Interactive K-12 experiences' },
+              { number: '3', label: 'Community Cleanups', desc: 'Beach & park conservation' },
+              { number: '3', label: 'National Competition Entries', desc: 'Apps submitted to prestigious programs' },
+              { number: '35+', label: 'Community Members Engaged', desc: 'Through events & programs' },
             ].map((stat, i) => (
               <div key={i} className="p-6">
                 <div className="text-5xl md:text-6xl font-bold mb-2">{stat.number}</div>
@@ -95,6 +95,7 @@ export default function Home() {
                 icon: '🔥',
                 url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
                 gradient: 'from-orange-500 to-red-600',
+                badge: '🏛️ Congressional App Challenge',
               },
               {
                 title: 'Oceanaware Guardian',
@@ -102,6 +103,7 @@ export default function Home() {
                 icon: '🌊',
                 url: 'https://oceanaware-guardian.vercel.app',
                 gradient: 'from-blue-500 to-cyan-600',
+                badge: '🌊 Bowseat Ocean Awareness Contest',
               },
               {
                 title: 'MindMirror',
@@ -109,6 +111,7 @@ export default function Home() {
                 icon: '🧠',
                 url: 'https://mindmirror-pilot.vercel.app/',
                 gradient: 'from-purple-500 to-indigo-600',
+                badge: '💡 Blue Ocean Competition',
               },
             ].map((app, i) => (
               <div key={i} className="card card-hover overflow-hidden group">
@@ -116,7 +119,10 @@ export default function Home() {
                   <div className="text-7xl">{app.icon}</div>
                 </div>
                 <div className="p-6">
-                  <h3 className="font-heading font-bold text-xl mb-3 text-primary-green">{app.title}</h3>
+                  <h3 className="font-heading font-bold text-xl mb-2 text-primary-green">{app.title}</h3>
+                  <div className="bg-gray-100 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 inline-block mb-3">
+                    {app.badge}
+                  </div>
                   <p className="text-gray-600 mb-6">{app.desc}</p>
                   <a
                     href={app.url}
@@ -206,7 +212,7 @@ export default function Home() {
       {/* Testimonials */}
       <section className="section-padding">
         <div className="container-custom">
-          <Testimonials />
+          <CommunityVoices />
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from 'react-icons/fa'
+import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 import NewsletterSignup from './shared/NewsletterSignup'
 
 export default function Footer() {
@@ -14,19 +14,14 @@ export default function Footer() {
               Inspiring and educating youth about environmental conservation through interactive digital experiences and community action.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-primary-green transition-colors" aria-label="Facebook">
-                <FaFacebook size={24} />
-              </a>
-              <a href="#" className="hover:text-primary-green transition-colors" aria-label="Twitter">
-                <FaTwitter size={24} />
-              </a>
-              <a href="#" className="hover:text-primary-green transition-colors" aria-label="Instagram">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-green transition-colors" aria-label="Instagram">
                 <FaInstagram size={24} />
               </a>
-              <a href="#" className="hover:text-primary-green transition-colors" aria-label="YouTube">
-                <FaYoutube size={24} />
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-green transition-colors" aria-label="LinkedIn">
+                <FaLinkedin size={24} />
               </a>
             </div>
+            <p className="text-xs text-gray-500 mt-2">Social accounts coming soon!</p>
           </div>
 
           {/* Quick Links */}
@@ -38,6 +33,7 @@ export default function Footer() {
               <li><Link href="/games" className="text-gray-400 hover:text-primary-green transition-colors">Educational Games</Link></li>
               <li><Link href="/blog" className="text-gray-400 hover:text-primary-green transition-colors">Blog & News</Link></li>
               <li><Link href="/events" className="text-gray-400 hover:text-primary-green transition-colors">Events</Link></li>
+              <li><Link href="/impact" className="text-gray-400 hover:text-primary-green transition-colors">Impact Portfolio</Link></li>
               <li><Link href="/resources" className="text-gray-400 hover:text-primary-green transition-colors">Resources</Link></li>
             </ul>
           </div>
@@ -62,7 +58,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © 2024 EcoQuest Foundation. All rights reserved.
+            © 2025 EcoQuest Foundation. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a href="#" className="text-gray-500 hover:text-primary-green transition-colors">

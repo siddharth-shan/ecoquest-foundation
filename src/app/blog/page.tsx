@@ -57,74 +57,41 @@ export default function BlogPage() {
       externalUrl: 'https://medium.com/@siddharth.shanmugaraja/wildfire-prevention-a142b111d97f',
     },
     {
-      id: '1',
-      title: 'Guardians of the Green Reaches 500 Students Milestone!',
+      id: 'congressional-app-challenge',
+      title: 'EcoQuest Wildfire Watch: Our Congressional App Challenge Submission',
       excerpt:
-        'Our flagship educational game has now reached over 500 students across 15 schools in California. Teachers report increased engagement in environmental science topics and students developing real-world conservation thinking skills.',
-      date: 'December 15, 2024',
-      category: 'Impact Story',
+        'Our team submitted Wildfire Watch to the Congressional App Challenge - a real-time wildfire monitoring app built to help communities stay informed and safe during California\'s fire season.',
+      date: 'October 2025',
+      category: 'Competition',
       author: 'EcoQuest Team',
-      image: '🎮',
-      readTime: '3 min read',
-    },
-    {
-      id: '2',
-      title: 'Beach Cleanup Success: 200+ Pounds of Trash Removed',
-      excerpt:
-        'Our latest beach cleanup event in partnership with Scout Troop 405 was a huge success! Over 30 volunteers collected more than 200 pounds of trash from the San Diego coastline, including plastics, fishing gear, and recyclables.',
-      date: 'December 8, 2024',
-      category: 'Event Recap',
-      author: 'Sarah Martinez',
-      image: '🏖️',
+      image: '🏛️',
       readTime: '4 min read',
     },
     {
-      id: '3',
-      title: 'New Partnership with Riverside Academy',
+      id: 'blue-ocean-competition',
+      title: 'MindMirror: Competing in the Blue Ocean Entrepreneurship Competition',
       excerpt:
-        'We\'re thrilled to announce our partnership with Riverside Academy! All 450 middle school students will have access to our educational games and participate in our EcoChallenge monthly missions throughout the 2024-2025 school year.',
-      date: 'December 1, 2024',
-      category: 'Announcement',
+        'MindMirror, our mental wellness and environmental connection platform, was submitted to the Blue Ocean Entrepreneurship Competition - exploring the intersection of personal well-being and environmental health.',
+      date: 'October 2025',
+      category: 'Competition',
       author: 'EcoQuest Team',
-      image: '🤝',
-      readTime: '2 min read',
-    },
-    {
-      id: '4',
-      title: 'Student Spotlight: How Emily Reduced Her Family\'s Carbon Footprint',
-      excerpt:
-        'After playing our Carbon Footprint Quest game, 11th grader Emily Rodriguez led her family in making sustainable lifestyle changes. Read her inspiring story about reducing their carbon footprint by 15% in just three months.',
-      date: 'November 22, 2024',
-      category: 'Student Story',
-      author: 'EcoQuest Team',
-      image: '🌟',
-      readTime: '5 min read',
-    },
-    {
-      id: '5',
-      title: 'Educational Games Now Available in Spanish',
-      excerpt:
-        'In our commitment to accessibility and inclusion, we\'re excited to announce that all four of our educational games are now available in Spanish! This expansion will help us reach thousands more students across California.',
-      date: 'November 15, 2024',
-      category: 'Product Update',
-      author: 'Development Team',
-      image: '🌐',
+      image: '🧠',
       readTime: '3 min read',
     },
     {
-      id: '6',
-      title: 'October EcoChallenge: Native Plant Garden Success Stories',
+      id: 'bowseat-ocean-awareness',
+      title: 'Oceanaware Guardian: Our Bowseat Ocean Awareness Contest Entry',
       excerpt:
-        'Over 100 students participated in our October EcoChallenge to create native plant gardens supporting local pollinators. See the beautiful gardens created and learn about the importance of native plant species.',
-      date: 'November 5, 2024',
-      category: 'EcoChallenge',
-      author: 'Challenge Team',
-      image: '🌻',
-      readTime: '4 min read',
+        'We created Oceanaware Guardian as our entry to the Bowseat Ocean Awareness Contest - a platform dedicated to raising awareness about marine ecosystems, ocean pollution, and conservation.',
+      date: 'October 2025',
+      category: 'Competition',
+      author: 'EcoQuest Team',
+      image: '🌊',
+      readTime: '3 min read',
     },
   ]
 
-  const categories = ['All', 'Impact Story', 'Event Recap', 'Announcement', 'Student Story', 'Product Update', 'EcoChallenge']
+  const categories = ['All', 'Student Story', 'Competition']
 
   return (
     <>

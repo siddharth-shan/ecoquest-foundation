@@ -316,19 +316,23 @@ export default function DonatePage() {
 
             {/* Impact Stats */}
             <div className="bg-gradient-to-br from-green-600 to-emerald-700 text-white rounded-2xl shadow-xl p-6">
-              <h3 className="text-xl font-bold mb-4">2024 Impact So Far</h3>
+              <h3 className="text-xl font-bold mb-4">Our Impact So Far</h3>
               <div className="space-y-4">
                 <div>
-                  <div className="text-4xl font-bold">500+</div>
-                  <div className="text-sm opacity-90">Students Reached</div>
+                  <div className="text-4xl font-bold">3</div>
+                  <div className="text-sm opacity-90">Community Cleanups</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold">15</div>
-                  <div className="text-sm opacity-90">Schools Partnered</div>
+                  <div className="text-4xl font-bold">35+</div>
+                  <div className="text-sm opacity-90">Community Members Engaged</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold">7</div>
+                  <div className="text-sm opacity-90">Apps & Games Built</div>
                 </div>
                 <div>
                   <div className="text-4xl font-bold">3</div>
-                  <div className="text-sm opacity-90">Beach Cleanups Completed</div>
+                  <div className="text-sm opacity-90">National Competition Entries</div>
                 </div>
               </div>
             </div>

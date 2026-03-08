@@ -14,48 +14,48 @@ interface ImpactMetric {
 export default function ImpactDashboard() {
   const [metrics, setMetrics] = useState<ImpactMetric[]>([
     {
-      icon: '🎓',
-      value: 0,
-      label: 'Students Reached',
-      suffix: '+',
-      color: 'from-blue-500 to-cyan-600',
-      description: 'Through our educational programs and games',
-    },
-    {
       icon: '🏖️',
       value: 0,
-      label: 'Beach Cleanups',
+      label: 'Community Cleanups',
       suffix: '',
       color: 'from-yellow-500 to-orange-600',
-      description: 'Community conservation events completed',
+      description: 'Seal Beach, Cerritos Heritage Park, Cerritos Park East',
     },
     {
-      icon: '♻️',
+      icon: '👥',
       value: 0,
-      label: 'Pounds Collected',
+      label: 'Community Members Engaged',
       suffix: '+',
-      color: 'from-purple-500 to-indigo-600',
-      description: 'Trash and recyclables removed from nature',
-    },
-    {
-      icon: '🌳',
-      value: 0,
-      label: 'Trees Planted',
-      suffix: '+',
-      color: 'from-green-600 to-teal-600',
-      description: 'Native trees planted for reforestation',
+      color: 'from-blue-500 to-cyan-600',
+      description: 'Volunteers across our cleanup events',
     },
     {
       icon: '🎮',
       value: 0,
-      label: 'Game Sessions',
+      label: 'Educational Games Built',
+      suffix: '',
+      color: 'from-green-600 to-teal-600',
+      description: 'Interactive learning experiences for K-12 students',
+    },
+    {
+      icon: '🚀',
+      value: 0,
+      label: 'Apps in National Competitions',
+      suffix: '',
+      color: 'from-purple-500 to-indigo-600',
+      description: 'Congressional App Challenge, Blue Ocean, Bowseat',
+    },
+    {
+      icon: '✍️',
+      value: 0,
+      label: 'Student Articles Published',
       suffix: '+',
       color: 'from-indigo-500 to-purple-600',
-      description: 'Interactive learning experiences completed',
+      description: 'Original research and guides on Medium',
     },
   ])
 
-  const targetValues = [500, 12, 2500, 150, 3200]
+  const targetValues = [3, 35, 4, 3, 3]
 
   useEffect(() => {
     // Animate numbers on mount
@@ -92,7 +92,7 @@ export default function ImpactDashboard() {
   return (
     <div className="bg-white rounded-2xl shadow-xl p-8">
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold text-primary-green mb-2 font-heading">Our Impact in 2024</h2>
+        <h2 className="text-4xl font-bold text-primary-green mb-2 font-heading">Our Impact So Far</h2>
         <p className="text-gray-600 text-lg">
           Real-time metrics showing the difference we're making together
         </p>
@@ -125,8 +125,8 @@ export default function ImpactDashboard() {
           <div>
             <h3 className="text-xl font-bold text-primary-green mb-1">Our 2026 Goal</h3>
             <p className="text-gray-700">
-              Reach <strong>500+ students</strong>, partner with schools, and complete
-              <strong> 20+ cleanup events</strong> while expanding our educational game library
+              Expand our digital initiatives, grow community cleanups, and
+              <strong> increase youth participation</strong> through interactive apps and educational programs
             </p>
           </div>
         </div>

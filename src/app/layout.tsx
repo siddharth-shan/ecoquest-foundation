@@ -4,12 +4,18 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'EcoQuest Foundation - Interactive Environmental Education',
-  description: 'Inspiring youth through interactive environmental education, games, and community conservation events.',
-  keywords: 'environmental education, conservation, youth programs, EcoQuest, sustainability',
+  title: 'EcoQuest Foundation - Empowering Youth to Protect Our Planet',
+  description: 'Student-led nonprofit building interactive games, web apps, and community conservation events for environmental education.',
+  keywords: 'environmental education, conservation, youth programs, EcoQuest, sustainability, student nonprofit',
   icons: {
     icon: '/favicon.ico',
     apple: '/logo.png',
+  },
+  openGraph: {
+    title: 'EcoQuest Foundation',
+    description: 'Student-led nonprofit building interactive games, web apps, and community conservation events for environmental education.',
+    siteName: 'EcoQuest Foundation',
+    type: 'website',
   },
 }
 

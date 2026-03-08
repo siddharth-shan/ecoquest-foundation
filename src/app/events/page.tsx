@@ -7,19 +7,10 @@ export const metadata = {
 }
 
 export default function Events() {
-  const upcomingEvents = [
-    { date: { month: 'JAN', day: '18', year: '2026' }, type: 'Beach Cleanup', title: 'Santa Monica Beach Cleanup', location: 'Santa Monica Pier, CA', time: '9:00 AM - 12:00 PM' },
-    { date: { month: 'FEB', day: '08', year: '2026' }, type: 'Workshop', title: 'Marine Life Conservation Workshop', location: 'Aquarium of the Pacific, Long Beach', time: '10:00 AM - 2:00 PM' },
-    { date: { month: 'FEB', day: '22', year: '2026' }, type: 'Park Cleanup', title: 'Huntington Beach State Park Restoration', location: 'Huntington Beach State Park', time: '8:00 AM - 1:00 PM' },
-    { date: { month: 'MAR', day: '14', year: '2026' }, type: 'Beach Cleanup', title: 'Venice Beach Spring Cleanup', location: 'Venice Beach, CA', time: '9:00 AM - 12:30 PM' },
-    { date: { month: 'MAR', day: '28', year: '2026' }, type: 'Workshop', title: 'Native Plant Gardening Workshop', location: 'LA County Arboretum, Arcadia', time: '1:00 PM - 4:00 PM' },
-    { date: { month: 'APR', day: '18', year: '2026' }, type: 'Park Cleanup', title: 'Earth Day Park Restoration', location: 'Griffith Park, Los Angeles', time: '8:00 AM - 2:00 PM' },
-  ]
-
   const pastEvents = [
-    { title: 'Venice Beach Cleanup', date: 'November 2024', volunteers: '45', collected: '200+ lbs' },
-    { title: 'Topanga State Park Restoration', date: 'October 2024', volunteers: '30', collected: '150 plants' },
-    { title: 'Dockweiler Beach Cleanup', date: 'September 2024', volunteers: '60+', collected: '300+ lbs' },
+    { title: 'Seal Beach Cleanup', date: '2024', members: '~15', icon: '🏖️' },
+    { title: 'Cerritos Heritage Park Cleanup', date: '2024', members: '~10', icon: '🌳' },
+    { title: 'Cerritos Park East Cleanup', date: '2024', members: '~10', icon: '🌿' },
   ]
 
   return (
@@ -37,28 +28,15 @@ export default function Events() {
             <h2 className="section-title">Upcoming Events</h2>
             <div className="section-underline" />
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {upcomingEvents.map((event, i) => (
-              <div key={i} className="card flex flex-col md:flex-row">
-                <div className="bg-primary-green text-white p-6 flex flex-col items-center justify-center min-w-[100px]">
-                  <div className="text-sm font-semibold">{event.date.month}</div>
-                  <div className="text-4xl font-bold my-1">{event.date.day}</div>
-                  <div className="text-sm">{event.date.year}</div>
-                </div>
-                <div className="flex-1 p-6">
-                  <span className="text-primary-blue text-xs font-semibold uppercase">{event.type}</span>
-                  <h3 className="font-bold text-xl mt-1 mb-3 text-primary-green">{event.title}</h3>
-                  <p className="text-gray-600 text-sm mb-2">📍 {event.location}</p>
-                  <p className="text-gray-600 text-sm mb-4">🕐 {event.time}</p>
-                  <Link
-                    href={`/events/register?event=${encodeURIComponent(event.title)}`}
-                    className="btn btn-primary text-sm inline-block text-center"
-                  >
-                    Register Now
-                  </Link>
-                </div>
-              </div>
-            ))}
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-12 text-center border-2 border-green-200">
+            <div className="text-6xl mb-4">📅</div>
+            <h3 className="text-2xl font-bold text-primary-green mb-3">Coming Soon!</h3>
+            <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-6">
+              We're planning exciting new community conservation events. Sign up for our newsletter to be the first to know!
+            </p>
+            <Link href="/contact" className="btn btn-primary inline-block">
+              Get Notified →
+            </Link>
           </div>
         </div>
       </section>
@@ -87,20 +65,14 @@ export default function Events() {
             {pastEvents.map((event, i) => (
               <div key={i} className="card">
                 <div className="bg-primary-blue/20 h-48 flex items-center justify-center text-6xl">
-                  🌊
+                  {event.icon}
                 </div>
                 <div className="p-6">
                   <div className="text-primary-blue text-sm font-semibold mb-2">{event.date}</div>
                   <h3 className="font-bold text-xl mb-4 text-primary-green">{event.title}</h3>
-                  <div className="flex gap-4">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary-green">{event.volunteers}</div>
-                      <div className="text-sm text-gray-600">Volunteers</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-primary-green">{event.collected}</div>
-                      <div className="text-sm text-gray-600">Collected</div>
-                    </div>
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-primary-green">{event.members}</div>
+                    <div className="text-sm text-gray-600">Community Members</div>
                   </div>
                 </div>
               </div>
