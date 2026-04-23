@@ -398,7 +398,7 @@ function ChallengeForm() {
                 </div>
 
                 <p className="text-sm text-gray-600 text-center">
-                  Questions? Email us at <a href="mailto:ecochallenge@ecoquest.org" className="text-primary-green hover:underline">ecochallenge@ecoquest.org</a>
+                  Questions? Email us at <a href="mailto:ecoquestfoundation@gmail.com" className="text-primary-green hover:underline">ecoquestfoundation@gmail.com</a>
                 </p>
               </form>
             </div>

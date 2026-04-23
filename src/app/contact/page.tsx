@@ -93,7 +93,7 @@ export default function Contact() {
                     <span className="text-2xl mr-3">📧</span>
                     <div>
                       <h4 className="font-semibold">Email</h4>
-                      <a href="mailto:info@ecoquestfoundation.org" className="text-primary-blue">info@ecoquestfoundation.org</a>
+                      <a href="mailto:ecoquestfoundation@gmail.com" className="text-primary-blue">ecoquestfoundation@gmail.com</a>
                     </div>
                   </div>
                   <div className="flex items-start">

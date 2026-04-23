@@ -314,7 +314,7 @@ function RegistrationForm() {
                 </div>
 
                 <p className="text-sm text-gray-600 text-center">
-                  Questions? Contact us at <a href="mailto:events@ecoquest.org" className="text-primary-green hover:underline">events@ecoquest.org</a>
+                  Questions? Contact us at <a href="mailto:ecoquestfoundation@gmail.com" className="text-primary-green hover:underline">ecoquestfoundation@gmail.com</a>
                 </p>
               </form>
             </div>
