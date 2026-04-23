@@ -2,8 +2,13 @@ import Link from 'next/link'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
 
 export const metadata = {
-  title: 'News & Updates - EcoQuest Foundation',
-  description: 'Latest news, impact stories, and updates from EcoQuest Foundation',
+  title: 'News & Updates',
+  description: 'Latest news, competition entries, impact stories, and updates from EcoQuest Foundation. Read about our Congressional App Challenge, Blue Ocean Competition, and Bowseat Ocean Awareness Contest submissions.',
+  alternates: { canonical: '/blog/' },
+  openGraph: {
+    title: 'News & Updates - EcoQuest Foundation',
+    description: 'Latest news, competition entries, impact stories, and updates from EcoQuest Foundation.',
+  },
 }
 
 interface BlogPost {

@@ -58,15 +58,15 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © 2025 EcoQuest Foundation. All rights reserved.
+            © 2026 EcoQuest Foundation. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-500 hover:text-primary-green transition-colors">
+            <Link href="/contact" className="text-gray-500 hover:text-primary-green transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-gray-500 hover:text-primary-green transition-colors">
+            </Link>
+            <Link href="/contact" className="text-gray-500 hover:text-primary-green transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

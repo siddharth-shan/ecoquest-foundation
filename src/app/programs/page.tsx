@@ -1,8 +1,13 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Our Programs - EcoQuest Foundation',
-  description: 'Explore educational programs including games, challenges, and hands-on conservation activities.',
+  title: 'Our Programs',
+  description: 'Explore EcoQuest Foundation educational programs including interactive environmental games, monthly EcoChallenges, and hands-on community conservation activities for K-12 students.',
+  alternates: { canonical: '/programs/' },
+  openGraph: {
+    title: 'Our Programs - EcoQuest Foundation',
+    description: 'Interactive environmental games, monthly EcoChallenges, and community conservation activities for K-12 students.',
+  },
 }
 
 export default function Programs() {

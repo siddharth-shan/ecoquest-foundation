@@ -1,8 +1,13 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Impact Portfolio - EcoQuest Foundation',
-  description: 'Student-led environmental impact: competitions, community cleanups, educational games, and published research.',
+  title: 'Impact Portfolio',
+  description: 'See EcoQuest Foundation\'s real-world environmental impact: national competition entries, community beach and park cleanups, educational games reaching students, and youth-led conservation initiatives.',
+  alternates: { canonical: '/impact/' },
+  openGraph: {
+    title: 'Impact Portfolio - EcoQuest Foundation',
+    description: 'Student-led environmental impact: national competitions, community cleanups, educational games, and conservation initiatives.',
+  },
 }
 
 export default function ImpactPortfolio() {

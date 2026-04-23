@@ -1,8 +1,13 @@
 import Link from 'next/link'
 
 export const metadata = {
-  title: 'Educational Games - EcoQuest Foundation',
-  description: 'Play fun, interactive environmental games designed for K-12 students. Learn about ecosystems, recycling, ocean conservation, and carbon footprints.',
+  title: 'Educational Games',
+  description: 'Play free, interactive environmental games designed for K-12 students. Learn about ecosystems, recycling, ocean conservation, and carbon footprints through Guardians of the Green, Ocean Cleanup, Recycling Hero, and Carbon Quest.',
+  alternates: { canonical: '/games/' },
+  openGraph: {
+    title: 'Educational Games - EcoQuest Foundation',
+    description: 'Free interactive environmental games for K-12 students covering ecosystems, recycling, ocean conservation, and carbon footprints.',
+  },
 }
 
 export default function GamesPage() {

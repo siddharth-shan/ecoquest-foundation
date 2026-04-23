@@ -1,6 +1,11 @@
 export const metadata = {
-  title: 'About Us - EcoQuest Foundation',
-  description: 'Learn about EcoQuest Foundation\'s mission, vision, and impact in environmental education and youth engagement.',
+  title: 'About Us',
+  description: 'Learn about EcoQuest Foundation\'s mission, vision, and impact in environmental education and youth engagement. A student-led nonprofit inspiring the next generation of environmental stewards.',
+  alternates: { canonical: '/about/' },
+  openGraph: {
+    title: 'About EcoQuest Foundation',
+    description: 'Learn about EcoQuest Foundation\'s mission, vision, and impact in environmental education and youth engagement.',
+  },
 }
 
 export default function About() {

@@ -2,8 +2,13 @@ import Link from 'next/link'
 import EventCarousel from '@/components/shared/EventCarousel'
 
 export const metadata = {
-  title: 'Events - EcoQuest Foundation',
-  description: 'Join community conservation events including beach cleanups, park restoration, and educational workshops.',
+  title: 'Events',
+  description: 'Join EcoQuest Foundation community conservation events including beach cleanups, park restoration, and environmental education workshops in California and beyond.',
+  alternates: { canonical: '/events/' },
+  openGraph: {
+    title: 'Events - EcoQuest Foundation',
+    description: 'Community conservation events including beach cleanups, park restoration, and environmental education workshops.',
+  },
 }
 
 export default function Events() {

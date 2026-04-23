@@ -4,6 +4,10 @@ import ImpactDashboard from '@/components/shared/ImpactDashboard'
 import CommunityVoices from '@/components/shared/Testimonials'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
 
+export const metadata = {
+  alternates: { canonical: '/' },
+}
+
 export default function Home() {
   return (
     <>

@@ -80,8 +80,16 @@ export function generateMetadata({ params }: { params: { id: string } }) {
   }
 
   return {
-    title: `${post.title} - EcoQuest Foundation`,
+    title: post.title,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${post.id}/` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+    },
   }
 }
 

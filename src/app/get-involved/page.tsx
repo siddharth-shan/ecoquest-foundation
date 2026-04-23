@@ -1,6 +1,11 @@
 export const metadata = {
-  title: 'Get Involved - EcoQuest Foundation',
-  description: 'Join as a volunteer, partner organization, or supporter. Make a difference in environmental education.',
+  title: 'Get Involved',
+  description: 'Join EcoQuest Foundation as a volunteer, partner organization, or supporter. Help make a difference in environmental education and youth conservation programs.',
+  alternates: { canonical: '/get-involved/' },
+  openGraph: {
+    title: 'Get Involved - EcoQuest Foundation',
+    description: 'Volunteer, partner, or donate to support environmental education and youth conservation programs.',
+  },
 }
 
 export default function GetInvolved() {
