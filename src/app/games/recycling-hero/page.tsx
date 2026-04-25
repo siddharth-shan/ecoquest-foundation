@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 
 interface WasteItem {
@@ -10,6 +10,27 @@ interface WasteItem {
   category: 'recycle' | 'compost' | 'trash' | 'hazardous'
   description: string
 }
+
+const wasteItems: WasteItem[] = [
+  { id: 1, name: 'Plastic Bottle', emoji: '🧴', category: 'recycle', description: 'Clean plastic bottles are recyclable' },
+  { id: 2, name: 'Banana Peel', emoji: '🍌', category: 'compost', description: 'Food scraps make great compost' },
+  { id: 3, name: 'Cardboard Box', emoji: '📦', category: 'recycle', description: 'Cardboard is highly recyclable' },
+  { id: 4, name: 'Apple Core', emoji: '🍎', category: 'compost', description: 'Fruit waste is compostable' },
+  { id: 5, name: 'Aluminum Can', emoji: '🥫', category: 'recycle', description: 'Aluminum is 100% recyclable' },
+  { id: 6, name: 'Pizza Box (Greasy)', emoji: '🍕', category: 'trash', description: 'Greasy pizza boxes cannot be recycled' },
+  { id: 7, name: 'Glass Bottle', emoji: '🍾', category: 'recycle', description: 'Glass is endlessly recyclable' },
+  { id: 8, name: 'Coffee Grounds', emoji: '☕', category: 'compost', description: 'Coffee grounds enrich compost' },
+  { id: 9, name: 'Plastic Bag', emoji: '🛍️', category: 'trash', description: 'Most plastic bags go in trash (or special recycling)' },
+  { id: 10, name: 'Newspaper', emoji: '📰', category: 'recycle', description: 'Paper products are recyclable' },
+  { id: 11, name: 'Eggshells', emoji: '🥚', category: 'compost', description: 'Eggshells add calcium to compost' },
+  { id: 12, name: 'Styrofoam Cup', emoji: '🥤', category: 'trash', description: 'Styrofoam is not recyclable in most areas' },
+  { id: 13, name: 'Vegetable Scraps', emoji: '🥬', category: 'compost', description: 'Vegetable waste makes excellent compost' },
+  { id: 14, name: 'Battery', emoji: '🔋', category: 'hazardous', description: 'Batteries require special disposal' },
+  { id: 15, name: 'Steel Can', emoji: '🥫', category: 'recycle', description: 'Steel cans are magnetically sorted for recycling' },
+  { id: 16, name: 'Lightbulb', emoji: '💡', category: 'hazardous', description: 'Contains materials needing special handling' },
+  { id: 17, name: 'Tea Bag', emoji: '🫖', category: 'compost', description: 'Natural tea bags are compostable' },
+  { id: 18, name: 'Chip Bag', emoji: '🍿', category: 'trash', description: 'Multi-material packaging is not recyclable' },
+]
 
 export default function RecyclingHeroGame() {
   const [score, setScore] = useState(0)
@@ -25,43 +46,22 @@ export default function RecyclingHeroGame() {
     message: '',
   })
 
-  const wasteItems: WasteItem[] = [
-    { id: 1, name: 'Plastic Bottle', emoji: '🧴', category: 'recycle', description: 'Clean plastic bottles are recyclable' },
-    { id: 2, name: 'Banana Peel', emoji: '🍌', category: 'compost', description: 'Food scraps make great compost' },
-    { id: 3, name: 'Cardboard Box', emoji: '📦', category: 'recycle', description: 'Cardboard is highly recyclable' },
-    { id: 4, name: 'Apple Core', emoji: '🍎', category: 'compost', description: 'Fruit waste is compostable' },
-    { id: 5, name: 'Aluminum Can', emoji: '🥫', category: 'recycle', description: 'Aluminum is 100% recyclable' },
-    { id: 6, name: 'Pizza Box (Greasy)', emoji: '🍕', category: 'trash', description: 'Greasy pizza boxes cannot be recycled' },
-    { id: 7, name: 'Glass Bottle', emoji: '🍾', category: 'recycle', description: 'Glass is endlessly recyclable' },
-    { id: 8, name: 'Coffee Grounds', emoji: '☕', category: 'compost', description: 'Coffee grounds enrich compost' },
-    { id: 9, name: 'Plastic Bag', emoji: '🛍️', category: 'trash', description: 'Most plastic bags go in trash (or special recycling)' },
-    { id: 10, name: 'Newspaper', emoji: '📰', category: 'recycle', description: 'Paper products are recyclable' },
-    { id: 11, name: 'Eggshells', emoji: '🥚', category: 'compost', description: 'Eggshells add calcium to compost' },
-    { id: 12, name: 'Styrofoam Cup', emoji: '🥤', category: 'trash', description: 'Styrofoam is not recyclable in most areas' },
-    { id: 13, name: 'Vegetable Scraps', emoji: '🥬', category: 'compost', description: 'Vegetable waste makes excellent compost' },
-    { id: 14, name: 'Battery', emoji: '🔋', category: 'hazardous', description: 'Batteries require special disposal' },
-    { id: 15, name: 'Steel Can', emoji: '🥫', category: 'recycle', description: 'Steel cans are magnetically sorted for recycling' },
-    { id: 16, name: 'Lightbulb', emoji: '💡', category: 'hazardous', description: 'Contains materials needing special handling' },
-    { id: 17, name: 'Tea Bag', emoji: '🫖', category: 'compost', description: 'Natural tea bags are compostable' },
-    { id: 18, name: 'Chip Bag', emoji: '🍿', category: 'trash', description: 'Multi-material packaging is not recyclable' },
-  ]
+  const pickNewItem = useCallback(() => {
+    const randomItem = wasteItems[Math.floor(Math.random() * wasteItems.length)]
+    setCurrentItem(randomItem)
+  }, [])
 
   useEffect(() => {
     if (gameStarted && !gameOver && currentItem === null) {
       pickNewItem()
     }
-  }, [gameStarted, gameOver, currentItem])
+  }, [gameStarted, gameOver, currentItem, pickNewItem])
 
   useEffect(() => {
     if (lives <= 0) {
       setGameOver(true)
     }
   }, [lives])
-
-  const pickNewItem = () => {
-    const randomItem = wasteItems[Math.floor(Math.random() * wasteItems.length)]
-    setCurrentItem(randomItem)
-  }
 
   const startGame = () => {
     setScore(0)
@@ -222,6 +222,7 @@ export default function RecyclingHeroGame() {
                 {(['recycle', 'compost', 'trash', 'hazardous'] as const).map((category) => (
                   <button
                     key={category}
+                    type="button"
                     onClick={() => handleSort(category)}
                     disabled={feedback.show}
                     className={`bg-gradient-to-br ${getCategoryColor(category)} text-white p-8 rounded-xl hover:scale-105 transition-transform disabled:opacity-50 disabled:cursor-not-allowed`}

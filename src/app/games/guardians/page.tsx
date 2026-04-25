@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 
 interface Mission {
@@ -36,6 +36,63 @@ interface Zone {
   position: { x: number; y: number }
   color: string
 }
+
+const missionTemplates: Omit<Mission, 'id'>[] = [
+  {
+    title: 'Cleanup Crew',
+    description: 'Remove pollution and debris from the ecosystem',
+    type: 'cleanup',
+    difficulty: 'easy',
+    rewards: { health: 10, biodiversity: 5, points: 50 },
+    duration: 1,
+    icon: '🧹',
+  },
+  {
+    title: 'Tree Planting Initiative',
+    description: 'Plant native trees to restore the forest',
+    type: 'plant',
+    difficulty: 'medium',
+    rewards: { health: 8, biodiversity: 12, points: 75 },
+    duration: 2,
+    icon: '🌳',
+  },
+  {
+    title: 'Wildlife Rescue',
+    description: 'Save injured animals and return them to the wild',
+    type: 'rescue',
+    difficulty: 'hard',
+    rewards: { health: 5, biodiversity: 15, points: 100 },
+    duration: 2,
+    icon: '🦋',
+  },
+  {
+    title: 'Ecosystem Research',
+    description: 'Study the ecosystem to develop conservation strategies',
+    type: 'research',
+    difficulty: 'medium',
+    rewards: { health: 12, biodiversity: 8, points: 80 },
+    duration: 1,
+    icon: '🔬',
+  },
+  {
+    title: 'Water Quality Restoration',
+    description: 'Filter pollutants and restore clean water',
+    type: 'cleanup',
+    difficulty: 'hard',
+    rewards: { health: 15, biodiversity: 10, points: 120 },
+    duration: 3,
+    icon: '💧',
+  },
+  {
+    title: 'Habitat Protection',
+    description: 'Create protected zones for endangered species',
+    type: 'rescue',
+    difficulty: 'medium',
+    rewards: { health: 10, biodiversity: 10, points: 90 },
+    duration: 2,
+    icon: '🏕️',
+  },
+]
 
 export default function GuardiansGame() {
   const [gameStarted, setGameStarted] = useState(false)
@@ -112,103 +169,14 @@ export default function GuardiansGame() {
     },
   ])
 
-  const missionTemplates: Omit<Mission, 'id'>[] = [
-    {
-      title: 'Cleanup Crew',
-      description: 'Remove pollution and debris from the ecosystem',
-      type: 'cleanup',
-      difficulty: 'easy',
-      rewards: { health: 10, biodiversity: 5, points: 50 },
-      duration: 1,
-      icon: '🧹',
-    },
-    {
-      title: 'Tree Planting Initiative',
-      description: 'Plant native trees to restore the forest',
-      type: 'plant',
-      difficulty: 'medium',
-      rewards: { health: 8, biodiversity: 12, points: 75 },
-      duration: 2,
-      icon: '🌳',
-    },
-    {
-      title: 'Wildlife Rescue',
-      description: 'Save injured animals and return them to the wild',
-      type: 'rescue',
-      difficulty: 'hard',
-      rewards: { health: 5, biodiversity: 15, points: 100 },
-      duration: 2,
-      icon: '🦋',
-    },
-    {
-      title: 'Ecosystem Research',
-      description: 'Study the ecosystem to develop conservation strategies',
-      type: 'research',
-      difficulty: 'medium',
-      rewards: { health: 12, biodiversity: 8, points: 80 },
-      duration: 1,
-      icon: '🔬',
-    },
-    {
-      title: 'Water Quality Restoration',
-      description: 'Filter pollutants and restore clean water',
-      type: 'cleanup',
-      difficulty: 'hard',
-      rewards: { health: 15, biodiversity: 10, points: 120 },
-      duration: 3,
-      icon: '💧',
-    },
-    {
-      title: 'Habitat Protection',
-      description: 'Create protected zones for endangered species',
-      type: 'rescue',
-      difficulty: 'medium',
-      rewards: { health: 10, biodiversity: 10, points: 90 },
-      duration: 2,
-      icon: '🏕️',
-    },
-  ]
-
-  useEffect(() => {
-    if (gameStarted && !gameOver) {
-      // Generate new mission each day
-      if (activeMissions.length < 3) {
-        generateNewMission()
-      }
-
-      // Update overall health based on zones
-      const avgHealth = zones.reduce((sum, zone) => sum + zone.health, 0) / zones.length
-      setOverallHealth(Math.round(avgHealth))
-
-      // Check win/lose conditions
-      if (day >= 15) {
-        if (overallHealth >= 80 && biodiversity >= 70) {
-          setWon(true)
-          setGameOver(true)
-        } else if (overallHealth < 30) {
-          setWon(false)
-          setGameOver(true)
-        }
-      }
-
-      if (overallHealth <= 0) {
-        setWon(false)
-        setGameOver(true)
-      }
-
-      // Check achievements
-      checkAchievements()
-    }
-  }, [day, gameStarted, completedMissions, overallHealth, biodiversity, points])
-
-  const generateNewMission = () => {
+  const generateNewMission = useCallback(() => {
     const template = missionTemplates[Math.floor(Math.random() * missionTemplates.length)]
     const newMission: Mission = {
       ...template,
       id: Date.now() + Math.random(),
     }
-    setActiveMissions((prev) => [...prev, newMission])
-  }
+    setActiveMissions((prev) => (prev.length >= 3 ? prev : [...prev, newMission]))
+  }, [])
 
   const startMission = (mission: Mission) => {
     if (energy < mission.duration * 20) {
@@ -284,7 +252,7 @@ export default function GuardiansGame() {
     return events[Math.floor(Math.random() * events.length)]
   }
 
-  const checkAchievements = () => {
+  const checkAchievements = useCallback(() => {
     setAchievements((prev) =>
       prev.map((achievement) => {
         if (achievement.unlocked) return achievement
@@ -305,7 +273,50 @@ export default function GuardiansGame() {
         }
       })
     )
-  }
+  }, [biodiversity, completedMissions.length, overallHealth, points])
+
+  useEffect(() => {
+    if (!gameStarted || gameOver) return
+
+    if (activeMissions.length < 3) {
+      generateNewMission()
+    }
+
+    const avgHealth = Math.round(
+      zones.reduce((sum, zone) => sum + zone.health, 0) / zones.length
+    )
+
+    if (overallHealth !== avgHealth) {
+      setOverallHealth(avgHealth)
+    }
+
+    if (day >= 15) {
+      if (overallHealth >= 80 && biodiversity >= 70) {
+        setWon(true)
+        setGameOver(true)
+      } else if (overallHealth < 30) {
+        setWon(false)
+        setGameOver(true)
+      }
+    }
+
+    if (overallHealth <= 0) {
+      setWon(false)
+      setGameOver(true)
+    }
+
+    checkAchievements()
+  }, [
+    activeMissions.length,
+    biodiversity,
+    checkAchievements,
+    day,
+    gameOver,
+    gameStarted,
+    generateNewMission,
+    overallHealth,
+    zones,
+  ])
 
   const getHealthColor = (health: number) => {
     if (health >= 70) return 'text-green-500'

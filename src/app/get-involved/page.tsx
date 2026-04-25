@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: 'Get Involved',
   description: 'Join EcoQuest Foundation as a volunteer, partner organization, or supporter. Help make a difference in environmental education and youth conservation programs.',
@@ -61,7 +63,9 @@ export default function GetInvolved() {
           <div className="mt-8 bg-primary-green/10 border-2 border-primary-green p-8 rounded-xl text-center">
             <h3 className="text-2xl font-bold mb-4 text-primary-green">Ready to Volunteer?</h3>
             <p className="mb-6 text-gray-700">Fill out our volunteer application and join our team!</p>
-            <button className="btn btn-primary text-lg px-10">Apply Now</button>
+            <Link href="/contact" className="btn btn-primary text-lg px-10 inline-block">
+              Apply Now
+            </Link>
           </div>
         </div>
       </section>
@@ -109,7 +113,9 @@ export default function GetInvolved() {
             ))}
           </div>
           <div className="text-center">
-            <button className="btn btn-primary text-lg px-12">Donate Now</button>
+            <Link href="/donate" className="btn btn-primary text-lg px-12 inline-block">
+              Donate Now
+            </Link>
           </div>
         </div>
       </section>

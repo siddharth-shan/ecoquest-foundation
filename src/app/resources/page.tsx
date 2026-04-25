@@ -146,8 +146,8 @@ export default function Resources() {
       title: 'Monarch Butterfly Conservation',
       desc: 'Student research on declining monarch populations and habitat restoration',
       tag: 'Student Written',
-      url: '#',
-      external: false
+      url: 'https://medium.com/@siddharth.shanmugaraja/monarch-butterfly-conservation-a-california-native-plants-guide-34e7ffcf660f',
+      external: true
     },
     {
       id: 14,
@@ -156,8 +156,8 @@ export default function Resources() {
       title: 'California Native Plants Guide',
       desc: 'A guide to native plants perfect for school and home gardens',
       tag: 'Student Written',
-      url: '#',
-      external: false
+      url: 'https://medium.com/@siddharth.shanmugaraja/monarch-butterfly-conservation-a-california-native-plants-guide-34e7ffcf660f',
+      external: true
     },
   ]
 

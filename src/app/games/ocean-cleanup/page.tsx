@@ -12,6 +12,14 @@ interface TrashItem {
   points: number
 }
 
+const trashTypes = [
+  { type: 'plastic' as const, emoji: '🥤', points: 10 },
+  { type: 'can' as const, emoji: '🥫', points: 15 },
+  { type: 'bottle' as const, emoji: '🍾', points: 10 },
+  { type: 'bag' as const, emoji: '🛍️', points: 20 },
+  { type: 'straw' as const, emoji: '🥢', points: 15 },
+]
+
 export default function OceanCleanupGame() {
   const [score, setScore] = useState(0)
   const [timeLeft, setTimeLeft] = useState(60)
@@ -19,14 +27,6 @@ export default function OceanCleanupGame() {
   const [gameOver, setGameOver] = useState(false)
   const [trashItems, setTrashItems] = useState<TrashItem[]>([])
   const [animalsSaved, setAnimalsSaved] = useState(0)
-
-  const trashTypes = [
-    { type: 'plastic' as const, emoji: '🥤', points: 10 },
-    { type: 'can' as const, emoji: '🥫', points: 15 },
-    { type: 'bottle' as const, emoji: '🍾', points: 10 },
-    { type: 'bag' as const, emoji: '🛍️', points: 20 },
-    { type: 'straw' as const, emoji: '🥢', points: 15 },
-  ]
 
   const spawnTrash = useCallback(() => {
     const randomTrash = trashTypes[Math.floor(Math.random() * trashTypes.length)]
@@ -180,7 +180,9 @@ export default function OceanCleanupGame() {
                 {trashItems.map((item) => (
                   <button
                     key={item.id}
+                    type="button"
                     onClick={() => collectTrash(item.id, item.points)}
+                    aria-label={`Collect ${item.type} trash for ${item.points} points`}
                     className="absolute text-4xl hover:scale-125 transition-transform cursor-pointer animate-bounce"
                     style={{
                       top: `${item.y}%`,

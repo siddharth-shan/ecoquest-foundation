@@ -109,10 +109,10 @@ export default function BlogPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          {/* Category Filter */}
+          {/* Category Labels */}
           <div className="flex flex-wrap gap-3 justify-center mb-12">
             {categories.map((category) => (
-              <button
+              <span
                 key={category}
                 className={`px-6 py-2 rounded-full font-semibold transition-colors ${
                   category === 'All'
@@ -121,7 +121,7 @@ export default function BlogPage() {
                 }`}
               >
                 {category}
-              </button>
+              </span>
             ))}
           </div>
 

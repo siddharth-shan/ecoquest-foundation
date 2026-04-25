@@ -110,7 +110,10 @@ export default function EventCarousel() {
             {photos.map((photo, index) => (
               <button
                 key={index}
+                type="button"
                 onClick={() => goToSlide(index)}
+                aria-label={`Show ${photo.alt}`}
+                aria-current={index === currentIndex ? 'true' : undefined}
                 className={`relative aspect-square rounded-lg overflow-hidden transition-all ${
                   index === currentIndex
                     ? 'ring-4 ring-primary-green scale-105'
@@ -134,6 +137,7 @@ export default function EventCarousel() {
           {photos.map((_, index) => (
             <button
               key={index}
+              type="button"
               onClick={() => goToSlide(index)}
               className={`w-2.5 h-2.5 rounded-full transition-all ${
                 index === currentIndex

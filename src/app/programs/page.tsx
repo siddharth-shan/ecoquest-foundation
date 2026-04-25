@@ -129,7 +129,9 @@ export default function Programs() {
                 <div className="text-5xl font-bold text-primary-green mb-2">3+</div>
                 <div className="font-semibold">Beach Cleanups Completed</div>
               </div>
-              <button className="btn btn-primary">View Upcoming Events</button>
+              <Link href="/events" className="btn btn-primary inline-block">
+                View Upcoming Events
+              </Link>
             </div>
           </div>
         </div>

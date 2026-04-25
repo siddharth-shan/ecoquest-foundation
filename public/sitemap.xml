@@ -71,6 +71,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://ecoquestfoundation.org/ecochallenge/join/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://ecoquestfoundation.org/impact/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -94,5 +99,15 @@
     <loc>https://ecoquestfoundation.org/donate/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ecoquestfoundation.org/privacy/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ecoquestfoundation.org/terms/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

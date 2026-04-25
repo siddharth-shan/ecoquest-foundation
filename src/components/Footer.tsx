@@ -61,10 +61,10 @@ export default function Footer() {
             © 2026 EcoQuest Foundation. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <Link href="/contact" className="text-gray-500 hover:text-primary-green transition-colors">
+            <Link href="/privacy" className="text-gray-500 hover:text-primary-green transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/contact" className="text-gray-500 hover:text-primary-green transition-colors">
+            <Link href="/terms" className="text-gray-500 hover:text-primary-green transition-colors">
               Terms of Service
             </Link>
           </div>

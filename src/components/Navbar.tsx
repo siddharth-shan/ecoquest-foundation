@@ -80,6 +80,9 @@ export default function Navbar() {
               onMouseLeave={() => setMoreDropdownOpen(false)}
             >
               <button
+                type="button"
+                aria-expanded={moreDropdownOpen}
+                aria-haspopup="menu"
                 className={`font-medium text-sm px-3 py-2 rounded-md transition-colors flex items-center gap-1 whitespace-nowrap ${
                   isMoreActive
                     ? 'text-primary-green bg-green-50'
@@ -116,7 +119,12 @@ export default function Navbar() {
               onMouseEnter={() => setAppsDropdownOpen(true)}
               onMouseLeave={() => setAppsDropdownOpen(false)}
             >
-              <button className="font-medium text-sm px-3 py-2 rounded-md text-gray-700 hover:text-primary-green hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap">
+              <button
+                type="button"
+                aria-expanded={appsDropdownOpen}
+                aria-haspopup="menu"
+                className="font-medium text-sm px-3 py-2 rounded-md text-gray-700 hover:text-primary-green hover:bg-gray-50 transition-colors flex items-center gap-1 whitespace-nowrap"
+              >
                 Our Apps
                 <HiChevronDown className={`w-4 h-4 transition-transform ${appsDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
@@ -153,9 +161,11 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="xl:hidden text-gray-700 hover:text-primary-green transition-colors"
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <HiX size={28} /> : <HiMenu size={28} />}
           </button>

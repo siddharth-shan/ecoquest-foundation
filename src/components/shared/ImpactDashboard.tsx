@@ -11,6 +11,8 @@ interface ImpactMetric {
   description: string
 }
 
+const targetValues = [3, 35, 4, 3, 3]
+
 export default function ImpactDashboard() {
   const [metrics, setMetrics] = useState<ImpactMetric[]>([
     {
@@ -54,8 +56,6 @@ export default function ImpactDashboard() {
       description: 'Original research and guides on Medium',
     },
   ])
-
-  const targetValues = [3, 35, 4, 3, 3]
 
   useEffect(() => {
     // Animate numbers on mount
