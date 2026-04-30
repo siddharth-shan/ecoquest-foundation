@@ -3,7 +3,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
-const SITE_URL = 'https://ecoquestfoundation.org'
+const SITE_URL = 'https://www.ecoquestfoundation.org'
 const SITE_NAME = 'EcoQuest Foundation'
 const SITE_DESCRIPTION =
   'Student-led nonprofit empowering youth to protect the planet through interactive educational games, web apps, and community conservation events.'

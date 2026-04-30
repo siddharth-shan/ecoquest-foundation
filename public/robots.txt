@@ -1,5 +1,5 @@
-# EcoQuest Foundation - ecoquestfoundation.org
+# EcoQuest Foundation - www.ecoquestfoundation.org
 User-agent: *
 Allow: /
 
-Sitemap: https://ecoquestfoundation.org/sitemap.xml
+Sitemap: https://www.ecoquestfoundation.org/sitemap.xml
