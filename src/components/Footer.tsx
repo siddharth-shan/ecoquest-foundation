@@ -55,18 +55,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © 2026 EcoQuest Foundation. All rights reserved.
-          </p>
-          <div className="flex space-x-6 text-sm">
-            <Link href="/privacy" className="text-gray-500 hover:text-primary-green transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-gray-500 hover:text-primary-green transition-colors">
-              Terms of Service
-            </Link>
+        {/* Legal Disclosure */}
+        <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="text-gray-400 text-xs leading-relaxed mb-6 max-w-4xl">
+            <p>
+              <strong className="text-gray-300">EcoQuest Foundation</strong> is a 501(c)(3) tax-exempt nonprofit organization
+              registered in the State of California. EIN: <strong className="text-gray-300">33-4376241</strong>.
+              Recognized by the Internal Revenue Service as a public charity under IRC Section 170(b)(1)(A)(vi),
+              effective August 20, 2024. Contributions to EcoQuest Foundation are tax-deductible to the fullest
+              extent allowed by law.
+            </p>
+          </div>
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-500 text-sm mb-4 md:mb-0">
+              © 2026 EcoQuest Foundation. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <Link href="/privacy" className="text-gray-500 hover:text-primary-green transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="text-gray-500 hover:text-primary-green transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </div>

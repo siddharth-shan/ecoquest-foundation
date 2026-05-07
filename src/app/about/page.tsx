@@ -64,6 +64,52 @@ export default function About() {
         </div>
       </section>
 
+      <section className="section-padding bg-white">
+        <div className="container-custom max-w-4xl">
+          <div className="section-header">
+            <h2 className="section-title">Our Tax-Exempt Status</h2>
+            <div className="section-underline" />
+          </div>
+          <div className="card p-8 md:p-10">
+            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+              <strong>EcoQuest Foundation</strong> is a 501(c)(3) tax-exempt nonprofit organization
+              registered in the State of California and recognized by the Internal Revenue Service.
+            </p>
+            <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-4 mb-6">
+              <div>
+                <dt className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Legal Name</dt>
+                <dd className="text-gray-800 mt-1">ECOQUEST FOUNDATION</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-gray-500 uppercase tracking-wide">EIN</dt>
+                <dd className="text-gray-800 mt-1">33-4376241</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-gray-500 uppercase tracking-wide">IRS Classification</dt>
+                <dd className="text-gray-800 mt-1">Public charity under IRC §170(b)(1)(A)(vi)</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Effective Date of Exemption</dt>
+                <dd className="text-gray-800 mt-1">August 20, 2024</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-gray-500 uppercase tracking-wide">State of Incorporation</dt>
+                <dd className="text-gray-800 mt-1">California, USA</dd>
+              </div>
+              <div>
+                <dt className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Contact</dt>
+                <dd className="text-gray-800 mt-1">ecoquestfoundation@gmail.com</dd>
+              </div>
+            </dl>
+            <p className="text-gray-600 leading-relaxed">
+              Contributions to EcoQuest Foundation are tax-deductible under Internal Revenue Code Section 170 to the
+              fullest extent allowed by law. EcoQuest Foundation is also qualified to receive tax-deductible bequests,
+              devises, transfers, and gifts under IRC Sections 2055, 2106, and 2522.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="section-padding">
         <div className="container-custom">
           <div className="section-header">
