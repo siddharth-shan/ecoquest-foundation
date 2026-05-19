@@ -104,7 +104,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
     <>
       <div className="bg-gradient-eco text-white py-20">
         <div className="container-custom max-w-4xl">
-          <Link href="/blog" className="text-white/80 hover:text-white mb-4 inline-flex items-center gap-2 transition-colors">
+          <Link href="/blog/" className="text-white/80 hover:text-white mb-4 inline-flex items-center gap-2 transition-colors">
             ← Back to Blog
           </Link>
           <div className="inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-semibold mb-4 backdrop-blur-sm">
@@ -155,10 +155,10 @@ export default function BlogPost({ params }: { params: { id: string } }) {
 
           {/* Navigation */}
           <div className="mt-12 flex justify-between items-center">
-            <Link href="/blog" className="btn btn-outline">
+            <Link href="/blog/" className="btn btn-outline">
               ← All Posts
             </Link>
-            <Link href="/donate" className="btn btn-primary">
+            <Link href="/donate/" className="btn btn-primary">
               Support Our Mission →
             </Link>
           </div>

@@ -107,7 +107,7 @@ export default function OceanCleanupGame() {
     <div className="min-h-screen bg-gradient-to-b from-sky-400 via-blue-500 to-blue-700">
       <div className="container-custom py-12">
         <div className="mb-6">
-          <Link href="/games" className="text-white hover:underline">
+          <Link href="/games/" className="text-white hover:underline">
             ← Back to Games
           </Link>
         </div>
@@ -240,7 +240,7 @@ export default function OceanCleanupGame() {
                 <button onClick={startGame} className="btn btn-primary">
                   Play Again
                 </button>
-                <Link href="/games" className="btn btn-outline">
+                <Link href="/games/" className="btn btn-outline">
                   Back to Games
                 </Link>
               </div>

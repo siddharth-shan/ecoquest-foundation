@@ -63,7 +63,7 @@ export default function GetInvolved() {
           <div className="mt-8 bg-primary-green/10 border-2 border-primary-green p-8 rounded-xl text-center">
             <h3 className="text-2xl font-bold mb-4 text-primary-green">Ready to Volunteer?</h3>
             <p className="mb-6 text-gray-700">Fill out our volunteer application and join our team!</p>
-            <Link href="/contact" className="btn btn-primary text-lg px-10 inline-block">
+            <Link href="/contact/" className="btn btn-primary text-lg px-10 inline-block">
               Apply Now
             </Link>
           </div>
@@ -113,7 +113,7 @@ export default function GetInvolved() {
             ))}
           </div>
           <div className="text-center">
-            <Link href="/donate" className="btn btn-primary text-lg px-12 inline-block">
+            <Link href="/donate/" className="btn btn-primary text-lg px-12 inline-block">
               Donate Now
             </Link>
           </div>

@@ -138,7 +138,7 @@ export default function RecyclingHeroGame() {
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-orange-50 to-green-50">
       <div className="container-custom py-12">
         <div className="mb-6">
-          <Link href="/games" className="text-primary-green hover:underline">
+          <Link href="/games/" className="text-primary-green hover:underline">
             ← Back to Games
           </Link>
         </div>
@@ -275,7 +275,7 @@ export default function RecyclingHeroGame() {
                 <button onClick={startGame} className="btn btn-primary">
                   Play Again
                 </button>
-                <Link href="/games" className="btn btn-outline">
+                <Link href="/games/" className="btn btn-outline">
                   Back to Games
                 </Link>
               </div>

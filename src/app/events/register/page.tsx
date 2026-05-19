@@ -78,7 +78,7 @@ function RegistrationForm() {
                 Thank you for registering for {eventTitle}. We've sent a confirmation email with all the event details and what to bring.
               </p>
               <div className="flex gap-4 justify-center">
-                <Link href="/events" className="btn btn-primary">
+                <Link href="/events/" className="btn btn-primary">
                   Back to Events
                 </Link>
                 <button
@@ -284,7 +284,7 @@ function RegistrationForm() {
                       className="mt-1 mr-3 h-5 w-5 text-primary-green focus:ring-primary-green border-gray-300 rounded"
                     />
                     <span className="text-sm text-gray-700">
-                      I agree to the <Link href="/terms" className="text-primary-green hover:underline">terms and conditions</Link> and understand that I will receive event updates and safety information via email. I acknowledge that outdoor activities carry inherent risks and agree to follow all safety guidelines provided by EcoQuest Foundation staff.
+                      I agree to the <Link href="/terms/" className="text-primary-green hover:underline">terms and conditions</Link> and understand that I will receive event updates and safety information via email. I acknowledge that outdoor activities carry inherent risks and agree to follow all safety guidelines provided by EcoQuest Foundation staff.
                     </span>
                   </label>
                 </div>
@@ -308,7 +308,7 @@ function RegistrationForm() {
                       'Complete Registration'
                     )}
                   </button>
-                  <Link href="/events" className="btn btn-outline">
+                  <Link href="/events/" className="btn btn-outline">
                     Cancel
                   </Link>
                 </div>

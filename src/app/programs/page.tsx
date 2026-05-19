@@ -51,8 +51,8 @@ export default function Programs() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <Link href="/games/guardians" className="btn btn-primary">Play Now</Link>
-                <Link href="/games" className="btn btn-outline">All Games</Link>
+                <Link href="/games/guardians/" className="btn btn-primary">Play Now</Link>
+                <Link href="/games/" className="btn btn-outline">All Games</Link>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function Programs() {
                   </div>
                 ))}
               </div>
-              <Link href="/ecochallenge/join?challenge=Energy%20Conservation%20Challenge" className="btn btn-primary inline-block">
+              <Link href="/ecochallenge/join/?challenge=Energy%20Conservation%20Challenge" className="btn btn-primary inline-block">
                 Join This Month's Challenge
               </Link>
             </div>
@@ -129,7 +129,7 @@ export default function Programs() {
                 <div className="text-5xl font-bold text-primary-green mb-2">3+</div>
                 <div className="font-semibold">Beach Cleanups Completed</div>
               </div>
-              <Link href="/events" className="btn btn-primary inline-block">
+              <Link href="/events/" className="btn btn-primary inline-block">
                 View Upcoming Events
               </Link>
             </div>

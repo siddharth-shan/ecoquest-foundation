@@ -22,10 +22,10 @@ export default function Home() {
             Through interactive games, digital experiences, and hands-on conservation events
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/programs" className="btn btn-primary text-lg">
+            <Link href="/programs/" className="btn btn-primary text-lg">
               Explore Our Programs
             </Link>
-            <Link href="/get-involved" className="btn btn-secondary text-lg">
+            <Link href="/get-involved/" className="btn btn-secondary text-lg">
               Get Involved
             </Link>
           </div>
@@ -235,10 +235,10 @@ export default function Home() {
             Whether you're an educator, student, scout troop, or community organization—there's a place for you at EcoQuest Foundation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-involved" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
+            <Link href="/get-involved/" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
               Volunteer With Us
             </Link>
-            <Link href="/programs" className="btn btn-secondary text-lg px-10">
+            <Link href="/programs/" className="btn btn-secondary text-lg px-10">
               Explore Programs
             </Link>
           </div>

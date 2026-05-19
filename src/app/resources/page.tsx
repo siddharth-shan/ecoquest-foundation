@@ -326,7 +326,7 @@ export default function Resources() {
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             Access lesson plans, NGSS alignment guides, and assessment tools designed for educators.
           </p>
-          <Link href="/contact" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
+          <Link href="/contact/" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
             Contact Us for Educator Access
           </Link>
         </div>

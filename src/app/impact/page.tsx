@@ -285,10 +285,10 @@ export default function ImpactPortfolio() {
             Join our student-led team and make a real impact on environmental education and conservation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-involved" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
+            <Link href="/get-involved/" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
               Join the Team
             </Link>
-            <Link href="/contact" className="btn btn-secondary text-lg px-10">
+            <Link href="/contact/" className="btn btn-secondary text-lg px-10">
               Contact Us
             </Link>
           </div>

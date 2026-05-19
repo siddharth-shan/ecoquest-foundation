@@ -104,7 +104,7 @@ export default function GamesPage() {
                   </div>
 
                   <Link
-                    href={`/games/${game.id}`}
+                    href={`/games/${game.id}/`}
                     className="btn btn-primary w-full text-center inline-block"
                   >
                     Play Now →

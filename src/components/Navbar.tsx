@@ -152,7 +152,7 @@ export default function Navbar() {
           {/* CTA Button - Desktop */}
           <div className="hidden xl:flex items-center flex-shrink-0 ml-4">
             <Link
-              href="/get-involved"
+              href="/get-involved/"
               className="bg-primary-green hover:bg-primary-green-dark text-white font-semibold text-sm px-4 py-2 rounded-lg transition-all hover:shadow-lg whitespace-nowrap"
             >
               Get Involved
@@ -226,7 +226,7 @@ export default function Navbar() {
 
               {/* CTA Links */}
               <Link
-                href="/get-involved"
+                href="/get-involved/"
                 onClick={() => setIsOpen(false)}
                 className="font-semibold py-3 px-2 rounded-lg text-gray-700 hover:text-primary-green hover:bg-gray-50 transition-colors"
               >

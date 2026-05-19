@@ -28,13 +28,13 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-xl mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-400 hover:text-primary-green transition-colors">About Us</Link></li>
-              <li><Link href="/programs" className="text-gray-400 hover:text-primary-green transition-colors">Our Programs</Link></li>
-              <li><Link href="/games" className="text-gray-400 hover:text-primary-green transition-colors">Educational Games</Link></li>
-              <li><Link href="/blog" className="text-gray-400 hover:text-primary-green transition-colors">Blog & News</Link></li>
-              <li><Link href="/events" className="text-gray-400 hover:text-primary-green transition-colors">Events</Link></li>
-              <li><Link href="/impact" className="text-gray-400 hover:text-primary-green transition-colors">Impact Portfolio</Link></li>
-              <li><Link href="/resources" className="text-gray-400 hover:text-primary-green transition-colors">Resources</Link></li>
+              <li><Link href="/about/" className="text-gray-400 hover:text-primary-green transition-colors">About Us</Link></li>
+              <li><Link href="/programs/" className="text-gray-400 hover:text-primary-green transition-colors">Our Programs</Link></li>
+              <li><Link href="/games/" className="text-gray-400 hover:text-primary-green transition-colors">Educational Games</Link></li>
+              <li><Link href="/blog/" className="text-gray-400 hover:text-primary-green transition-colors">Blog & News</Link></li>
+              <li><Link href="/events/" className="text-gray-400 hover:text-primary-green transition-colors">Events</Link></li>
+              <li><Link href="/impact/" className="text-gray-400 hover:text-primary-green transition-colors">Impact Portfolio</Link></li>
+              <li><Link href="/resources/" className="text-gray-400 hover:text-primary-green transition-colors">Resources</Link></li>
             </ul>
           </div>
 
@@ -42,10 +42,10 @@ export default function Footer() {
           <div>
             <h4 className="font-heading font-bold text-xl mb-4">Get Involved</h4>
             <ul className="space-y-2">
-              <li><Link href="/get-involved" className="text-gray-400 hover:text-primary-green transition-colors">Volunteer</Link></li>
-              <li><Link href="/donate" className="text-gray-400 hover:text-primary-green transition-colors font-bold">💚 Donate</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-primary-green transition-colors">Partner With Us</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-primary-green transition-colors">Contact Us</Link></li>
+              <li><Link href="/get-involved/" className="text-gray-400 hover:text-primary-green transition-colors">Volunteer</Link></li>
+              <li><Link href="/donate/" className="text-gray-400 hover:text-primary-green transition-colors font-bold">💚 Donate</Link></li>
+              <li><Link href="/contact/" className="text-gray-400 hover:text-primary-green transition-colors">Partner With Us</Link></li>
+              <li><Link href="/contact/" className="text-gray-400 hover:text-primary-green transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -71,10 +71,10 @@ export default function Footer() {
               © 2026 EcoQuest Foundation. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
-              <Link href="/privacy" className="text-gray-500 hover:text-primary-green transition-colors">
+              <Link href="/privacy/" className="text-gray-500 hover:text-primary-green transition-colors">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-500 hover:text-primary-green transition-colors">
+              <Link href="/terms/" className="text-gray-500 hover:text-primary-green transition-colors">
                 Terms of Service
               </Link>
             </div>

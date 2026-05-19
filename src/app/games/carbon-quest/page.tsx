@@ -198,7 +198,7 @@ export default function CarbonQuestGame() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50">
       <div className="container-custom py-12">
         <div className="mb-6">
-          <Link href="/games" className="text-primary-green hover:underline">
+          <Link href="/games/" className="text-primary-green hover:underline">
             ← Back to Games
           </Link>
         </div>
@@ -337,7 +337,7 @@ export default function CarbonQuestGame() {
                 <button onClick={startGame} className="btn btn-primary">
                   Try Again
                 </button>
-                <Link href="/games" className="btn btn-outline">
+                <Link href="/games/" className="btn btn-outline">
                   Back to Games
                 </Link>
               </div>

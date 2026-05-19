@@ -161,7 +161,7 @@ export default function BlogPage() {
                     </a>
                   ) : (
                     <Link
-                      href={`/blog/${posts[0].id}`}
+                      href={`/blog/${posts[0].id}/`}
                       className="btn btn-primary inline-block w-fit"
                     >
                       Read Full Story →
@@ -207,7 +207,7 @@ export default function BlogPage() {
                     </a>
                   ) : (
                     <Link
-                      href={`/blog/${post.id}`}
+                      href={`/blog/${post.id}/`}
                       className="text-primary-green font-semibold hover:underline"
                     >
                       Read More →

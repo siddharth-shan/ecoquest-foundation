@@ -23,7 +23,7 @@ export default function CommunityVoices() {
       <div className="text-center bg-white rounded-lg p-6">
         <p className="text-gray-700 mb-4">Have an EcoQuest story to share? We'd love to feature it!</p>
         <a
-          href="/contact"
+          href="/contact/"
           className="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-semibold px-6 py-3 rounded-lg transition-colors"
         >
           Share Your Story →

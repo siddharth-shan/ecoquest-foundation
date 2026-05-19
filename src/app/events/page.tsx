@@ -39,7 +39,7 @@ export default function Events() {
             <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-6">
               We're planning exciting new community conservation events. Sign up for our newsletter to be the first to know!
             </p>
-            <Link href="/contact" className="btn btn-primary inline-block">
+            <Link href="/contact/" className="btn btn-primary inline-block">
               Get Notified →
             </Link>
           </div>

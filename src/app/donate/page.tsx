@@ -291,21 +291,21 @@ export default function DonatePage() {
               <h3 className="text-xl font-bold text-primary-green mb-4">Other Ways to Give</h3>
               <div className="space-y-3 text-sm">
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <p className="font-semibold">Corporate Sponsorship</p>
                   <p className="text-gray-600 text-xs">Partner with us for lasting impact</p>
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <p className="font-semibold">Planned Giving</p>
                   <p className="text-gray-600 text-xs">Leave a legacy for future generations</p>
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="block p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                 >
                   <p className="font-semibold">Stock Donations</p>

@@ -87,10 +87,10 @@ function ChallengeForm() {
                 </ul>
               </div>
               <div className="flex gap-4 justify-center flex-wrap">
-                <Link href="/programs#ecochallenge" className="btn btn-primary">
+                <Link href="/programs/#ecochallenge" className="btn btn-primary">
                   View All Challenges
                 </Link>
-                <Link href="/blog" className="btn btn-outline">
+                <Link href="/blog/" className="btn btn-outline">
                   Read Success Stories
                 </Link>
               </div>
@@ -368,7 +368,7 @@ function ChallengeForm() {
                       className="mt-1 mr-3 h-5 w-5 text-primary-green focus:ring-primary-green border-gray-300 rounded"
                     />
                     <span className="text-sm text-gray-700">
-                      I agree to participate in good faith, track my progress honestly, and follow the <Link href="/terms" className="text-primary-green hover:underline">challenge guidelines</Link>. I understand that EcoQuest Foundation may share anonymized success stories and data from this challenge.
+                      I agree to participate in good faith, track my progress honestly, and follow the <Link href="/terms/" className="text-primary-green hover:underline">challenge guidelines</Link>. I understand that EcoQuest Foundation may share anonymized success stories and data from this challenge.
                     </span>
                   </label>
                 </div>
@@ -392,7 +392,7 @@ function ChallengeForm() {
                       'Join the Challenge!'
                     )}
                   </button>
-                  <Link href="/programs#ecochallenge" className="btn btn-outline">
+                  <Link href="/programs/#ecochallenge" className="btn btn-outline">
                     Cancel
                   </Link>
                 </div>

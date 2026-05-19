@@ -335,7 +335,7 @@ export default function GuardiansGame() {
       <div className="min-h-screen bg-gradient-to-br from-green-900 via-emerald-800 to-teal-900 text-white">
         <div className="container-custom py-12">
           <div className="mb-6">
-            <Link href="/games" className="text-white hover:underline">
+            <Link href="/games/" className="text-white hover:underline">
               ← Back to Games
             </Link>
           </div>
@@ -473,7 +473,7 @@ export default function GuardiansGame() {
                   Play Again
                 </button>
                 <Link
-                  href="/games"
+                  href="/games/"
                   className="bg-white/20 hover:bg-white/30 text-white font-bold px-8 py-3 rounded-full inline-block"
                 >
                   Back to Games
@@ -490,7 +490,7 @@ export default function GuardiansGame() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-100">
       <div className="container-custom py-6">
         <div className="mb-4">
-          <Link href="/games" className="text-primary-green hover:underline">
+          <Link href="/games/" className="text-primary-green hover:underline">
             ← Back to Games
           </Link>
         </div>

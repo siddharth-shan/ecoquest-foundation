@@ -135,7 +135,7 @@ export default function ImpactDashboard() {
       <div className="mt-6 text-center">
         <p className="text-sm text-gray-600 mb-4">Help us achieve our goals</p>
         <a
-          href="/donate"
+          href="/donate/"
           className="inline-block bg-primary-green hover:bg-primary-green-dark text-white font-bold px-8 py-3 rounded-lg transition-colors"
         >
           Support Our Mission →
