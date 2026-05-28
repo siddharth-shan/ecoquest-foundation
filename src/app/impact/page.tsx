@@ -35,7 +35,7 @@ export default function ImpactPortfolio() {
       title: 'MindMirror',
       desc: 'Mental wellness platform exploring the connection between environmental health and personal well-being.',
       competition: 'Blue Ocean Entrepreneurship Competition',
-      competitionUrl: '#',
+      competitionUrl: 'https://www.blueoceancompetition.org/',
       appUrl: 'https://mindmirror-pilot.vercel.app/',
       icon: '🧠',
       gradient: 'from-purple-500 to-indigo-600',

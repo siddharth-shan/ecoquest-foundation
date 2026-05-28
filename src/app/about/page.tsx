@@ -31,7 +31,7 @@ export default function About() {
                 We design and maintain age-appropriate websites, educational games, and challenges that make learning about ecological issues fun and impactful. Our digital content is crafted to align with environmental science standards, supporting both formal and informal learning environments.
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Beyond the screen, we collaborate with local community organizations and Scouting of America troops to host hands-on conservation events such as beach and park cleanups—empowering young people to take real-world action for a healthier planet.
+                Beyond the screen, we host hands-on conservation events—such as beach and park cleanups—open to students, local Scout troops, families, and community volunteers, empowering young people to take real-world action for a healthier planet.
               </p>
             </div>
             <div className="bg-primary-green/10 rounded-2xl p-8 h-96 flex items-center justify-center">

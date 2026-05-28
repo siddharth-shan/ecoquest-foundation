@@ -69,8 +69,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { number: '4', label: 'Educational Games Built', desc: 'Interactive K-12 experiences' },
+              { number: '3', label: 'Interactive Web Apps', desc: 'Wildfire Watch, Oceanaware, MindMirror' },
               { number: '3', label: 'Community Cleanups', desc: 'Beach & park conservation' },
-              { number: '3', label: 'National Competition Entries', desc: 'Apps submitted to prestigious programs' },
               { number: '35+', label: 'Community Members Engaged', desc: 'Through events & programs' },
             ].map((stat, i) => (
               <div key={i} className="p-6">
@@ -179,7 +179,7 @@ export default function Home() {
               },
               {
                 title: 'Community Cleanup Events',
-                desc: 'Beach and park cleanups across California with scouts and local organizations',
+                desc: 'Beach and park cleanups across California, open to students, families, and community volunteers',
                 badge: 'Hands-On',
                 link: '/events',
                 color: 'bg-accent-yellow',

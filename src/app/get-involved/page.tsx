@@ -76,7 +76,7 @@ export default function GetInvolved() {
           <div className="section-underline ml-0 mb-8" />
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: '⛺', title: 'Scouting Troops', desc: 'Environmental service projects aligned with merit badge requirements' },
+              { icon: '⛺', title: 'Scout Troops', desc: 'We welcome local Scout troops at our service events; happy to align activities with troop service hour and merit badge goals where applicable' },
               { icon: '🏫', title: 'Schools', desc: 'NGSS-aligned programs, field trips, and professional development for educators' },
               { icon: '🌱', title: 'Community Orgs', desc: 'Collaborate on conservation events and educational outreach' },
             ].map((partner, i) => (

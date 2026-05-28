@@ -17,7 +17,7 @@ export default function EventCarousel() {
     {
       src: '/images/events/beach_cleanup1.jpeg',
       alt: 'Scout troop beach cleanup event',
-      caption: 'Scout Beach Cleanup - Partnering with local scout troops for coastal conservation',
+      caption: 'Beach Cleanup - Volunteers working together on coastal conservation',
     },
 {
       src: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',

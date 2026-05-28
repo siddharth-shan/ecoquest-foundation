@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { FaInstagram, FaLinkedin } from 'react-icons/fa'
 import NewsletterSignup from './shared/NewsletterSignup'
 
 export default function Footer() {
@@ -13,15 +12,11 @@ export default function Footer() {
             <p className="text-gray-400 leading-relaxed mb-4">
               Inspiring and educating youth about environmental conservation through interactive digital experiences and community action.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-green transition-colors" aria-label="Instagram">
-                <FaInstagram size={24} />
+            <p className="text-sm text-gray-400">
+              <a href="mailto:ecoquestfoundation@gmail.com" className="hover:text-primary-green transition-colors">
+                ecoquestfoundation@gmail.com
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary-green transition-colors" aria-label="LinkedIn">
-                <FaLinkedin size={24} />
-              </a>
-            </div>
-            <p className="text-xs text-gray-500 mt-2">Social accounts coming soon!</p>
+            </p>
           </div>
 
           {/* Quick Links */}

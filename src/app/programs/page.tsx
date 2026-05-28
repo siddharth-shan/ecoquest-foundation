@@ -110,7 +110,7 @@ export default function Programs() {
               <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Community Conservation Events</h2>
               <div className="section-underline ml-0" />
               <p className="text-lg mb-6 text-gray-700">
-                Partner with us for beach and park cleanups across California, working alongside Scouting of America troops and local organizations.
+                Join us for beach and park cleanups across California. Our events welcome students, families, local Scout troops, and community volunteers.
               </p>
               <ul className="space-y-3 mb-6">
                 {[
