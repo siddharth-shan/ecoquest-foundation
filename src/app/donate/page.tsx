@@ -1,46 +1,26 @@
 import Link from 'next/link'
 
 export default function DonatePage() {
-  const impactLevels = [
+  const givingAreas = [
     {
-      amount: '$25',
-      title: 'Seedling Supporter',
-      impact: [
-        '🌱 Educational materials for several students',
-        '📚 Support a classroom game session',
-        '🎒 Supply cleanup kits for a small team',
-      ],
+      icon: '🎮',
+      title: 'Educational Games & Apps',
+      desc: 'Building and maintaining our free interactive games and web apps for K-12 students',
+    },
+    {
+      icon: '🏖️',
+      title: 'Community Cleanups',
+      desc: 'Supplies, gloves, grabbers, and bags for our beach and park cleanup events',
+    },
+    {
+      icon: '📚',
+      title: 'Learning Materials',
+      desc: 'Educational content and resources shared with students, families, and volunteers',
+    },
+    {
       icon: '🌱',
-    },
-    {
-      amount: '$50',
-      title: 'Tree Planter',
-      impact: [
-        '🌳 Educational programs for a classroom',
-        '🎮 Game access for a class',
-        '🧹 Equip a beach cleanup event',
-      ],
-      icon: '🌳',
-    },
-    {
-      amount: '$100',
-      title: 'Forest Guardian',
-      impact: [
-        '🏫 Support a school assembly program',
-        '📱 Interactive app access for a school',
-        '🏖️ Sponsor a community beach cleanup',
-      ],
-      icon: '🌲',
-    },
-    {
-      amount: '$250+',
-      title: 'Ecosystem Champion',
-      impact: [
-        '🎓 Fund teacher training workshops',
-        '🌍 Support a multi-week environmental campaign',
-        '🦋 Enable new digital learning initiatives',
-      ],
-      icon: '🦋',
+      title: 'Program Operations',
+      desc: 'The day-to-day costs of running a student-led nonprofit and growing our reach',
     },
   ]
 
@@ -90,28 +70,24 @@ export default function DonatePage() {
                 </p>
               </div>
 
-              <h3 className="font-bold text-xl text-primary-green mb-4">Suggested Giving Levels</h3>
+              <h3 className="font-bold text-xl text-primary-green mb-4">Where Your Gift Goes</h3>
+              <p className="text-gray-700 mb-4">
+                Every contribution—of any size—directly supports our student-led environmental education
+                and community conservation work, including:
+              </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                {impactLevels.map((level, i) => (
+                {givingAreas.map((area, i) => (
                   <div
                     key={i}
                     className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-5 border-2 border-green-200"
                   >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="text-3xl">{level.icon}</div>
+                    <div className="flex items-start gap-3">
+                      <div className="text-3xl">{area.icon}</div>
                       <div>
-                        <div className="text-xl font-bold text-primary-green">{level.amount}</div>
-                        <div className="text-sm font-semibold text-gray-700">{level.title}</div>
+                        <div className="font-bold text-primary-green">{area.title}</div>
+                        <p className="text-sm text-gray-700 mt-1">{area.desc}</p>
                       </div>
                     </div>
-                    <ul className="space-y-1 text-sm text-gray-700">
-                      {level.impact.map((item, j) => (
-                        <li key={j} className="flex items-start gap-2">
-                          <span className="text-green-600 font-bold mt-0.5">✓</span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
                 ))}
               </div>
@@ -183,7 +159,7 @@ export default function DonatePage() {
               <h3 className="text-xl font-bold mb-4">What We&apos;ve Done</h3>
               <div className="space-y-4">
                 <div>
-                  <div className="text-4xl font-bold">3</div>
+                  <div className="text-4xl font-bold">7+</div>
                   <div className="text-sm opacity-90">Community Cleanups</div>
                 </div>
                 <div>
@@ -195,7 +171,7 @@ export default function DonatePage() {
                   <div className="text-sm opacity-90">Educational Games Built</div>
                 </div>
                 <div>
-                  <div className="text-4xl font-bold">3</div>
+                  <div className="text-4xl font-bold">4</div>
                   <div className="text-sm opacity-90">Interactive Web Apps</div>
                 </div>
               </div>

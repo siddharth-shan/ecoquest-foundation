@@ -69,8 +69,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { number: '4', label: 'Educational Games Built', desc: 'Interactive K-12 experiences' },
-              { number: '3', label: 'Interactive Web Apps', desc: 'Wildfire Watch, Oceanaware, MindMirror' },
-              { number: '3', label: 'Community Cleanups', desc: 'Beach & park conservation' },
+              { number: '4', label: 'Interactive Web Apps', desc: 'Wildfire Watch, Oceanaware, MindMirror, GreenLedger' },
+              { number: '7+', label: 'Community Cleanups', desc: 'Beach & park conservation' },
               { number: '35+', label: 'Community Members Engaged', desc: 'Through events & programs' },
             ].map((stat, i) => (
               <div key={i} className="p-6">
@@ -89,14 +89,14 @@ export default function Home() {
           <div className="section-header">
             <h2 className="section-title">Our Interactive Apps</h2>
             <div className="section-underline" />
-            <p className="text-gray-600 text-lg">Real-time environmental data and awareness tools built for the community</p>
+            <p className="text-gray-600 text-lg">Interactive digital tools built by our students for environmental awareness and community action</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
                 title: 'Wildfire Watch',
                 desc: 'Track wildfires in real-time and access critical environmental safety information for your community',
-                icon: '🔥',
+                img: '/images/apps/wildfire-watch.png',
                 url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
                 gradient: 'from-orange-500 to-red-600',
                 badge: '🏛️ Congressional App Challenge',
@@ -104,23 +104,36 @@ export default function Home() {
               {
                 title: 'Oceanaware Guardian',
                 desc: 'Explore marine ecosystems, track ocean pollution, and learn how to protect our oceans',
-                icon: '🌊',
+                img: '/images/apps/oceanaware.png',
                 url: 'https://oceanaware-guardian.vercel.app',
                 gradient: 'from-blue-500 to-cyan-600',
                 badge: '🌊 Bowseat Ocean Awareness Contest',
               },
               {
                 title: 'MindMirror',
-                desc: 'Discover the connection between environmental health and personal well-being through mindfulness',
-                icon: '🧠',
+                desc: 'A 60-second mental wellness check-in built for an era of climate anxiety and environmental uncertainty',
+                img: '/images/apps/mindmirror.png',
                 url: 'https://mindmirror-pilot.vercel.app/',
                 gradient: 'from-purple-500 to-indigo-600',
-                badge: '💡 Blue Ocean Competition',
+                badge: '💡 Blue Ocean — Top 500 Finalist',
+              },
+              {
+                title: 'GreenLedger',
+                desc: 'Turn Cerritos’s city budget into an interactive tool — see how tax dollars fund sustainability and take on real eco-challenges',
+                img: '/images/apps/greenledger.png',
+                url: 'https://ecoquest-greenledger.vercel.app',
+                gradient: 'from-green-600 to-emerald-700',
+                badge: '🌱 Civic Sustainability',
               },
             ].map((app, i) => (
               <div key={i} className="card card-hover overflow-hidden group">
-                <div className={`h-48 bg-gradient-to-br ${app.gradient} flex items-center justify-center text-white relative transition-transform group-hover:scale-105`}>
-                  <div className="text-7xl">{app.icon}</div>
+                <div className="h-48 overflow-hidden bg-gray-100 border-b border-gray-100">
+                  <img
+                    src={app.img}
+                    alt={`${app.title} app screenshot`}
+                    className="w-full h-full object-cover object-top transition-transform group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading font-bold text-xl mb-2 text-primary-green">{app.title}</h3>
@@ -158,40 +171,41 @@ export default function Home() {
                 desc: 'Our flagship educational game teaching about ecosystems, pollution, and conservation',
                 badge: 'Flagship Game',
                 link: '/games/guardians',
-                color: 'bg-primary-green',
-                emoji: '🎮',
+                img: '/images/games/guardians.png',
               },
               {
                 title: 'Educational Games',
                 desc: 'Four interactive games teaching recycling, ocean cleanup, carbon footprint, and more',
                 badge: 'K-12 Games',
                 link: '/games',
-                color: 'bg-purple-500',
-                emoji: '♻️',
+                img: '/images/games/recycling-hero.png',
               },
               {
                 title: 'EcoChallenge',
                 desc: 'Monthly interactive missions engaging students in real-world environmental actions',
                 badge: 'Monthly',
                 link: '/programs#ecochallenge',
-                color: 'bg-primary-blue',
-                emoji: '📅',
+                img: '/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.jpeg',
               },
               {
                 title: 'Community Cleanup Events',
                 desc: 'Beach and park cleanups across California, open to students, families, and community volunteers',
                 badge: 'Hands-On',
                 link: '/events',
-                color: 'bg-accent-yellow',
-                emoji: '🏖️',
+                img: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',
               },
             ].map((program, i) => (
               <div key={i} className="card card-hover">
-                <div className={`h-48 ${program.color} flex items-center justify-center text-white relative`}>
-                  <div className="absolute top-4 right-4 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
+                <div className="h-48 relative overflow-hidden bg-gray-100">
+                  <img
+                    src={program.img}
+                    alt={`${program.title}`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 right-4 bg-black/40 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                     {program.badge}
                   </div>
-                  <div className="text-6xl opacity-90">{program.emoji}</div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading font-bold text-xl mb-3 text-primary-green">{program.title}</h3>

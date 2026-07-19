@@ -9,6 +9,7 @@ interface BlogPost {
   category: string
   author: string
   image: string
+  img?: string
   readTime: string
   content: string[]
 }
@@ -19,13 +20,14 @@ const blogPosts: BlogPost[] = [
     title: 'EcoQuest Wildfire Watch: Our Congressional App Challenge Submission',
     excerpt:
       'Our team built Wildfire Watch, a real-time wildfire monitoring app submitted to the Congressional App Challenge. The app features live wildfire tracking, environmental impact data, and community safety information.',
-    date: 'March 2026',
+    date: 'October 2025',
     category: 'Competition',
     author: 'EcoQuest Team',
     image: '🔥',
+    img: '/images/apps/wildfire-watch.png',
     readTime: '4 min read',
     content: [
-      'EcoQuest Foundation is proud to share our submission to the Congressional App Challenge: Wildfire Watch, a real-time wildfire monitoring application designed to keep communities informed and safe. The Congressional App Challenge is the most prestigious student software competition in the United States, hosted by members of the U.S. House of Representatives, and we were excited to put our technical skills to work on a problem that directly impacts communities across California and beyond.',
+      'EcoQuest Foundation is proud to share our submission to the Congressional App Challenge: Wildfire Watch, a real-time wildfire monitoring application designed to keep communities informed and safe. The Congressional App Challenge is a nationwide student coding competition hosted by members of the U.S. House of Representatives, and we were excited to put our technical skills to work on a problem that directly impacts communities across California and beyond.',
       'Wildfire Watch provides users with live wildfire tracking powered by satellite and sensor data, giving real-time updates on active fires, air quality indices, and evacuation zones. The app also surfaces environmental impact data, showing how wildfires affect local ecosystems, water quality, and biodiversity. For residents in fire-prone areas, the community safety features deliver push notifications with evacuation routes, shelter locations, and emergency contact information. Our goal was to build a tool that not only informs but empowers people to take action when it matters most.',
       'We built Wildfire Watch using React for the frontend interface and Microsoft Azure for our cloud infrastructure, including data processing and real-time notifications. The development process taught our team valuable lessons about working with geospatial data, integrating multiple public APIs, and designing for accessibility under high-stress scenarios. Submitting to the Congressional App Challenge was an incredible experience that pushed us to think critically about how technology can address real environmental threats facing our communities.',
     ],
@@ -35,15 +37,16 @@ const blogPosts: BlogPost[] = [
     title: 'MindMirror: Competing in the Blue Ocean Entrepreneurship Competition',
     excerpt:
       'MindMirror explores the connection between environmental health and personal well-being. Submitted to the Blue Ocean Entrepreneurship Competition, it features wellness tracking, nature connection insights, and mindfulness resources.',
-    date: 'March 2026',
+    date: 'October 2025',
     category: 'Competition',
     author: 'EcoQuest Team',
     image: '🧠',
+    img: '/images/apps/mindmirror.png',
     readTime: '4 min read',
     content: [
       'We are excited to share our entry into the Blue Ocean Entrepreneurship Competition: MindMirror, an application that explores the powerful connection between environmental health and personal well-being. The Blue Ocean Entrepreneurship Competition challenges students to identify untapped market spaces and develop innovative solutions, and we saw an opportunity to bridge the gap between environmental awareness and mental wellness in a way that no existing product addresses.',
       'MindMirror helps users understand how their relationship with nature affects their overall well-being. The app includes wellness tracking features that monitor mood, stress levels, and daily habits alongside environmental factors like time spent outdoors, local air quality, and seasonal changes. Nature connection insights use this data to reveal patterns between environmental engagement and personal health, while a curated library of mindfulness resources offers guided meditations, breathing exercises, and nature-based activities to help users strengthen their bond with the natural world.',
-      'Built with Next.js and deployed on Vercel, MindMirror was designed for speed, accessibility, and a seamless user experience across devices. Competing in the Blue Ocean Entrepreneurship Competition pushed our team to think not just as developers but as entrepreneurs, considering market viability, user acquisition, and long-term sustainability. The experience reinforced our belief that environmental stewardship and personal health are deeply interconnected, and that technology can help people discover and nurture that connection.',
+      'Built with Next.js and deployed on Vercel, MindMirror was designed for speed, accessibility, and a seamless user experience across devices. Competing in the Blue Ocean Entrepreneurship Competition pushed our team to think not just as developers but as entrepreneurs, considering market viability, user acquisition, and long-term sustainability. The experience reinforced our belief that environmental stewardship and personal health are deeply interconnected, and that technology can help people discover and nurture that connection. Since launch, MindMirror has been validated with roughly 230 real users, and was named a Top 500 Finalist in the 2026 Blue Ocean Student Entrepreneur Competition out of 23,000+ students from 173 countries.',
     ],
   },
   {
@@ -51,10 +54,11 @@ const blogPosts: BlogPost[] = [
     title: 'Oceanaware Guardian: Our Bowseat Ocean Awareness Contest Entry',
     excerpt:
       'Oceanaware Guardian raises awareness about marine ecosystems and ocean pollution. Created for the Bowseat Ocean Awareness Contest, it features marine ecosystem insights, ocean pollution data, and conservation resources.',
-    date: 'March 2026',
+    date: 'October 2025',
     category: 'Competition',
     author: 'EcoQuest Team',
     image: '🌊',
+    img: '/images/apps/oceanaware.png',
     readTime: '4 min read',
     content: [
       'EcoQuest Foundation is thrilled to present Oceanaware Guardian, our entry into the Bowseat Ocean Awareness Contest hosted by bowseat.org. The Bowseat contest invites young people around the world to use their creative and technical talents to raise awareness about ocean issues, and we channeled our passion for marine conservation into building a platform that educates and inspires action to protect our oceans.',
@@ -124,9 +128,19 @@ export default function BlogPost({ params }: { params: { id: string } }) {
       <article className="section-padding">
         <div className="container-custom max-w-4xl">
           {/* Featured Image */}
-          <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl h-80 flex items-center justify-center mb-12">
-            <div className="text-9xl">{post.image}</div>
-          </div>
+          {post.img ? (
+            <div className="rounded-2xl h-80 overflow-hidden bg-gray-100 mb-12 shadow-md">
+              <img
+                src={post.img}
+                alt={`${post.title} screenshot`}
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+          ) : (
+            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl h-80 flex items-center justify-center mb-12">
+              <div className="text-9xl">{post.image}</div>
+            </div>
+          )}
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none">
@@ -136,6 +150,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
               </p>
             ))}
           </div>
+
 
           {/* Share & Tags */}
           <div className="mt-12 pt-8 border-t border-gray-200">

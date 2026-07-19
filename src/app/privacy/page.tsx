@@ -74,7 +74,7 @@ export default function PrivacyPolicy() {
               <li>Send newsletters and program updates you have requested.</li>
               <li>Acknowledge donations, issue tax receipts, and comply with applicable nonprofit reporting requirements.</li>
               <li>Improve our website, educational games, and lesson resources.</li>
-              <li>Share anonymized, aggregated impact stories (for example, "200+ students participated this quarter") with supporters and partners.</li>
+              <li>Share anonymized, aggregated impact stories (for example, the number of volunteers who joined a cleanup) with supporters and partners.</li>
             </ul>
 
             <h2 className="text-2xl font-bold text-primary-green mt-10 mb-4">Children's Privacy</h2>

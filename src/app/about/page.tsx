@@ -34,8 +34,13 @@ export default function About() {
                 Beyond the screen, we host hands-on conservation events—such as beach and park cleanups—open to students, local Scout troops, families, and community volunteers, empowering young people to take real-world action for a healthier planet.
               </p>
             </div>
-            <div className="bg-primary-green/10 rounded-2xl p-8 h-96 flex items-center justify-center">
-              <div className="text-8xl">🌍</div>
+            <div className="rounded-2xl overflow-hidden shadow-lg h-96 bg-green-50">
+              <img
+                src="/images/mission.png"
+                alt="Youth taking environmental action — planting trees, caring for the planet, recycling, and using clean energy"
+                className="w-full h-full object-contain"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
@@ -51,7 +56,7 @@ export default function About() {
             {[
               { icon: '🎮', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup Challenge, Recycling Hero, and Carbon Footprint Quest for K-12 students.' },
               { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to Congressional App Challenge, Blue Ocean Entrepreneurship Competition, and Bowseat Ocean Awareness Contest.' },
-              { icon: '🏖️', title: '3 Community Cleanups', desc: 'Organized cleanups at Seal Beach, Cerritos Heritage Park, and Cerritos Park East with 35+ volunteers.' },
+              { icon: '🏖️', title: 'Recurring Community Cleanups', desc: 'Ongoing cleanups at Seal Beach, Cerritos Heritage Park, and Cerritos Park East, mobilizing 35+ volunteers.' },
               { icon: '✍️', title: 'Student-Published Research', desc: 'Original articles on monarch conservation, ocean plastic crisis, and wildfire prevention published on Medium.' },
             ].map((item, i) => (
               <div key={i} className="card p-6">
@@ -65,6 +70,41 @@ export default function About() {
       </section>
 
       <section className="section-padding bg-white">
+        <div className="container-custom">
+          <div className="section-header">
+            <h2 className="section-title">Meet the Leadership Team</h2>
+            <div className="section-underline" />
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              The students driving EcoQuest Foundation's mission forward.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+            {[
+              { name: 'Siddharth', role: 'Founder & President', img: '/images/team/Siddharth.png' },
+              { name: 'Aditya', role: 'Vice President of Events', img: '/images/team/Aditya.png' },
+            ].map((member) => (
+              <div key={member.name} className="card card-hover text-center">
+                <div className="aspect-square overflow-hidden bg-gray-100">
+                  <img
+                    src={member.img}
+                    alt={`${member.name}, ${member.role} of EcoQuest Foundation`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6">
+                  <p className="text-sm font-semibold text-primary-green uppercase tracking-wide mb-1">
+                    {member.role}
+                  </p>
+                  <h3 className="text-2xl font-bold font-heading text-gray-900">{member.name}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding bg-gray-50">
         <div className="container-custom max-w-4xl">
           <div className="section-header">
             <h2 className="section-title">Our Tax-Exempt Status</h2>

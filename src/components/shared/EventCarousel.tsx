@@ -15,14 +15,14 @@ export default function EventCarousel() {
 
   const photos: EventPhoto[] = [
     {
-      src: '/images/events/beach_cleanup1.jpeg',
-      alt: 'Scout troop beach cleanup event',
-      caption: 'Beach Cleanup - Volunteers working together on coastal conservation',
+      src: '/images/events/EE83102A-D888-452C-B533-214BEC1FC508.jpeg',
+      alt: 'EcoQuest volunteers gathered at a community cleanup',
+      caption: 'Team Impact - Our volunteers coming together to make a difference',
     },
-{
+    {
       src: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',
-      alt: 'Beach cleanup volunteers collecting trash',
-      caption: 'Beach Cleanup - Volunteers working together to clean our California coastline',
+      alt: 'Student volunteers with cleanup tools at a community park',
+      caption: 'Park Cleanup - Student volunteers gearing up to clean a local community park',
     },
     {
       src: '/images/events/94CA3FA5-D08C-4111-B568-35BDC69DF002.jpeg',
@@ -36,18 +36,63 @@ export default function EventCarousel() {
     },
     {
       src: '/images/events/C8784219-22B0-4698-9DB4-6D4D8AAA11CE.jpeg',
-      alt: 'Environmental education workshop',
-      caption: 'Educational Workshop - Interactive learning about environmental conservation',
+      alt: 'Volunteers and a Scout troop gathering at a park cleanup',
+      caption: 'Community Volunteers - Students and local Scout troops gathering for a park cleanup',
     },
     {
       src: '/images/events/E6EBDFFC-233D-4615-A2B4-558095CACFD0.jpeg',
-      alt: 'Park restoration project',
-      caption: 'Park Restoration - Planting native species and restoring natural habitats',
+      alt: 'Volunteers at a community center park cleanup',
+      caption: 'Community Cleanup - Volunteers at a Cerritos community park event',
     },
     {
-      src: '/images/events/EE83102A-D888-452C-B533-214BEC1FC508.jpeg',
-      alt: 'Team photo at conservation event',
-      caption: 'Team Impact - Together we make a difference in our communities',
+      src: '/images/events/beach_cleanup1.jpeg',
+      alt: 'Collected trash from a beach cleanup',
+      caption: 'Beach Cleanup - Every piece of trash removed protects marine life',
+    },
+    {
+      src: '/images/events/20240210_101158.jpg',
+      alt: 'Student volunteers with cleanup bags and grabbers at a campus cleanup',
+      caption: 'Campus Cleanup (Feb 2024) - Students clearing litter from school grounds in Cerritos',
+    },
+    {
+      src: '/images/events/IMG_4346.JPG',
+      alt: 'Volunteers restoring a park pathway at Prado Park in Chino',
+      caption: 'Prado Park Restoration (Sept 2024) - Cleaning and beautifying Prado Park in Chino, CA',
+    },
+    {
+      src: '/images/events/IMG_4358.JPG',
+      alt: 'Volunteer repainting a wooden park post during a Prado Park beautification event',
+      caption: 'Prado Park Beautification (Sept 2024) - Repainting park markers and clearing debris in Chino, CA',
+    },
+    {
+      src: '/images/events/IMG_0511.JPG',
+      alt: 'Save Our Beach cleanup event with volunteer tents',
+      caption: 'Save Our Beach Cleanup (Dec 2024) - Joining the community beach cleanup at Seal Beach',
+    },
+    {
+      src: '/images/events/IMG_1601.jpeg',
+      alt: 'Student volunteer collecting litter along the shoreline with reusable totes',
+      caption: 'Seal Beach Cleanup (2025) - Collecting litter along the shoreline with reusable Save Our Beach totes',
+    },
+    {
+      src: '/images/events/IMG_1602.jpeg',
+      alt: 'Two student volunteers combing the beach and jetty for trash',
+      caption: 'Seal Beach Cleanup (2025) - Volunteers combing the beach and jetty for trash',
+    },
+    {
+      src: '/images/events/IMG_1605.jpeg',
+      alt: 'Volunteers clearing debris along the tideline at Seal Beach',
+      caption: 'Seal Beach Cleanup (2025) - Clearing debris along the tideline',
+    },
+    {
+      src: '/images/events/IMG_3250.JPG',
+      alt: 'Students repainting a community basketball court',
+      caption: 'Community Beautification (June 2024) - Refreshing a neighborhood basketball court',
+    },
+    {
+      src: '/images/events/IMG_3287.JPG',
+      alt: 'Volunteer repainting parking-lot lines at a community park',
+      caption: 'Community Beautification (June 2024) - Repainting parking-lot lines to spruce up a community space',
     },
   ]
 

@@ -137,6 +137,17 @@ export default function Resources() {
       external: true,
       color: 'bg-purple-600'
     },
+    {
+      id: 15,
+      type: 'app',
+      category: 'apps',
+      title: 'GreenLedger',
+      desc: 'Civic sustainability dashboard turning Cerritos’s city budget into interactive environmental action',
+      tag: 'Live App',
+      url: 'https://ecoquest-greenledger.vercel.app',
+      external: true,
+      color: 'bg-green-600'
+    },
 
     // Blog posts
     {
@@ -262,60 +273,58 @@ export default function Resources() {
             <div className="section-underline" />
             <p className="text-gray-600 text-lg">Student-developed applications for environmental awareness and action</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="card card-hover">
-              <div className="bg-orange-500 p-8 text-white text-center">
-                <div className="text-6xl mb-4">🔥</div>
-                <h3 className="text-2xl font-bold">Wildfire Watch</h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: 'Wildfire Watch',
+                img: '/images/apps/wildfire-watch.png',
+                desc: 'Real-time wildfire monitoring system with up-to-date information on active fires and environmental impact.',
+                url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
+              },
+              {
+                title: 'Oceanaware Guardian',
+                img: '/images/apps/oceanaware.png',
+                desc: 'Monitor ocean health, track marine conservation, and learn about protecting our seas and ecosystems.',
+                url: 'https://oceanaware-guardian.vercel.app',
+              },
+              {
+                title: 'MindMirror',
+                img: '/images/apps/mindmirror.png',
+                desc: 'A mental wellness check-in addressing climate anxiety and the link between environmental and personal well-being.',
+                url: 'https://mindmirror-pilot.vercel.app/',
+              },
+              {
+                title: 'GreenLedger',
+                img: '/images/apps/greenledger.png',
+                desc: 'A civic sustainability dashboard turning Cerritos’s city budget into interactive environmental action.',
+                url: 'https://ecoquest-greenledger.vercel.app',
+              },
+            ].map((app) => (
+              <div key={app.title} className="card card-hover overflow-hidden flex flex-col">
+                <div className="relative h-40 overflow-hidden bg-gray-100">
+                  <img
+                    src={app.img}
+                    alt={`${app.title} app screenshot`}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3">
+                    <h3 className="text-lg font-bold text-white drop-shadow font-heading">{app.title}</h3>
+                  </div>
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <p className="text-gray-600 text-sm mb-4 flex-1">{app.desc}</p>
+                  <a
+                    href={app.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary w-full text-center text-sm"
+                  >
+                    Launch App →
+                  </a>
+                </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">Real-time wildfire monitoring system providing up-to-date information on active wildfires and environmental impact.</p>
-                <a
-                  href="https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary w-full text-center"
-                >
-                  Launch Wildfire Watch →
-                </a>
-              </div>
-            </div>
-
-            <div className="card card-hover">
-              <div className="bg-blue-600 p-8 text-white text-center">
-                <div className="text-6xl mb-4">🌊</div>
-                <h3 className="text-2xl font-bold">Oceanaware Guardian</h3>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">Monitor ocean health, track marine conservation efforts, and learn about protecting our seas and marine ecosystems.</p>
-                <a
-                  href="https://oceanaware-guardian.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary w-full text-center"
-                >
-                  Launch Oceanaware →
-                </a>
-              </div>
-            </div>
-
-            <div className="card card-hover">
-              <div className="bg-purple-600 p-8 text-white text-center">
-                <div className="text-6xl mb-4">🧠</div>
-                <h3 className="text-2xl font-bold">MindMirror</h3>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-600 mb-4">Personal reflection and environmental awareness tool promoting mindful living and conscious environmental choices.</p>
-                <a
-                  href="https://mindmirror-pilot.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn btn-primary w-full text-center"
-                >
-                  Launch MindMirror →
-                </a>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>

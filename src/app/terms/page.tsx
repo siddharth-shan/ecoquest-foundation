@@ -72,7 +72,7 @@ export default function TermsOfService() {
             <p className="text-gray-700 leading-relaxed">
               EcoQuest Foundation is a registered 501(c)(3) nonprofit, and donations made to the
               Foundation are tax-deductible to the fullest extent allowed by U.S. law. Donations
-              support our educational programs, conservation events, scholarship support, technology
+              support our educational programs, conservation events, technology
               infrastructure, and operating expenses. Donation processing is handled by third-party
               payment processors with their own terms and privacy practices, and we do not store
               full payment card details on our website.

@@ -11,7 +11,7 @@ interface ImpactMetric {
   description: string
 }
 
-const targetValues = [3, 35, 4, 3, 3]
+const targetValues = [7, 35, 4, 3, 3]
 
 export default function ImpactDashboard() {
   const [metrics, setMetrics] = useState<ImpactMetric[]>([
@@ -19,9 +19,9 @@ export default function ImpactDashboard() {
       icon: '🏖️',
       value: 0,
       label: 'Community Cleanups',
-      suffix: '',
+      suffix: '+',
       color: 'from-yellow-500 to-orange-600',
-      description: 'Seal Beach, Cerritos Heritage Park, Cerritos Park East',
+      description: 'Beach and park cleanups across Southern California',
     },
     {
       icon: '👥',
@@ -94,7 +94,7 @@ export default function ImpactDashboard() {
       <div className="text-center mb-8">
         <h2 className="text-4xl font-bold text-primary-green mb-2 font-heading">Our Impact So Far</h2>
         <p className="text-gray-600 text-lg">
-          Real-time metrics showing the difference we're making together
+          A snapshot of what we've accomplished together so far
         </p>
       </div>
 
@@ -123,10 +123,10 @@ export default function ImpactDashboard() {
         <div className="flex items-center gap-4">
           <div className="text-4xl">🎯</div>
           <div>
-            <h3 className="text-xl font-bold text-primary-green mb-1">Our 2026 Goal</h3>
+            <h3 className="text-xl font-bold text-primary-green mb-1">What&apos;s Next</h3>
             <p className="text-gray-700">
-              Expand our digital initiatives, grow community cleanups, and
-              <strong> increase youth participation</strong> through interactive apps and educational programs
+              Adding cleanup sites across Southern California, building new educational games, and getting
+              our <strong>free tools into more classrooms</strong> and community groups.
             </p>
           </div>
         </div>

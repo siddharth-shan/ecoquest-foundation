@@ -94,21 +94,21 @@ export default function GetInvolved() {
         <div className="container-custom">
           <h2 className="text-4xl font-bold mb-6 text-primary-green font-heading text-center">Support Our Mission</h2>
           <div className="section-underline mb-8" />
-          <p className="text-xl text-center text-gray-700 mb-12 max-w-3xl mx-auto">
-            Your donation helps us provide free environmental education programs and organize community conservation events.
+          <p className="text-xl text-center text-gray-700 mb-10 max-w-3xl mx-auto">
+            Your donation helps us provide free environmental education programs and organize community
+            conservation events. As a 501(c)(3) nonprofit, contributions are tax-deductible to the fullest
+            extent allowed by law.
           </p>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-4 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 max-w-4xl mx-auto">
             {[
-              { amount: '$25', impact: 'Educational materials for 10 students' },
-              { amount: '$50', impact: 'Cleanup supplies for one event' },
-              { amount: '$100', impact: 'New educational content development' },
-              { amount: '$250', impact: 'Complete conservation workshop' },
-              { amount: '$500', impact: 'Full community conservation event' },
-              { amount: '$1,000+', impact: 'Program sponsorship' },
-            ].map((tier, i) => (
+              { icon: '🎮', label: 'Free educational games & apps' },
+              { icon: '🏖️', label: 'Community cleanup supplies' },
+              { icon: '📚', label: 'Student learning materials' },
+              { icon: '🌱', label: 'Growing our programs' },
+            ].map((item, i) => (
               <div key={i} className="card p-6 text-center">
-                <div className="text-3xl font-bold text-primary-green mb-3">{tier.amount}</div>
-                <p className="text-sm text-gray-600">{tier.impact}</p>
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <p className="text-sm text-gray-700 font-medium">{item.label}</p>
               </div>
             ))}
           </div>

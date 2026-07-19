@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
+import BlogList, { type BlogPost } from '@/components/shared/BlogList'
 
 export const metadata = {
   title: 'News & Updates',
@@ -9,18 +9,6 @@ export const metadata = {
     title: 'News & Updates - EcoQuest Foundation',
     description: 'Latest news, competition entries, impact stories, and updates from EcoQuest Foundation.',
   },
-}
-
-interface BlogPost {
-  id: string
-  title: string
-  excerpt: string
-  date: string
-  category: string
-  author: string
-  image: string
-  readTime: string
-  externalUrl?: string // Optional external link (e.g., Medium)
 }
 
 export default function BlogPage() {
@@ -34,6 +22,7 @@ export default function BlogPage() {
       category: 'Student Story',
       author: 'Student Conservation Team',
       image: '🦋',
+      gradient: 'from-orange-400 to-amber-500',
       readTime: '12 min read',
       externalUrl: 'https://medium.com/@siddharth.shanmugaraja/monarch-butterfly-conservation-a-california-native-plants-guide-34e7ffcf660f',
     },
@@ -46,6 +35,7 @@ export default function BlogPage() {
       category: 'Student Story',
       author: 'Student Conservation Team',
       image: '🌊',
+      img: '/images/events/IMG_0511.JPG',
       readTime: '15 min read',
       externalUrl: 'https://medium.com/@siddharth.shanmugaraja/the-ocean-plastic-crisis-what-i-learned-after-many-days-of-beach-cleanups-e9f5afe35bba',
     },
@@ -58,6 +48,7 @@ export default function BlogPage() {
       category: 'Student Story',
       author: 'Student Conservation Team',
       image: '🔥',
+      gradient: 'from-orange-500 to-red-600',
       readTime: '18 min read',
       externalUrl: 'https://medium.com/@siddharth.shanmugaraja/wildfire-prevention-a142b111d97f',
     },
@@ -70,17 +61,19 @@ export default function BlogPage() {
       category: 'Competition',
       author: 'EcoQuest Team',
       image: '🏛️',
+      img: '/images/apps/wildfire-watch.png',
       readTime: '4 min read',
     },
     {
       id: 'blue-ocean-competition',
       title: 'MindMirror: Competing in the Blue Ocean Entrepreneurship Competition',
       excerpt:
-        'MindMirror, our mental wellness and environmental connection platform, was submitted to the Blue Ocean Entrepreneurship Competition - exploring the intersection of personal well-being and environmental health.',
+        'MindMirror, our mental wellness and environmental connection platform, was named a Top 500 Finalist in the 2026 Blue Ocean Entrepreneurship Competition - and has since been validated with ~230 real users.',
       date: 'October 2025',
       category: 'Competition',
       author: 'EcoQuest Team',
       image: '🧠',
+      img: '/images/apps/mindmirror.png',
       readTime: '3 min read',
     },
     {
@@ -92,11 +85,10 @@ export default function BlogPage() {
       category: 'Competition',
       author: 'EcoQuest Team',
       image: '🌊',
+      img: '/images/apps/oceanaware.png',
       readTime: '3 min read',
     },
   ]
-
-  const categories = ['All', 'Student Story', 'Competition']
 
   return (
     <>
@@ -109,114 +101,7 @@ export default function BlogPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          {/* Category Labels */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
-            {categories.map((category) => (
-              <span
-                key={category}
-                className={`px-6 py-2 rounded-full font-semibold transition-colors ${
-                  category === 'All'
-                    ? 'bg-primary-green text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {category}
-              </span>
-            ))}
-          </div>
-
-          {/* Featured Post */}
-          <div className="mb-16">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center p-12">
-                  <div className="text-9xl">{posts[0].image}</div>
-                </div>
-                <div className="p-8 flex flex-col justify-center">
-                  <div className="flex gap-2 mb-3">
-                    <div className="inline-block bg-primary-green/10 text-primary-green px-3 py-1 rounded-full text-sm font-semibold">
-                      Featured Story
-                    </div>
-                    {posts[0].externalUrl && (
-                      <div className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
-                        Student Written
-                      </div>
-                    )}
-                  </div>
-                  <h2 className="text-3xl font-bold text-gray-800 mb-3">{posts[0].title}</h2>
-                  <p className="text-gray-600 mb-4">{posts[0].excerpt}</p>
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-6">
-                    <span>{posts[0].date}</span>
-                    <span>•</span>
-                    <span>{posts[0].readTime}</span>
-                  </div>
-                  {posts[0].externalUrl ? (
-                    <a
-                      href={posts[0].externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary inline-block w-fit"
-                    >
-                      Read on Medium →
-                    </a>
-                  ) : (
-                    <Link
-                      href={`/blog/${posts[0].id}/`}
-                      className="btn btn-primary inline-block w-fit"
-                    >
-                      Read Full Story →
-                    </Link>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Blog Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {posts.slice(1).map((post) => (
-              <div key={post.id} className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow overflow-hidden">
-                <div className="bg-gradient-to-br from-primary-green to-emerald-600 h-48 flex items-center justify-center">
-                  <div className="text-7xl">{post.image}</div>
-                </div>
-                <div className="p-6">
-                  <div className="flex gap-2 mb-3 flex-wrap">
-                    <div className="inline-block bg-primary-blue/10 text-primary-blue px-3 py-1 rounded-full text-xs font-semibold">
-                      {post.category}
-                    </div>
-                    {post.externalUrl && (
-                      <div className="inline-block bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
-                        Student Written
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-2">{post.title}</h3>
-                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">{post.excerpt}</p>
-                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
-                    <span>{post.date}</span>
-                    <span>{post.readTime}</span>
-                  </div>
-                  {post.externalUrl ? (
-                    <a
-                      href={post.externalUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary-green font-semibold hover:underline inline-flex items-center gap-1"
-                    >
-                      Read on Medium →
-                    </a>
-                  ) : (
-                    <Link
-                      href={`/blog/${post.id}/`}
-                      className="text-primary-green font-semibold hover:underline"
-                    >
-                      Read More →
-                    </Link>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+          <BlogList posts={posts} />
 
           {/* Newsletter Signup */}
           <div className="max-w-2xl mx-auto">

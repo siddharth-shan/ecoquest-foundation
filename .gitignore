@@ -38,3 +38,6 @@ next-env.d.ts
 
 # old files
 /old_static_site
+
+# playwright mcp artifacts
+.playwright-mcp/

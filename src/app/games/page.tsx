@@ -75,11 +75,16 @@ export default function GamesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {games.map((game) => (
               <div key={game.id} className="card card-hover overflow-hidden">
-                <div className={`h-48 bg-gradient-to-br ${game.color} flex items-center justify-center text-white relative`}>
-                  <div className="absolute top-4 right-4 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
+                <div className="h-48 relative overflow-hidden bg-gray-100">
+                  <img
+                    src={`/images/games/${game.id}.png`}
+                    alt={`${game.title} gameplay screenshot`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 right-4 bg-black/50 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                     {game.difficulty}
                   </div>
-                  <div className="text-7xl">{game.icon}</div>
                 </div>
                 <div className="p-6">
                   <h3 className="font-heading font-bold text-2xl mb-2 text-primary-green">{game.title}</h3>

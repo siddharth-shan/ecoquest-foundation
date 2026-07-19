@@ -14,10 +14,12 @@ export default function ImpactPortfolio() {
   const milestones = [
     { year: '2024', title: 'Founded EcoQuest Foundation', desc: 'Student-led nonprofit focused on environmental education through technology' },
     { year: '2024', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup, Recycling Hero, Carbon Quest' },
-    { year: '2024', title: 'First Community Cleanups', desc: 'Organized 3 cleanups at Seal Beach, Cerritos Heritage Park, Cerritos Park East' },
+    { year: '2024', title: 'First Community Cleanups', desc: 'Launched our community cleanups at Seal Beach and Cerritos-area parks' },
     { year: '2025', title: 'Launched Interactive Apps', desc: 'Wildfire Watch, Oceanaware Guardian, and MindMirror web applications' },
     { year: '2025', title: 'National Competition Entries', desc: 'Congressional App Challenge, Blue Ocean Competition, Bowseat Contest' },
     { year: '2025', title: 'Published Student Research', desc: 'Original articles on monarch butterflies, ocean plastic, and wildfire prevention' },
+    { year: '2026', title: 'Blue Ocean Top 500 Finalist', desc: 'MindMirror named a Top 500 Finalist among 23,000+ students from 173 countries' },
+    { year: '2026', title: 'Launched GreenLedger', desc: 'A civic sustainability dashboard turning Cerritos’s city budget into interactive environmental action' },
   ]
 
   const projects = [
@@ -27,17 +29,17 @@ export default function ImpactPortfolio() {
       competition: 'Congressional App Challenge',
       competitionUrl: 'https://www.congressionalappchallenge.us/',
       appUrl: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
-      icon: '🔥',
+      img: '/images/apps/wildfire-watch.png',
       gradient: 'from-orange-500 to-red-600',
       skills: ['React', 'Azure', 'Real-time Data', 'GIS Mapping'],
     },
     {
       title: 'MindMirror',
       desc: 'Mental wellness platform exploring the connection between environmental health and personal well-being.',
-      competition: 'Blue Ocean Entrepreneurship Competition',
+      competition: 'Blue Ocean — Top 500 Finalist',
       competitionUrl: 'https://www.blueoceancompetition.org/',
       appUrl: 'https://mindmirror-pilot.vercel.app/',
-      icon: '🧠',
+      img: '/images/apps/mindmirror.png',
       gradient: 'from-purple-500 to-indigo-600',
       skills: ['Next.js', 'Vercel', 'UX Design', 'Wellness Research'],
     },
@@ -47,9 +49,18 @@ export default function ImpactPortfolio() {
       competition: 'Bowseat Ocean Awareness Contest',
       competitionUrl: 'https://bowseat.org/programs/ocean-awareness-contest/contest-overview/',
       appUrl: 'https://oceanaware-guardian.vercel.app',
-      icon: '🌊',
+      img: '/images/apps/oceanaware.png',
       gradient: 'from-blue-500 to-cyan-600',
       skills: ['Next.js', 'Vercel', 'Marine Science', 'Data Visualization'],
+    },
+    {
+      title: 'GreenLedger',
+      desc: 'A civic sustainability dashboard turning Cerritos’s city budget into interactive environmental action for young residents.',
+      competition: 'Civic Sustainability',
+      appUrl: 'https://ecoquest-greenledger.vercel.app',
+      img: '/images/apps/greenledger.png',
+      gradient: 'from-green-600 to-emerald-700',
+      skills: ['Next.js', 'Recharts', 'Civic Data', 'Sustainability'],
     },
   ]
 
@@ -83,7 +94,7 @@ export default function ImpactPortfolio() {
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
             {[
-              { number: '3', label: 'Cleanups' },
+              { number: '7+', label: 'Cleanups' },
               { number: '35+', label: 'Volunteers' },
               { number: '4', label: 'Games' },
               { number: '3', label: 'Competition Apps' },
@@ -124,23 +135,28 @@ export default function ImpactPortfolio() {
         </div>
       </section>
 
-      {/* Competition Projects */}
+      {/* Featured Projects */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="section-header">
-            <h2 className="section-title">Competition Projects</h2>
+            <h2 className="section-title">Featured Projects</h2>
             <div className="section-underline" />
-            <p className="text-gray-600 text-lg">Apps submitted to national and international competitions</p>
+            <p className="text-gray-600 text-lg">Interactive web apps our students designed and built</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {projects.map((project, i) => (
-              <div key={i} className="card overflow-hidden">
-                <div className={`h-40 bg-gradient-to-br ${project.gradient} flex items-center justify-center text-white`}>
-                  <div className="text-6xl">{project.icon}</div>
+              <div key={i} className="card overflow-hidden flex flex-col">
+                <div className="h-40 overflow-hidden bg-gray-100">
+                  <img
+                    src={project.img}
+                    alt={`${project.title} app screenshot`}
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                  />
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="font-bold text-xl mb-2 text-primary-green">{project.title}</h3>
-                  <div className="bg-gray-100 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 inline-block mb-3">
+                  <div className="bg-gray-100 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 inline-block mb-3 self-start">
                     {project.competition}
                   </div>
                   <p className="text-gray-600 text-sm mb-4">{project.desc}</p>
@@ -151,13 +167,17 @@ export default function ImpactPortfolio() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-2">
-                    <a href={project.appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary text-sm flex-1 text-center">
-                      Launch App
-                    </a>
-                    <a href={project.competitionUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline text-sm flex-1 text-center">
-                      Competition
-                    </a>
+                  <div className="mt-auto">
+                    <div className="flex flex-col gap-2">
+                      <a href={project.appUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary text-sm w-full text-center">
+                        Launch App
+                      </a>
+                      {project.competitionUrl && (
+                        <a href={project.competitionUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline text-sm w-full text-center">
+                          Competition
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -176,11 +196,20 @@ export default function ImpactPortfolio() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {games.map((game, i) => (
-              <Link key={i} href={game.link} className="card card-hover p-6 text-center block">
-                <div className="text-4xl mb-3">🎮</div>
-                <h3 className="font-bold text-lg text-primary-green mb-1">{game.title}</h3>
-                <div className="text-xs text-primary-blue font-semibold mb-2">{game.grades}</div>
-                <p className="text-gray-600 text-sm">{game.desc}</p>
+              <Link key={i} href={game.link} className="card card-hover overflow-hidden block">
+                <div className="h-36 overflow-hidden bg-gray-100">
+                  <img
+                    src={`/images/games/${game.link.split('/').pop()}.png`}
+                    alt={`${game.title} gameplay screenshot`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-bold text-lg text-primary-green mb-1">{game.title}</h3>
+                  <div className="text-xs text-primary-blue font-semibold mb-2">{game.grades}</div>
+                  <p className="text-gray-600 text-sm">{game.desc}</p>
+                </div>
               </Link>
             ))}
           </div>
@@ -196,14 +225,23 @@ export default function ImpactPortfolio() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: 'Seal Beach Cleanup', members: '~15 members', icon: '🏖️' },
-              { title: 'Cerritos Heritage Park', members: '~10 members', icon: '🌳' },
-              { title: 'Cerritos Park East', members: '~10 members', icon: '🌿' },
+              { title: 'Seal Beach Cleanup', desc: 'Coastal cleanup removing plastic and debris from the shoreline', img: '/images/events/IMG_0511.JPG' },
+              { title: 'Prado Park', desc: 'Park cleanup, pathway restoration, and beautification in Chino, CA', img: '/images/events/IMG_4346.JPG' },
+              { title: 'Cerritos Park East', desc: 'Community park cleanup and beautification', img: '/images/events/E6EBDFFC-233D-4615-A2B4-558095CACFD0.jpeg' },
             ].map((event, i) => (
-              <div key={i} className="card p-6 text-center">
-                <div className="text-5xl mb-3">{event.icon}</div>
-                <h3 className="font-bold text-lg text-primary-green mb-2">{event.title}</h3>
-                <p className="text-gray-600">{event.members}</p>
+              <div key={i} className="card overflow-hidden">
+                <div className="h-44 overflow-hidden bg-gray-100">
+                  <img
+                    src={event.img}
+                    alt={`${event.title} — community conservation event`}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-6 text-center">
+                  <h3 className="font-bold text-lg text-primary-green mb-2">{event.title}</h3>
+                  <p className="text-gray-600 text-sm">{event.desc}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -213,7 +251,7 @@ export default function ImpactPortfolio() {
               <div className="text-sm text-gray-600">Student articles published on Medium</div>
             </div>
             <div className="bg-blue-50 rounded-xl p-6 text-center border-2 border-blue-200">
-              <div className="text-3xl font-bold text-primary-blue">7</div>
+              <div className="text-3xl font-bold text-primary-blue">8</div>
               <div className="text-sm text-gray-600">Digital products built (games + apps)</div>
             </div>
             <div className="bg-purple-50 rounded-xl p-6 text-center border-2 border-purple-200">
@@ -249,29 +287,43 @@ export default function ImpactPortfolio() {
         </div>
       </section>
 
-      {/* Press & Recognition Placeholder */}
+      {/* Recognition & Competitions */}
       <section className="section-padding">
         <div className="container-custom">
           <div className="section-header">
-            <h2 className="section-title">Recognition & Press</h2>
+            <h2 className="section-title">Recognition &amp; Competitions</h2>
             <div className="section-underline" />
           </div>
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-12 text-center border-2 border-green-200">
-            <div className="text-5xl mb-4">📰</div>
-            <h3 className="text-xl font-bold text-primary-green mb-3">Competition Results Coming Soon</h3>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-              We've submitted our apps to the Congressional App Challenge, Blue Ocean Entrepreneurship Competition, and Bowseat Ocean Awareness Contest. Results will be shared here as they are announced.
+
+          {/* Featured award */}
+          <div className="card p-8 md:p-10 max-w-3xl mx-auto mb-12 text-center border-2 border-green-200 bg-gradient-to-br from-green-50 to-emerald-50">
+            <div className="text-5xl mb-3">🏆</div>
+            <div className="inline-block bg-primary-green/10 text-primary-green px-3 py-1 rounded-full text-sm font-semibold mb-3">
+              Top 500 Finalist
+            </div>
+            <h3 className="text-2xl font-bold text-gray-800 mb-3 font-heading">
+              2026 Blue Ocean Student Entrepreneur Competition
+            </h3>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Our <strong>MindMirror</strong> app was named a <strong>Top 500 Finalist</strong> in the world&apos;s
+              largest virtual pitch competition — with 23,000+ students from 173 countries, endorsed by the creators
+              of Blue Ocean Strategy. MindMirror has since been validated with <strong>~230 real users</strong>.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
-                <p className="font-semibold text-sm">🏛️ Congressional App Challenge</p>
-              </div>
-              <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
-                <p className="font-semibold text-sm">💡 Blue Ocean Competition</p>
-              </div>
-              <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
-                <p className="font-semibold text-sm">🌊 Bowseat Ocean Awareness</p>
-              </div>
+          </div>
+
+          {/* Competitions list */}
+          <p className="text-center text-gray-600 mb-6">
+            We&apos;ve put our apps in front of national and international judges through these student competitions:
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <div className="bg-white rounded-lg px-6 py-4 shadow-sm border">
+              <p className="font-semibold text-sm">🏛️ Congressional App Challenge</p>
+            </div>
+            <div className="bg-white rounded-lg px-6 py-4 shadow-sm border">
+              <p className="font-semibold text-sm">💡 Blue Ocean Entrepreneurship Competition</p>
+            </div>
+            <div className="bg-white rounded-lg px-6 py-4 shadow-sm border">
+              <p className="font-semibold text-sm">🌊 Bowseat Ocean Awareness Contest</p>
             </div>
           </div>
         </div>
