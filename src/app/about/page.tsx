@@ -55,7 +55,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: '🎮', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup Challenge, Recycling Hero, and Carbon Footprint Quest for K-12 students.' },
-              { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to Congressional App Challenge, Blue Ocean Entrepreneurship Competition, and Bowseat Ocean Awareness Contest.' },
+              { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to the Congressional App Challenge and the Blue Ocean Entrepreneurship Competition.' },
               { icon: '🏖️', title: 'Recurring Community Cleanups', desc: 'Ongoing cleanups at Seal Beach, Cerritos Heritage Park, and Cerritos Park East, mobilizing 35+ volunteers.' },
               { icon: '✍️', title: 'Student-Published Research', desc: 'Original articles on monarch conservation, ocean plastic crisis, and wildfire prevention published on Medium.' },
             ].map((item, i) => (

@@ -36,7 +36,7 @@ Replace fabricated metrics with real:
 ### Blog (blog/page.tsx)
 - Remove fabricated posts (Riverside Academy, Emily spotlight, Spanish translation, etc.)
 - Keep real Medium-linked articles
-- Add posts about: Congressional App Challenge, Blue Ocean Competition, Bowseat Contest
+- Add posts about: Congressional App Challenge, Blue Ocean Competition
 
 ### Contact (contact/page.tsx)
 - Remove fake phone number (555-555-1234)
@@ -50,7 +50,7 @@ Replace fabricated metrics with real:
 ## Section 2: Digital Initiatives Pivot
 
 ### Programs page - Three pillars:
-1. **Digital Innovation** - Wildfire Watch (Congressional App Challenge), MindMirror (Blue Ocean), Oceanaware Guardian (Bowseat)
+1. **Digital Innovation** - Wildfire Watch (Congressional App Challenge), MindMirror (Blue Ocean), Oceanaware Guardian (youth ocean initiative)
 2. **Community Action** - Beach & park cleanups
 3. **Education** - 4 interactive games
 
@@ -68,7 +68,7 @@ Replace fabricated metrics with real:
 ## Section 4: Social Proof & Credibility
 
 - Competition badges on homepage
-- Partner/platform logos (Bowseat, Congressional App Challenge, Blue Ocean)
+- Partner/platform logos (Congressional App Challenge, Blue Ocean)
 - Milestone timeline on about page
 - "As Featured In" placeholder
 
@@ -96,7 +96,7 @@ Replace fabricated metrics with real:
 **Competition Submissions:**
 - EcoQuest Wildfire Watch → Congressional App Challenge
 - MindMirror → Blue Ocean Entrepreneurship Competition
-- Oceanaware Guardian → Bowseat Ocean Awareness Contest (bowseat.org)
+- Oceanaware Guardian → youth-led ocean awareness initiative
 
 **Digital Products:**
 - 4 educational games (Guardians of the Green, Ocean Cleanup, Recycling Hero, Carbon Quest)

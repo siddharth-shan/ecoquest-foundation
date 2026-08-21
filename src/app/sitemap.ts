@@ -25,7 +25,7 @@ const routes: Route[] = [
   { path: '/blog/', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/blog/congressional-app-challenge/', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/blog/blue-ocean-competition/', changeFrequency: 'monthly', priority: 0.6 },
-  { path: '/blog/bowseat-ocean-awareness/', changeFrequency: 'monthly', priority: 0.6 },
+  { path: '/blog/oceanaware-guardian/', changeFrequency: 'monthly', priority: 0.6 },
   { path: '/events/', changeFrequency: 'weekly', priority: 0.8 },
   { path: '/events/register/', changeFrequency: 'monthly', priority: 0.5 },
   { path: '/ecochallenge/join/', changeFrequency: 'monthly', priority: 0.5 },

@@ -50,20 +50,20 @@ const blogPosts: BlogPost[] = [
     ],
   },
   {
-    id: 'bowseat-ocean-awareness',
-    title: 'Oceanaware Guardian: Our Bowseat Ocean Awareness Contest Entry',
+    id: 'oceanaware-guardian',
+    title: 'Oceanaware Guardian: A Youth Ocean Conservation Platform',
     excerpt:
-      'Oceanaware Guardian raises awareness about marine ecosystems and ocean pollution. Created for the Bowseat Ocean Awareness Contest, it features marine ecosystem insights, ocean pollution data, and conservation resources.',
+      'Oceanaware Guardian raises awareness about marine ecosystems and ocean pollution. Built by students, it features marine ecosystem insights, ocean pollution data, and conservation resources.',
     date: 'October 2025',
-    category: 'Competition',
+    category: 'Project',
     author: 'EcoQuest Team',
     image: '🌊',
     img: '/images/apps/oceanaware.png',
     readTime: '4 min read',
     content: [
-      'EcoQuest Foundation is thrilled to present Oceanaware Guardian, our entry into the Bowseat Ocean Awareness Contest hosted by bowseat.org. The Bowseat contest invites young people around the world to use their creative and technical talents to raise awareness about ocean issues, and we channeled our passion for marine conservation into building a platform that educates and inspires action to protect our oceans.',
+      'EcoQuest Foundation is glad to share Oceanaware Guardian, our youth-led platform for ocean awareness and marine conservation education. We built it because young people are inheriting the consequences of ocean plastic, warming waters, and coastal erosion, and we wanted a place where students could see what is actually happening to the ocean and what they can do about it.',
       'Oceanaware Guardian provides users with in-depth marine ecosystem insights, covering topics from coral reef health and marine biodiversity to the migratory patterns of endangered species. The app surfaces real ocean pollution data, visualizing the scale of plastic waste, chemical runoff, and other threats facing marine environments in an accessible and compelling way. A dedicated conservation resources section connects users with organizations, volunteer opportunities, and everyday actions they can take to reduce their impact on ocean health.',
-      'We built Oceanaware Guardian using Next.js and deployed it on Vercel, ensuring fast load times and a responsive design that works well on both desktop and mobile devices. Creating this project for the Bowseat Ocean Awareness Contest deepened our understanding of the urgent challenges facing marine ecosystems worldwide. The process of researching ocean pollution data and translating it into an engaging digital experience reinforced our commitment to using technology as a force for environmental education and conservation.',
+      'We built Oceanaware Guardian using Next.js and deployed it on Vercel, ensuring fast load times and a responsive design that works well on both desktop and mobile devices. Building it deepened our understanding of the urgent challenges facing marine ecosystems worldwide. The process of researching ocean pollution data and translating it into an engaging digital experience reinforced our commitment to using technology as a force for environmental education and conservation.',
     ],
   },
 ]

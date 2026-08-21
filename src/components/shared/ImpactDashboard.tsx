@@ -11,7 +11,7 @@ interface ImpactMetric {
   description: string
 }
 
-const targetValues = [7, 35, 4, 3, 3]
+const targetValues = [7, 35, 4, 2, 3]
 
 export default function ImpactDashboard() {
   const [metrics, setMetrics] = useState<ImpactMetric[]>([
@@ -45,7 +45,7 @@ export default function ImpactDashboard() {
       label: 'Apps in National Competitions',
       suffix: '',
       color: 'from-purple-500 to-indigo-600',
-      description: 'Congressional App Challenge, Blue Ocean, Bowseat',
+      description: 'Congressional App Challenge, Blue Ocean',
     },
     {
       icon: '✍️',

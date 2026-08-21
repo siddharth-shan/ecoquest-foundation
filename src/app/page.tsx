@@ -107,7 +107,7 @@ export default function Home() {
                 img: '/images/apps/oceanaware.png',
                 url: 'https://oceanaware-guardian.vercel.app',
                 gradient: 'from-blue-500 to-cyan-600',
-                badge: '🌊 Bowseat Ocean Awareness Contest',
+                badge: '🌊 Youth Ocean Conservation',
               },
               {
                 title: 'MindMirror',

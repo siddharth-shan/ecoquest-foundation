@@ -3,7 +3,7 @@ import BlogList, { type BlogPost } from '@/components/shared/BlogList'
 
 export const metadata = {
   title: 'News & Updates',
-  description: 'Latest news, competition entries, impact stories, and updates from EcoQuest Foundation. Read about our Congressional App Challenge, Blue Ocean Competition, and Bowseat Ocean Awareness Contest submissions.',
+  description: 'Latest news, competition entries, impact stories, and updates from EcoQuest Foundation. Read about our Congressional App Challenge and Blue Ocean Competition submissions and our youth-led ocean conservation work.',
   alternates: { canonical: '/blog/' },
   openGraph: {
     title: 'News & Updates - EcoQuest Foundation',
@@ -77,12 +77,12 @@ export default function BlogPage() {
       readTime: '3 min read',
     },
     {
-      id: 'bowseat-ocean-awareness',
-      title: 'Oceanaware Guardian: Our Bowseat Ocean Awareness Contest Entry',
+      id: 'oceanaware-guardian',
+      title: 'Oceanaware Guardian: A Youth Ocean Conservation Platform',
       excerpt:
-        'We created Oceanaware Guardian as our entry to the Bowseat Ocean Awareness Contest - a platform dedicated to raising awareness about marine ecosystems, ocean pollution, and conservation.',
+        'We created Oceanaware Guardian as a youth-led ocean awareness initiative - a platform dedicated to raising awareness about marine ecosystems, ocean pollution, and conservation.',
       date: 'October 2025',
-      category: 'Competition',
+      category: 'Project',
       author: 'EcoQuest Team',
       image: '🌊',
       img: '/images/apps/oceanaware.png',

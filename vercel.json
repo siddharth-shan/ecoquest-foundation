@@ -1,5 +1,15 @@
 {
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true }
+    { "source": "/home", "destination": "/", "permanent": true },
+    {
+      "source": "/blog/bowseat-ocean-awareness",
+      "destination": "/blog/oceanaware-guardian/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bowseat-ocean-awareness/",
+      "destination": "/blog/oceanaware-guardian/",
+      "permanent": true
+    }
   ]
 }

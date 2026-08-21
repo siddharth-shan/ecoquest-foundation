@@ -241,7 +241,7 @@ export default function Programs() {
                   </li>
                 </ul>
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
-                  <p className="text-xs font-semibold text-blue-700">🌊 Created for Bowseat Ocean Awareness Contest</p>
+                  <p className="text-xs font-semibold text-blue-700">🌊 Youth-built ocean conservation initiative</p>
                 </div>
                 <a
                   href="https://oceanaware-guardian.vercel.app"

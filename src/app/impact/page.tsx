@@ -16,7 +16,7 @@ export default function ImpactPortfolio() {
     { year: '2024', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup, Recycling Hero, Carbon Quest' },
     { year: '2024', title: 'First Community Cleanups', desc: 'Launched our community cleanups at Seal Beach and Cerritos-area parks' },
     { year: '2025', title: 'Launched Interactive Apps', desc: 'Wildfire Watch, Oceanaware Guardian, and MindMirror web applications' },
-    { year: '2025', title: 'National Competition Entries', desc: 'Congressional App Challenge, Blue Ocean Competition, Bowseat Contest' },
+    { year: '2025', title: 'National Competition Entries', desc: 'Congressional App Challenge, Blue Ocean Competition' },
     { year: '2025', title: 'Published Student Research', desc: 'Original articles on monarch butterflies, ocean plastic, and wildfire prevention' },
     { year: '2026', title: 'Blue Ocean Top 500 Finalist', desc: 'MindMirror named a Top 500 Finalist among 23,000+ students from 173 countries' },
     { year: '2026', title: 'Launched GreenLedger', desc: 'A civic sustainability dashboard turning Cerritos’s city budget into interactive environmental action' },
@@ -46,8 +46,7 @@ export default function ImpactPortfolio() {
     {
       title: 'Oceanaware Guardian',
       desc: 'Ocean conservation platform raising awareness about marine ecosystems and pollution.',
-      competition: 'Bowseat Ocean Awareness Contest',
-      competitionUrl: 'https://bowseat.org/programs/ocean-awareness-contest/contest-overview/',
+      competition: 'Youth Ocean Conservation',
       appUrl: 'https://oceanaware-guardian.vercel.app',
       img: '/images/apps/oceanaware.png',
       gradient: 'from-blue-500 to-cyan-600',
@@ -321,9 +320,6 @@ export default function ImpactPortfolio() {
             </div>
             <div className="bg-white rounded-lg px-6 py-4 shadow-sm border">
               <p className="font-semibold text-sm">💡 Blue Ocean Entrepreneurship Competition</p>
-            </div>
-            <div className="bg-white rounded-lg px-6 py-4 shadow-sm border">
-              <p className="font-semibold text-sm">🌊 Bowseat Ocean Awareness Contest</p>
             </div>
           </div>
         </div>

@@ -51,7 +51,7 @@ const [metrics, setMetrics] = useState<ImpactMetric[]>([
     label: 'Apps in National Competitions',
     suffix: '',
     color: 'from-purple-500 to-indigo-600',
-    description: 'Congressional App Challenge, Blue Ocean, Bowseat',
+    description: 'Congressional App Challenge, Blue Ocean',
   },
   {
     icon: '✍️',
@@ -324,10 +324,10 @@ const posts: BlogPost[] = [
     readTime: '3 min read',
   },
   {
-    id: 'bowseat-ocean-awareness',
-    title: 'Oceanaware Guardian: Our Bowseat Ocean Awareness Contest Entry',
+    id: 'oceanaware-guardian',
+    title: 'Oceanaware Guardian: A Youth Ocean Conservation Platform',
     excerpt:
-      'We created Oceanaware Guardian as our entry to the Bowseat Ocean Awareness Contest - a platform dedicated to raising awareness about marine ecosystems, ocean pollution, and conservation.',
+      'We created Oceanaware Guardian as a youth-led ocean awareness initiative - a platform dedicated to raising awareness about marine ecosystems, ocean pollution, and conservation.',
     date: 'October 2025',
     category: 'Competition',
     author: 'EcoQuest Team',
@@ -434,7 +434,7 @@ After each app's feature list and before the "Launch App" button, add a competit
 For Oceanaware Guardian (after line 202):
 ```tsx
 <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
-  <p className="text-xs font-semibold text-blue-700">🌊 Created for Bowseat Ocean Awareness Contest</p>
+  <p className="text-xs font-semibold text-blue-700">🌊 Youth-built ocean conservation initiative</p>
 </div>
 ```
 
@@ -479,7 +479,7 @@ Update the apps array in the Interactive Apps section (lines 91-112) to include 
     icon: '🌊',
     url: 'https://oceanaware-guardian.vercel.app',
     gradient: 'from-blue-500 to-cyan-600',
-    badge: '🌊 Bowseat Ocean Awareness Contest',
+    badge: '🌊 Youth Ocean Conservation',
   },
   {
     title: 'MindMirror',
@@ -572,7 +572,7 @@ Replace the accomplishments array (lines 46-51) with real milestones:
 ```tsx
 {[
   { icon: '🎮', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup Challenge, Recycling Hero, and Carbon Footprint Quest for K-12 students.' },
-  { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to Congressional App Challenge, Blue Ocean Entrepreneurship Competition, and Bowseat Ocean Awareness Contest.' },
+  { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to the Congressional App Challenge and the Blue Ocean Entrepreneurship Competition.' },
   { icon: '🏖️', title: '3 Community Cleanups', desc: 'Organized cleanups at Seal Beach, Cerritos Heritage Park, and Cerritos Park East with 35+ volunteers.' },
   { icon: '✍️', title: 'Student-Published Research', desc: 'Original articles on monarch conservation, ocean plastic crisis, and wildfire prevention published on Medium.' },
 ].map((item, i) => (
@@ -610,7 +610,7 @@ export default function ImpactPortfolio() {
     { year: '2024', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup, Recycling Hero, Carbon Quest' },
     { year: '2024', title: 'First Community Cleanups', desc: 'Organized 3 cleanups at Seal Beach, Cerritos Heritage Park, Cerritos Park East' },
     { year: '2025', title: 'Launched Interactive Apps', desc: 'Wildfire Watch, Oceanaware Guardian, and MindMirror web applications' },
-    { year: '2025', title: 'National Competition Entries', desc: 'Congressional App Challenge, Blue Ocean Competition, Bowseat Contest' },
+    { year: '2025', title: 'National Competition Entries', desc: 'Congressional App Challenge, Blue Ocean Competition' },
     { year: '2025', title: 'Published Student Research', desc: 'Original articles on monarch butterflies, ocean plastic, and wildfire prevention' },
   ]
 
@@ -638,8 +638,7 @@ export default function ImpactPortfolio() {
     {
       title: 'Oceanaware Guardian',
       desc: 'Ocean conservation platform raising awareness about marine ecosystems and pollution.',
-      competition: 'Bowseat Ocean Awareness Contest',
-      competitionUrl: 'https://bowseat.org/programs/ocean-awareness-contest/contest-overview/',
+      competition: 'Youth Ocean Conservation',
       appUrl: 'https://oceanaware-guardian.vercel.app',
       icon: '🌊',
       gradient: 'from-blue-500 to-cyan-600',
@@ -854,7 +853,7 @@ export default function ImpactPortfolio() {
             <div className="text-5xl mb-4">📰</div>
             <h3 className="text-xl font-bold text-primary-green mb-3">Competition Results Coming Soon</h3>
             <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-              We've submitted our apps to the Congressional App Challenge, Blue Ocean Entrepreneurship Competition, and Bowseat Ocean Awareness Contest. Results will be shared here as they are announced.
+              We've submitted our apps to the the Congressional App Challenge and the Blue Ocean Entrepreneurship Competition. Results will be shared here as they are announced.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
@@ -864,7 +863,7 @@ export default function ImpactPortfolio() {
                 <p className="font-semibold text-sm">💡 Blue Ocean Competition</p>
               </div>
               <div className="bg-white rounded-lg px-6 py-3 shadow-sm border">
-                <p className="font-semibold text-sm">🌊 Bowseat Ocean Awareness</p>
+                <p className="font-semibold text-sm">🌊 Youth Ocean Conservation</p>
               </div>
             </div>
           </div>
@@ -986,7 +985,7 @@ Save this as a reference in the design doc. No code changes needed:
 - Share app screenshots and demo clips
 - Team spotlights showing the students behind EcoQuest
 - Competition submission announcements
-- Tag @congressionalappchallenge, @bowseat in relevant posts
+- Tag @congressionalappchallenge in relevant posts
 
 ### LinkedIn Strategy
 - Create organization page
