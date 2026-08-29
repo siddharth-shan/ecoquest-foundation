@@ -111,7 +111,7 @@ export default function Home() {
               },
               {
                 title: 'MindMirror',
-                desc: 'A 60-second mental wellness check-in built for an era of climate anxiety and environmental uncertainty',
+                desc: 'A 60-second voice-based depression screening tool, motivated by research on climate anxiety in young people',
                 img: '/images/apps/mindmirror.png',
                 url: 'https://mindmirror-pilot.vercel.app/',
                 gradient: 'from-purple-500 to-indigo-600',

@@ -35,7 +35,7 @@ export default function ImpactPortfolio() {
     },
     {
       title: 'MindMirror',
-      desc: 'Mental wellness platform exploring the connection between environmental health and personal well-being.',
+      desc: 'Voice-based depression screening built by students, motivated by research on climate anxiety in young people.',
       competition: 'Blue Ocean — Top 500 Finalist',
       competitionUrl: 'https://www.blueoceancompetition.org/',
       appUrl: 'https://mindmirror-pilot.vercel.app/',
@@ -306,7 +306,7 @@ export default function ImpactPortfolio() {
             <p className="text-gray-600 max-w-2xl mx-auto">
               Our <strong>MindMirror</strong> app was named a <strong>Top 500 Finalist</strong> in the world&apos;s
               largest virtual pitch competition — with 23,000+ students from 173 countries, endorsed by the creators
-              of Blue Ocean Strategy. MindMirror has since been validated with <strong>~230 real users</strong>.
+              of Blue Ocean Strategy. MindMirror has since collected data from <strong>~230 research participants</strong> recruited through Prolific.
             </p>
           </div>
 

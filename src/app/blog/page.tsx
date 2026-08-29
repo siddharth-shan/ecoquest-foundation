@@ -68,7 +68,7 @@ export default function BlogPage() {
       id: 'blue-ocean-competition',
       title: 'MindMirror: Competing in the Blue Ocean Entrepreneurship Competition',
       excerpt:
-        'MindMirror, our mental wellness and environmental connection platform, was named a Top 500 Finalist in the 2026 Blue Ocean Entrepreneurship Competition - and has since been validated with ~230 real users.',
+        'MindMirror screens for depression risk from 60 seconds of speech. It was named a Top 500 Finalist in the 2026 Blue Ocean Student Entrepreneur Competition, and has collected data from ~230 Prolific research participants.',
       date: 'October 2025',
       category: 'Competition',
       author: 'EcoQuest Team',

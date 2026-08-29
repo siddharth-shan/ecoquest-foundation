@@ -131,7 +131,7 @@ export default function Resources() {
       type: 'app',
       category: 'apps',
       title: 'MindMirror',
-      desc: 'Environmental awareness and personal reflection tool for mindful living',
+      desc: 'Voice-based depression risk screening in 60 seconds. A student research pilot, not a diagnosis',
       tag: 'Live App',
       url: 'https://mindmirror-pilot.vercel.app/',
       external: true,

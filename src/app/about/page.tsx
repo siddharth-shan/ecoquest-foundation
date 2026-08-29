@@ -82,7 +82,7 @@ export default function About() {
             {[
               { name: 'Siddharth', role: 'Founder & President', img: '/images/team/Siddharth.png' },
               { name: 'Aditya', role: 'Vice President of Events', img: '/images/team/Aditya.png' },
-              { name: 'Shruthi', role: 'Vice President of Education', img: '/images/team/Shruthi_2.png' },
+              { name: 'Shruthi', role: 'Vice President of Outreach', img: '/images/team/Shruthi_2.png' },
             ].map((member) => (
               <div key={member.name} className="card card-hover text-center">
                 <div className="aspect-square overflow-hidden bg-gray-100">

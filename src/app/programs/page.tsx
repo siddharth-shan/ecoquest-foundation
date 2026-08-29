@@ -313,20 +313,20 @@ export default function Programs() {
               </div>
               <div className="p-6">
                 <p className="text-gray-700 mb-4">
-                  A 60-second mental wellness check-in that addresses climate anxiety and the link between environmental and personal well-being — validated with ~230 real users.
+                  A 60-second voice-based depression screening tool, motivated by research on climate anxiety in young people. A pre-registered student research pilot, not a diagnosis — with data collected from ~230 Prolific participants.
                 </p>
                 <ul className="space-y-2 mb-6 text-sm">
                   <li className="flex items-start">
                     <span className="text-purple-500 mr-2 font-bold">✓</span>
-                    <span className="text-gray-600">Wellness tracking</span>
+                    <span className="text-gray-600">60-second voice recording</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-purple-500 mr-2 font-bold">✓</span>
-                    <span className="text-gray-600">Nature connection insights</span>
+                    <span className="text-gray-600">Study pre-registered on the Open Science Framework</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-purple-500 mr-2 font-bold">✓</span>
-                    <span className="text-gray-600">Mindfulness resources</span>
+                    <span className="text-gray-600">Links to mental health support resources</span>
                   </li>
                 </ul>
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
