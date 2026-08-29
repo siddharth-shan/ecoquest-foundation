@@ -224,9 +224,9 @@ export default function ImpactPortfolio() {
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: 'Seal Beach Cleanup', desc: 'Coastal cleanup removing plastic and debris from the shoreline', img: '/images/events/IMG_0511.JPG' },
-              { title: 'Prado Park', desc: 'Park cleanup, pathway restoration, and beautification in Chino, CA', img: '/images/events/IMG_4346.JPG' },
-              { title: 'Cerritos Park East', desc: 'Community park cleanup and beautification', img: '/images/events/E6EBDFFC-233D-4615-A2B4-558095CACFD0.jpeg' },
+              { title: 'Seal Beach Cleanup', desc: 'Coastal cleanup removing plastic and debris from the shoreline', img: '/images/events/IMG_0511.webp' },
+              { title: 'Prado Park', desc: 'Park cleanup, pathway restoration, and beautification in Chino, CA', img: '/images/events/IMG_4346.webp' },
+              { title: 'Cerritos Park East', desc: 'Community park cleanup and beautification', img: '/images/events/E6EBDFFC-233D-4615-A2B4-558095CACFD0.webp' },
             ].map((event, i) => (
               <div key={i} className="card overflow-hidden">
                 <div className="h-44 overflow-hidden bg-gray-100">

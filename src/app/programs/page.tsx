@@ -137,7 +137,7 @@ export default function Programs() {
             </div>
             <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100 order-1 md:order-2">
               <img
-                src="/images/events/IMG_3250.JPG"
+                src="/images/events/IMG_3250.webp"
                 alt="Student volunteers repainting a community basketball court"
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -155,7 +155,7 @@ export default function Programs() {
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100">
               <img
-                src="/images/events/IMG_1601.jpeg"
+                src="/images/events/IMG_1601.webp"
                 alt="EcoQuest volunteer collecting litter along the shoreline at a Seal Beach cleanup"
                 className="w-full h-full object-cover"
                 loading="lazy"

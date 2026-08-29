@@ -35,7 +35,7 @@ export default function BlogPage() {
       category: 'Student Story',
       author: 'Student Conservation Team',
       image: '🌊',
-      img: '/images/events/IMG_0511.JPG',
+      img: '/images/events/IMG_0511.webp',
       readTime: '15 min read',
       externalUrl: 'https://medium.com/@siddharth.shanmugaraja/the-ocean-plastic-crisis-what-i-learned-after-many-days-of-beach-cleanups-e9f5afe35bba',
     },

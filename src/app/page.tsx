@@ -185,14 +185,14 @@ export default function Home() {
                 desc: 'Monthly interactive missions engaging students in real-world environmental actions',
                 badge: 'Monthly',
                 link: '/programs#ecochallenge',
-                img: '/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.jpeg',
+                img: '/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.webp',
               },
               {
                 title: 'Community Cleanup Events',
                 desc: 'Beach and park cleanups across California, open to students, families, and community volunteers',
                 badge: 'Hands-On',
                 link: '/events',
-                img: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',
+                img: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.webp',
               },
             ].map((program, i) => (
               <div key={i} className="card card-hover">
