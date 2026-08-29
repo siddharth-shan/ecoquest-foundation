@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { HiCalendar, HiClock, HiVideoCamera } from 'react-icons/hi'
-import { SiEventbrite } from 'react-icons/si'
+import { HiCalendar, HiClock, HiExternalLink, HiVideoCamera } from 'react-icons/hi'
 import EventCarousel from '@/components/shared/EventCarousel'
 import { SEMINAR_CADENCE, pastSeminars, seminars, upcomingSeminars } from '@/data/seminars'
 
@@ -33,6 +31,17 @@ interface TimelineEvent {
   when?: string
   /** Set when the event was run jointly with another organization. */
   coHosted?: string
+}
+
+/**
+ * Splits 'Saturday, September 12, 2026' into the three lines of the date tile.
+ * Reads the display string rather than parsing startDateTime, because that is a
+ * UTC instant and the tile must show the Pacific date the session actually runs.
+ */
+function dateTile(displayDate: string) {
+  const [weekday, monthDay, year] = displayDate.split(', ')
+  const [month, day] = monthDay.split(' ')
+  return { weekday: weekday.slice(0, 3), day, monthYear: `${month.slice(0, 3)} ${year}` }
 }
 
 /**
@@ -177,25 +186,27 @@ export default function Events() {
           {upcomingSeminars.length > 0 ? (
             <div className="space-y-6 max-w-5xl mx-auto">
               {upcomingSeminars.map((seminar, index) => (
-                <article
-                  key={seminar.slug}
-                  className="card overflow-hidden p-0 flex flex-col md:flex-row"
-                >
-                  {/* Session cover — the same art as the Eventbrite listing */}
-                  <div className="relative w-full md:w-56 lg:w-64 shrink-0 aspect-[2/1] md:aspect-auto md:self-stretch bg-primary-green/5">
-                    <Image
-                      src={`/images/seminars/${seminar.slug}-square.webp`}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 256px"
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                    />
-                  </div>
+                <article key={seminar.slug} className="card border-l-4 border-primary-green">
+                  <div className="p-6 md:p-8 flex gap-5 md:gap-7">
+                    {/* Date tile. Sessions are two weeks apart, so the date is
+                        the thing a reader scans for — it gets its own anchor
+                        instead of a line in the meta row. Hidden on phones,
+                        where a 64px column would squeeze the text into a
+                        gutter; the meta row carries the date there instead. */}
+                    <div className="hidden sm:block shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
+                      <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
+                        {dateTile(seminar.displayDate).weekday}
+                      </div>
+                      <div className="text-2xl md:text-3xl font-bold leading-tight text-primary-green-dark font-heading">
+                        {dateTile(seminar.displayDate).day}
+                      </div>
+                      <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
+                        {dateTile(seminar.displayDate).monthYear}
+                      </div>
+                    </div>
 
-                  <div className="flex-1 min-w-0 flex flex-col">
-                    <div className="p-6 md:p-7 flex-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
                           Session {index + 1} of {seminars.length}
                         </span>
@@ -209,13 +220,13 @@ export default function Events() {
                       </h3>
 
                       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 mb-4">
-                        <span className="inline-flex items-center gap-1.5">
+                        <span className="sm:hidden inline-flex items-center gap-1.5">
                           <HiCalendar className="text-primary-green shrink-0" aria-hidden />
                           <span className="font-medium text-gray-800">{seminar.displayDate}</span>
                         </span>
                         <span className="inline-flex items-center gap-1.5">
                           <HiClock className="text-primary-green shrink-0" aria-hidden />
-                          {seminar.displayTime}
+                          <span className="font-medium text-gray-800">{seminar.displayTime}</span>
                         </span>
                         <span className="inline-flex items-center gap-1.5">
                           <HiVideoCamera className="text-primary-green shrink-0" aria-hidden />
@@ -227,7 +238,7 @@ export default function Events() {
                         {seminar.description}
                       </p>
 
-                      <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm border-t border-gray-100 pt-4">
+                      <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm border-t border-gray-100 pt-4">
                         <div>
                           <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
                             Who it&apos;s for
@@ -242,11 +253,15 @@ export default function Events() {
                         </div>
                       </dl>
                     </div>
+                  </div>
 
-                    {/* Actions. The Eventbrite mark is a legitimacy signal: the
-                        session is a real listing on a ticketing platform, not a
-                        form on our own site. */}
-                    <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-7 py-4 flex flex-wrap items-center gap-3">
+                  {/* Naming Eventbrite in the link text is the legitimacy
+                      signal: registration is held by a ticketing platform, not
+                      by a form on our own site. Their logo is deliberately not
+                      used — the wordmark is their trademark and we have no
+                      partnership with them to display it. */}
+                  <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-8 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-3">
                       {seminar.eventbriteUrl ? (
                         <a
                           href={seminar.eventbriteUrl}
@@ -254,8 +269,8 @@ export default function Events() {
                           rel="noopener noreferrer"
                           className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
                         >
-                          <SiEventbrite className="text-lg" aria-hidden />
                           Register on Eventbrite
+                          <HiExternalLink className="text-base opacity-80" aria-hidden />
                         </a>
                       ) : (
                         <Link
@@ -273,10 +288,10 @@ export default function Events() {
                           Preview Slides
                         </Link>
                       )}
-                      <p className="text-xs text-gray-500 sm:ml-auto">
-                        Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
-                      </p>
                     </div>
+                    <p className="text-xs text-gray-500 sm:ml-auto sm:text-right">
+                      Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
+                    </p>
                   </div>
                 </article>
               ))}
