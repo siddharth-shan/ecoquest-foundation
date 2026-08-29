@@ -167,9 +167,6 @@ Your own website does not satisfy that on its own. These do.
 - [ ] Nextdoor post (free for nonprofits, local reach)
 
 **Once per series, not per session:**
-- [ ] Listed on **VolunteerMatch** — matters disproportionately for the
-      Congressional Award, because reviewers already recognize the platform
-- [ ] Listed on **JustServe**
 - [ ] Submitted to city community calendars: Cerritos, Artesia, Chino parks & rec
 - [ ] Submitted to the local public library community calendar
 - [ ] Emailed to school counselors and science teachers at nearby middle schools
@@ -177,6 +174,28 @@ Your own website does not satisfy that on its own. These do.
 A **city or library calendar listing is the strongest single signal on this list**,
 because a municipality reviewed and published it. Those submissions usually take
 one form and about ten minutes. Do them.
+
+### Idealist (formerly VolunteerMatch) and JustServe
+
+Both platforms list **volunteer opportunities and service projects** — work
+someone comes to *do*. A seminar people attend to learn is not that, so do not
+post the sessions there as if they were. Wrong category, likely rejected, and it
+misrepresents what the thing is.
+
+Use them for the **cleanups**, which are unambiguous volunteer service, and for
+any *genuine* volunteer role on the series — a session moderator, tech help,
+outreach — but only if the role is real and someone will actually be given it.
+Posting a role that does not exist to earn a listing is fabrication.
+
+Note: **volunteermatch.org now redirects to idealist.org** — the two merged in
+early 2025 and VolunteerMatch is no longer a separate platform.
+
+JustServe requires nonprofit verification (an IRS determination letter) before an
+organization can post, and every project is reviewed by the nearest local
+JustServe specialist before it goes live. Its guidelines bar fundraising,
+political or advocacy activity, and religious instruction; they do not address
+educational or online projects either way, so whether the seminar series itself
+qualifies is the local specialist's call — worth asking rather than assuming.
 
 ---
 
