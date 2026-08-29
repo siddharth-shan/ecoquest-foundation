@@ -30,6 +30,21 @@ SRC = pathlib.Path('photo-originals/events')
 WEB = pathlib.Path('public/images/events')
 THUMBS = WEB / 'thumbs'
 
+# The Eventbrite cover art doubles as the card image for each session on the
+# events page. Same source file, so the listing and the site cannot show
+# different art for the same session.
+BANNERS = pathlib.Path('docs/eventbrite')
+BANNER_OUT = pathlib.Path('public/images/seminars')
+BANNER_FOR_SLUG = {
+    'wildfire-data': 'wildfire-banner.png',
+    'beach-cleanup-data': 'beach-cleanup-banner.png',
+    'home-footprint': 'home-footprint-banner.png',
+    'climate-anxiety': 'climate-anxiety-banner.png',
+    'local-conservation': 'local-conservation-banner.png',
+}
+BANNER_WIDTH = 900
+BANNER_ART = (450, 380)   # right-hand art panel for the events-page cards: w, h
+
 MAX_EDGE = 1600   # the stage renders at most ~1200 CSS px; 1600 covers retina
 THUMB = 320       # the strip renders at ~100 CSS px; 320 covers 3x DPR
 QUALITY = 78      # webp; visually clean on photographic content
@@ -86,10 +101,44 @@ def main():
             print(f'  {src.name:46} {src.stat().st_size/1024:7.0f} KB  ->'
                   f' {web.stat().st_size/1024:6.0f} KB + {thumb.stat().st_size/1024:4.0f} KB thumb')
 
+    build_banners()
+
     print(f'\n{before/1024/1024:.1f} MB of originals -> {after/1024/1024:.1f} MB served'
           f'  ({100 - after/before*100:.0f}% smaller)')
     print(f'Thumbnail strip alone: {sum(p.stat().st_size for p in THUMBS.iterdir())/1024:.0f} KB '
           f'for all {len(list(THUMBS.iterdir()))} photos.')
+
+
+def build_banners():
+    """Session cover art, 2160x1080, down to a card-sized 2:1 WebP."""
+    BANNER_OUT.mkdir(parents=True, exist_ok=True)
+    print()
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = pathlib.Path(tmp)
+        for slug, name in BANNER_FOR_SLUG.items():
+            src = BANNERS / name
+            if not src.exists():
+                print(f'  ! {name} missing — skipping {slug}')
+                continue
+            staged = tmp / 'banner.jpg'
+            run('sips', src, '--resampleWidth', BANNER_WIDTH,
+                '-s', 'format', 'jpeg', '-s', 'formatOptions', 95, '--out', staged)
+            out = BANNER_OUT / f'{slug}.webp'
+            run('cwebp', '-quiet', '-q', QUALITY, '-m', 5, staged, '-o', out)
+
+            # The banners put the title on the left panel and the artwork on the
+            # right, with a caption strip along the bottom. A centre crop would
+            # slice the title in half and the card column clips the caption
+            # mid-word, so the thumbnail takes the right-hand art panel only —
+            # above the caption band, no cut text at any width.
+            aw, ah = BANNER_ART
+            sq = tmp / 'square.jpg'
+            shutil.copy(staged, sq)
+            run('sips', sq, '-c', ah, aw, '--cropOffset', 0, BANNER_WIDTH - aw)
+            out_sq = BANNER_OUT / f'{slug}-square.webp'
+            run('cwebp', '-quiet', '-q', QUALITY, '-m', 5, sq, '-o', out_sq)
+            print(f'  {name:34} -> {slug}.webp {out.stat().st_size/1024:4.0f} KB'
+                  f' + {slug}-square.webp {out_sq.stat().st_size/1024:4.0f} KB')
 
 
 if __name__ == '__main__':

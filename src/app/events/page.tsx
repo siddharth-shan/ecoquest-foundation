@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
+import { HiCalendar, HiClock, HiVideoCamera } from 'react-icons/hi'
+import { SiEventbrite } from 'react-icons/si'
 import EventCarousel from '@/components/shared/EventCarousel'
 import { SEMINAR_CADENCE, pastSeminars, seminars, upcomingSeminars } from '@/data/seminars'
 
@@ -172,68 +175,110 @@ export default function Events() {
           </div>
 
           {upcomingSeminars.length > 0 ? (
-            <div className="space-y-5 max-w-5xl mx-auto">
-              {upcomingSeminars.map((seminar) => (
-                <div
+            <div className="space-y-6 max-w-5xl mx-auto">
+              {upcomingSeminars.map((seminar, index) => (
+                <article
                   key={seminar.slug}
-                  className="card border-l-4 border-primary-green p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start"
+                  className="card overflow-hidden p-0 flex flex-col md:flex-row"
                 >
-                  <div>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-primary-blue mb-2">
-                      <span>{seminar.displayDate}</span>
-                      <span className="text-gray-300" aria-hidden>
-                        •
-                      </span>
-                      <span>{seminar.displayTime}</span>
-                      <span className="text-gray-300" aria-hidden>
-                        •
-                      </span>
-                      <span className="text-gray-500">Online (Zoom)</span>
-                    </div>
-                    <h3 className="font-bold text-2xl mb-3 text-primary-green font-heading">
-                      {seminar.title}
-                    </h3>
-                    <p className="text-gray-700 mb-4">{seminar.description}</p>
-                    <dl className="text-sm space-y-1">
-                      <div className="flex gap-2">
-                        <dt className="font-semibold text-gray-700 shrink-0">Who it&apos;s for:</dt>
-                        <dd className="text-gray-600">{seminar.audience}</dd>
-                      </div>
-                      <div className="flex gap-2">
-                        <dt className="font-semibold text-gray-700 shrink-0">Built on:</dt>
-                        <dd className="text-gray-600">{seminar.builtOn}</dd>
-                      </div>
-                    </dl>
+                  {/* Session cover — the same art as the Eventbrite listing */}
+                  <div className="relative w-full md:w-56 lg:w-64 shrink-0 aspect-[2/1] md:aspect-auto md:self-stretch bg-primary-green/5">
+                    <Image
+                      src={`/images/seminars/${seminar.slug}-square.webp`}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 256px"
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                    />
                   </div>
 
-                  <div className="flex flex-col gap-3 w-full md:w-48">
-                    {seminar.eventbriteUrl ? (
-                      <a
-                        href={seminar.eventbriteUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary text-center whitespace-nowrap"
-                      >
-                        Register Free
-                      </a>
-                    ) : (
-                      <Link
-                        href={`/events/register/?event=${encodeURIComponent(seminar.title)}`}
-                        className="btn btn-primary text-center whitespace-nowrap"
-                      >
-                        Register Free
-                      </Link>
-                    )}
-                    {seminar.hasDeck && (
-                      <Link
-                        href={`/seminars/${seminar.slug}/`}
-                        className="btn btn-outline text-center whitespace-nowrap text-sm px-4"
-                      >
-                        Preview Slides
-                      </Link>
-                    )}
+                  <div className="flex-1 min-w-0 flex flex-col">
+                    <div className="p-6 md:p-7 flex-1">
+                      <div className="flex flex-wrap items-center gap-2 mb-3">
+                        <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                          Session {index + 1} of {seminars.length}
+                        </span>
+                        <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                          Free
+                        </span>
+                      </div>
+
+                      <h3 className="font-bold text-xl md:text-2xl mb-3 text-gray-900 font-heading leading-snug">
+                        {seminar.title}
+                      </h3>
+
+                      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 mb-4">
+                        <span className="inline-flex items-center gap-1.5">
+                          <HiCalendar className="text-primary-green shrink-0" aria-hidden />
+                          <span className="font-medium text-gray-800">{seminar.displayDate}</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <HiClock className="text-primary-green shrink-0" aria-hidden />
+                          {seminar.displayTime}
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <HiVideoCamera className="text-primary-green shrink-0" aria-hidden />
+                          Online via Zoom
+                        </span>
+                      </div>
+
+                      <p className="text-gray-700 leading-relaxed mb-5 max-w-prose">
+                        {seminar.description}
+                      </p>
+
+                      <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm border-t border-gray-100 pt-4">
+                        <div>
+                          <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                            Who it&apos;s for
+                          </dt>
+                          <dd className="text-gray-700">{seminar.audience}</dd>
+                        </div>
+                        <div>
+                          <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                            Built on
+                          </dt>
+                          <dd className="text-gray-700">{seminar.builtOn}</dd>
+                        </div>
+                      </dl>
+                    </div>
+
+                    {/* Actions. The Eventbrite mark is a legitimacy signal: the
+                        session is a real listing on a ticketing platform, not a
+                        form on our own site. */}
+                    <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-7 py-4 flex flex-wrap items-center gap-3">
+                      {seminar.eventbriteUrl ? (
+                        <a
+                          href={seminar.eventbriteUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
+                        >
+                          <SiEventbrite className="text-lg" aria-hidden />
+                          Register on Eventbrite
+                        </a>
+                      ) : (
+                        <Link
+                          href={`/events/register/?event=${encodeURIComponent(seminar.title)}`}
+                          className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
+                        >
+                          Register Free
+                        </Link>
+                      )}
+                      {seminar.hasDeck && (
+                        <Link
+                          href={`/seminars/${seminar.slug}/`}
+                          className="btn btn-outline whitespace-nowrap text-sm px-4"
+                        >
+                          Preview Slides
+                        </Link>
+                      )}
+                      <p className="text-xs text-gray-500 sm:ml-auto">
+                        Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           ) : (
