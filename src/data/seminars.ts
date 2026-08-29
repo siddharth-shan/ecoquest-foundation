@@ -107,11 +107,11 @@ export const seminars: Seminar[] = [
     displayDate: 'Saturday, October 24, 2026',
     displayTime: '11:00–11:40 AM PT',
     description:
-      'Worry about the climate is common, and for a lot of students it is the part of environmental science nobody talks about. We look at what climate anxiety actually is, what researchers measure when they study it, and how EcoQuest students designed MindMirror, a 60-second check-in built around that question. This is a session about reading the research and building a tool, not about giving medical advice — MindMirror is a check-in, not a diagnosis, and we will be clear about that difference.',
+      'Worry about the climate is common, and for a lot of students it is the part of environmental science nobody talks about. We look at what climate anxiety actually is, what researchers have measured — including a 2021 Lancet Planetary Health survey of 10,000 people aged 16 to 25 across ten countries — and what EcoQuest students learned building MindMirror, a student research pilot that screens for depression risk from a short voice recording. We will be specific about what MindMirror does and does not do: it is a screening pilot rather than a diagnosis, and the climate anxiety module we designed for it has not been built. This session is about reading research carefully and being honest about what you have actually shipped. It is not medical advice.',
     audience: 'Middle and high school students, families, and educators',
-    builtOn: 'MindMirror, our student-built climate anxiety check-in',
+    builtOn: 'Published climate anxiety research, and MindMirror — our student-built mental health screening pilot',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-climate-anxiety-and-how-we-built-mindmirror-tickets-1999172929047',
-    hasDeck: false,
+    hasDeck: true,
   },
   {
     slug: 'local-conservation',
@@ -126,7 +126,7 @@ export const seminars: Seminar[] = [
     audience: 'Students seeking service hours, parents, and community organizers',
     builtOn: 'Three years of running our own community cleanups',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-conservation-in-your-own-neighborhood-tickets-1999172932056',
-    hasDeck: false,
+    hasDeck: true,
   },
 ]
 

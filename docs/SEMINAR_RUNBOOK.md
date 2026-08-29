@@ -7,8 +7,8 @@ Fall 2026 series. Five free sessions, every other Saturday, 11:00–11:40 AM PT.
 | 1 | Sat Sep 12, 2026 | Reading Real Wildfire Data | `/seminars/wildfire-data/` |
 | 2 | Sat Sep 26, 2026 | What a Beach Cleanup Actually Tells Us | `/seminars/beach-cleanup-data/` |
 | 3 | Sat Oct 10, 2026 | Your Home's Water and Energy Footprint | `/seminars/home-footprint/` |
-| 4 | Sat Oct 24, 2026 | Climate Anxiety and How We Built MindMirror | to write |
-| 5 | Sat Nov 7, 2026 | Conservation in Your Own Neighborhood | to write |
+| 4 | Sat Oct 24, 2026 | Climate Anxiety and How We Built MindMirror | `/seminars/climate-anxiety/` |
+| 5 | Sat Nov 7, 2026 | Conservation in Your Own Neighborhood | `/seminars/local-conservation/` |
 
 All session data lives in **`src/data/seminars.ts`**. That one file drives the
 event cards, the schema.org markup, and the deck pages. Slide content lives in

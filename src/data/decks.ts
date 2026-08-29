@@ -361,4 +361,240 @@ export const decks: Record<string, Slide[]> = {
       notes: 'Capture attendance count and save the chat log before ending the meeting.',
     },
   ],
+  'climate-anxiety': [
+    {
+      eyebrow: 'EcoQuest Online Seminar Series',
+      title: 'Climate Anxiety and How We Built MindMirror',
+      callout:
+        'Worrying about the climate is not a disorder. It is a reasonable response to a real situation. Researchers still study it, and we tried to build something around it.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Say plainly, in the first minute: this session is not therapy, not medical advice, and nobody here is a clinician. Say it again on the resources slide. If someone discloses distress in chat, do not diagnose or counsel - point to slide 9 and move on.',
+    },
+    {
+      eyebrow: 'Why this session exists',
+      title: 'The part of environmental science nobody teaches',
+      bullets: [
+        'Every environmental class covers the data. Almost none cover what it feels like to learn the data.',
+        'Students are told the situation is urgent and then told to do a worksheet about it.',
+        'The gap between "this is an emergency" and "here is your homework" is where the anxiety lives.',
+      ],
+      notes:
+        'Keep this short and do not perform doom. The tone for the whole session is calm and practical. Ask in chat: has a science class ever made you feel worse without telling you what to do about it? Use the answers to set up the rest.',
+    },
+    {
+      eyebrow: 'The research',
+      title: 'What one large study actually found',
+      bullets: [
+        'Hickman et al., The Lancet Planetary Health, December 2021 - a survey of 10,000 people aged 16 to 25, across ten countries, 1,000 per country.',
+        '84% reported being at least moderately worried about climate change; 59% were very or extremely worried.',
+        '75% agreed with the statement "the future is frightening."',
+        'More than half reported each of: sad, anxious, angry, powerless, helpless, and guilty.',
+      ],
+      notes:
+        'Have the paper open in a tab. It is open access - show the abstract on screen so people see you are reading a real source, not a headline about one. Be precise about the two different numbers: 84% is at-least-moderate, 59% is very-or-extremely. Journalists mix these up constantly and it is a good teaching moment about reading a statistic properly.',
+    },
+    {
+      eyebrow: 'Definitions',
+      title: 'What climate anxiety is, and what it is not',
+      bullets: [
+        'It is not a diagnosis. "Climate anxiety" appears in no diagnostic manual as a disorder.',
+        'It is distress about environmental change - which for most people is proportionate, not pathological.',
+        'It becomes a clinical concern when it stops someone functioning: sleep, school, eating, withdrawal.',
+        'Calling ordinary worry a disorder is its own harm. So is telling someone in real distress to just recycle more.',
+      ],
+      notes:
+        'This slide prevents the two failure modes of the whole topic: pathologising a normal feeling, and dismissing a serious one. Say explicitly that the line between them is a clinician\'s call, not yours and not the audience\'s.',
+    },
+    {
+      eyebrow: 'Method',
+      title: 'How do you measure a feeling?',
+      bullets: [
+        'Mostly self-report: someone answers a fixed set of questions and the answers are scored.',
+        'PHQ-9 and PHQ-2 are standard, validated depression screening questionnaires used in clinics.',
+        'A screening tool sorts people into "worth a closer look" - it does not diagnose anyone.',
+        'Every self-report scale inherits the honesty, mood, and self-knowledge of the person filling it in.',
+      ],
+      notes:
+        'The distinction between screening and diagnosis is the most important idea in the deck, and it generalises far beyond mental health. A smoke alarm is a screen. It tells you to go look. It does not tell you the house is on fire.',
+    },
+    {
+      eyebrow: 'What we built',
+      title: 'MindMirror, described accurately',
+      bullets: [
+        'A web app that records about 60 seconds of spontaneous speech and returns a risk indication.',
+        'The research question: can features of a voice recording predict a PHQ-2 screening score?',
+        'It is a pilot. The study is pre-registered on the Open Science Framework, targeting 30 to 50 participants.',
+        'It screens for depression risk. It does not measure climate anxiety.',
+      ],
+      notes:
+        'Be scrupulous here. The temptation is to oversell your own project to an audience - do not. Show the actual app. If someone asks whether it works, the honest answer is that the pilot is still collecting data and we do not have results yet. "We do not know yet" is a completely respectable thing to say about your own research and it teaches more than a fake number would.',
+    },
+    {
+      eyebrow: 'Design vs. built',
+      title: 'The climate module we designed and have not built',
+      callout:
+        'We wrote a full specification for a climate anxiety module. It is a document, not a feature. Nothing in the shipped app measures climate anxiety.',
+      bullets: [
+        'The design proposes a short climate-specific question set alongside the voice recording.',
+        'Building it properly means validating it, which means far more participants than a pilot has.',
+        'Shipping the design as though it were a feature would have been the easy, dishonest option.',
+      ],
+      notes:
+        'This is the most useful slide for students and the one most presenters would cut. Keep it. The lesson is that a design document is not a product, and that saying so out loud is what separates a real project from a demo. If you have the spec open, show them a page of it.',
+    },
+    {
+      eyebrow: 'What went wrong',
+      title: 'Honest limitations',
+      bullets: [
+        'Small sample. Thirty to fifty people cannot establish that a tool works.',
+        'Voice data is sensitive. Consent, storage, and deletion are harder problems than the model.',
+        'Speech features vary with accent, language, recording device, and having a cold.',
+        'A tool that is wrong in one direction tells people they are fine when they are not.',
+      ],
+      notes:
+        'Spend real time here - it is the difference between a science talk and a sales pitch. Invite the audience to poke holes. Anyone who names a limitation you had not considered has done exactly what a peer reviewer does, and you should say so.',
+    },
+    {
+      eyebrow: 'Important',
+      title: 'This session is not help, and here is where help is',
+      callout:
+        'Nothing in this seminar, and nothing in MindMirror, is a diagnosis or a substitute for talking to a real person.',
+      bullets: [
+        'In the US, call or text 988 - the Suicide and Crisis Lifeline. Free, 24/7.',
+        'A school counsellor is the fastest route to an actual professional for most students.',
+        'Tell one adult you trust. That single step outperforms every app in this deck.',
+      ],
+      notes:
+        'Read this slide out loud in full - do not skim it. Leave it on screen while you talk. Verify the 988 number is still current before every delivery of this session. If anyone in chat seems to be in distress, do not attempt to counsel them; name this slide, and follow up privately after with a parent or teacher if a student appears to be at risk.',
+    },
+    {
+      eyebrow: 'Close',
+      title: 'Worry is information, not an instruction to panic',
+      bullets: [
+        'Anxiety that leads to one concrete action tends to shrink. Anxiety with no outlet tends to grow.',
+        'Pick something small and local and finish it. Our next session is about finding exactly that.',
+        'If you want to build something in this space: read the research first, and be honest about what you have not built.',
+      ],
+      notes:
+        'Close on agency, not reassurance. Do not promise anyone they will feel better. Point at the November 7 session on local conservation as the practical follow-on, and put the events page link in chat.',
+    },
+  ],
+  'local-conservation': [
+    {
+      eyebrow: 'EcoQuest Online Seminar Series',
+      title: 'Conservation in Your Own Neighborhood',
+      callout:
+        'Almost everyone says they would help with something local. Almost nobody can name where to look. That is a findability problem, and it is fixable in 40 minutes.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Ask in chat where people are joining from - you will refer back to specific towns later, and it makes the search examples concrete.',
+    },
+    {
+      eyebrow: 'The real obstacle',
+      title: 'It is not apathy. It is that the listings are scattered.',
+      bullets: [
+        'Local conservation work is posted by cities, counties, parks districts, land trusts, libraries, and small nonprofits.',
+        'Each publishes to its own calendar, in its own format, with no shared index.',
+        'So the work is genuinely public and still effectively invisible.',
+      ],
+      notes:
+        'Do not moralise about people not volunteering. The honest framing is that the information is badly distributed. That reframe is the whole point of the session and it makes the audience feel capable rather than scolded.',
+    },
+    {
+      eyebrow: 'Scope',
+      title: 'What counts as conservation work near you',
+      bullets: [
+        'Habitat: invasive plant removal, native planting, trail repair, tree care.',
+        'Water: creek and storm drain cleanups, watershed monitoring, beach cleanups.',
+        'Species: bird and pollinator counts, nest box monitoring, wildlife surveys.',
+        'Waste: litter removal, park adoption, community recycling and e-waste events.',
+        'Data: community science - collecting observations that researchers actually use.',
+      ],
+      notes:
+        'The point of the breadth is that "conservation" is not only picking up trash. Someone who hates being outdoors in a group can still count birds or transcribe records. Match the category to the person.',
+    },
+    {
+      eyebrow: 'Where to look',
+      title: 'The places that actually list this work',
+      bullets: [
+        'Your city or county parks and recreation calendar - the single most overlooked source.',
+        'Your public library events calendar, which often carries community and environmental events.',
+        'JustServe and Idealist, which list volunteer projects nationally.',
+        'Regional land trusts, conservancies, and watershed or "Friends of" groups for a specific park or creek.',
+        'State park and wildlife agency volunteer pages.',
+      ],
+      notes:
+        'Have two or three of these open in tabs for the towns people named in chat. Doing one live search is more convincing than any slide - but search only in a tab you have already loaded, and never improvise a search in front of the audience.',
+    },
+    {
+      eyebrow: 'From your phone',
+      title: 'Community science you can start today',
+      bullets: [
+        'iNaturalist - photograph any organism; the community identifies it and verified records feed real biodiversity databases.',
+        'eBird, from the Cornell Lab of Ornithology - structured bird checklists used widely in research.',
+        'NASA GLOBE Observer - clouds, land cover, mosquito habitat, tree height.',
+        'CoCoRaHS - daily precipitation readings from a backyard rain gauge.',
+      ],
+      notes:
+        'These are the answer for anyone who cannot get to an organised event - no car, no group, no weekend free. Demonstrate one iNaturalist observation end to end if you have time. Be accurate that not every observation becomes research-grade data; that requires community confirmation.',
+    },
+    {
+      eyebrow: 'Method',
+      title: 'How to search so you actually find something',
+      bullets: [
+        'Search the agency, not the topic: "<your city> parks volunteer" beats "how to help the environment."',
+        'Add the season. Planting, counting, and cleanup work are scheduled months apart.',
+        'Look for the recurring event, not the one-off - a monthly cleanup is a standing invitation.',
+        'When a page lists a coordinator email, email them. Small groups often never post openings at all.',
+      ],
+      notes:
+        'The email tip is the highest-yield thing in this deck and the one people skip. Most small conservation groups are run by a handful of volunteers who would gladly take help but have no recruiting process. Offer a one-line template people can copy.',
+    },
+    {
+      eyebrow: 'What we learned',
+      title: 'Three years of running our own cleanups',
+      bullets: [
+        'Turnout tracks reminders, not enthusiasm. People mean it when they sign up and forget by Saturday.',
+        'Supplies are the real constraint: bags, gloves, grabbers, and somewhere legal to put the waste.',
+        'Two hours is the ceiling for most volunteers, and a shorter event that finishes strong beats a long one that thins out.',
+        'The same handful of people come back. Build for them, not for a crowd.',
+      ],
+      notes:
+        'These are our own observations from running cleanups, not survey findings - say so. Do not present them as research. Personal operational experience is credible precisely because you are not dressing it up as data.',
+    },
+    {
+      eyebrow: 'If you want to start one',
+      title: 'The unglamorous checklist',
+      bullets: [
+        'Permission first. Parks, beaches, and creeks have an owner, and someone must say yes.',
+        'Waste disposal arranged in advance - filled bags left at a trailhead are litter with extra steps.',
+        'Safety: gloves, no sharps by hand, an adult present, and a plan for heat and traffic.',
+        'A named adult contact for anyone under 18, and a way for parents to reach you.',
+      ],
+      notes:
+        'Emphasise permission and disposal. These are the two that get first-time organisers into genuine trouble, and neither is obvious to a student who just wants to help. If a school or troop is involved there will be extra paperwork - budget time for it.',
+    },
+    {
+      eyebrow: 'Making it count',
+      title: 'Record it, or it did not happen',
+      bullets: [
+        'Log date, location, hours, and number of people - at the time, not from memory later.',
+        'A public listing beforehand is stronger evidence than a photo afterwards.',
+        'Keep the organiser\'s confirmation email. A third party saying you were there outranks your own log.',
+        'This matters for service hour programmes, awards, and applications - and it is much easier done live.',
+      ],
+      notes:
+        'Frame this as honest record-keeping rather than resume-building. The rule we use: an event counts as public only if someone who had never heard of us could have found it in advance, through a channel we do not control. Say that out loud - it is a good standard for the audience to adopt.',
+    },
+    {
+      eyebrow: 'Close',
+      title: 'One search, this week',
+      bullets: [
+        'Search your city parks calendar and your library calendar. Ten minutes, both of them.',
+        'If nothing is scheduled, email one coordinator and ask what they need.',
+        'If you would rather work alone, put one iNaturalist observation in tonight.',
+      ],
+      notes:
+        'End with a single assignment, not five. Put the events page link in chat, thank people, and mention that the slides stay online permanently so they can come back for the source list.',
+    },
+  ],
 }

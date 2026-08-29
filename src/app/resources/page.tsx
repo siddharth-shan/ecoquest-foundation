@@ -290,7 +290,7 @@ export default function Resources() {
               {
                 title: 'MindMirror',
                 img: '/images/apps/mindmirror.png',
-                desc: 'A mental wellness check-in addressing climate anxiety and the link between environmental and personal well-being.',
+                desc: 'A student-built research pilot that screens for depression risk from a 60-second voice recording. Motivated by climate anxiety research. Not a diagnosis.',
                 url: 'https://mindmirror-pilot.vercel.app/',
               },
               {

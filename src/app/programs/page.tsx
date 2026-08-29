@@ -80,7 +80,7 @@ export default function Programs() {
                   'Reading Real Wildfire Data — how to read public fire and air-quality data',
                   'What a Beach Cleanup Actually Tells Us — turning a cleanup into usable data',
                   "Your Home's Water and Energy Footprint — reading your own utility bills",
-                  'Climate Anxiety and How We Built MindMirror — the research, and the tool we built around it',
+                  'Climate Anxiety and How We Built MindMirror — the research, and what we learned building a screening tool',
                   'Conservation in Your Own Neighborhood — finding and joining local work',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start">

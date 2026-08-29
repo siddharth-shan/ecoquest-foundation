@@ -95,7 +95,7 @@ SESSIONS = [
     dict(out="climate-anxiety-banner.png",
          title="Climate Anxiety and How We Built MindMirror",
          date="Saturday, October 24, 2026",
-         tag="MindMirror — a check-in built<br>by EcoQuest students",
+         tag="MindMirror — a screening pilot<br>built by EcoQuest students",
          right='<div class="frame">' + bar() +
                '<div class="shot crop" style="height:313px">'
                '<img src="mindmirror.png" style="width:1767px;margin-top:-88px;margin-left:-403px">'
