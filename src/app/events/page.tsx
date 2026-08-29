@@ -1,13 +1,18 @@
 import Link from 'next/link'
 import EventCarousel from '@/components/shared/EventCarousel'
+import { SEMINAR_CADENCE, pastSeminars, seminars, upcomingSeminars } from '@/data/seminars'
+
+const SITE_URL = 'https://www.ecoquestfoundation.org'
 
 export const metadata = {
-  title: 'Events',
-  description: 'Join EcoQuest Foundation community conservation events including beach cleanups, park restoration, and environmental education workshops in California and beyond.',
+  title: 'Events & Online Seminars',
+  description:
+    'EcoQuest Foundation runs a free biweekly online environmental seminar series plus hands-on beach and park cleanups across California. See upcoming session dates and register.',
   alternates: { canonical: '/events/' },
   openGraph: {
-    title: 'Events - EcoQuest Foundation',
-    description: 'Community conservation events including beach cleanups, park restoration, and environmental education workshops.',
+    title: 'Events & Online Seminars - EcoQuest Foundation',
+    description:
+      'Free biweekly online environmental seminars and hands-on community conservation events in California.',
   },
 }
 
@@ -23,17 +28,62 @@ interface TimelineEvent {
   name: string
   location: string
   when?: string
+  /** Set when the event was run jointly with another organization. */
+  coHosted?: string
+}
+
+/**
+ * Marks up the seminar series so search engines index each session as a real
+ * event rather than as text on a page. Verify output with Google's Rich Results
+ * Test after deploying.
+ */
+function SeminarSeriesJsonLd() {
+  const jsonLd = upcomingSeminars.map((seminar) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: seminar.title,
+    description: seminar.description,
+    startDate: seminar.startDateTime,
+    endDate: seminar.endDateTime,
+    eventAttendanceMode: 'https://schema.org/OnlineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    location: {
+      '@type': 'VirtualLocation',
+      // Point at the registration page, not the raw Zoom room — a join link
+      // published in page source invites uninvited guests.
+      url: seminar.eventbriteUrl || `${SITE_URL}/events/`,
+    },
+    image: [`${SITE_URL}/logo.png`],
+    organizer: {
+      '@type': 'NonprofitOrganization',
+      name: 'EcoQuest Foundation',
+      url: SITE_URL,
+    },
+    performer: {
+      '@type': 'Organization',
+      name: 'EcoQuest Foundation',
+    },
+    isAccessibleForFree: true,
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      url: seminar.eventbriteUrl || `${SITE_URL}/events/`,
+      validFrom: '2026-08-29T00:00:00-07:00',
+    },
+  }))
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
 }
 
 export default function Events() {
   const featuredEvents: FeaturedEvent[] = [
-    {
-      title: 'Heritage Park Cleanup',
-      date: '2026',
-      location: 'Cerritos, CA',
-      image: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',
-      desc: 'Student volunteers gathered to clean up green spaces and keep our local parks welcoming for the whole community.',
-    },
     {
       title: 'Seal Beach Cleanup',
       date: 'March 2025',
@@ -47,6 +97,13 @@ export default function Events() {
       location: 'Chino, CA',
       image: '/images/events/IMG_4346.JPG',
       desc: 'Volunteers cleaned pathways, cleared debris, and repainted park markers to help restore Prado Park.',
+    },
+    {
+      title: 'Heritage Park Cleanup',
+      date: '2026',
+      location: 'Cerritos, CA',
+      image: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.jpeg',
+      desc: 'Student volunteers gathered to clean up green spaces and keep our local parks welcoming for the whole community.',
     },
   ]
 
@@ -63,7 +120,11 @@ export default function Events() {
       year: '2025',
       events: [
         { name: 'Seal Beach Cleanup', location: 'Seal Beach, CA' },
-        { name: 'Cerritos Regional Park Cleanup', location: 'Cerritos, CA' },
+        {
+          name: 'Cerritos Regional Park Cleanup',
+          location: 'Cerritos, CA',
+          coHosted: 'Co-hosted with a local Scout troop',
+        },
         { name: 'Artesia Park Cleanup', location: 'Artesia, CA' },
       ],
     },
@@ -72,22 +133,178 @@ export default function Events() {
       events: [
         { name: 'Save Our Beach Cleanup', location: 'Seal Beach, CA', when: 'December' },
         { name: 'Prado Park Restoration & Beautification', location: 'Chino, CA', when: 'September' },
-        { name: 'Campus Cleanup', location: 'Cerritos, CA', when: 'February' },
+        {
+          name: 'Campus Cleanup',
+          location: 'Cerritos, CA',
+          when: 'February',
+          coHosted: 'Co-hosted with a local Scout troop',
+        },
       ],
     },
   ]
 
   return (
     <>
+      <SeminarSeriesJsonLd />
+
       <div className="bg-gradient-eco text-white text-center py-24">
         <div className="container-custom">
-          <h1 className="text-5xl font-bold mb-4 font-heading">Community Events</h1>
-          <p className="text-xl">Hands-on conservation across California — beach and park cleanups open to all</p>
+          <h1 className="text-5xl font-bold mb-4 font-heading">Events &amp; Online Seminars</h1>
+          <p className="text-xl max-w-3xl mx-auto">
+            A free biweekly online seminar series, plus hands-on beach and park cleanups across California
+          </p>
         </div>
       </div>
 
-      {/* Get Involved CTA */}
-      <section className="section-padding">
+      {/* Online Seminar Series — the recurring, open-to-anyone program */}
+      <section id="seminars" className="section-padding">
+        <div className="container-custom">
+          <div className="section-header">
+            <h2 className="section-title">Online Seminar Series</h2>
+            <div className="section-underline" />
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
+              Free 40-minute sessions on Zoom, open to anyone. Each one is built on work EcoQuest has
+              actually done — our apps, our cleanups, and our monthly challenges.
+            </p>
+            <p className="inline-block mt-5 bg-primary-green/10 text-primary-green-dark font-semibold px-5 py-2 rounded-full text-sm">
+              🗓️ {SEMINAR_CADENCE}
+            </p>
+          </div>
+
+          {upcomingSeminars.length > 0 ? (
+            <div className="space-y-5 max-w-5xl mx-auto">
+              {upcomingSeminars.map((seminar) => (
+                <div
+                  key={seminar.slug}
+                  className="card border-l-4 border-primary-green p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start"
+                >
+                  <div>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm font-semibold text-primary-blue mb-2">
+                      <span>{seminar.displayDate}</span>
+                      <span className="text-gray-300" aria-hidden>
+                        •
+                      </span>
+                      <span>{seminar.displayTime}</span>
+                      <span className="text-gray-300" aria-hidden>
+                        •
+                      </span>
+                      <span className="text-gray-500">Online (Zoom)</span>
+                    </div>
+                    <h3 className="font-bold text-2xl mb-3 text-primary-green font-heading">
+                      {seminar.title}
+                    </h3>
+                    <p className="text-gray-700 mb-4">{seminar.description}</p>
+                    <dl className="text-sm space-y-1">
+                      <div className="flex gap-2">
+                        <dt className="font-semibold text-gray-700 shrink-0">Who it&apos;s for:</dt>
+                        <dd className="text-gray-600">{seminar.audience}</dd>
+                      </div>
+                      <div className="flex gap-2">
+                        <dt className="font-semibold text-gray-700 shrink-0">Built on:</dt>
+                        <dd className="text-gray-600">{seminar.builtOn}</dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <div className="flex flex-col gap-3 w-full md:w-48">
+                    {seminar.eventbriteUrl ? (
+                      <a
+                        href={seminar.eventbriteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary text-center whitespace-nowrap"
+                      >
+                        Register Free
+                      </a>
+                    ) : (
+                      <Link
+                        href={`/events/register/?event=${encodeURIComponent(seminar.title)}`}
+                        className="btn btn-primary text-center whitespace-nowrap"
+                      >
+                        Register Free
+                      </Link>
+                    )}
+                    {seminar.hasDeck && (
+                      <Link
+                        href={`/seminars/${seminar.slug}/`}
+                        className="btn btn-outline text-center whitespace-nowrap text-sm px-4"
+                      >
+                        Preview Slides
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-600">
+              Dates for the next series are being finalized.{' '}
+              <Link href="/contact/" className="text-primary-green font-semibold hover:underline">
+                Contact us
+              </Link>{' '}
+              to be notified.
+            </p>
+          )}
+
+          <p className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">
+            Sessions are recorded and posted here afterward, so you can catch up if you miss one.
+            Registration is free and there is no minimum age.
+          </p>
+        </div>
+      </section>
+
+      {/* Past Sessions — renders only once a session has actually been held */}
+      {pastSeminars.length > 0 && (
+        <section className="section-padding pt-0">
+          <div className="container-custom max-w-5xl">
+            <div className="section-header">
+              <h2 className="section-title">Past Sessions</h2>
+              <div className="section-underline" />
+              <p className="text-gray-600 text-lg">Recordings and recaps from sessions we have run</p>
+            </div>
+            <div className="space-y-4">
+              {pastSeminars.map((seminar) => (
+                <div key={seminar.slug} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
+                    <span className="font-semibold text-primary-blue">{seminar.displayDate}</span>
+                    <span className="text-gray-300" aria-hidden>
+                      •
+                    </span>
+                    <span>{seminar.recap?.attendees} attended</span>
+                  </div>
+                  <h3 className="font-bold text-xl mb-2 text-primary-green font-heading">
+                    {seminar.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4">{seminar.recap?.summary}</p>
+                  <div className="flex flex-wrap gap-4 text-sm font-semibold">
+                    {seminar.recap?.recordingUrl && (
+                      <a
+                        href={seminar.recap.recordingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary-green hover:underline"
+                      >
+                        ▶ Watch the recording
+                      </a>
+                    )}
+                    {seminar.hasDeck && (
+                      <Link
+                        href={`/seminars/${seminar.slug}/`}
+                        className="text-primary-green hover:underline"
+                      >
+                        📊 View the slides
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Cleanup CTA */}
+      <section className="section-padding pt-0">
         <div className="container-custom">
           <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-8 md:p-12 border-2 border-green-200 grid md:grid-cols-[1fr_auto] gap-6 items-center">
             <div>
@@ -95,8 +312,9 @@ export default function Events() {
                 Join Our Next Cleanup
               </h2>
               <p className="text-gray-700 text-lg max-w-2xl">
-                We host beach and park cleanups throughout the year, open to students, families, Scout troops,
-                and community volunteers. Reach out and we&apos;ll let you know when and where the next one is happening.
+                Alongside the online series, we host beach and park cleanups throughout the year, open to
+                students, families, Scout troops, and community volunteers. Reach out and we&apos;ll let you
+                know when and where the next one is happening.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row md:flex-col gap-3">
@@ -115,7 +333,7 @@ export default function Events() {
       <section className="section-padding pt-0">
         <div className="container-custom">
           <div className="section-header">
-            <h2 className="section-title">Featured Events</h2>
+            <h2 className="section-title">Featured Cleanups</h2>
             <div className="section-underline" />
             <p className="text-gray-600 text-lg">A closer look at some of our recent conservation events</p>
           </div>
@@ -163,7 +381,7 @@ export default function Events() {
       <section className="section-padding bg-gray-50">
         <div className="container-custom max-w-4xl">
           <div className="section-header">
-            <h2 className="section-title">Event History</h2>
+            <h2 className="section-title">Cleanup History</h2>
             <div className="section-underline" />
             <p className="text-gray-600 text-lg">Our community conservation events, year by year</p>
           </div>
@@ -181,13 +399,18 @@ export default function Events() {
                       key={i}
                       className="bg-white border-l-4 border-primary-green rounded-lg p-4 flex items-start gap-3 shadow-sm"
                     >
-                      <span className="text-primary-green text-xl mt-0.5" aria-hidden>📍</span>
+                      <span className="text-primary-green text-xl mt-0.5" aria-hidden>
+                        📍
+                      </span>
                       <div>
                         <h3 className="font-bold text-gray-800">{event.name}</h3>
                         <p className="text-sm text-gray-500">
                           {event.when ? `${event.when} ${group.year} · ` : ''}
                           {event.location}
                         </p>
+                        {event.coHosted && (
+                          <p className="text-sm text-gray-500 italic mt-1">{event.coHosted}</p>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -195,9 +418,16 @@ export default function Events() {
               </div>
             ))}
           </div>
-          <p className="text-center text-sm text-gray-400 mt-10">
-            Photos are available for select 2024 events; more coming as we document each cleanup.
-          </p>
+          <div className="max-w-2xl mx-auto mt-10 space-y-2">
+            <p className="text-center text-sm text-gray-500">
+              Several of our cleanups are run jointly with local Scout troops, schools, and community
+              partners. Where that is the case we have noted it — the service hours belong to everyone who
+              showed up.
+            </p>
+            <p className="text-center text-sm text-gray-400">
+              Photos are available for select events; more coming as we document each cleanup.
+            </p>
+          </div>
         </div>
       </section>
     </>

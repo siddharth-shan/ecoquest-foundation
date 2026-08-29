@@ -64,7 +64,54 @@ export default function Programs() {
         </div>
       </section>
 
-      <section id="ecochallenge" className="section-padding bg-gray-50">
+      <section id="seminars" className="section-padding bg-gray-50">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+              <span className="text-primary-blue font-semibold uppercase text-sm">Biweekly · Free · Online</span>
+              <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Online Seminar Series</h2>
+              <div className="section-underline ml-0" />
+              <p className="text-lg mb-6 text-gray-700">
+                Free 40-minute sessions on Zoom, every other Saturday, open to anyone. Each session is built
+                on work EcoQuest has actually done — our apps, our cleanups, and our monthly challenges.
+              </p>
+              <ul className="space-y-3 mb-6">
+                {[
+                  'Reading Real Wildfire Data — how to read public fire and air-quality data',
+                  'What a Beach Cleanup Actually Tells Us — turning a cleanup into usable data',
+                  "Your Home's Water and Energy Footprint — reading your own utility bills",
+                  'Climate Anxiety and How We Built MindMirror — the research, and the tool we built around it',
+                  'Conservation in Your Own Neighborhood — finding and joining local work',
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start">
+                    <span className="text-primary-green mr-2 font-bold">✓</span>
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p className="text-gray-600 mb-6 text-sm">
+                Sessions are recorded and the slides stay online permanently, so you can catch up any time.
+              </p>
+              <Link href="/events/#seminars" className="btn btn-primary inline-block">
+                See Dates &amp; Register
+              </Link>
+            </div>
+            <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100">
+              <img
+                src="/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.jpeg"
+                alt="Student volunteers who take part in EcoQuest programs"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                <h3 className="text-3xl font-bold text-white drop-shadow">Online Seminars</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ecochallenge" className="section-padding">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="order-2 md:order-1">
@@ -93,8 +140,8 @@ export default function Programs() {
             </div>
             <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100 order-1 md:order-2">
               <img
-                src="/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.jpeg"
-                alt="Youth taking part in a hands-on environmental activity"
+                src="/images/events/IMG_3250.JPG"
+                alt="Student volunteers repainting a community basketball court"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -111,8 +158,8 @@ export default function Programs() {
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100">
               <img
-                src="/images/events/EE83102A-D888-452C-B533-214BEC1FC508.jpeg"
-                alt="EcoQuest volunteers gathered at a community cleanup event"
+                src="/images/events/IMG_1601.jpeg"
+                alt="EcoQuest volunteer collecting litter along the shoreline at a Seal Beach cleanup"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />

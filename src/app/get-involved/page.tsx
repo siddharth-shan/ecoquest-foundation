@@ -26,8 +26,9 @@ export default function GetInvolved() {
             <h2 className="section-title">Ways to Make a Difference</h2>
             <div className="section-underline" />
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
+              { icon: '🎓', title: 'Attend a Seminar', desc: 'Free 40-minute online sessions every other Saturday, open to anyone.', link: '/events/#seminars' },
               { icon: '🙋', title: 'Volunteer', desc: 'Join our team in conservation events, program development, and community outreach.', link: '#volunteer' },
               { icon: '🤝', title: 'Partner With Us', desc: 'Schools, scouts, and organizations can collaborate on events and programs.', link: '#partner' },
               { icon: '💚', title: 'Donate', desc: 'Support free environmental education and conservation programs for youth.', link: '#donate' },
