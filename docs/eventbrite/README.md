@@ -25,10 +25,15 @@ used here: some are Scout-attributed, and none are needed.
 not exist. It is fine as decorative art on the website, but it must not go on an
 event listing, where it reads as a photo of a real EcoQuest session.
 
-**`public/images/apps/oceanaware.png` must not be used.** The screenshot contains
-a "Contest Entry — Bow Seat 2026" card. EcoQuest never entered Bow Seat, and
-commit 573d3a7 removed that claim from the site's text. Putting the screenshot on
-a listing would republish the claim as a picture.
+**`public/images/apps/oceanaware.png` was re-captured for this reason.** The old
+screenshot showed a "Contest Entry — Bow Seat 2026" card. EcoQuest never entered
+Bow Seat. Commit 573d3a7 removed the claim from the site's text and the app
+itself was fixed separately, but the stale screenshot kept republishing it as a
+picture on four pages long after the words were gone.
+
+The lesson generalises: **a retraction is not finished until the images are
+re-captured too.** Text greps clean while a claim survives in a PNG. When a
+claim is pulled, re-shoot every screenshot that showed it.
 
 An app screenshot is only paired with a session when the app genuinely relates to
 it, and the caption states what the app is — never what the session will cover.

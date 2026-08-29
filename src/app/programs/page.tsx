@@ -96,16 +96,13 @@ export default function Programs() {
                 See Dates &amp; Register
               </Link>
             </div>
-            <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100">
+            <div className="rounded-2xl overflow-hidden shadow-lg bg-gray-100 aspect-[2/1]">
               <img
-                src="/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.jpeg"
-                alt="Student volunteers who take part in EcoQuest programs"
+                src="/images/seminar-series-banner.png"
+                alt="EcoQuest Foundation Online Seminar Series — free, every other Saturday, 11:00 to 11:40 AM Pacific on Zoom"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-3xl font-bold text-white drop-shadow">Online Seminars</h3>
-              </div>
             </div>
           </div>
         </div>

@@ -78,10 +78,11 @@ export default function About() {
               The students driving EcoQuest Foundation's mission forward.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
             {[
               { name: 'Siddharth', role: 'Founder & President', img: '/images/team/Siddharth.png' },
               { name: 'Aditya', role: 'Vice President of Events', img: '/images/team/Aditya.png' },
+              { name: 'Shruthi', role: 'Vice President of Education', img: '/images/team/Shruthi_2.png' },
             ].map((member) => (
               <div key={member.name} className="card card-hover text-center">
                 <div className="aspect-square overflow-hidden bg-gray-100">
