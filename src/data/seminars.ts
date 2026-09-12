@@ -5,14 +5,22 @@
 // a public commitment with a real date, and the schema.org output is what Google
 // indexes as an actual event.
 //
-// AFTER RUNNING A SESSION: fill in the `recap` block. A session with no recap
-// renders as upcoming; a session with a recap moves into "Past Sessions". Nothing
-// claims to have happened until the recap is filled in, so the page cannot
-// overstate the record.
+// A session moves from "Upcoming" to "Past Sessions" on its own once its end
+// time has passed — see the note on hasEnded below. What does NOT happen on its
+// own is any claim about how the session went: attendance, a summary, and a
+// recording are only ever published because a human typed them into `recap`
+// after the fact. Nothing here can invent a number or describe a room it was
+// not in.
+//
+// IF A SESSION IS CANCELLED, remove it from this list or move its date. Leaving
+// a past-dated entry in place states that it was held.
 
 export interface SeminarRecap {
-  /** Number of people who attended live. Report the real count. */
-  attendees: number
+  /**
+   * Number of people who attended live. Report the real count, or leave it out
+   * entirely — an omitted number says nothing, an invented one is a lie.
+   */
+  attendees?: number
   /** Public recording URL (YouTube unlisted is fine — it still resolves). */
   recordingUrl?: string
   /** One or two sentences on what was actually covered and discussed. */
@@ -130,12 +138,25 @@ export const seminars: Seminar[] = [
   },
 ]
 
-/** Sessions that have not yet been held (no recap recorded). */
-export const upcomingSeminars = seminars.filter((s) => !s.recap)
+/**
+ * Whether a session's scheduled end time has passed.
+ *
+ * Evaluated when the site is built, not in the visitor's browser: this is a
+ * static export, so a session only moves out of "Upcoming" on the next deploy.
+ * That is fine in practice — the runbook already has you redeploying after each
+ * session to add the recap — but it does mean a stale deploy will keep showing
+ * a finished session as upcoming. Redeploy.
+ */
+function hasEnded(seminar: Seminar): boolean {
+  return new Date(seminar.endDateTime).getTime() < Date.now()
+}
 
-/** Sessions that have actually happened, most recent first. */
+/** Sessions still ahead of us. */
+export const upcomingSeminars = seminars.filter((s) => !hasEnded(s))
+
+/** Sessions whose date has passed, most recent first. */
 export const pastSeminars = seminars
-  .filter((s) => s.recap)
+  .filter(hasEnded)
   .sort((a, b) => b.startDateTime.localeCompare(a.startDateTime))
 
 export function getSeminar(slug: string): Seminar | undefined {

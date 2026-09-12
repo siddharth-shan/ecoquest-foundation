@@ -36,9 +36,20 @@ export default async function SeminarDeckPage({
 }) {
   const { slug } = await params
   const seminar = getSeminar(slug)
-  const slides = decks[slug]
+  const deck = decks[slug]
 
-  if (!seminar || !slides) notFound()
+  if (!seminar || !deck) notFound()
+
+  // Pick the public fields out explicitly rather than spreading the slide.
+  // Speaker notes must not reach the browser, and a static export serializes
+  // whatever is handed to a client component straight into the page source —
+  // so anything not listed here is what keeps them off the site.
+  const slides = deck.map(({ title, eyebrow, bullets, callout }) => ({
+    title,
+    eyebrow,
+    bullets,
+    callout,
+  }))
 
   return <SlideDeck deckTitle={seminar.title} sessionDate={seminar.displayDate} slides={slides} />
 }

@@ -4,7 +4,14 @@ import { useCallback, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi'
 
-export interface Slide {
+/**
+ * What a slide looks like once it is public. Deliberately has no speaker notes
+ * field: notes are the presenter's prep, written to be said out loud rather
+ * than read, and they stay in src/data/decks.ts. Hiding them with CSS would
+ * not be enough — this is a static export, so anything passed to this
+ * component is serialized into the page and readable in source.
+ */
+export interface PublicSlide {
   /** Shown as the slide heading. */
   title: string
   /** Optional line above the title (section label, source note). */
@@ -13,14 +20,12 @@ export interface Slide {
   bullets?: string[]
   /** A single pull-quote or headline number to anchor the slide. */
   callout?: string
-  /** Speaker notes. Visible on the page, hidden in presentation mode. */
-  notes?: string
 }
 
 interface SlideDeckProps {
   deckTitle: string
   sessionDate: string
-  slides: Slide[]
+  slides: PublicSlide[]
 }
 
 /**
@@ -150,15 +155,6 @@ export default function SlideDeck({ deckTitle, sessionDate, slides }: SlideDeckP
           </button>
         </div>
 
-        {/* Speaker notes — presentation mode hides these */}
-        {!presenting && slide.notes && (
-          <div className="mt-6 bg-gray-50 border-l-4 border-primary-blue rounded-lg p-5">
-            <p className="text-xs font-bold uppercase tracking-wide text-primary-blue mb-2">
-              Speaker notes
-            </p>
-            <p className="text-gray-700 text-sm leading-relaxed">{slide.notes}</p>
-          </div>
-        )}
       </div>
 
       {!presenting && (

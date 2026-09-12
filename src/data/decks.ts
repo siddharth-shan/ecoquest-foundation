@@ -1,4 +1,19 @@
-import type { Slide } from '@/components/shared/SlideDeck'
+/**
+ * The authoring shape of a slide. Wider than what the site renders: `notes` is
+ * presenter prep and never reaches the public page — /seminars/[slug]/ picks
+ * out the public fields by hand before passing them to the deck component. Read
+ * the notes here in the repo, or print them with:
+ *
+ *   node -e "…" (see docs/SEMINAR_RUNBOOK.md)
+ */
+export interface Slide {
+  title: string
+  eyebrow?: string
+  bullets?: string[]
+  callout?: string
+  /** Speaker notes. Repo only — not published. */
+  notes?: string
+}
 
 // Slide content for the online seminar series, keyed by seminar slug.
 //

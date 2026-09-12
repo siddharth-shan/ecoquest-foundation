@@ -18,12 +18,39 @@ event cards, the schema.org markup, and the deck pages. Slide content lives in
 
 ## The rule this series runs on
 
-Nothing on the site claims a session happened until it happened. Sessions render
-as "upcoming" until you add a `recap` block, at which point they move to "Past
-Sessions." If you never run a session, the page never says you did.
+A session moves from "Upcoming" to "Past Sessions" on its own once its end time
+has passed. What does **not** happen on its own is any claim about how it went:
+attendance, a summary, and a recording appear only because a human typed them
+into the `recap` block afterwards. A past session with no recap shows its date,
+its title, and a link to its slide deck — and says nothing else.
 
 Do not add attendance numbers, recordings, or summaries for a session you have
 not actually held.
+
+**If a session is cancelled, remove it from `src/data/seminars.ts` or move its
+date.** Leaving a past-dated entry in place is the site stating it was held.
+
+**The move happens at build time**, because the site is a static export. A
+session that finished this morning keeps showing as upcoming until the next
+deploy. You will be redeploying anyway to add the recap — but if you are not
+writing a recap yet, still redeploy, or the page is out of date.
+
+### Speaker notes are not published
+
+Notes live in `src/data/decks.ts` and are stripped before the deck page renders
+them, so they never reach the browser. Hiding them with CSS would not be enough:
+a static export serializes whatever is passed to a component into the page
+source, where anyone can read it.
+
+To read them while presenting:
+
+```bash
+python3 scripts/print-speaker-notes.py                 # list the decks
+python3 scripts/print-speaker-notes.py wildfire-data   # one deck, as markdown
+```
+
+Pipe it to a file and open it on a second screen. Do not paste notes back onto
+the site.
 
 ---
 
@@ -204,7 +231,9 @@ qualifies is the local specialist's call — worth asking rather than assuming.
 1. Open all data sources in tabs **before** you start. Do not search live.
 2. Start the local recording (free plan records to your own machine).
 3. Open the deck at `/seminars/<slug>/` and press **F** to present full-screen,
-   then share that browser tab in Zoom. Speaker notes are hidden in present mode.
+   then share that browser tab in Zoom. The deck page carries no speaker notes —
+   print them first with `python3 scripts/print-speaker-notes.py <slug>` and keep
+   them on a second screen or on paper.
 4. Note the **peak attendee count** — you need the real number for the recap.
 5. Save the chat log before ending the meeting.
 
@@ -223,8 +252,13 @@ recap: {
 },
 ```
 
-3. Rebuild and redeploy. The session moves from "Upcoming" to "Past Sessions"
-   automatically.
+Every field except `summary` is optional. If the turnout was small and you would
+rather not print the number, leave `attendees` out — an omitted number says
+nothing, an invented one is a lie. If there is no recording, leave
+`recordingUrl` out; the slide deck link stands on its own.
+
+3. Rebuild and redeploy. The session is already in "Past Sessions" by date; the
+   redeploy is what puts the recap on it.
 4. Post a short recap to social with one screenshot from the session.
 
 ---

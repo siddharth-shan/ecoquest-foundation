@@ -38,6 +38,15 @@ interface TimelineEvent {
  * Reads the display string rather than parsing startDateTime, because that is a
  * UTC instant and the tile must show the Pacific date the session actually runs.
  */
+/**
+ * Position in the series, counted over every session rather than over the
+ * upcoming ones. Once session 1 has been held it leaves the upcoming list, and
+ * numbering off that list would relabel session 3 as "Session 1 of 5".
+ */
+function sessionNumber(slug: string) {
+  return seminars.findIndex((s) => s.slug === slug) + 1
+}
+
 function dateTile(displayDate: string) {
   const [weekday, monthDay, year] = displayDate.split(', ')
   const [month, day] = monthDay.split(' ')
@@ -185,7 +194,7 @@ export default function Events() {
 
           {upcomingSeminars.length > 0 ? (
             <div className="space-y-6 max-w-5xl mx-auto">
-              {upcomingSeminars.map((seminar, index) => (
+              {upcomingSeminars.map((seminar) => (
                 <article key={seminar.slug} className="card border-l-4 border-primary-green">
                   <div className="p-6 md:p-8 flex gap-5 md:gap-7">
                     {/* Date tile. Sessions are two weeks apart, so the date is
@@ -208,7 +217,7 @@ export default function Events() {
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-2">
                         <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                          Session {index + 1} of {seminars.length}
+                          Session {sessionNumber(seminar.slug)} of {seminars.length}
                         </span>
                         <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
                           Free
@@ -307,7 +316,8 @@ export default function Events() {
           )}
 
           <p className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">
-            Sessions are recorded and posted here afterward, so you can catch up if you miss one.
+            Every session has a permanent slide-deck page on this site, so you can read through one
+            you missed or revisit it afterward.
             Registration is free and there is no minimum age.
           </p>
         </div>
@@ -320,43 +330,62 @@ export default function Events() {
             <div className="section-header">
               <h2 className="section-title">Past Sessions</h2>
               <div className="section-underline" />
-              <p className="text-gray-600 text-lg">Recordings and recaps from sessions we have run</p>
+              <p className="text-gray-600 text-lg">
+                The slide deck from each session stays online at a permanent link. Recaps and
+                recordings are added after the session, once there is something real to report.
+              </p>
             </div>
             <div className="space-y-4">
               {pastSeminars.map((seminar) => (
-                <div key={seminar.slug} className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <article
+                  key={seminar.slug}
+                  className="bg-white border border-gray-200 border-l-4 border-l-gray-300 rounded-xl p-6 shadow-sm"
+                >
                   <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
-                    <span className="font-semibold text-primary-blue">{seminar.displayDate}</span>
-                    <span className="text-gray-300" aria-hidden>
-                      •
+                    <span className="font-semibold text-gray-700">
+                      Session {sessionNumber(seminar.slug)} · {seminar.displayDate}
                     </span>
-                    <span>{seminar.recap?.attendees} attended</span>
+                    {/* Attendance prints only when a real number was recorded. */}
+                    {typeof seminar.recap?.attendees === 'number' && (
+                      <>
+                        <span className="text-gray-300" aria-hidden>
+                          •
+                        </span>
+                        <span>{seminar.recap.attendees} attended</span>
+                      </>
+                    )}
                   </div>
-                  <h3 className="font-bold text-xl mb-2 text-primary-green font-heading">
+
+                  <h3 className="font-bold text-xl mb-2 text-gray-900 font-heading">
                     {seminar.title}
                   </h3>
-                  <p className="text-gray-700 mb-4">{seminar.recap?.summary}</p>
-                  <div className="flex flex-wrap gap-4 text-sm font-semibold">
+
+                  {seminar.recap?.summary && (
+                    <p className="text-gray-700 mb-4 max-w-prose">{seminar.recap.summary}</p>
+                  )}
+
+                  <div className="flex flex-wrap items-center gap-3 mt-4">
+                    {seminar.hasDeck && (
+                      <Link
+                        href={`/seminars/${seminar.slug}/`}
+                        className="btn btn-outline text-sm px-4 whitespace-nowrap"
+                      >
+                        View the slide deck
+                      </Link>
+                    )}
                     {seminar.recap?.recordingUrl && (
                       <a
                         href={seminar.recap.recordingUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary-green hover:underline"
+                        className="btn btn-outline text-sm px-4 whitespace-nowrap inline-flex items-center gap-2"
                       >
-                        ▶ Watch the recording
+                        Watch the recording
+                        <HiExternalLink className="text-base opacity-80" aria-hidden />
                       </a>
                     )}
-                    {seminar.hasDeck && (
-                      <Link
-                        href={`/seminars/${seminar.slug}/`}
-                        className="text-primary-green hover:underline"
-                      >
-                        📊 View the slides
-                      </Link>
-                    )}
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
