@@ -21,7 +21,7 @@ const moreLinks = [
 ]
 
 const apps = [
-  { name: 'Wildfire Watch', url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net', icon: '🔥' },
+  { name: 'Wildfire Watch', url: 'https://ecoquest-wildfire-watch.vercel.app', icon: '🔥' },
   { name: 'Oceanaware Guardian', url: 'https://oceanaware-guardian.vercel.app', icon: '🌊' },
   { name: 'MindMirror', url: 'https://mindmirror-pilot.vercel.app/', icon: '🧠' },
   { name: 'GreenLedger', url: 'https://ecoquest-greenledger.vercel.app', icon: '🌱' },

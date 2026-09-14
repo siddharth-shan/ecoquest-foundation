@@ -111,7 +111,7 @@ export default function Resources() {
       title: 'Wildfire Watch',
       desc: 'Real-time wildfire monitoring and tracking system for environmental awareness',
       tag: 'Live App',
-      url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
+      url: 'https://ecoquest-wildfire-watch.vercel.app',
       external: true,
       color: 'bg-orange-500'
     },
@@ -279,7 +279,7 @@ export default function Resources() {
                 title: 'Wildfire Watch',
                 img: '/images/apps/wildfire-watch.png',
                 desc: 'Real-time wildfire monitoring system with up-to-date information on active fires and environmental impact.',
-                url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
+                url: 'https://ecoquest-wildfire-watch.vercel.app',
               },
               {
                 title: 'Oceanaware Guardian',

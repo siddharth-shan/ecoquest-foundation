@@ -28,7 +28,7 @@ export default function ImpactPortfolio() {
       desc: 'Real-time wildfire monitoring and tracking system providing critical community safety information.',
       competition: 'Congressional App Challenge',
       competitionUrl: 'https://www.congressionalappchallenge.us/',
-      appUrl: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
+      appUrl: 'https://ecoquest-wildfire-watch.vercel.app',
       img: '/images/apps/wildfire-watch.png',
       gradient: 'from-orange-500 to-red-600',
       skills: ['React', 'Azure', 'Real-time Data', 'GIS Mapping'],

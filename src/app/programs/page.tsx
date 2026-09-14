@@ -243,7 +243,7 @@ export default function Programs() {
                   <p className="text-xs font-semibold text-orange-700">🏛️ Submitted to Congressional App Challenge</p>
                 </div>
                 <a
-                  href="https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net"
+                  href="https://ecoquest-wildfire-watch.vercel.app"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-primary w-full text-center inline-block"

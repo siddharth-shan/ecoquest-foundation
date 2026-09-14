@@ -97,7 +97,7 @@ export default function Home() {
                 title: 'Wildfire Watch',
                 desc: 'Track wildfires in real-time and access critical environmental safety information for your community',
                 img: '/images/apps/wildfire-watch.png',
-                url: 'https://ewfw-hugafhdag5emcjgy.westus2-01.azurewebsites.net',
+                url: 'https://ecoquest-wildfire-watch.vercel.app',
                 gradient: 'from-orange-500 to-red-600',
                 badge: '🏛️ Congressional App Challenge',
               },
