@@ -1,6 +1,14 @@
 import Link from 'next/link'
-import { HiCalendar, HiClock, HiExternalLink, HiVideoCamera } from 'react-icons/hi'
+import {
+  HiCalendar,
+  HiClock,
+  HiExternalLink,
+  HiGlobeAlt,
+  HiLocationMarker,
+  HiVideoCamera,
+} from 'react-icons/hi'
 import EventCarousel from '@/components/shared/EventCarousel'
+import { CAMPAIGN_BLURB, CAMPAIGN_TITLE, upcomingCampaigns } from '@/data/campaigns'
 import { SEMINAR_CADENCE, pastSeminars, seminars, upcomingSeminars } from '@/data/seminars'
 
 const SITE_URL = 'https://www.ecoquestfoundation.org'
@@ -8,7 +16,7 @@ const SITE_URL = 'https://www.ecoquestfoundation.org'
 export const metadata = {
   title: 'Events & Online Seminars',
   description:
-    'EcoQuest Foundation runs a free biweekly online environmental seminar series plus hands-on beach and park cleanups across California. See upcoming session dates and register.',
+    'EcoQuest Foundation runs a free biweekly online environmental seminar series plus hands-on beach and park cleanups across California, including the October Environmental Action Campaign. See upcoming dates and register.',
   alternates: { canonical: '/events/' },
   openGraph: {
     title: 'Events & Online Seminars - EcoQuest Foundation',
@@ -103,6 +111,76 @@ function SeminarSeriesJsonLd() {
   )
 }
 
+/**
+ * Marks up the time-boxed campaigns. Kept separate from the seminar markup
+ * because the two differ in the field that matters most to a search engine:
+ * a seminar is always online, while a campaign may be a physical event with a
+ * street address, and Google treats those as different kinds of result.
+ */
+function CampaignJsonLd() {
+  const jsonLd = upcomingCampaigns.map((campaign) => {
+    // Prefer a third-party listing wherever one exists. Pointing schema.org at
+    // our own form would have the site cite itself as the public record.
+    const publicUrl = campaign.listingUrl || campaign.registrationUrl
+
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      name: `EcoQuest ${campaign.title}`,
+      description: campaign.description,
+      startDate: campaign.startDateTime,
+      endDate: campaign.endDateTime,
+      eventAttendanceMode:
+        campaign.attendanceMode === 'in-person'
+          ? 'https://schema.org/OfflineEventAttendanceMode'
+          : 'https://schema.org/OnlineEventAttendanceMode',
+      eventStatus: 'https://schema.org/EventScheduled',
+      location:
+        campaign.attendanceMode === 'in-person' && campaign.place
+          ? {
+              '@type': 'Place',
+              name: campaign.place.name,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: campaign.place.street,
+                addressLocality: campaign.place.city,
+                addressRegion: campaign.place.region,
+                postalCode: campaign.place.postalCode,
+                addressCountry: 'US',
+              },
+            }
+          : {
+              '@type': 'VirtualLocation',
+              url: publicUrl,
+            },
+      image: [`${SITE_URL}/logo.png`],
+      organizer: {
+        '@type': 'NonprofitOrganization',
+        name: 'EcoQuest Foundation',
+        url: SITE_URL,
+      },
+      isAccessibleForFree: true,
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+        url: publicUrl,
+        validFrom: '2026-09-29T00:00:00-07:00',
+      },
+    }
+  })
+
+  if (jsonLd.length === 0) return null
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  )
+}
+
 export default function Events() {
   const featuredEvents: FeaturedEvent[] = [
     {
@@ -167,6 +245,7 @@ export default function Events() {
   return (
     <>
       <SeminarSeriesJsonLd />
+      <CampaignJsonLd />
 
       <div className="bg-gradient-eco text-white text-center py-24">
         <div className="container-custom">
@@ -176,6 +255,227 @@ export default function Events() {
           </p>
         </div>
       </div>
+
+      {/* Time-boxed campaigns. Placed above the seminar series on purpose: these
+          close within weeks, and a dated thing that expires should outrank a
+          recurring thing that runs all term. The section removes itself once
+          every campaign in the data file has ended. */}
+      {upcomingCampaigns.length > 0 && (
+        <section
+          id="campaign"
+          className="section-padding bg-gradient-to-br from-green-50 to-emerald-50"
+        >
+          <div className="container-custom">
+            <div className="section-header">
+              <span className="inline-block mb-4 bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full">
+                Open now
+              </span>
+              <h2 className="section-title">{CAMPAIGN_TITLE}</h2>
+              <div className="section-underline" />
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto">{CAMPAIGN_BLURB}</p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
+              {upcomingCampaigns.map((campaign) => (
+                <article
+                  key={campaign.slug}
+                  className="card bg-white border-t-4 border-primary-green flex flex-col"
+                >
+                  <div className="p-6 md:p-7 flex-1">
+                    <div className="flex gap-5">
+                      {/* Same date tile as the seminar cards, but the three
+                          lines come from the data file rather than being split
+                          out of a display string — a month-long campaign has no
+                          single weekday to parse. */}
+                      <div className="shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
+                        <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
+                          {campaign.tile.top}
+                        </div>
+                        <div
+                          className={`font-bold leading-tight text-primary-green-dark font-heading ${
+                            campaign.tile.main.length > 2
+                              ? 'text-lg md:text-xl'
+                              : 'text-2xl md:text-3xl'
+                          }`}
+                        >
+                          {campaign.tile.main}
+                        </div>
+                        <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
+                          {campaign.tile.bottom}
+                        </div>
+                      </div>
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                            {campaign.attendanceMode === 'in-person' ? 'In person' : 'Online'}
+                          </span>
+                          <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                            Free
+                          </span>
+                        </div>
+                        <h3 className="font-bold text-xl md:text-2xl text-gray-900 font-heading leading-snug">
+                          {campaign.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    <div className="flex flex-col gap-2 text-sm text-gray-600 mt-5 mb-4">
+                      <span className="inline-flex items-center gap-1.5">
+                        <HiCalendar className="text-primary-green shrink-0" aria-hidden />
+                        <span className="font-medium text-gray-800">{campaign.displayDate}</span>
+                      </span>
+                      <span className="inline-flex items-center gap-1.5">
+                        <HiClock className="text-primary-green shrink-0" aria-hidden />
+                        {campaign.displayTime}
+                      </span>
+                      {campaign.place ? (
+                        <span className="inline-flex items-start gap-1.5">
+                          <HiLocationMarker
+                            className="text-primary-green shrink-0 mt-0.5"
+                            aria-hidden
+                          />
+                          <span>
+                            <span className="font-medium text-gray-800">{campaign.place.name}</span>
+                            <br />
+                            {campaign.place.street}, {campaign.place.city}, {campaign.place.region}{' '}
+                            {campaign.place.postalCode}
+                          </span>
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5">
+                          <HiGlobeAlt className="text-primary-green shrink-0" aria-hidden />
+                          {campaign.onlineWhere}
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="text-gray-700 leading-relaxed mb-5">{campaign.description}</p>
+
+                    {campaign.details && (
+                      <ul className="space-y-1.5 text-sm text-gray-700 mb-5">
+                        {campaign.details.map((detail) => (
+                          <li key={detail} className="flex gap-2">
+                            <span className="text-primary-green font-bold shrink-0" aria-hidden>
+                              •
+                            </span>
+                            <span>{detail}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <dl className="grid gap-3 text-sm border-t border-gray-100 pt-4">
+                      <div>
+                        <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                          Service hours
+                        </dt>
+                        <dd className="text-gray-700">{campaign.serviceHours}</dd>
+                      </div>
+                      <div>
+                        <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                          Who it&apos;s for
+                        </dt>
+                        <dd className="text-gray-700">{campaign.audience}</dd>
+                      </div>
+                    </dl>
+                  </div>
+
+                  <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-7 py-4">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <a
+                        href={campaign.registrationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
+                      >
+                        {campaign.ctaLabel}
+                        <HiExternalLink className="text-base opacity-80" aria-hidden />
+                      </a>
+                      {/* Links out to a third-party listing only once one really
+                          exists — see listingUrl in src/data/campaigns.ts. */}
+                      {campaign.listingUrl && (
+                        <a
+                          href={campaign.listingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-outline whitespace-nowrap text-sm px-4"
+                        >
+                          View on {campaign.listingLabel}
+                        </a>
+                      )}
+                      {campaign.place && (
+                        <a
+                          href={campaign.place.mapUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm font-semibold text-primary-green hover:underline whitespace-nowrap"
+                        >
+                          Get directions
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-500 mt-3">
+                      Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
+                      {campaign.supportedBy ? `, ${campaign.supportedBy}` : ''}
+                    </p>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            {/* The flyer. Every fact on it is already stated in real text in the
+                cards above — this is the shareable copy, not the record. It is
+                rendered from src/data/campaigns.ts by
+                docs/eventbrite/gen-campaign-poster.py, so re-run that script
+                when a detail changes: corrected text greps clean while a stale
+                claim survives inside a PNG. */}
+            <div className="mt-10 max-w-3xl mx-auto bg-white rounded-2xl border border-green-200 p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-5 sm:gap-7">
+              <a
+                href="/images/campaigns/october-2026-poster.png"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0"
+              >
+                <img
+                  src="/images/campaigns/october-2026-poster.webp"
+                  alt="October Environmental Action Campaign flyer — the California Biodiversity Challenge running October 1–31, and the Friendship Park community cleanup on Sunday, October 11."
+                  width={1200}
+                  height={1700}
+                  className="w-28 sm:w-32 h-auto rounded-lg border border-gray-200 shadow-sm"
+                  loading="lazy"
+                />
+              </a>
+              <div className="text-center sm:text-left">
+                <h3 className="font-bold text-lg text-gray-900 font-heading mb-1.5">
+                  Print or share the flyer
+                </h3>
+                <p className="text-sm text-gray-600 mb-4 max-w-prose">
+                  One page with both events, the Friendship Park address, and a QR code for each
+                  sign-up form — the same details as the cards above. Useful for a classroom wall,
+                  a library noticeboard, or a group chat.
+                </p>
+                <a
+                  href="/images/campaigns/october-2026-poster.png"
+                  download
+                  className="btn btn-outline text-sm px-4 inline-flex items-center justify-center whitespace-nowrap"
+                >
+                  Download the flyer
+                </a>
+              </div>
+            </div>
+
+            <p className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">
+              Questions about either one, or about logging service hours for a school or award
+              program?{' '}
+              <Link href="/contact/" className="text-primary-green font-semibold hover:underline">
+                Get in touch
+              </Link>
+              .
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Online Seminar Series — the recurring, open-to-anyone program */}
       <section id="seminars" className="section-padding">
@@ -400,10 +700,12 @@ export default function Events() {
               <h2 className="text-2xl md:text-3xl font-bold text-primary-green mb-3 font-heading">
                 Join Our Next Cleanup
               </h2>
+              {/* Worded off the campaign data rather than hardcoded, so this
+                  does not point at a card that has since expired away. */}
               <p className="text-gray-700 text-lg max-w-2xl">
-                Alongside the online series, we host beach and park cleanups throughout the year, open to
-                students, families, Scout troops, and community volunteers. Reach out and we&apos;ll let you
-                know when and where the next one is happening.
+                {upcomingCampaigns.some((c) => c.attendanceMode === 'in-person')
+                  ? 'Beyond the cleanup already on the calendar above, we run beach and park cleanups throughout the year, open to students, families, Scout troops, and community volunteers. Reach out and we’ll let you know when and where the next one is happening.'
+                  : 'Alongside the online series, we host beach and park cleanups throughout the year, open to students, families, Scout troops, and community volunteers. Reach out and we’ll let you know when and where the next one is happening.'}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row md:flex-col gap-3">

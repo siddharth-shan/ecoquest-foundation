@@ -1,0 +1,95 @@
+<!doctype html><meta charset="utf-8"><style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Avenir Next','Helvetica Neue',Helvetica,Arial,sans-serif;
+  overflow:hidden;background:#0f2a1a}
+.brandrow{display:flex;align-items:center;gap:22px}
+.brandrow img{width:92px;height:92px;border-radius:20px;background:#fff;padding:7px;
+  box-shadow:0 8px 28px rgba(0,0,0,.22)}
+.brandname{color:#fff;font-size:34px;font-weight:700;line-height:1.15}
+.brandsub{color:rgba(255,255,255,.72);font-size:20px;font-weight:500;margin-top:5px}
+.kicker{display:inline-block;background:#fbbc04;color:#1a1a1a;font-weight:800;
+  letter-spacing:2.4px;text-transform:uppercase;border-radius:999px}
+h1{color:#fff;font-weight:800;letter-spacing:-1.6px;line-height:1.05;
+  text-shadow:0 3px 18px rgba(0,0,0,.18)}
+.card{background:#fff;border-radius:24px;display:flex;flex-direction:column;
+  box-shadow:0 26px 60px rgba(0,0,0,.34)}
+.cardtop{display:flex;align-items:center;gap:14px}
+.pill{font-size:19px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;
+  padding:8px 16px;border-radius:999px;background:#e6f4ea;color:#137333}
+.pill.amber{background:#fef7e0;color:#8a6100}
+.ctitle{color:#12251a;font-weight:800;letter-spacing:-.8px;line-height:1.1}
+.row{display:flex;align-items:flex-start;gap:12px;color:#33413a;line-height:1.4}
+.row b{color:#12251a;font-weight:700}
+.ico{color:#137333;font-weight:800;flex:0 0 auto}
+.hours{background:#f3f8f4;border-left:5px solid #34a853;border-radius:10px;
+  color:#204030;line-height:1.4}
+.hours b{display:block;color:#137333;text-transform:uppercase;letter-spacing:1.4px}
+.qrwrap{display:flex;align-items:center;gap:18px;margin-top:auto}
+.qrwrap img{border-radius:12px;background:#fff;flex:0 0 auto}
+.qrlabel{color:#5b6b63;line-height:1.35}
+.qrlabel b{display:block;color:#12251a}
+.foot{color:rgba(255,255,255,.9);font-weight:600;text-align:center}
+.foot i{font-style:normal;color:#fbbc04}
+
+body{width:1200px;height:1700px;padding:64px 60px 52px;
+  display:flex;flex-direction:column;
+  background:linear-gradient(160deg,#137333 0%,#1c8f42 52%,#34a853 100%);
+  position:relative}
+body::after{content:'';position:absolute;right:-220px;top:-200px;width:620px;height:620px;
+  border-radius:50%;background:rgba(255,255,255,.07)}
+.kicker{align-self:flex-start;font-size:20px;padding:11px 22px;margin:30px 0 16px}
+h1{font-size:62px;max-width:17ch;margin-bottom:12px}
+.lede{color:rgba(255,255,255,.88);font-size:24px;font-weight:500;line-height:1.45;
+  max-width:32ch;margin-bottom:30px}
+.cards{display:flex;flex-direction:column;gap:24px;position:relative;z-index:1}
+.card{padding:28px 32px;gap:13px}
+.ctitle{font-size:34px}
+.row{font-size:22px}
+.hours{padding:13px 17px;font-size:20px;margin-top:2px}
+.hours b{font-size:14px;margin-bottom:3px}
+.qrwrap{padding-top:12px}
+.qrwrap img{width:132px;height:132px}
+.qrlabel{font-size:19px}
+.foot{margin-top:auto;padding-top:30px;font-size:24px;position:relative;z-index:1}
+</style>
+<div class="brandrow">
+  <img src="logo.png" alt="">
+  <div><div class="brandname">EcoQuest Foundation</div>
+  <div class="brandsub">501(c)(3) environmental nonprofit</div></div>
+</div>
+
+<div class="kicker">October 2026 &middot; Free &middot; All ages</div>
+<h1>October Environmental Action Campaign</h1>
+<p class="lede">Two ways to take part &mdash; one from anywhere in California,
+one morning of hands-on work in Cerritos.</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="cardtop"><span class="pill">Online</span>
+      <span class="pill amber">All month</span></div>
+    <div class="ctitle">California Biodiversity Challenge 2026</div>
+    <div class="row"><span class="ico">&#9679;</span>
+      <span><b>October 1–31, 2026</b> &middot; Open all month, on your own schedule</span></div>
+    <div class="row"><span class="ico">&#9679;</span>
+      <span>Anywhere in California &mdash; document species with iNaturalist</span></div>
+    <div class="hours"><b>Service hours</b>2 hours for 1–24 verified observations, 4 hours for 25–50</div>
+    <div class="qrwrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZUAAAGVAQMAAAAMlf54AAAABlBMVEUPKhr////gWq1WAAADF0lEQVR42u1cMZKkQAwzRzDhPoGnzNNmnjZP4QmEBFP4aEtuerYu2WTrXCUiqqETVLJl2Y35j6/dtEd7tOe397wM1+O1bDa728PXr32O57gxu/vGtxbf/9jPL+35vT0N0yXgOzE1QPlsCM5c8fd0rtiy3eKtlzCtgenJwSkQtNu7ETYIfD56WluZwFM8Eqa1MHXS08jK9njgqTCtyNMF9PS8OYMwV1w8rZlPW8hFGsUKYq8fwF35tBKmg+6N7PnvG+neQph+1jaTI+R23YvEugzv6LtViL07OYik2aTRnmLJkFjXEEviaTmeptUQ0ThKmNWghE9Mg8LKp1UwPUuYwwLBlj0buHaDRlo8DaVYgY7Sd6ugkQLKZ2AaYqmvtMR6GAvVDNT6bvVqGWP2bHB3KMOOAHP13apopGClZ+zNaPwV8ukRnsMk3VvJR2oIPqiUgKAfdI3OR934Veyto3tpACKfYmXOshQljJGwwrQKT5OVNABpPoxWw5lhwyRU7K3B0xWmbhgLNHU31qcIwvQcTJgWqmWYT0ezCCVM3rBBo9hbSPfmeAObLxb2EWuZdCHe2Y/Td6sQe3kNjW8P4/eeFpMx58rvrRJ7U/+sSc9E8I5UCyg5CyFMi/A082k2aIYSpg8Q0nwQpkVqme4EYqoB+ZQ9cQyb4VE4wPpuhWZBqXKRTye6u2yxYeBB+bSMj5T0DDJazg1Gp6YTNitWYVoE02voKFvh9mkSXsNmwrROLRNmERVRb7r1CSV4g6pPy/CUfi/NfLTY+sjKnNJolt9bqD6NWgY+Ek9SOFjpwLQPhaonXgfTa2TFx3NtcRjKWKi6ZrZrYco+2pY+EnttIZamPOl2yHOoFHvpEW0MwslTwwjE9Y7q00L1qQ8TZQllT6yRRv2t+rQeT3sQzsRqI2E1Y1YJ0+GcuFMsDdXo3Hlq8nvrYHqdP2XsvaobtsvHQC1MK2GKqYZvP3b4dtJNGqkUpp/zSO5dCQNl09mKevnUeXgNkZau0TCPZPJ76+ne6/9I/N1K/qPDXx1c5dNS9an+FaY92vN/7vkLxl+iel6MKaEAAAAASUVORK5CYII=" alt="">
+      <div class="qrlabel"><b>Scan to join</b>Or sign up at<br>ecoquestfoundation.org/contact</div></div>
+  </div>
+
+  <div class="card">
+    <div class="cardtop"><span class="pill">In person</span>
+      <span class="pill amber">One morning</span></div>
+    <div class="ctitle">Community Cleanup — Friendship Park</div>
+    <div class="row"><span class="ico">&#9679;</span>
+      <span><b>Sunday, October 11, 2026</b> &middot; 9:00 AM–12:00 PM PT</span></div>
+    <div class="row"><span class="ico">&#9679;</span>
+      <span><b>Friendship Park</b><br>13650 Acoro Street, Cerritos, CA 90703</span></div>
+    <div class="hours"><b>Service hours</b>3 hours, signed off on the day &middot;
+      Bags, gloves, and grabbers provided</div>
+    <div class="qrwrap"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZUAAAGVAQMAAAAMlf54AAAABlBMVEUPKhr////gWq1WAAADGElEQVR42u1cMY7kMAzTXoot84Q8JU/bPG2ekidMOUUQnS1RTuZwzTaLJUA3EyRwY0ISSUtj/u31Mu3RHu356T0Py/X1WJ7917d1t8/8vptN/Ref2lr89ce+v7Tn5/Z0TJeAr2Fqsx/93erPDuV401D2Z6L8EKYcmLYY/OgIAtwejICyxWn7lJgeGcvClAlTB4JtNQTbG1v3+RWY2iJMSeO0JdgTwE2noeKaAWVhyldPA8FbEm7hadZRDtxVT5kwvfHeSLn/fxDvJcL0bR3JiFruLd47WNPQPzo3htz7QgxW0bQ5MO1vSrHOHqxJcUoSp8+iu6BGI9Ou6TnkAwiwMCXhSEdRowOiJqhRIDhVyp2KR+ncfn+cQoR6uEa3h24oReSOtJylVudGE6dW1MhQPQFuadjJlXt5tEyZRWYwHyyt+w0+UjjAn4myMCXxkcI+6guWYDr2KUsBrglTLt6btfKtaJaWSZStx7I8B7o4TZs3yW25RiBLaT6c4kg8vBfKBVfhQZYgauDhb1aUWFqGhCM1RtTjFEI0CfDItPcH1VMmfQoDsLTM6F2BdO2xrLs2stwLo76US/Q5RGGtUltkSZiScKRbEnZ0NYS6WbPUXklY3iCN51A2bwqWYfyGhIHf+7TR+aBz47hry6JZgiUdBqTcwXvl9zLVU1yodVxLqFq5RnhQnwOXj+QjBtHVYMl7t7o//YInrHrKU0/HhVp18/qF4ASUDdflwpTDc0BPYAHnXtZ9gpshfIj3MnGkywlMLVORGy7EWXZEdT7o3Ch4b8lSS+Cqrdf3C9yrpVDnRpF7D7sZC7eGh5F79xld3IpTFs/hfi8TE08gS4332geaQqdTfi9RnMYasxVmIxub2dXWYsKUSZ8W7x0ND1lY1/TwwaMqLevciOZlUtTkw9usoj+qRV9ahkbL/NtRFhV2sKagRvJ7qTCt+dO6hSnzYXsvrIpTXkyr4eEapblNuokjUWHq+zwGZ2q4GBIGTSzClK2e+jVSkR3aGxoI1Y/Ey3sX/IWOD6thTEUtrl5QRn2q/wrTHu35nXv+AkEjiBVKZ0sdAAAAAElFTkSuQmCC" alt="">
+      <div class="qrlabel"><b>Scan to volunteer</b>Or sign up at<br>ecoquestfoundation.org/contact</div></div>
+  </div>
+</div>
+
+<div class="foot">Organized by EcoQuest Foundation, with volunteer support from a local Scout troop &middot; Questions? <i>ecoquestfoundation.org/contact</i></div>
