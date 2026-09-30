@@ -37,9 +37,15 @@ const featuredPrograms: FeaturedProgram[] = [
     desc: 'Four free games built on live public science data for whatever ZIP code you enter',
     badge: 'K-12 Games',
     link: '/games',
-    img: '/images/games/bioblitz.jpg',
+    // Deliberately the climate chart rather than the Bioblitz photo round. The
+    // Bioblitz still reproduces a photographer's CC BY-NC work, and a credit line
+    // is only attribution if someone can read it — at this card's size the notice
+    // baked into that screenshot cannot be. This chart is our own drawing of public
+    // reanalysis data, so the card owes nobody a credit. /games and /impact show the
+    // Bioblitz with its credit spelled out beside them.
+    img: '/images/games/climate-record.png',
     screenshot: true,
-    alt: 'Backyard Bioblitz showing a Western Fence Lizard photographed near Cerritos, California, with four species names to choose from.',
+    alt: 'Your Climate Record charting the average daily high in Cerritos, California by decade from the 1950s to the 2020s.',
   },
   {
     title: 'EcoChallenge',

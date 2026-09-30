@@ -169,8 +169,39 @@ export default function GamesPage() {
             Those four pictures are real screenshots of the games running, not mockups.
             Each one shows Cerritos, California &mdash; EcoQuest&rsquo;s own city &mdash; because a
             screenshot can only show one place. Enter your ZIP code and you will see the
-            same screens drawn from your town&rsquo;s data instead. The Bioblitz photo is
-            &copy; Steven Kurniawidjaja, CC BY-NC, via iNaturalist.
+            same screens drawn from your town&rsquo;s data instead.
+          </p>
+          {/*
+            The Bioblitz card reproduces someone else's photograph, so this line is
+            a licence condition rather than a caption. CC BY-NC 4.0 §3(a)(1) wants
+            the photographer named, the supplied notice kept, a link to the licence
+            and a link to the work; §3(a)(1)(B) wants the crop disclosed. The
+            screenshot carries the notice in its own pixels but cannot carry a
+            hyperlink, which is what §3(a)(2) allows this adjacent text to supply.
+            Verified against the iNaturalist API on 2026-09-30: photo 36416485,
+            licence code cc-by-nc, is the one in the card.
+          */}
+          <p className="text-sm text-gray-500 max-w-3xl mx-auto mt-3 text-center">
+            The Backyard Bioblitz card shows a photograph &copy; Steven Kurniawidjaja,
+            some rights reserved, used under{' '}
+            <a
+              href="https://creativecommons.org/licenses/by-nc/4.0/"
+              target="_blank"
+              rel="license noopener noreferrer"
+              className="underline hover:text-primary-green"
+            >
+              CC BY-NC 4.0
+            </a>{' '}
+            and shown cropped &mdash;{' '}
+            <a
+              href="https://www.inaturalist.org/photos/36416485"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-primary-green"
+            >
+              via iNaturalist
+            </a>
+            .
           </p>
         </div>
       </section>

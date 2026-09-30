@@ -33,6 +33,8 @@ import {
   fetchLocalSpecies,
   inatExploreUrl,
   licenseLabel,
+  licenseUrl,
+  photoPageUrl,
   DEFAULT_RADIUS_KM,
   type LocalSpecies,
 } from '@/lib/api/inaturalist'
@@ -583,9 +585,7 @@ function RoundView({
               Licence term, not decoration: these photographs are other people's
               work and the credit line has to be readable on the page.
             */}
-            <figcaption className="mt-2 text-xs leading-relaxed text-gray-500">
-              {answer.attribution} · {licenseLabel(answer.license)} · via iNaturalist
-            </figcaption>
+            <PhotoCredit species={answer} />
           </figure>
         )}
       </div>
@@ -744,6 +744,51 @@ function Summary({
         </Link>
       </div>
     </div>
+  )
+}
+
+/**
+ * The credit line under a photograph, which is a licence condition rather than
+ * a courtesy. CC BY 4.0 and its NC/SA variants share one attribution clause,
+ * §3(a)(1), and it asks for four things: the photographer's name, the notice
+ * iNaturalist supplied, a link to the licence itself, and a link to the work.
+ * `attribution` covers the first two. The two links cover the rest — and
+ * because the photo is cropped to the frame above, §3(a)(1)(B) wants that said
+ * out loud too.
+ *
+ * A licence code we cannot resolve to a URL degrades to plain text instead of
+ * linking somewhere invented.
+ */
+function PhotoCredit({ species }: { species: LocalSpecies }) {
+  const href = licenseUrl(species.license)
+  const label = licenseLabel(species.license)
+
+  return (
+    <figcaption className="mt-2 text-xs leading-relaxed text-gray-500">
+      {species.attribution} &middot;{' '}
+      {href ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="license noopener noreferrer"
+          className="underline hover:text-primary-green"
+        >
+          {label}
+        </a>
+      ) : (
+        label
+      )}{' '}
+      &middot;{' '}
+      <a
+        href={photoPageUrl(species.photoUrl, species.id)}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline hover:text-primary-green"
+      >
+        via iNaturalist
+      </a>{' '}
+      &middot; shown cropped
+    </figcaption>
   )
 }
 

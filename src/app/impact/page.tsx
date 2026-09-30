@@ -193,6 +193,33 @@ export default function ImpactPortfolio() {
             <div className="section-underline" />
             <p className="text-gray-600 text-lg">Built on live public science data for whatever ZIP code a student enters</p>
             <p className="text-gray-500 text-sm mt-2">Screenshots show Cerritos, CA &mdash; your ZIP code draws your own town&rsquo;s data.</p>
+            {/*
+              The Bioblitz thumbnail reproduces a third party's photograph. Its
+              notice is baked into the image, but at thumbnail size that text is
+              too small to read, so the credit and its two required links are
+              repeated here where they are legible. See the fuller note on /games.
+            */}
+            <p className="text-gray-400 text-xs mt-1">
+              Bioblitz photo &copy; Steven Kurniawidjaja, used under{' '}
+              <a
+                href="https://creativecommons.org/licenses/by-nc/4.0/"
+                target="_blank"
+                rel="license noopener noreferrer"
+                className="underline hover:text-primary-green"
+              >
+                CC BY-NC 4.0
+              </a>{' '}
+              and shown cropped,{' '}
+              <a
+                href="https://www.inaturalist.org/photos/36416485"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary-green"
+              >
+                via iNaturalist
+              </a>
+              .
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {games.map((game, i) => (

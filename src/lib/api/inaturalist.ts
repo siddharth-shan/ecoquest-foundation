@@ -216,6 +216,47 @@ export function inatExploreUrl(lat: number, lon: number, radiusKm = DEFAULT_RADI
   return `${INAT_SITE}/observations?${q.toString()}`
 }
 
+/**
+ * Where the licence itself lives.
+ *
+ * CC BY-NC 4.0 §3(a)(1)(C) does not accept the licence's name on its own: a
+ * credit line has to carry "the text of, or the URI or hyperlink to, this
+ * Public License". Naming it "CC BY-NC" is therefore short of the requirement,
+ * and it is also ambiguous, because 2.0 and 4.0 are not the same deal.
+ *
+ * iNaturalist issues its CC licences at version 4.0 and links them there from
+ * its own photo pages, so that is the version we resolve to. Returns null for
+ * a code we do not recognise rather than guessing at a URL.
+ */
+export function licenseUrl(code: string): string | null {
+  if (code === 'cc0') return 'https://creativecommons.org/publicdomain/zero/1.0/'
+  const slug = code.startsWith('cc-') ? code.slice(3) : null
+  if (!slug || !/^by(-nc)?(-sa|-nd)?$/.test(slug)) return null
+  return `https://creativecommons.org/licenses/${slug}/4.0/`
+}
+
+/** A species' page on iNaturalist. */
+export function taxonUrl(id: number): string {
+  return `${INAT_SITE}/taxa/${id}`
+}
+
+/**
+ * Where this exact photograph lives on iNaturalist — the URI the attribution
+ * clause wants, and a page that shows the photo beside its photographer and
+ * licence, which is what §3(a)(2) accepts in place of separate links.
+ *
+ * Derived from the image URL rather than stored, because every iNaturalist
+ * photo URL already carries its id (`.../photos/36416485/medium.jpeg`), so
+ * neither the API client nor the offline fixture needs a new field.
+ *
+ * The taxon page is only a fallback. It is the weaker link: a taxon's default
+ * photo can be swapped out, at which point it would credit the wrong person.
+ */
+export function photoPageUrl(photoUrl: string, taxonId: number): string {
+  const id = /\/photos\/(\d+)\//.exec(photoUrl)?.[1]
+  return id ? `${INAT_SITE}/photos/${id}` : taxonUrl(taxonId)
+}
+
 /** Human-readable licence name for the credit line. */
 export function licenseLabel(code: string): string {
   switch (code) {
