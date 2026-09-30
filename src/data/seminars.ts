@@ -46,11 +46,6 @@ export interface Seminar {
   builtOn: string
   /** Public Eventbrite listing. Empty string until the listing is created. */
   eventbriteUrl: string
-  /**
-   * Zoom join link. One recurring meeting covers the whole series, so every
-   * session shares this link. Not rendered on the public page — the schema.org
-   * markup prefers the Eventbrite URL, and registrants get the link by email.
-   */
   /** Set once the slide deck page exists at /seminars/<slug>/. */
   hasDeck: boolean
   /** Filled in only after the session has actually been held. */
@@ -149,6 +144,18 @@ export const seminars: Seminar[] = [
  */
 function hasEnded(seminar: Seminar): boolean {
   return new Date(seminar.endDateTime).getTime() < Date.now()
+}
+
+/**
+ * Splits 'Saturday, September 12, 2026' into the three lines of the date tile.
+ * Reads the display string rather than parsing startDateTime, because that is a
+ * UTC instant and the tile must show the Pacific date the session actually runs.
+ * Returns the same shape as a campaign's `tile`, so one tile renders both.
+ */
+export function seminarTile(seminar: Seminar) {
+  const [weekday, monthDay, year] = seminar.displayDate.split(', ')
+  const [month, day] = monthDay.split(' ')
+  return { top: weekday.slice(0, 3), main: day, bottom: `${month.slice(0, 3)} ${year}` }
 }
 
 /** Sessions still ahead of us. */

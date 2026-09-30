@@ -3,6 +3,7 @@ import { FaGamepad, FaBook, FaHandsHelping, FaSeedling } from 'react-icons/fa'
 import ImpactDashboard from '@/components/shared/ImpactDashboard'
 import CommunityVoices from '@/components/shared/Testimonials'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
+import UpcomingEvents from '@/components/shared/UpcomingEvents'
 
 export const metadata = {
   alternates: { canonical: '/' },
@@ -74,7 +75,7 @@ export default function Home() {
             Empowering Youth to Protect Our Planet
           </h1>
           <p className="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto">
-            Through interactive games, digital experiences, and hands-on conservation events
+            Through interactive games, free online seminars, and hands-on conservation events
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/programs/" className="btn btn-primary text-lg">
@@ -86,6 +87,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Upcoming Events — dated, so it sits above the evergreen sections, and
+          hides itself when nothing is scheduled */}
+      <UpcomingEvents />
 
       {/* Mission Section */}
       <section className="section-padding bg-gray-50">

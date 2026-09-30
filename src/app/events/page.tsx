@@ -9,7 +9,13 @@ import {
 } from 'react-icons/hi'
 import EventCarousel from '@/components/shared/EventCarousel'
 import { CAMPAIGN_BLURB, CAMPAIGN_TITLE, upcomingCampaigns } from '@/data/campaigns'
-import { SEMINAR_CADENCE, pastSeminars, seminars, upcomingSeminars } from '@/data/seminars'
+import {
+  SEMINAR_CADENCE,
+  pastSeminars,
+  seminarTile,
+  seminars,
+  upcomingSeminars,
+} from '@/data/seminars'
 
 const SITE_URL = 'https://www.ecoquestfoundation.org'
 
@@ -42,23 +48,12 @@ interface TimelineEvent {
 }
 
 /**
- * Splits 'Saturday, September 12, 2026' into the three lines of the date tile.
- * Reads the display string rather than parsing startDateTime, because that is a
- * UTC instant and the tile must show the Pacific date the session actually runs.
- */
-/**
  * Position in the series, counted over every session rather than over the
  * upcoming ones. Once session 1 has been held it leaves the upcoming list, and
  * numbering off that list would relabel session 3 as "Session 1 of 5".
  */
 function sessionNumber(slug: string) {
   return seminars.findIndex((s) => s.slug === slug) + 1
-}
-
-function dateTile(displayDate: string) {
-  const [weekday, monthDay, year] = displayDate.split(', ')
-  const [month, day] = monthDay.split(' ')
-  return { weekday: weekday.slice(0, 3), day, monthYear: `${month.slice(0, 3)} ${year}` }
 }
 
 /**
@@ -504,13 +499,13 @@ export default function Events() {
                         gutter; the meta row carries the date there instead. */}
                     <div className="hidden sm:block shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
                       <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
-                        {dateTile(seminar.displayDate).weekday}
+                        {seminarTile(seminar).top}
                       </div>
                       <div className="text-2xl md:text-3xl font-bold leading-tight text-primary-green-dark font-heading">
-                        {dateTile(seminar.displayDate).day}
+                        {seminarTile(seminar).main}
                       </div>
                       <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
-                        {dateTile(seminar.displayDate).monthYear}
+                        {seminarTile(seminar).bottom}
                       </div>
                     </div>
 
