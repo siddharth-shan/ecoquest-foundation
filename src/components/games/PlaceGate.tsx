@@ -8,11 +8,19 @@ import { resolveZip, isValidZip, usePlace, type Place, DEMO_PLACE } from '@/lib/
 interface PlaceGateProps {
   /** What this particular game will do with the location. One short sentence. */
   purpose: string
-  children: (place: Place, isDemo: boolean) => React.ReactNode
+  /**
+   * The game, given the resolved place.
+   *
+   * `changePlace` sends the player back to the ZIP form. It lives here because
+   * the gate owns the only `usePlace` instance that matters: a game calling
+   * `clearPlace()` on its own would wipe storage while the gate carried on
+   * rendering the stale place until a reload.
+   */
+  children: (place: Place, isDemo: boolean, changePlace: () => void) => React.ReactNode
 }
 
 export default function PlaceGate({ purpose, children }: PlaceGateProps) {
-  const { place, loading, isDemo, setPlace, useDemoPlace } = usePlace()
+  const { place, loading, isDemo, setPlace, useDemoPlace, reset } = usePlace()
   const [zip, setZip] = useState('')
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -40,7 +48,7 @@ export default function PlaceGate({ purpose, children }: PlaceGateProps) {
     )
   }
 
-  if (place) return <>{children(place, isDemo)}</>
+  if (place) return <>{children(place, isDemo, reset)}</>
 
   return (
     <div className="container-custom py-16">

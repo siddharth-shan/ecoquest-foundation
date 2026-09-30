@@ -64,10 +64,10 @@ export default function ImpactPortfolio() {
   ]
 
   const games = [
-    { title: 'Guardians of the Green', grades: 'Grades 6-12', desc: 'Ecosystem management simulation', link: '/games/guardians' },
-    { title: 'Ocean Cleanup Challenge', grades: 'K-8', desc: 'Marine pollution awareness game', link: '/games/ocean-cleanup' },
-    { title: 'Recycling Hero', grades: 'K-6', desc: 'Waste sorting and recycling education', link: '/games/recycling-hero' },
-    { title: 'Carbon Footprint Quest', grades: 'Grades 4-12', desc: 'Carbon awareness and reduction', link: '/games/carbon-quest' },
+    { title: 'Storm Drain Detective', grades: 'Grades 5-12', desc: 'Traces your street\u2019s runoff to the sea using the USGS river network', link: '/games/storm-drain', gradient: 'from-primary-blue to-blue-800', mark: '\u{1F4A7}' },
+    { title: 'Backyard Bioblitz', grades: 'Grades 3-12', desc: 'Species identification from real iNaturalist records near you', link: '/games/bioblitz', gradient: 'from-primary-green to-emerald-700', mark: '\u{1F98B}' },
+    { title: 'Air Detective', grades: 'Grades 6-12', desc: 'Air-quality forensics on real hourly pollution data', link: '/games/air-detective', gradient: 'from-accent-orange to-orange-700', mark: '\u{1F50D}' },
+    { title: 'Your Climate Record', grades: 'Grades 6-12', desc: 'Predict, then meet your town\u2019s real 75-year temperature record', link: '/games/climate-record', gradient: 'from-indigo-500 to-indigo-800', mark: '\u{1F4C8}' },
   ]
 
   const skillsShowcase = [
@@ -191,18 +191,17 @@ export default function ImpactPortfolio() {
           <div className="section-header">
             <h2 className="section-title">Educational Games</h2>
             <div className="section-underline" />
-            <p className="text-gray-600 text-lg">Interactive learning experiences built for K-12 students</p>
+            <p className="text-gray-600 text-lg">Built on live public science data for whatever ZIP code a student enters</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {games.map((game, i) => (
-              <Link key={i} href={game.link} className="card card-hover overflow-hidden block">
-                <div className="h-36 overflow-hidden bg-gray-100">
-                  <img
-                    src={`/images/games/${game.link.split('/').pop()}.png`}
-                    alt={`${game.title} gameplay screenshot`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+              <Link key={i} href={`${game.link}/`} className="card card-hover overflow-hidden block">
+                <div
+                  className={`h-36 bg-gradient-to-br ${game.gradient} flex items-center justify-center`}
+                >
+                  <span className="text-5xl" aria-hidden="true">
+                    {game.mark}
+                  </span>
                 </div>
                 <div className="p-6 text-center">
                   <h3 className="font-bold text-lg text-primary-green mb-1">{game.title}</h3>

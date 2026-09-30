@@ -52,7 +52,7 @@ confirmed `200` + `Access-Control-Allow-Origin: *`, keyless.
 | Source | Endpoint | Used by | Verified result |
 |---|---|---|---|
 | Zippopotam | `api.zippopotam.us/us/{zip}` | shared | 90703 → Cerritos, CA 33.8669,-118.0686 |
-| iNaturalist v1 | `api.inaturalist.org/v1` | Bioblitz | 3,302 research-grade species within 15km |
+| iNaturalist v1 | `api.inaturalist.org/v1` | Bioblitz | 4,842 research-grade species within 25km (re-probed 2026-09-29; counts drift upward as observers add records) |
 | Open-Meteo Air Quality | `air-quality-api.open-meteo.com` | Air Detective | hourly pm2_5/ozone/NO2/CO back to 2020 |
 | Open-Meteo Archive | `archive-api.open-meteo.com` | Climate Record | daily temps 1950→present |
 | USGS NLDI | `api.water.usgs.gov/nldi` | Storm Drain | downstream trace + gauge list |
@@ -79,7 +79,7 @@ with `-NC`.
 - Open-Meteo air quality is **CAMS model reanalysis**, not a ground monitor. The
   game says so and links the player to their nearest regulatory monitor.
 - The local warming signal is **modest and non-monotonic**. Cerritos decadal mean
-  daily high: 1950s 74.93°F → 1970s 74.10°F → 1990s 74.74°F → 2010s 75.82°F →
+  daily high: 1950s 74.92°F → 1970s 74.10°F → 1990s 74.74°F → 2010s 75.82°F →
   last decade 75.68°F. Days ≥90°F: 28.3 → 23.5 → 31.3 → 30.9 → 31.4.
   A naive 1955-vs-2025 summer comparison shows *cooling*. **The climate game must
   report whatever the data says, including "noisy" or "barely changed."**
@@ -135,7 +135,7 @@ Four distinct verbs so the set does not feel like one engine wearing four hats:
   the same `iconic_taxon_name` so distractors are plausible rather than absurd.
 - Skip any taxon lacking `default_photo.medium_url` or a permissive license.
 - Difficulty ramps by observation count: common species first, rarer later.
-- Reveal shows the real local observation count ("seen 4,431 times near you").
+- Reveal shows the real local observation count, whatever the API returns that day ("seen 8,944 times near you"). Never hardcode a count.
 
 **Offline mission:** printable 5×5 bingo card of species genuinely present near
 that ZIP. **Community science:** hand off to iNaturalist / City Nature Challenge.

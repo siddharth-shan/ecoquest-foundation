@@ -20,43 +20,42 @@ export default function Programs() {
         </div>
       </div>
 
-      <section id="guardians" className="section-padding">
+      <section id="games" className="section-padding">
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100">
-              <img
-                src="/images/games/guardians.png"
-                alt="Guardians of the Green gameplay — the interactive ecosystem map"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-              <div className="absolute top-6 right-6 bg-black/50 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
+            <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gradient-to-br from-primary-blue to-blue-800 flex items-center justify-center">
+              <span className="text-8xl" aria-hidden="true">&#128167;</span>
+              <div className="absolute top-6 right-6 bg-black/40 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                 Flagship Program
               </div>
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-3xl font-bold text-white drop-shadow">Guardians of the Green</h3>
+                <h3 className="text-3xl font-bold text-white drop-shadow">Storm Drain Detective</h3>
               </div>
             </div>
             <div>
-              <span className="text-primary-blue font-semibold uppercase text-sm">Educational Game</span>
-              <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">EcoQuest: Guardians of the Green</h2>
+              <span className="text-primary-blue font-semibold uppercase text-sm">Environmental Games</span>
+              <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Games Built on Real Local Data</h2>
               <div className="section-underline ml-0" />
               <p className="text-lg mb-6 text-gray-700">
-                Our flagship educational game designed to teach players about ecosystems, pollution, and conservation through interactive storytelling and challenges.
+                Four free browser games that rebuild themselves around whatever ZIP code a student
+                enters. Our flagship, Storm Drain Detective, asks players to guess where the water
+                on their street ends up — then traces the real answer through the U.S. Geological
+                Survey&rsquo;s river network, naming the actual stream gauges it passes on the way
+                to the sea.
               </p>
               <div className="space-y-4 mb-6">
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <strong className="text-primary-green">Target Audience:</strong> Middle and High School Students (Grades 6-12)
+                  <strong className="text-primary-green">Target Audience:</strong> Grades 3&ndash;12, depending on the game
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <strong className="text-primary-green">Standards:</strong> NGSS-aligned Environmental Science Standards
+                  <strong className="text-primary-green">Data Sources:</strong> USGS, iNaturalist, Copernicus, and Open-Meteo &mdash; each named on the page it appears
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <strong className="text-primary-green">Use Cases:</strong> Classrooms, After-school Programs, Independent Learning
+                  <strong className="text-primary-green">Use Cases:</strong> Classrooms, After-school Programs, Independent Learning &mdash; each game has a printable companion sheet
                 </div>
               </div>
               <div className="flex gap-4">
-                <Link href="/games/guardians/" className="btn btn-primary">Play Now</Link>
+                <Link href="/games/storm-drain/" className="btn btn-primary">Play Storm Drain Detective</Link>
                 <Link href="/games/" className="btn btn-outline">All Games</Link>
               </div>
             </div>

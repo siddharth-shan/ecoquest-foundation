@@ -99,7 +99,20 @@ function isPlace(v: unknown): v is Place {
   )
 }
 
-export function loadPlace(): Place | null {
+/**
+ * A stored place, plus whether the player chose the sample or entered it.
+ *
+ * These are genuinely different facts and must not be inferred from each
+ * other. Cerritos IS the demo ZIP, so a real Cerritos student typing 90703
+ * would otherwise be told their own neighbourhood is "a sample location" —
+ * and EcoQuest's own community is exactly the group most likely to type it.
+ */
+export interface StoredPlace {
+  place: Place
+  isDemo: boolean
+}
+
+export function loadPlace(): StoredPlace | null {
   // Static export: this module is imported during prerender, where there is no
   // window. Guard rather than assume a browser.
   if (typeof window === 'undefined') return null
@@ -107,17 +120,28 @@ export function loadPlace(): Place | null {
     const raw = window.localStorage.getItem(STORAGE_KEY)
     if (!raw) return null
     const parsed: unknown = JSON.parse(raw)
-    return isPlace(parsed) ? parsed : null
+    // Current shape: { place, isDemo }.
+    if (parsed && typeof parsed === 'object' && 'place' in parsed) {
+      const rec = parsed as Record<string, unknown>
+      if (isPlace(rec.place)) {
+        return { place: rec.place, isDemo: rec.isDemo === true }
+      }
+      return null
+    }
+    // Anything written by the previous build is a bare Place. Read it rather
+    // than dropping the player back at the ZIP form, and treat it as entered:
+    // a stored place was either typed or explicitly chosen.
+    return isPlace(parsed) ? { place: parsed, isDemo: false } : null
   } catch {
     // Private mode, blocked storage, or corrupt value — all mean "no place yet".
     return null
   }
 }
 
-export function savePlace(place: Place): void {
+export function savePlace(place: Place, isDemo = false): void {
   if (typeof window === 'undefined') return
   try {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(place))
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ place, isDemo }))
   } catch {
     /* Storage is a convenience here; the session still works without it. */
   }
@@ -151,22 +175,24 @@ export function usePlace(): UsePlace {
   useEffect(() => {
     const stored = loadPlace()
     if (stored) {
-      setPlaceState(stored)
-      setIsDemo(stored.zip === DEMO_PLACE.zip)
+      setPlaceState(stored.place)
+      setIsDemo(stored.isDemo)
     }
     setLoading(false)
   }, [])
 
+  // A ZIP the player typed is their own location, even when it happens to be
+  // Cerritos. Only the "play with the sample" button produces a demo place.
   const setPlace = useCallback((next: Place) => {
     setPlaceState(next)
-    setIsDemo(next.zip === DEMO_PLACE.zip)
-    savePlace(next)
+    setIsDemo(false)
+    savePlace(next, false)
   }, [])
 
   const useDemoPlace = useCallback(() => {
     setPlaceState(DEMO_PLACE)
     setIsDemo(true)
-    savePlace(DEMO_PLACE)
+    savePlace(DEMO_PLACE, true)
   }, [])
 
   const reset = useCallback(() => {

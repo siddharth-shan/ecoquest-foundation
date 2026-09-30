@@ -8,6 +8,52 @@ export const metadata = {
   alternates: { canonical: '/' },
 }
 
+interface FeaturedProgram {
+  title: string
+  desc: string
+  badge: string
+  link: string
+  /** Photo-backed cards use img; the games use a gradient + mark instead,
+   *  because a screenshot of a game that renders different data for every
+   *  visitor would be a mockup, not a picture of the thing. */
+  img?: string
+  gradient?: string
+  mark?: string
+}
+
+const featuredPrograms: FeaturedProgram[] = [
+  {
+    title: 'Storm Drain Detective',
+    desc: 'Guess where the water on your street ends up, then trace the real answer through the USGS river network',
+    badge: 'Flagship Game',
+    link: '/games/storm-drain',
+    gradient: 'from-primary-blue to-blue-800',
+    mark: '\u{1F4A7}',
+  },
+  {
+    title: 'Environmental Games',
+    desc: 'Four free games built on live public science data for whatever ZIP code you enter',
+    badge: 'K-12 Games',
+    link: '/games',
+    gradient: 'from-primary-green to-emerald-700',
+    mark: '\u{1F98B}',
+  },
+  {
+    title: 'EcoChallenge',
+    desc: 'Monthly interactive missions engaging students in real-world environmental actions',
+    badge: 'Monthly',
+    link: '/programs#ecochallenge',
+    img: '/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.webp',
+  },
+  {
+    title: 'Community Cleanup Events',
+    desc: 'Beach and park cleanups across California, open to students, families, and community volunteers',
+    badge: 'Hands-On',
+    link: '/events',
+    img: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.webp',
+  },
+]
+
 export default function Home() {
   return (
     <>
@@ -165,44 +211,25 @@ export default function Home() {
             <p className="text-gray-600 text-lg">Explore our innovative digital experiences and community initiatives</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                title: 'EcoQuest: Guardians of the Green',
-                desc: 'Our flagship educational game teaching about ecosystems, pollution, and conservation',
-                badge: 'Flagship Game',
-                link: '/games/guardians',
-                img: '/images/games/guardians.png',
-              },
-              {
-                title: 'Educational Games',
-                desc: 'Four interactive games teaching recycling, ocean cleanup, carbon footprint, and more',
-                badge: 'K-12 Games',
-                link: '/games',
-                img: '/images/games/recycling-hero.png',
-              },
-              {
-                title: 'EcoChallenge',
-                desc: 'Monthly interactive missions engaging students in real-world environmental actions',
-                badge: 'Monthly',
-                link: '/programs#ecochallenge',
-                img: '/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.webp',
-              },
-              {
-                title: 'Community Cleanup Events',
-                desc: 'Beach and park cleanups across California, open to students, families, and community volunteers',
-                badge: 'Hands-On',
-                link: '/events',
-                img: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.webp',
-              },
-            ].map((program, i) => (
+            {featuredPrograms.map((program, i) => (
               <div key={i} className="card card-hover">
                 <div className="h-48 relative overflow-hidden bg-gray-100">
-                  <img
-                    src={program.img}
-                    alt={`${program.title}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
+                  {program.img ? (
+                    <img
+                      src={program.img}
+                      alt={`${program.title}`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div
+                      className={`w-full h-full bg-gradient-to-br ${program.gradient} flex items-center justify-center`}
+                    >
+                      <span className="text-6xl" aria-hidden="true">
+                        {program.mark}
+                      </span>
+                    </div>
+                  )}
                   <div className="absolute top-4 right-4 bg-black/40 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                     {program.badge}
                   </div>

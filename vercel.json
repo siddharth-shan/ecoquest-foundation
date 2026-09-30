@@ -1,6 +1,10 @@
 {
   "redirects": [
-    { "source": "/home", "destination": "/", "permanent": true },
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
     {
       "source": "/blog/bowseat-ocean-awareness",
       "destination": "/blog/oceanaware-guardian/",
@@ -9,6 +13,46 @@
     {
       "source": "/blog/bowseat-ocean-awareness/",
       "destination": "/blog/oceanaware-guardian/",
+      "permanent": true
+    },
+    {
+      "source": "/games/guardians",
+      "destination": "/games/bioblitz/",
+      "permanent": true
+    },
+    {
+      "source": "/games/guardians/",
+      "destination": "/games/bioblitz/",
+      "permanent": true
+    },
+    {
+      "source": "/games/ocean-cleanup",
+      "destination": "/games/storm-drain/",
+      "permanent": true
+    },
+    {
+      "source": "/games/ocean-cleanup/",
+      "destination": "/games/storm-drain/",
+      "permanent": true
+    },
+    {
+      "source": "/games/recycling-hero",
+      "destination": "/games/air-detective/",
+      "permanent": true
+    },
+    {
+      "source": "/games/recycling-hero/",
+      "destination": "/games/air-detective/",
+      "permanent": true
+    },
+    {
+      "source": "/games/carbon-quest",
+      "destination": "/games/climate-record/",
+      "permanent": true
+    },
+    {
+      "source": "/games/carbon-quest/",
+      "destination": "/games/climate-record/",
       "permanent": true
     }
   ]
