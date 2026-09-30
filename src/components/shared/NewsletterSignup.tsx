@@ -59,7 +59,7 @@ export default function NewsletterSignup({ variant = 'default' }: NewsletterSign
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Your email"
             required
-            className="flex-1 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
+            className="flex-1 min-w-0 px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-white"
           />
           <button
             type="submit"
@@ -94,7 +94,7 @@ export default function NewsletterSignup({ variant = 'default' }: NewsletterSign
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
             required
-            className="flex-1 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary-green focus:ring-2 focus:ring-primary-green/20 outline-none"
+            className="flex-1 min-w-0 px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-primary-green focus:ring-2 focus:ring-primary-green/20 outline-none"
           />
           <button
             type="submit"

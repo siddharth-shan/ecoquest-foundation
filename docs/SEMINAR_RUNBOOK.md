@@ -135,7 +135,8 @@ Use a **Text block** under "Share additional content" — do **not** use the
 "Add Zoom" connector. That integration creates a brand-new Zoom meeting per event
 instead of using the one you already scheduled, so you would end up with five
 orphan meeting IDs, none carrying the waiting-room settings, none matching the
-`zoomUrl` in `src/data/seminars.ts`. It also fails outright on a free Zoom account.
+recurring meeting registrants are expecting. It also fails outright on a free Zoom
+account.
 
 **Also set per event, by hand** (the API script does not do these): cover image,
 organizer, tags, category, and the Zoom text block. Check the **end time saved as
@@ -158,8 +159,11 @@ See the README in that folder for how to re-render them if the schedule changes.
 ### 3. Verify the search markup
 - Deploy, then run `https://www.ecoquestfoundation.org/events/` through
   [Google's Rich Results Test](https://search.google.com/test/rich-results).
-- You should see five `Event` items detected. **Screenshot the result** — that is
-  dated evidence the events were published and machine-discoverable.
+- You should see one `Event` item per **upcoming** seminar and campaign — the
+  markup only covers events that have not ended yet, so the count drops as dates
+  pass (5 on Sep 30, 2026: three sessions plus the two October campaign events).
+  **Screenshot the result** — that is dated evidence the events were published
+  and machine-discoverable.
 - Submit the sitemap in Google Search Console if it is not already submitted.
 
 ---
@@ -279,3 +283,14 @@ count into a corroborated one:
 run jointly with a Scout troop are noted as co-hosted on the Events page for
 exactly this reason. This seminar series is unambiguously EcoQuest's own work,
 which is what makes it clean to log here.
+
+**Co-hosted is not the same as volunteer-supported.** From the October 2026
+campaign on, a Scout troop may help distribute flyers and supply volunteers, but
+EcoQuest organizes and runs the event. That is recorded in the `supportedBy`
+field in `src/data/campaigns.ts` ("with volunteer support from a local Scout
+troop"), not as a co-host, and the schema.org `organizer` stays EcoQuest alone. A
+volunteer-supported event does not split whose program the hours belong to; a
+co-hosted one does. Only use `coHosted` (on past timeline entries) when the troop
+genuinely ran the event jointly, and only fill in `supportedBy` once the group
+has agreed to be named. Note that Scout flyer distribution is outreach — it does
+not satisfy the reachability test above.
