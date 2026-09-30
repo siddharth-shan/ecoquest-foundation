@@ -6,9 +6,14 @@ import Link from 'next/link'
 // cards advertise a data source instead of a difficulty rating — the source is
 // the product. See docs/superpowers/specs/2026-09-29-games-revamp-design.md.
 //
-// No screenshots here on purpose. The old cards used stills of the previous
-// games; rather than ship a mockup of a game that renders different data for
-// every visitor, each card carries its own gradient and mark.
+// The card images are real screenshots of these four games running, not mockups.
+// They all show Cerritos, CA (ZIP 90703, EcoQuest's own city) because a screenshot
+// has to show one place and that is the honest one to pick; a player who enters
+// their own ZIP gets their own town's data in the same layouts. The disclosure
+// under the grid says so.
+//
+// The Bioblitz still carries the photographer's CC BY-NC credit line inside the
+// image itself, which is what keeps republishing that photo here licence-compliant.
 
 export const metadata = {
   title: 'Environmental Games',
@@ -32,8 +37,9 @@ const games = [
     ageRange: 'Grades 5-12',
     topics: ['Watersheds', 'Ocean Pollution', 'Litter'],
     source: 'USGS Hydro Network',
-    color: 'from-primary-blue to-blue-700',
-    mark: '\u{1F4A7}',
+    img: '/images/games/storm-drain.png',
+    alt:
+      'Storm Drain Detective mid-trace: a blue flowline running south from the centre of ZIP 90703 in Cerritos, California, past two numbered USGS gauges to a red marker where the trace ends.',
   },
   {
     id: 'bioblitz',
@@ -44,8 +50,9 @@ const games = [
     ageRange: 'Grades 3-12',
     topics: ['Biodiversity', 'Species ID', 'Community Science'],
     source: 'iNaturalist',
-    color: 'from-primary-green to-emerald-700',
-    mark: '\u{1F98B}',
+    img: '/images/games/bioblitz.jpg',
+    alt:
+      'Backyard Bioblitz on round 1 of 10: a photograph of a Western Fence Lizard recorded near Cerritos, California, its iNaturalist credit line beneath it, and four reptile names to choose from.',
   },
   {
     id: 'air-detective',
@@ -56,8 +63,9 @@ const games = [
     ageRange: 'Grades 6-12',
     topics: ['Air Quality', 'Urban Heat', 'Evidence'],
     source: 'Copernicus / Open-Meteo',
-    color: 'from-accent-orange to-orange-700',
-    mark: '\u{1F50D}',
+    img: '/images/games/air-detective.png',
+    alt:
+      'Air Detective\u2019s evidence board: four panels of real PM2.5 and ozone readings for Cerritos, California, with the 24 February spike picked out against the surrounding week.',
   },
   {
     id: 'climate-record',
@@ -68,8 +76,9 @@ const games = [
     ageRange: 'Grades 6-12',
     topics: ['Climate', 'Signal vs. Noise', 'Local Data'],
     source: 'Open-Meteo Reanalysis',
-    color: 'from-indigo-500 to-indigo-800',
-    mark: '\u{1F4C8}',
+    img: '/images/games/climate-record.png',
+    alt:
+      'Your Climate Record\u2019s result screen: average daily high in Cerritos, California by decade from the 1950s to the 2020s, with the 1950s and 2016-2025 averages drawn in and a +0.75 degrees Fahrenheit caption.',
   },
 ]
 
@@ -101,13 +110,15 @@ export default function GamesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {games.map((game) => (
               <div key={game.id} className="card card-hover overflow-hidden flex flex-col">
-                <div
-                  className={`h-40 bg-gradient-to-br ${game.color} relative flex items-center justify-center`}
-                >
-                  <span className="text-6xl" aria-hidden="true">
-                    {game.mark}
-                  </span>
-                  <div className="absolute top-4 right-4 bg-black/30 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm uppercase tracking-wide">
+                <div className="relative bg-white border-b border-gray-100">
+                  {/* Native 2:1, so the screenshot is shown whole rather than cropped. */}
+                  <img
+                    src={game.img}
+                    alt={game.alt}
+                    className="w-full aspect-[2/1] object-cover"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-4 right-4 bg-black/50 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm uppercase tracking-wide">
                     {game.verb}
                   </div>
                 </div>
@@ -153,6 +164,14 @@ export default function GamesPage() {
               </div>
             ))}
           </div>
+
+          <p className="text-sm text-gray-500 max-w-3xl mx-auto mt-10 text-center">
+            Those four pictures are real screenshots of the games running, not mockups.
+            Each one shows Cerritos, California &mdash; EcoQuest&rsquo;s own city &mdash; because a
+            screenshot can only show one place. Enter your ZIP code and you will see the
+            same screens drawn from your town&rsquo;s data instead. The Bioblitz photo is
+            &copy; Steven Kurniawidjaja, CC BY-NC, via iNaturalist.
+          </p>
         </div>
       </section>
 

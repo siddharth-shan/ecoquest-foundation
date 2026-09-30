@@ -13,12 +13,13 @@ interface FeaturedProgram {
   desc: string
   badge: string
   link: string
-  /** Photo-backed cards use img; the games use a gradient + mark instead,
-   *  because a screenshot of a game that renders different data for every
-   *  visitor would be a mockup, not a picture of the thing. */
-  img?: string
-  gradient?: string
-  mark?: string
+  img: string
+  /** Event photos are self-evident from the title; the game screenshots are not,
+   *  so those carry their own description of what is on screen. */
+  alt?: string
+  /** True for the real game screenshots, which are 2:1 and must not be cropped
+   *  to the card frame the way an event photo can be. */
+  screenshot?: boolean
 }
 
 const featuredPrograms: FeaturedProgram[] = [
@@ -27,16 +28,18 @@ const featuredPrograms: FeaturedProgram[] = [
     desc: 'Guess where the water on your street ends up, then trace the real answer through the USGS river network',
     badge: 'Flagship Game',
     link: '/games/storm-drain',
-    gradient: 'from-primary-blue to-blue-800',
-    mark: '\u{1F4A7}',
+    img: '/images/games/storm-drain.png',
+    screenshot: true,
+    alt: 'Storm Drain Detective tracing a blue flowline south out of Cerritos, California, past two USGS gauges to the point where the trace ends.',
   },
   {
     title: 'Environmental Games',
     desc: 'Four free games built on live public science data for whatever ZIP code you enter',
     badge: 'K-12 Games',
     link: '/games',
-    gradient: 'from-primary-green to-emerald-700',
-    mark: '\u{1F98B}',
+    img: '/images/games/bioblitz.jpg',
+    screenshot: true,
+    alt: 'Backyard Bioblitz showing a Western Fence Lizard photographed near Cerritos, California, with four species names to choose from.',
   },
   {
     title: 'EcoChallenge',
@@ -214,22 +217,16 @@ export default function Home() {
             {featuredPrograms.map((program, i) => (
               <div key={i} className="card card-hover">
                 <div className="h-48 relative overflow-hidden bg-gray-100">
-                  {program.img ? (
-                    <img
-                      src={program.img}
-                      alt={`${program.title}`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div
-                      className={`w-full h-full bg-gradient-to-br ${program.gradient} flex items-center justify-center`}
-                    >
-                      <span className="text-6xl" aria-hidden="true">
-                        {program.mark}
-                      </span>
-                    </div>
-                  )}
+                  {/* The game cards are real 2:1 screenshots, so they are fitted
+                      rather than cropped; the event photos still fill the frame. */}
+                  <img
+                    src={program.img}
+                    alt={program.alt ?? program.title}
+                    className={`w-full h-full ${
+                      program.screenshot ? 'object-contain bg-white' : 'object-cover'
+                    }`}
+                    loading="lazy"
+                  />
                   <div className="absolute top-4 right-4 bg-black/40 text-white px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">
                     {program.badge}
                   </div>

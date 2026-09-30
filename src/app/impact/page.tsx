@@ -64,10 +64,10 @@ export default function ImpactPortfolio() {
   ]
 
   const games = [
-    { title: 'Storm Drain Detective', grades: 'Grades 5-12', desc: 'Traces your street\u2019s runoff to the sea using the USGS river network', link: '/games/storm-drain', gradient: 'from-primary-blue to-blue-800', mark: '\u{1F4A7}' },
-    { title: 'Backyard Bioblitz', grades: 'Grades 3-12', desc: 'Species identification from real iNaturalist records near you', link: '/games/bioblitz', gradient: 'from-primary-green to-emerald-700', mark: '\u{1F98B}' },
-    { title: 'Air Detective', grades: 'Grades 6-12', desc: 'Air-quality forensics on real hourly pollution data', link: '/games/air-detective', gradient: 'from-accent-orange to-orange-700', mark: '\u{1F50D}' },
-    { title: 'Your Climate Record', grades: 'Grades 6-12', desc: 'Predict, then meet your town\u2019s real 75-year temperature record', link: '/games/climate-record', gradient: 'from-indigo-500 to-indigo-800', mark: '\u{1F4C8}' },
+    { title: 'Storm Drain Detective', grades: 'Grades 5-12', desc: 'Traces your street\u2019s runoff to the sea using the USGS river network', link: '/games/storm-drain', img: '/images/games/storm-drain.png', alt: 'Storm Drain Detective tracing a blue flowline south out of Cerritos, California, past two USGS gauges.' },
+    { title: 'Backyard Bioblitz', grades: 'Grades 3-12', desc: 'Species identification from real iNaturalist records near you', link: '/games/bioblitz', img: '/images/games/bioblitz.jpg', alt: 'Backyard Bioblitz showing a Western Fence Lizard photographed near Cerritos, California, with four species names to choose from.' },
+    { title: 'Air Detective', grades: 'Grades 6-12', desc: 'Air-quality forensics on real hourly pollution data', link: '/games/air-detective', img: '/images/games/air-detective.png', alt: 'Air Detective\u2019s four-panel board of real PM2.5 and ozone readings for Cerritos, California.' },
+    { title: 'Your Climate Record', grades: 'Grades 6-12', desc: 'Predict, then meet your town\u2019s real 75-year temperature record', link: '/games/climate-record', img: '/images/games/climate-record.png', alt: 'Your Climate Record\u2019s chart of average daily high in Cerritos, California by decade since the 1950s.' },
   ]
 
   const skillsShowcase = [
@@ -192,17 +192,19 @@ export default function ImpactPortfolio() {
             <h2 className="section-title">Educational Games</h2>
             <div className="section-underline" />
             <p className="text-gray-600 text-lg">Built on live public science data for whatever ZIP code a student enters</p>
+            <p className="text-gray-500 text-sm mt-2">Screenshots show Cerritos, CA &mdash; your ZIP code draws your own town&rsquo;s data.</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {games.map((game, i) => (
               <Link key={i} href={`${game.link}/`} className="card card-hover overflow-hidden block">
-                <div
-                  className={`h-36 bg-gradient-to-br ${game.gradient} flex items-center justify-center`}
-                >
-                  <span className="text-5xl" aria-hidden="true">
-                    {game.mark}
-                  </span>
-                </div>
+                {/* A real screenshot of the game running on Cerritos data, shown at
+                    its native 2:1 so nothing is cropped away. */}
+                <img
+                  src={game.img}
+                  alt={game.alt}
+                  className="w-full aspect-[2/1] object-cover bg-white border-b border-gray-100"
+                  loading="lazy"
+                />
                 <div className="p-6 text-center">
                   <h3 className="font-bold text-lg text-primary-green mb-1">{game.title}</h3>
                   <div className="text-xs text-primary-blue font-semibold mb-2">{game.grades}</div>
