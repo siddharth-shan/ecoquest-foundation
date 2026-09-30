@@ -67,3 +67,68 @@
     @apply bg-gradient-to-br from-primary-green to-primary-blue;
   }
 }
+
+@layer base {
+  /*
+   * The games animate — paths draw, cards flip, charts grow. Motion is decorative
+   * in all of those cases, so a player who asks the OS for less of it gets none.
+   * Guarded globally because the previous games scattered animate-bounce and
+   * animate-pulse with no opt-out anywhere in the codebase.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Every interactive element gets a visible focus ring. */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-none ring-2 ring-primary-green ring-offset-2;
+  }
+}
+
+@layer components {
+  /*
+   * Printable classroom worksheets. The games hide their chrome with print:hidden;
+   * this drops the shared site furniture and flattens cards so a sheet costs one
+   * page of toner rather than a wall of colour.
+   */
+  @media print {
+    nav,
+    footer,
+    .print\:hidden {
+      display: none !important;
+    }
+
+    body {
+      background: #fff !important;
+      color: #000 !important;
+      font-size: 12pt;
+    }
+
+    .card {
+      box-shadow: none !important;
+      border: 1px solid #999 !important;
+      break-inside: avoid;
+    }
+
+    .print-sheet {
+      display: block !important;
+    }
+  }
+
+  /* Worksheets exist in the DOM for print but stay out of the screen layout. */
+  .print-sheet {
+    display: none;
+  }
+}
