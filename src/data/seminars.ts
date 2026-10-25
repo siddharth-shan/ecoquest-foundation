@@ -30,9 +30,9 @@ export interface SeminarRecording {
   /** Still from the recording, under public/. Shown until the visitor presses play. */
   poster: string
   /**
-   * What the file actually is, shown on the thumbnail. Defaults to 'Recording'.
-   * Set it when the video is not the live session — a re-recording made after
-   * the fact must not pass itself off as the session.
+   * What the file actually is, shown on the thumbnail. Defaults to 'Recorded
+   * walkthrough': the files are short narrated run-throughs of the deck, not
+   * captures of the live session, and must not pass themselves off as one.
    */
   label?: string
 }
@@ -145,8 +145,6 @@ export const seminars: Seminar[] = [
         file: 'home-footprint.mp4',
         durationSeconds: 268,
         poster: '/images/seminars/home-footprint.webp',
-        // Recorded on Oct 24, after the session, not during it.
-        label: 'Recorded walkthrough',
       },
     },
   },
