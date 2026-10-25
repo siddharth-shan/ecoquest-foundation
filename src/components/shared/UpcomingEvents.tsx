@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { HiClock, HiExternalLink, HiGlobeAlt, HiLocationMarker, HiVideoCamera } from 'react-icons/hi'
+import { HideAfter, TodayBadge } from '@/components/shared/EventTiming'
 import { upcomingCampaigns, type CampaignTile } from '@/data/campaigns'
 import { seminarTile, upcomingSeminars } from '@/data/seminars'
 
@@ -15,6 +16,7 @@ const MAX_CARDS = 4
 interface UpcomingItem {
   key: string
   start: string
+  end: string
   kind: 'Seminar' | 'Campaign'
   title: string
   tile: CampaignTile
@@ -32,6 +34,7 @@ function upcomingItems(): UpcomingItem[] {
     ...upcomingCampaigns.map((c) => ({
       key: c.slug,
       start: c.startDateTime,
+      end: c.endDateTime,
       kind: 'Campaign' as const,
       title: c.title,
       tile: c.tile,
@@ -46,6 +49,7 @@ function upcomingItems(): UpcomingItem[] {
     ...upcomingSeminars.map((s) => ({
       key: s.slug,
       start: s.startDateTime,
+      end: s.endDateTime,
       kind: 'Seminar' as const,
       title: s.title,
       tile: seminarTile(s),
@@ -57,7 +61,9 @@ function upcomingItems(): UpcomingItem[] {
       anchor: '/events/#seminars',
     })),
   ]
-    .sort((a, b) => Date.parse(a.start) - Date.parse(b.start))
+    // Soonest to close first: a cleanup happening today outranks a month-long
+    // challenge that opened earlier but is still open next week.
+    .sort((a, b) => Date.parse(a.end) - Date.parse(b.end))
     .slice(0, MAX_CARDS)
 }
 
@@ -80,79 +86,79 @@ export default function UpcomingEvents() {
           {items.map((item) => {
             const external = item.href.startsWith('http')
             return (
-              <article
-                key={item.key}
-                className="card bg-white border-t-4 border-primary-green flex flex-col"
-              >
-                <div className="p-6 flex-1">
-                  <div className="flex gap-4 mb-4">
-                    <div className="shrink-0 w-16 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-2.5 text-center">
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                        {item.tile.top}
+              <HideAfter key={item.key} endsAt={item.end}>
+                <article className="card bg-white border-t-4 border-primary-green flex flex-col h-full">
+                  <div className="p-6 flex-1">
+                    <div className="flex gap-4 mb-4">
+                      <div className="shrink-0 w-16 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-2.5 text-center">
+                        <div className="text-[10px] font-bold uppercase tracking-widest text-gray-500">
+                          {item.tile.top}
+                        </div>
+                        <div
+                          className={`font-bold leading-tight text-primary-green-dark font-heading ${
+                            item.tile.main.length > 2 ? 'text-lg' : 'text-2xl'
+                          }`}
+                        >
+                          {item.tile.main}
+                        </div>
+                        <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-600">
+                          {item.tile.bottom}
+                        </div>
                       </div>
-                      <div
-                        className={`font-bold leading-tight text-primary-green-dark font-heading ${
-                          item.tile.main.length > 2 ? 'text-lg' : 'text-2xl'
-                        }`}
+                      <div className="min-w-0 flex flex-wrap content-start gap-1.5">
+                        <span className="bg-primary-green/10 text-primary-green-dark text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                          {item.kind}
+                        </span>
+                        <span className="bg-amber-100 text-amber-800 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                          Free
+                        </span>
+                        <TodayBadge startsAt={item.start} endsAt={item.end} />
+                      </div>
+                    </div>
+
+                    <h3 className="font-heading font-bold text-lg text-gray-900 leading-snug mb-3">
+                      <Link href={item.anchor} className="hover:text-primary-green">
+                        {item.title}
+                      </Link>
+                    </h3>
+
+                    <div className="flex flex-col gap-1.5 text-sm text-gray-600">
+                      <span className="inline-flex items-start gap-1.5">
+                        <HiClock className="text-primary-green shrink-0 mt-0.5" aria-hidden />
+                        {item.when}
+                      </span>
+                      <span className="inline-flex items-start gap-1.5">
+                        {item.inPerson ? (
+                          <HiLocationMarker className="text-primary-green shrink-0 mt-0.5" aria-hidden />
+                        ) : item.kind === 'Seminar' ? (
+                          <HiVideoCamera className="text-primary-green shrink-0 mt-0.5" aria-hidden />
+                        ) : (
+                          <HiGlobeAlt className="text-primary-green shrink-0 mt-0.5" aria-hidden />
+                        )}
+                        {item.where}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="px-6 pb-6">
+                    {external ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-primary text-sm px-4 whitespace-nowrap w-full inline-flex items-center justify-center gap-2"
                       >
-                        {item.tile.main}
-                      </div>
-                      <div className="text-[10px] font-semibold uppercase tracking-wide text-gray-600">
-                        {item.tile.bottom}
-                      </div>
-                    </div>
-                    <div className="min-w-0 flex flex-wrap content-start gap-1.5">
-                      <span className="bg-primary-green/10 text-primary-green-dark text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
-                        {item.kind}
-                      </span>
-                      <span className="bg-amber-100 text-amber-800 text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
-                        Free
-                      </span>
-                    </div>
+                        {item.ctaLabel}
+                        <HiExternalLink className="opacity-80" aria-hidden />
+                      </a>
+                    ) : (
+                      <Link href={item.href} className="btn btn-primary text-sm px-4 whitespace-nowrap w-full text-center inline-block">
+                        {item.ctaLabel}
+                      </Link>
+                    )}
                   </div>
-
-                  <h3 className="font-heading font-bold text-lg text-gray-900 leading-snug mb-3">
-                    <Link href={item.anchor} className="hover:text-primary-green">
-                      {item.title}
-                    </Link>
-                  </h3>
-
-                  <div className="flex flex-col gap-1.5 text-sm text-gray-600">
-                    <span className="inline-flex items-start gap-1.5">
-                      <HiClock className="text-primary-green shrink-0 mt-0.5" aria-hidden />
-                      {item.when}
-                    </span>
-                    <span className="inline-flex items-start gap-1.5">
-                      {item.inPerson ? (
-                        <HiLocationMarker className="text-primary-green shrink-0 mt-0.5" aria-hidden />
-                      ) : item.kind === 'Seminar' ? (
-                        <HiVideoCamera className="text-primary-green shrink-0 mt-0.5" aria-hidden />
-                      ) : (
-                        <HiGlobeAlt className="text-primary-green shrink-0 mt-0.5" aria-hidden />
-                      )}
-                      {item.where}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="px-6 pb-6">
-                  {external ? (
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-primary text-sm px-4 whitespace-nowrap w-full inline-flex items-center justify-center gap-2"
-                    >
-                      {item.ctaLabel}
-                      <HiExternalLink className="opacity-80" aria-hidden />
-                    </a>
-                  ) : (
-                    <Link href={item.href} className="btn btn-primary text-sm px-4 whitespace-nowrap w-full text-center inline-block">
-                      {item.ctaLabel}
-                    </Link>
-                  )}
-                </div>
-              </article>
+                </article>
+              </HideAfter>
             )
           })}
         </div>

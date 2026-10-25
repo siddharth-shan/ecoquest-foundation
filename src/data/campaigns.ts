@@ -41,7 +41,7 @@ export interface Campaign {
   /** ISO 8601 with the America/Los_Angeles offset. Feeds schema.org startDate. */
   startDateTime: string
   endDateTime: string
-  /** Human-readable date for display, e.g. "Sunday, October 11, 2026". */
+  /** Human-readable date for display, e.g. "Sunday, October 25, 2026". */
   displayDate: string
   displayTime: string
   /** The three lines of the date tile, written out rather than parsed — a
@@ -100,7 +100,7 @@ export interface Campaign {
 export const CAMPAIGN_TITLE = 'October Environmental Action Campaign'
 
 export const CAMPAIGN_BLURB =
-  'Two ways to take part this October — one you can do from anywhere in California on your own schedule, and one morning of hands-on work in Cerritos. Both are free, both are open to anyone, and both count toward documented service hours.'
+  'Two ways to take part this October — one you can do from anywhere in California on your own schedule, and one afternoon of hands-on work in Cerritos. Both are free, both are open to anyone, and both count toward documented service hours.'
 
 export const campaigns: Campaign[] = [
   {
@@ -133,11 +133,11 @@ export const campaigns: Campaign[] = [
     slug: 'friendship-park-cleanup-2026',
     title: 'Community Cleanup — Friendship Park',
     shortTitle: 'Friendship Park Cleanup',
-    startDateTime: '2026-10-11T09:00:00-07:00',
-    endDateTime: '2026-10-11T12:00:00-07:00',
-    displayDate: 'Sunday, October 11, 2026',
-    displayTime: '9:00 AM–12:00 PM PT',
-    tile: { top: 'Sun', main: '11', bottom: 'Oct 2026' },
+    startDateTime: '2026-10-25T16:00:00-07:00',
+    endDateTime: '2026-10-25T19:00:00-07:00',
+    displayDate: 'Sunday, October 25, 2026',
+    displayTime: '4:00–7:00 PM PT',
+    tile: { top: 'Sun', main: '25', bottom: 'Oct 2026' },
     attendanceMode: 'in-person',
     place: {
       name: 'Friendship Park',
@@ -149,7 +149,7 @@ export const campaigns: Campaign[] = [
     },
     supportedBy: 'with volunteer support from a local Scout troop',
     description:
-      'A morning of litter pickup around Friendship Park and the surrounding block. Inspired by National Cleanup Day and its mission to keep communities clean, and run as part of our October campaign. Bring water and closed-toe shoes; we supply bags, gloves, and grabbers.',
+      'An afternoon of litter pickup around Friendship Park and the surrounding block. Inspired by National Cleanup Day and its mission to keep communities clean, and run as part of our October campaign. Bring water and closed-toe shoes; we supply bags, gloves, and grabbers.',
     audience: 'All ages — under-16s should come with an adult',
     serviceHours: '3 hours, signed off on the day',
     details: [

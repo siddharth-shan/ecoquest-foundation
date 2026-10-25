@@ -10,6 +10,7 @@ import {
 } from 'react-icons/hi'
 import EventCarousel from '@/components/shared/EventCarousel'
 import SeminarVideo from '@/components/shared/SeminarVideo'
+import { HideAfter, TodayBadge } from '@/components/shared/EventTiming'
 import { CAMPAIGN_BLURB, CAMPAIGN_TITLE, upcomingCampaigns } from '@/data/campaigns'
 import {
   SEMINAR_CADENCE,
@@ -275,150 +276,150 @@ export default function Events() {
 
             <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto items-stretch">
               {upcomingCampaigns.map((campaign) => (
-                <article
-                  key={campaign.slug}
-                  className="card bg-white border-t-4 border-primary-green flex flex-col"
-                >
-                  <div className="p-6 md:p-7 flex-1">
-                    <div className="flex gap-5">
-                      {/* Same date tile as the seminar cards, but the three
-                          lines come from the data file rather than being split
-                          out of a display string — a month-long campaign has no
-                          single weekday to parse. */}
-                      <div className="shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
-                        <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
-                          {campaign.tile.top}
+                <HideAfter key={campaign.slug} endsAt={campaign.endDateTime}>
+                  <article className="card bg-white border-t-4 border-primary-green flex flex-col">
+                    <div className="p-6 md:p-7 flex-1">
+                      <div className="flex gap-5">
+                        {/* Same date tile as the seminar cards, but the three
+                            lines come from the data file rather than being split
+                            out of a display string — a month-long campaign has no
+                            single weekday to parse. */}
+                        <div className="shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
+                          <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
+                            {campaign.tile.top}
+                          </div>
+                          <div
+                            className={`font-bold leading-tight text-primary-green-dark font-heading ${
+                              campaign.tile.main.length > 2
+                                ? 'text-lg md:text-xl'
+                                : 'text-2xl md:text-3xl'
+                            }`}
+                          >
+                            {campaign.tile.main}
+                          </div>
+                          <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
+                            {campaign.tile.bottom}
+                          </div>
                         </div>
-                        <div
-                          className={`font-bold leading-tight text-primary-green-dark font-heading ${
-                            campaign.tile.main.length > 2
-                              ? 'text-lg md:text-xl'
-                              : 'text-2xl md:text-3xl'
-                          }`}
-                        >
-                          {campaign.tile.main}
-                        </div>
-                        <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
-                          {campaign.tile.bottom}
-                        </div>
-                      </div>
 
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                            {campaign.attendanceMode === 'in-person' ? 'In person' : 'Online'}
-                          </span>
-                          <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                            Free
-                          </span>
-                        </div>
-                        <h3 className="font-bold text-xl md:text-2xl text-gray-900 font-heading leading-snug">
-                          {campaign.title}
-                        </h3>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-2 text-sm text-gray-600 mt-5 mb-4">
-                      <span className="inline-flex items-center gap-1.5">
-                        <HiCalendar className="text-primary-green shrink-0" aria-hidden />
-                        <span className="font-medium text-gray-800">{campaign.displayDate}</span>
-                      </span>
-                      <span className="inline-flex items-center gap-1.5">
-                        <HiClock className="text-primary-green shrink-0" aria-hidden />
-                        {campaign.displayTime}
-                      </span>
-                      {campaign.place ? (
-                        <span className="inline-flex items-start gap-1.5">
-                          <HiLocationMarker
-                            className="text-primary-green shrink-0 mt-0.5"
-                            aria-hidden
-                          />
-                          <span>
-                            <span className="font-medium text-gray-800">{campaign.place.name}</span>
-                            <br />
-                            {campaign.place.street}, {campaign.place.city}, {campaign.place.region}{' '}
-                            {campaign.place.postalCode}
-                          </span>
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center gap-1.5">
-                          <HiGlobeAlt className="text-primary-green shrink-0" aria-hidden />
-                          {campaign.onlineWhere}
-                        </span>
-                      )}
-                    </div>
-
-                    <p className="text-gray-700 leading-relaxed mb-5">{campaign.description}</p>
-
-                    {campaign.details && (
-                      <ul className="space-y-1.5 text-sm text-gray-700 mb-5">
-                        {campaign.details.map((detail) => (
-                          <li key={detail} className="flex gap-2">
-                            <span className="text-primary-green font-bold shrink-0" aria-hidden>
-                              •
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                              {campaign.attendanceMode === 'in-person' ? 'In person' : 'Online'}
                             </span>
-                            <span>{detail}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-
-                    <dl className="grid gap-3 text-sm border-t border-gray-100 pt-4">
-                      <div>
-                        <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
-                          Service hours
-                        </dt>
-                        <dd className="text-gray-700">{campaign.serviceHours}</dd>
+                            <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                              Free
+                            </span>
+                            <TodayBadge startsAt={campaign.startDateTime} endsAt={campaign.endDateTime} />
+                          </div>
+                          <h3 className="font-bold text-xl md:text-2xl text-gray-900 font-heading leading-snug">
+                            {campaign.title}
+                          </h3>
+                        </div>
                       </div>
-                      <div>
-                        <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
-                          Who it&apos;s for
-                        </dt>
-                        <dd className="text-gray-700">{campaign.audience}</dd>
-                      </div>
-                    </dl>
-                  </div>
 
-                  <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-7 py-4">
-                    <div className="flex flex-wrap items-center gap-3">
-                      <a
-                        href={campaign.registrationUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                      >
-                        {campaign.ctaLabel}
-                        <HiExternalLink className="text-base opacity-80" aria-hidden />
-                      </a>
-                      {/* Links out to a third-party listing only once one really
-                          exists — see listingUrl in src/data/campaigns.ts. */}
-                      {campaign.listingUrl && (
-                        <a
-                          href={campaign.listingUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn btn-outline whitespace-nowrap text-sm px-4"
-                        >
-                          View on {campaign.listingLabel}
-                        </a>
+                      <div className="flex flex-col gap-2 text-sm text-gray-600 mt-5 mb-4">
+                        <span className="inline-flex items-center gap-1.5">
+                          <HiCalendar className="text-primary-green shrink-0" aria-hidden />
+                          <span className="font-medium text-gray-800">{campaign.displayDate}</span>
+                        </span>
+                        <span className="inline-flex items-center gap-1.5">
+                          <HiClock className="text-primary-green shrink-0" aria-hidden />
+                          {campaign.displayTime}
+                        </span>
+                        {campaign.place ? (
+                          <span className="inline-flex items-start gap-1.5">
+                            <HiLocationMarker
+                              className="text-primary-green shrink-0 mt-0.5"
+                              aria-hidden
+                            />
+                            <span>
+                              <span className="font-medium text-gray-800">{campaign.place.name}</span>
+                              <br />
+                              {campaign.place.street}, {campaign.place.city}, {campaign.place.region}{' '}
+                              {campaign.place.postalCode}
+                            </span>
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center gap-1.5">
+                            <HiGlobeAlt className="text-primary-green shrink-0" aria-hidden />
+                            {campaign.onlineWhere}
+                          </span>
+                        )}
+                      </div>
+
+                      <p className="text-gray-700 leading-relaxed mb-5">{campaign.description}</p>
+
+                      {campaign.details && (
+                        <ul className="space-y-1.5 text-sm text-gray-700 mb-5">
+                          {campaign.details.map((detail) => (
+                            <li key={detail} className="flex gap-2">
+                              <span className="text-primary-green font-bold shrink-0" aria-hidden>
+                                •
+                              </span>
+                              <span>{detail}</span>
+                            </li>
+                          ))}
+                        </ul>
                       )}
-                      {campaign.place && (
-                        <a
-                          href={campaign.place.mapUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm font-semibold text-primary-green hover:underline whitespace-nowrap"
-                        >
-                          Get directions
-                        </a>
-                      )}
+
+                      <dl className="grid gap-3 text-sm border-t border-gray-100 pt-4">
+                        <div>
+                          <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                            Service hours
+                          </dt>
+                          <dd className="text-gray-700">{campaign.serviceHours}</dd>
+                        </div>
+                        <div>
+                          <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                            Who it&apos;s for
+                          </dt>
+                          <dd className="text-gray-700">{campaign.audience}</dd>
+                        </div>
+                      </dl>
                     </div>
-                    <p className="text-xs text-gray-500 mt-3">
-                      Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
-                      {campaign.supportedBy ? `, ${campaign.supportedBy}` : ''}
-                    </p>
-                  </div>
-                </article>
+
+                    <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-7 py-4">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <a
+                          href={campaign.registrationUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
+                        >
+                          {campaign.ctaLabel}
+                          <HiExternalLink className="text-base opacity-80" aria-hidden />
+                        </a>
+                        {/* Links out to a third-party listing only once one really
+                            exists — see listingUrl in src/data/campaigns.ts. */}
+                        {campaign.listingUrl && (
+                          <a
+                            href={campaign.listingUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline whitespace-nowrap text-sm px-4"
+                          >
+                            View on {campaign.listingLabel}
+                          </a>
+                        )}
+                        {campaign.place && (
+                          <a
+                            href={campaign.place.mapUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm font-semibold text-primary-green hover:underline whitespace-nowrap"
+                          >
+                            Get directions
+                          </a>
+                        )}
+                      </div>
+                      <p className="text-xs text-gray-500 mt-3">
+                        Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
+                        {campaign.supportedBy ? `, ${campaign.supportedBy}` : ''}
+                      </p>
+                    </div>
+                  </article>
+                </HideAfter>
               ))}
             </div>
 
@@ -437,7 +438,7 @@ export default function Events() {
               >
                 <img
                   src="/images/campaigns/october-2026-poster.webp"
-                  alt="October Environmental Action Campaign flyer — the California Biodiversity Challenge running October 1–31, and the Friendship Park community cleanup on Sunday, October 11."
+                  alt="October Environmental Action Campaign flyer — the California Biodiversity Challenge running October 1–31, and the Friendship Park community cleanup on Sunday, October 25."
                   width={1200}
                   height={1700}
                   className="w-28 sm:w-32 h-auto rounded-lg border border-gray-200 shadow-sm"
@@ -493,114 +494,117 @@ export default function Events() {
           {upcomingSeminars.length > 0 ? (
             <div className="space-y-6 max-w-5xl mx-auto">
               {upcomingSeminars.map((seminar) => (
-                <article key={seminar.slug} className="card border-l-4 border-primary-green">
-                  <div className="p-6 md:p-8 flex gap-5 md:gap-7">
-                    {/* Date tile. Sessions are two weeks apart, so the date is
-                        the thing a reader scans for — it gets its own anchor
-                        instead of a line in the meta row. Hidden on phones,
-                        where a 64px column would squeeze the text into a
-                        gutter; the meta row carries the date there instead. */}
-                    <div className="hidden sm:block shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
-                      <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
-                        {seminarTile(seminar).top}
+                <HideAfter key={seminar.slug} endsAt={seminar.endDateTime}>
+                  <article className="card border-l-4 border-primary-green">
+                    <div className="p-6 md:p-8 flex gap-5 md:gap-7">
+                      {/* Date tile. Sessions are two weeks apart, so the date is
+                          the thing a reader scans for — it gets its own anchor
+                          instead of a line in the meta row. Hidden on phones,
+                          where a 64px column would squeeze the text into a
+                          gutter; the meta row carries the date there instead. */}
+                      <div className="hidden sm:block shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
+                        <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
+                          {seminarTile(seminar).top}
+                        </div>
+                        <div className="text-2xl md:text-3xl font-bold leading-tight text-primary-green-dark font-heading">
+                          {seminarTile(seminar).main}
+                        </div>
+                        <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
+                          {seminarTile(seminar).bottom}
+                        </div>
                       </div>
-                      <div className="text-2xl md:text-3xl font-bold leading-tight text-primary-green-dark font-heading">
-                        {seminarTile(seminar).main}
-                      </div>
-                      <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
-                        {seminarTile(seminar).bottom}
+
+                      <div className="min-w-0 flex-1">
+                        <div className="flex flex-wrap items-center gap-2 mb-2">
+                          <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                            Session {sessionNumber(seminar.slug)} of {seminars.length}
+                          </span>
+                          <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                            Free
+                          </span>
+                          <TodayBadge startsAt={seminar.startDateTime} endsAt={seminar.endDateTime} />
+                        </div>
+
+                        <h3 className="font-bold text-xl md:text-2xl mb-3 text-gray-900 font-heading leading-snug">
+                          {seminar.title}
+                        </h3>
+
+                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 mb-4">
+                          <span className="sm:hidden inline-flex items-center gap-1.5">
+                            <HiCalendar className="text-primary-green shrink-0" aria-hidden />
+                            <span className="font-medium text-gray-800">{seminar.displayDate}</span>
+                          </span>
+                          <span className="inline-flex items-center gap-1.5">
+                            <HiClock className="text-primary-green shrink-0" aria-hidden />
+                            <span className="font-medium text-gray-800">{seminar.displayTime}</span>
+                          </span>
+                          <span className="inline-flex items-center gap-1.5">
+                            <HiVideoCamera className="text-primary-green shrink-0" aria-hidden />
+                            Online via Zoom
+                          </span>
+                        </div>
+
+                        <p className="text-gray-700 leading-relaxed mb-5 max-w-prose">
+                          {seminar.description}
+                        </p>
+
+                        <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm border-t border-gray-100 pt-4">
+                          <div>
+                            <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                              Who it&apos;s for
+                            </dt>
+                            <dd className="text-gray-700">{seminar.audience}</dd>
+                          </div>
+                          <div>
+                            <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
+                              Built on
+                            </dt>
+                            <dd className="text-gray-700">{seminar.builtOn}</dd>
+                          </div>
+                        </dl>
                       </div>
                     </div>
 
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-wrap items-center gap-2 mb-2">
-                        <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                          Session {sessionNumber(seminar.slug)} of {seminars.length}
-                        </span>
-                        <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                          Free
-                        </span>
+                    {/* Naming Eventbrite in the link text is the legitimacy
+                        signal: registration is held by a ticketing platform, not
+                        by a form on our own site. Their logo is deliberately not
+                        used — the wordmark is their trademark and we have no
+                        partnership with them to display it. */}
+                    <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-8 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
+                      <div className="flex flex-wrap items-center gap-3">
+                        {seminar.eventbriteUrl ? (
+                          <a
+                            href={seminar.eventbriteUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
+                          >
+                            Register on Eventbrite
+                            <HiExternalLink className="text-base opacity-80" aria-hidden />
+                          </a>
+                        ) : (
+                          <Link
+                            href={`/events/register/?event=${encodeURIComponent(seminar.title)}`}
+                            className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
+                          >
+                            Register Free
+                          </Link>
+                        )}
+                        {seminar.hasDeck && (
+                          <Link
+                            href={`/seminars/${seminar.slug}/`}
+                            className="btn btn-outline whitespace-nowrap text-sm px-4"
+                          >
+                            Preview Slides
+                          </Link>
+                        )}
                       </div>
-
-                      <h3 className="font-bold text-xl md:text-2xl mb-3 text-gray-900 font-heading leading-snug">
-                        {seminar.title}
-                      </h3>
-
-                      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 mb-4">
-                        <span className="sm:hidden inline-flex items-center gap-1.5">
-                          <HiCalendar className="text-primary-green shrink-0" aria-hidden />
-                          <span className="font-medium text-gray-800">{seminar.displayDate}</span>
-                        </span>
-                        <span className="inline-flex items-center gap-1.5">
-                          <HiClock className="text-primary-green shrink-0" aria-hidden />
-                          <span className="font-medium text-gray-800">{seminar.displayTime}</span>
-                        </span>
-                        <span className="inline-flex items-center gap-1.5">
-                          <HiVideoCamera className="text-primary-green shrink-0" aria-hidden />
-                          Online via Zoom
-                        </span>
-                      </div>
-
-                      <p className="text-gray-700 leading-relaxed mb-5 max-w-prose">
-                        {seminar.description}
+                      <p className="text-xs text-gray-500 sm:ml-auto sm:text-right">
+                        Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
                       </p>
-
-                      <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm border-t border-gray-100 pt-4">
-                        <div>
-                          <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
-                            Who it&apos;s for
-                          </dt>
-                          <dd className="text-gray-700">{seminar.audience}</dd>
-                        </div>
-                        <div>
-                          <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
-                            Built on
-                          </dt>
-                          <dd className="text-gray-700">{seminar.builtOn}</dd>
-                        </div>
-                      </dl>
                     </div>
-                  </div>
-
-                  {/* Naming Eventbrite in the link text is the legitimacy
-                      signal: registration is held by a ticketing platform, not
-                      by a form on our own site. Their logo is deliberately not
-                      used — the wordmark is their trademark and we have no
-                      partnership with them to display it. */}
-                  <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-8 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
-                    <div className="flex flex-wrap items-center gap-3">
-                      {seminar.eventbriteUrl ? (
-                        <a
-                          href={seminar.eventbriteUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                        >
-                          Register on Eventbrite
-                          <HiExternalLink className="text-base opacity-80" aria-hidden />
-                        </a>
-                      ) : (
-                        <Link
-                          href={`/events/register/?event=${encodeURIComponent(seminar.title)}`}
-                          className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                        >
-                          Register Free
-                        </Link>
-                      )}
-                      {seminar.hasDeck && (
-                        <Link
-                          href={`/seminars/${seminar.slug}/`}
-                          className="btn btn-outline whitespace-nowrap text-sm px-4"
-                        >
-                          Preview Slides
-                        </Link>
-                      )}
-                    </div>
-                    <p className="text-xs text-gray-500 sm:ml-auto sm:text-right">
-                      Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
-                    </p>
-                  </div>
-                </article>
+                  </article>
+                </HideAfter>
               ))}
             </div>
           ) : (

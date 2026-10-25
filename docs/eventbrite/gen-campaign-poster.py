@@ -163,7 +163,7 @@ h1{{font-size:62px;max-width:17ch;margin-bottom:12px}}
 <div class="kicker">October 2026 &middot; Free &middot; All ages</div>
 <h1>October Environmental Action Campaign</h1>
 <p class="lede">Two ways to take part &mdash; one from anywhere in California,
-one morning of hands-on work in Cerritos.</p>
+one afternoon of hands-on work in Cerritos.</p>
 
 <div class="cards">
   <div class="card">
@@ -181,7 +181,7 @@ one morning of hands-on work in Cerritos.</p>
 
   <div class="card">
     <div class="cardtop"><span class="pill">In person</span>
-      <span class="pill amber">One morning</span></div>
+      <span class="pill amber">One afternoon</span></div>
     <div class="ctitle">{CL['title']}</div>
     <div class="row"><span class="ico">&#9679;</span>
       <span><b>{CL['displayDate']}</b> &middot; {CL['displayTime']}</span></div>
@@ -229,7 +229,7 @@ h1{{font-size:68px;max-width:14ch;margin-bottom:26px}}
   <div class="kicker">October 2026 &middot; Free</div>
   <h1>October Environmental Action Campaign</h1>
   <p class="lede">Two ways to take part &mdash; one from anywhere in California,
-  one morning of hands-on work in Cerritos.</p>
+  one afternoon of hands-on work in Cerritos.</p>
   <div class="stamp">Open to all ages &middot; {CONTACT}</div>
 </div>
 <div class="right">
@@ -245,7 +245,7 @@ h1{{font-size:68px;max-width:14ch;margin-bottom:26px}}
   </div>
   <div class="card">
     <div class="cardtop"><span class="pill">In person</span>
-      <span class="pill amber">One morning</span></div>
+      <span class="pill amber">One afternoon</span></div>
     <div class="ctitle">{CL['title']}</div>
     <div class="row"><span class="ico">&#9679;</span>
       <span><b>{CL['displayDate']}</b> &middot; {CL['displayTime']}<br>{VENUE}, {VENUE_ADDR}</span></div>
