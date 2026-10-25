@@ -15,16 +15,42 @@
 // IF A SESSION IS CANCELLED, remove it from this list or move its date. Leaving
 // a past-dated entry in place states that it was held.
 
+/**
+ * Where the recordings live. The MP4s are deliberately not in this repo — video
+ * would bloat git history permanently and eat the site's bandwidth allowance.
+ * See "Recordings" in docs/SEMINAR_RUNBOOK.md for how files get here.
+ */
+export const RECORDINGS_BASE_URL = 'https://storage.googleapis.com/ecoquest-seminar-recordings'
+
+export interface SeminarRecording {
+  /** File name under RECORDINGS_BASE_URL, e.g. 'wildfire-data.mp4'. */
+  file: string
+  /** Real length of the file, from ffprobe. Shown on the thumbnail. */
+  durationSeconds: number
+  /** Still from the recording, under public/. Shown until the visitor presses play. */
+  poster: string
+  /**
+   * What the file actually is, shown on the thumbnail. Defaults to 'Recording'.
+   * Set it when the video is not the live session — a re-recording made after
+   * the fact must not pass itself off as the session.
+   */
+  label?: string
+}
+
 export interface SeminarRecap {
   /**
    * Number of people who attended live. Report the real count, or leave it out
    * entirely — an omitted number says nothing, an invented one is a lie.
    */
   attendees?: number
-  /** Public recording URL (YouTube unlisted is fine — it still resolves). */
-  recordingUrl?: string
-  /** One or two sentences on what was actually covered and discussed. */
-  summary: string
+  /** A recording that actually exists at RECORDINGS_BASE_URL. */
+  recording?: SeminarRecording
+  /**
+   * One or two sentences on what was actually covered and discussed. Optional:
+   * a recording speaks for itself, and a summary written by someone who was not
+   * there is worse than none.
+   */
+  summary?: string
 }
 
 export interface Seminar {
@@ -70,6 +96,13 @@ export const seminars: Seminar[] = [
     builtOn: 'Wildfire Watch, our student-built fire tracking app',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-reading-real-wildfire-data-tickets-1999171951122',
     hasDeck: true,
+    recap: {
+      recording: {
+        file: 'wildfire-data.mp4',
+        durationSeconds: 377,
+        poster: '/images/seminars/wildfire-data.webp',
+      },
+    },
   },
   {
     slug: 'beach-cleanup-data',
@@ -85,6 +118,13 @@ export const seminars: Seminar[] = [
     builtOn: 'Our Seal Beach and Save Our Beach cleanups',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-what-a-beach-cleanup-actually-tells-us-tickets-1999172924032',
     hasDeck: true,
+    recap: {
+      recording: {
+        file: 'beach-cleanup-data.mp4',
+        durationSeconds: 247,
+        poster: '/images/seminars/beach-cleanup-data.webp',
+      },
+    },
   },
   {
     slug: 'home-footprint',
@@ -100,6 +140,15 @@ export const seminars: Seminar[] = [
     builtOn: 'Our EcoChallenge monthly missions',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-your-homes-water-and-energy-footprint-tickets-1999172925035',
     hasDeck: true,
+    recap: {
+      recording: {
+        file: 'home-footprint.mp4',
+        durationSeconds: 268,
+        poster: '/images/seminars/home-footprint.webp',
+        // Recorded on Oct 24, after the session, not during it.
+        label: 'Recorded walkthrough',
+      },
+    },
   },
   {
     slug: 'climate-anxiety',
@@ -115,6 +164,13 @@ export const seminars: Seminar[] = [
     builtOn: 'Published climate anxiety research, and MindMirror — our student-built mental health screening pilot',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-climate-anxiety-and-how-we-built-mindmirror-tickets-1999172929047',
     hasDeck: true,
+    recap: {
+      recording: {
+        file: 'climate-anxiety.mp4',
+        durationSeconds: 359,
+        poster: '/images/seminars/climate-anxiety.webp',
+      },
+    },
   },
   {
     slug: 'local-conservation',
@@ -165,6 +221,10 @@ export const upcomingSeminars = seminars.filter((s) => !hasEnded(s))
 export const pastSeminars = seminars
   .filter(hasEnded)
   .sort((a, b) => b.startDateTime.localeCompare(a.startDateTime))
+
+export function recordingUrl(recording: SeminarRecording): string {
+  return `${RECORDINGS_BASE_URL}/${recording.file}`
+}
 
 export function getSeminar(slug: string): Seminar | undefined {
   return seminars.find((s) => s.slug === slug)

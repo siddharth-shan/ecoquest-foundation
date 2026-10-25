@@ -2,16 +2,19 @@ import Link from 'next/link'
 import {
   HiCalendar,
   HiClock,
+  HiDownload,
   HiExternalLink,
   HiGlobeAlt,
   HiLocationMarker,
   HiVideoCamera,
 } from 'react-icons/hi'
 import EventCarousel from '@/components/shared/EventCarousel'
+import SeminarVideo from '@/components/shared/SeminarVideo'
 import { CAMPAIGN_BLURB, CAMPAIGN_TITLE, upcomingCampaigns } from '@/data/campaigns'
 import {
   SEMINAR_CADENCE,
   pastSeminars,
+  recordingUrl,
   seminarTile,
   seminars,
   upcomingSeminars,
@@ -626,62 +629,85 @@ export default function Events() {
               <h2 className="section-title">Past Sessions</h2>
               <div className="section-underline" />
               <p className="text-gray-600 text-lg">
-                The slide deck from each session stays online at a permanent link. Recaps and
-                recordings are added after the session, once there is something real to report.
+                Missed one? Watch the recording and flip through the slides at your own pace.
+                Every deck stays online at a permanent link.
               </p>
             </div>
-            <div className="space-y-4">
-              {pastSeminars.map((seminar) => (
-                <article
-                  key={seminar.slug}
-                  className="bg-white border border-gray-200 border-l-4 border-l-gray-300 rounded-xl p-6 shadow-sm"
-                >
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
-                    <span className="font-semibold text-gray-700">
-                      Session {sessionNumber(seminar.slug)} · {seminar.displayDate}
-                    </span>
-                    {/* Attendance prints only when a real number was recorded. */}
-                    {typeof seminar.recap?.attendees === 'number' && (
-                      <>
-                        <span className="text-gray-300" aria-hidden>
-                          •
+            <div className="space-y-6">
+              {pastSeminars.map((seminar) => {
+                const recording = seminar.recap?.recording
+                return (
+                  <article
+                    key={seminar.slug}
+                    className={`bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm ${
+                      recording
+                        ? 'grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-5 md:gap-7 items-center'
+                        : 'border-l-4 border-l-gray-300'
+                    }`}
+                  >
+                    {recording && (
+                      <SeminarVideo
+                        src={recordingUrl(recording)}
+                        poster={recording.poster}
+                        title={seminar.title}
+                        durationSeconds={recording.durationSeconds}
+                        label={recording.label}
+                      />
+                    )}
+
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
+                        <span className="bg-gray-100 text-gray-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                          Session {sessionNumber(seminar.slug)} of {seminars.length}
                         </span>
-                        <span>{seminar.recap.attendees} attended</span>
-                      </>
-                    )}
-                  </div>
+                        <span>{seminar.displayDate}</span>
+                        {/* Attendance prints only when a real number was recorded. */}
+                        {typeof seminar.recap?.attendees === 'number' && (
+                          <>
+                            <span className="text-gray-300" aria-hidden>
+                              •
+                            </span>
+                            <span>{seminar.recap.attendees} attended</span>
+                          </>
+                        )}
+                      </div>
 
-                  <h3 className="font-bold text-xl mb-2 text-gray-900 font-heading">
-                    {seminar.title}
-                  </h3>
+                      <h3 className="font-bold text-xl md:text-2xl mb-2 text-gray-900 font-heading leading-snug">
+                        {seminar.title}
+                      </h3>
 
-                  {seminar.recap?.summary && (
-                    <p className="text-gray-700 mb-4 max-w-prose">{seminar.recap.summary}</p>
-                  )}
+                      {/* No recap summary means nobody has written one, so fall
+                          back to the published description rather than invent one. */}
+                      {seminar.recap?.summary ? (
+                        <p className="text-gray-700 max-w-prose">{seminar.recap.summary}</p>
+                      ) : (
+                        <p className="text-gray-600 max-w-prose line-clamp-3">{seminar.description}</p>
+                      )}
 
-                  <div className="flex flex-wrap items-center gap-3 mt-4">
-                    {seminar.hasDeck && (
-                      <Link
-                        href={`/seminars/${seminar.slug}/`}
-                        className="btn btn-outline text-sm px-4 whitespace-nowrap"
-                      >
-                        View the slide deck
-                      </Link>
-                    )}
-                    {seminar.recap?.recordingUrl && (
-                      <a
-                        href={seminar.recap.recordingUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-outline text-sm px-4 whitespace-nowrap inline-flex items-center gap-2"
-                      >
-                        Watch the recording
-                        <HiExternalLink className="text-base opacity-80" aria-hidden />
-                      </a>
-                    )}
-                  </div>
-                </article>
-              ))}
+                      <div className="flex flex-wrap items-center gap-3 mt-4">
+                        {seminar.hasDeck && (
+                          <Link
+                            href={`/seminars/${seminar.slug}/`}
+                            className="btn btn-outline text-sm px-4 whitespace-nowrap"
+                          >
+                            View the slide deck
+                          </Link>
+                        )}
+                        {recording && (
+                          <a
+                            href={recordingUrl(recording)}
+                            download
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-green-dark hover:underline"
+                          >
+                            <HiDownload aria-hidden />
+                            Download MP4
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </article>
+                )
+              })}
             </div>
           </div>
         </section>

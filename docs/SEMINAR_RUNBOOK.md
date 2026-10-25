@@ -245,25 +245,72 @@ qualifies is the local specialist's call — worth asking rather than assuming.
 
 ## After a session — within 48 hours
 
-1. Upload the recording to YouTube (unlisted is fine — the link still resolves).
+1. Prepare and upload the recording (see **Recordings** below for the one-time
+   bucket setup). Name it after the session slug:
+
+```bash
+SLUG=wildfire-data
+# Move the index to the front so playback starts before the whole file arrives.
+ffmpeg -i ~/Downloads/<zoom-file>.mp4 -c copy -movflags +faststart /tmp/$SLUG.mp4
+# Poster: a still of the title slide, shown until the visitor presses play.
+ffmpeg -ss 3 -i /tmp/$SLUG.mp4 -frames:v 1 -vf scale=1280:-2 -c:v libwebp -quality 80 \
+  public/images/seminars/$SLUG.webp
+# Real duration in seconds, for the thumbnail badge.
+ffprobe -v error -show_entries format=duration -of csv=p=0 /tmp/$SLUG.mp4
+gcloud storage cp /tmp/$SLUG.mp4 gs://ecoquest-seminar-recordings/$SLUG.mp4 \
+  --cache-control="public, max-age=31536000" \
+  --content-disposition="attachment; filename=EcoQuest-$SLUG.mp4"
+```
+
 2. Add a `recap` block to that seminar in `src/data/seminars.ts`:
 
 ```ts
 recap: {
   attendees: 14,
-  recordingUrl: 'https://youtu.be/...',
+  recording: {
+    file: 'wildfire-data.mp4',
+    durationSeconds: 377,
+    poster: '/images/seminars/wildfire-data.webp',
+  },
   summary: 'Covered where public fire and air-quality data comes from and what containment percentage actually measures. Most questions were about AQI apps disagreeing with each other.',
 },
 ```
 
-Every field except `summary` is optional. If the turnout was small and you would
-rather not print the number, leave `attendees` out — an omitted number says
-nothing, an invented one is a lie. If there is no recording, leave
-`recordingUrl` out; the slide deck link stands on its own.
+Every field is optional. If the turnout was small and you would rather not
+print the number, leave `attendees` out — an omitted number says nothing, an
+invented one is a lie. If there is no recording, leave `recording` out; the
+slide deck link stands on its own. Without a `summary` the card shows the
+session's published description instead.
 
 3. Rebuild and redeploy. The session is already in "Past Sessions" by date; the
    redeploy is what puts the recap on it.
 4. Post a short recap to social with one screenshot from the session.
+
+---
+
+## Recordings
+
+The MP4s are **not** in this repo — video would sit in git history forever. They
+live in a public Google Cloud Storage bucket, `gs://ecoquest-seminar-recordings`,
+and the site points at it through `RECORDINGS_BASE_URL` in
+`src/data/seminars.ts`. The Past Sessions card shows a poster with a play
+button; the video only downloads when someone presses play, so the bucket only
+bills for actual viewing.
+
+One-time bucket setup:
+
+```bash
+gcloud storage buckets create gs://ecoquest-seminar-recordings \
+  --location=us-west2 --uniform-bucket-level-access
+gcloud storage buckets add-iam-policy-binding gs://ecoquest-seminar-recordings \
+  --member=allUsers --role=roles/storage.objectViewer
+```
+
+Cost at this size is pennies: storage is about $0.02/GB/month (the whole series
+is under 0.1 GB) and egress is about $0.12/GB, so a 15 MB recording watched to
+the end 100 times costs roughly $0.18. If viewing ever grows into tens of GB a
+month, move the files to Cloudflare R2 (no egress fees) and change only
+`RECORDINGS_BASE_URL`.
 
 ---
 
@@ -274,7 +321,7 @@ count into a corroborated one:
 
 - Eventbrite registration list (export it)
 - Attendance count from Zoom
-- The recording link
+- The recording link (and the original Zoom file — keep it off the bucket)
 - The deck URL
 - Newsletter archive URL for the announcement
 - Prep time, logged honestly and separately from delivery time
