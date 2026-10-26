@@ -99,8 +99,6 @@ export interface Campaign {
 /** Umbrella name for the current campaign group, shown as the section heading. */
 export const CAMPAIGN_TITLE = 'October Environmental Action Campaign'
 
-export const CAMPAIGN_BLURB =
-  'Two ways to take part this October — one you can do from anywhere in California on your own schedule, and one afternoon of hands-on work in Cerritos. Both are free, both are open to anyone, and both count toward documented service hours.'
 
 export const campaigns: Campaign[] = [
   {
@@ -178,3 +176,9 @@ function hasEnded(campaign: Campaign): boolean {
 
 /** Campaigns still open. The whole section hides when this is empty. */
 export const upcomingCampaigns = campaigns.filter((c) => !hasEnded(c))
+
+/** Section intro. Only describes both ways to take part while both are still open. */
+export const CAMPAIGN_BLURB =
+  upcomingCampaigns.length > 1
+    ? 'Two ways to take part this October — one you can do from anywhere in California on your own schedule, and one afternoon of hands-on work in Cerritos. Both are free, both are open to anyone, and both count toward documented service hours.'
+    : 'Free, open to anyone, and counts toward documented service hours.'

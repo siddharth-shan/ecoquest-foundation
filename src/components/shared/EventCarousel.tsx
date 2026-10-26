@@ -24,6 +24,31 @@ export default function EventCarousel() {
 
   const photos: EventPhoto[] = [
     {
+      src: '/images/events/friendship-park-2026-3.webp',
+      alt: 'Volunteers lined up under a park shelter holding litter grabbers and bags',
+      caption: 'Friendship Park Cleanup (Oct 2026) - Volunteers ready with grabbers and bags before heading out',
+    },
+    {
+      src: '/images/events/friendship-park-2026-1.webp',
+      alt: 'Volunteer signing in at a picnic table under a park shelter',
+      caption: 'Friendship Park Cleanup (Oct 2026) - Signing in at the shelter before the cleanup',
+    },
+    {
+      src: '/images/events/friendship-park-2026-2.webp',
+      alt: 'Volunteers gathering under a park shelter with litter grabbers and bags',
+      caption: 'Friendship Park Cleanup (Oct 2026) - Gearing up with grabbers and bags',
+    },
+    {
+      src: '/images/events/friendship-park-2026-4.webp',
+      alt: 'Volunteers serving pizza at a picnic table at dusk',
+      caption: 'Friendship Park Cleanup (Oct 2026) - Pizza for the volunteers after the cleanup',
+    },
+    {
+      src: '/images/events/friendship-park-2026-5.webp',
+      alt: 'Volunteers eating together at a picnic table under the shelter at dusk',
+      caption: 'Friendship Park Cleanup (Oct 2026) - Wrapping up the evening together',
+    },
+    {
       src: '/images/events/IMG_1601.webp',
       alt: 'Student volunteer collecting litter along the shoreline with reusable totes',
       caption: 'Seal Beach Cleanup (2025) - Collecting litter along the shoreline with reusable Save Our Beach totes',

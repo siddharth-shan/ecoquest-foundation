@@ -183,6 +183,13 @@ function CampaignJsonLd() {
 export default function Events() {
   const featuredEvents: FeaturedEvent[] = [
     {
+      title: 'Friendship Park Cleanup',
+      date: 'October 2026',
+      location: 'Cerritos, CA',
+      image: '/images/events/friendship-park-2026-3.webp',
+      desc: 'Volunteers signed in under the park shelter, then set out with litter grabbers and bags to clean up the park. Held with volunteer support from a local Scout troop.',
+    },
+    {
       title: 'Seal Beach Cleanup',
       date: 'March 2025',
       location: 'Seal Beach, CA',
@@ -196,13 +203,6 @@ export default function Events() {
       image: '/images/events/IMG_4346.webp',
       desc: 'Volunteers cleaned pathways, cleared debris, and repainted park markers to help restore Prado Park.',
     },
-    {
-      title: 'Heritage Park Cleanup',
-      date: '2026',
-      location: 'Cerritos, CA',
-      image: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.webp',
-      desc: 'Student volunteers gathered to clean up green spaces and keep our local parks welcoming for the whole community.',
-    },
   ]
 
   const timeline: { year: string; events: TimelineEvent[] }[] = [
@@ -212,6 +212,7 @@ export default function Events() {
         { name: 'Seal Beach Cleanup', location: 'Seal Beach, CA' },
         { name: 'Artesia Park Cleanup', location: 'Artesia, CA' },
         { name: 'Heritage Park Cleanup', location: 'Cerritos, CA' },
+        { name: 'Friendship Park Cleanup', location: 'Cerritos, CA', when: 'October' },
       ],
     },
     {
