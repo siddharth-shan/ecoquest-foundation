@@ -11,7 +11,7 @@ interface ImpactMetric {
   description: string
 }
 
-const targetValues = [7, 35, 4, 2, 3]
+const targetValues = [8, 35, 4, 2, 3]
 
 export default function ImpactDashboard() {
   const [metrics, setMetrics] = useState<ImpactMetric[]>([

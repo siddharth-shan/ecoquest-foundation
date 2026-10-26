@@ -130,7 +130,7 @@ export default function Home() {
             {[
               { number: '4', label: 'Educational Games Built', desc: 'Interactive K-12 experiences' },
               { number: '4', label: 'Interactive Web Apps', desc: 'Wildfire Watch, Oceanaware, MindMirror, GreenLedger' },
-              { number: '7+', label: 'Community Cleanups', desc: 'Beach & park conservation' },
+              { number: '8+', label: 'Community Cleanups', desc: 'Beach & park conservation' },
               { number: '35+', label: 'Community Members Engaged', desc: 'Through events & programs' },
             ].map((stat, i) => (
               <div key={i} className="p-6">

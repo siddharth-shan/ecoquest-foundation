@@ -159,7 +159,7 @@ export default function DonatePage() {
               <h3 className="text-xl font-bold mb-4">What We&apos;ve Done</h3>
               <div className="space-y-4">
                 <div>
-                  <div className="text-4xl font-bold">7+</div>
+                  <div className="text-4xl font-bold">8+</div>
                   <div className="text-sm opacity-90">Community Cleanups</div>
                 </div>
                 <div>

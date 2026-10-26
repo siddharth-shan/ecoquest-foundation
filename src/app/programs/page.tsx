@@ -184,7 +184,7 @@ export default function Programs() {
                 ))}
               </ul>
               <div className="bg-primary-green/10 p-6 rounded-lg mb-6">
-                <div className="text-5xl font-bold text-primary-green mb-2">7+</div>
+                <div className="text-5xl font-bold text-primary-green mb-2">8+</div>
                 <div className="font-semibold">Community Cleanups Completed</div>
               </div>
               <Link href="/events/" className="btn btn-primary inline-block">

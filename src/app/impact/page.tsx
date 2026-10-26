@@ -93,7 +93,7 @@ export default function ImpactPortfolio() {
         <div className="container-custom">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center">
             {[
-              { number: '7+', label: 'Cleanups' },
+              { number: '8+', label: 'Cleanups' },
               { number: '35+', label: 'Volunteers' },
               { number: '4', label: 'Games' },
               { number: '3', label: 'Competition Apps' },
