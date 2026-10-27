@@ -164,7 +164,7 @@ export default function StormDrainPage() {
 
   return (
     <PlaceGate
-      purpose="We use your ZIP code to look up the real river reach your neighbourhood drains into, straight from the US Geological Survey."
+      purpose="We use your ZIP code to look up the real river reach your neighborhood drains into, straight from the US Geological Survey."
     >
       {(place, isDemo, changePlace) => (
         <StormDrainGame
@@ -481,7 +481,7 @@ function StormDrainGame({
                 ? `Showing sample data from Cerritos, CA — not ${place.city}. ${load.status === 'fixture' ? load.reason : ''}`
                 : undefined
             }
-            note={`The path is USGS's NHDPlus modelled stream network, traced downstream up to ${TRACE_DISTANCE_KM} km. Storm drain pipes themselves are not mapped in any national dataset, so the trace begins at the nearest mapped stream reach — about ${truth.nearestStreamKm.toFixed(1)} km from your ZIP code's centre point — not at a kerb inlet. Gauge readings are provisional USGS data subject to revision.`}
+            note={`The path is USGS's NHDPlus modelled stream network, traced downstream up to ${TRACE_DISTANCE_KM} km. Storm drain pipes themselves are not mapped in any national dataset, so the trace begins at the nearest mapped stream reach — about ${truth.nearestStreamKm.toFixed(1)} km from your ZIP code's centre point — not at a curb inlet. Gauge readings are provisional USGS data subject to revision.`}
           />
 
           <PrintSheet place={place} trace={trace} truth={truth} isFixture={isFixture} />
@@ -627,7 +627,7 @@ function PredictStep({
         Before we show you anything
       </h2>
       <p className="text-gray-700 mb-2 max-w-3xl">
-        Picture the kerb outside your home in {place.city}. It rains hard. The water runs along
+        Picture the curb outside your home in {place.city}. It rains hard. The water runs along
         the gutter and disappears down the grate.
       </p>
       <p className="text-gray-700 mb-8 max-w-3xl">
@@ -638,7 +638,7 @@ function PredictStep({
 
       <ChoiceGroup
         legend="1. Which way does that water head?"
-        hint="The general direction it travels once it is out of your neighbourhood."
+        hint="The general direction it travels once it is out of your neighborhood."
         name="direction"
         options={CARDINALS}
         value={prediction.direction}
@@ -1320,7 +1320,7 @@ function PrintSheet({
       <Line label="Nearest cross streets:" />
       <Line label="How many steps from your front door?" />
       <p style={{ marginBottom: '10pt' }}>
-        Drain type (circle one): &nbsp; kerb inlet &nbsp; · &nbsp; flat grate &nbsp; · &nbsp;
+        Drain type (circle one): &nbsp; curb inlet &nbsp; · &nbsp; flat grate &nbsp; · &nbsp;
         combination &nbsp; · &nbsp; other
       </p>
       <p style={{ marginBottom: '10pt' }}>
