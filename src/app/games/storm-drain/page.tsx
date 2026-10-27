@@ -784,7 +784,17 @@ function RevealStep({
                     {g.name}
                   </a>
                   <p className="text-sm text-gray-500">
-                    Station {g.id} · {formatCoord([g.lon, g.lat])}
+                    Station {g.id} · {formatCoord([g.lon, g.lat])} ·{' '}
+                    {/* USGS's station page intermittently 500s when its own metadata
+                        call is refused; this API view of the same record stays up. */}
+                    <a
+                      href={`https://api.waterdata.usgs.gov/ogcapi/v0/collections/monitoring-locations/items/${g.id}?f=html`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:no-underline"
+                    >
+                      station record
+                    </a>
                   </p>
                   <p className="text-sm mt-1">
                     {!flowsDone ? (
