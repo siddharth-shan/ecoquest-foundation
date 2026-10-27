@@ -101,7 +101,7 @@
   /*
    * Printable classroom worksheets. The games hide their chrome with print:hidden;
    * this drops the shared site furniture and flattens cards so a sheet costs one
-   * page of toner rather than a wall of colour.
+   * page of toner rather than a wall of color.
    */
   @media print {
     nav,

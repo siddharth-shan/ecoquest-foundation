@@ -136,7 +136,7 @@ interface ScoreLine {
   points: number
   max: number
   verdict: string
-  /** Redundant with colour on purpose: colour is never the only signal. */
+  /** Redundant with color on purpose: color is never the only signal. */
   mark: '✓' | '≈' | '✗'
 }
 
@@ -1083,7 +1083,7 @@ function RevealStep({ place, guess, loaded, scorecard, event, onPrint }: RevealP
         ]}
         isFixture={isFixture}
         fixtureLabel={CERRITOS_FIXTURE_LABEL}
-        note={`Open-Meteo's archive is ERA5 reanalysis, not a single weather station. A weather model is re-run over every historical observation that exists — stations, ships, balloons, satellites — to reconstruct a continuous record on a grid of roughly 10 to 30 km. That is the only way to give an arbitrary ZIP code an unbroken series back to 1950, because most towns have no station that old, but it means these are modelled values for a grid cell near ${shown}, not readings from a thermometer on your street. Every figure on this page was aggregated in your browser from ${record.dayCount.toLocaleString()} daily values; nothing about you was sent anywhere.`}
+        note={`Open-Meteo's archive is ERA5 reanalysis, not a single weather station. A weather model is re-run over every historical observation that exists — stations, ships, balloons, satellites — to reconstruct a continuous record on a grid of roughly 10 to 30 km. That is the only way to give an arbitrary ZIP code an unbroken series back to 1950, because most towns have no station that old, but it means these are modeled values for a grid cell near ${shown}, not readings from a thermometer on your street. Every figure on this page was aggregated in your browser from ${record.dayCount.toLocaleString()} daily values; nothing about you was sent anywhere.`}
       />
 
       <PrintSheet place={place} shown={shown} record={record} guess={guess} scorecard={scorecard} />
@@ -1111,7 +1111,7 @@ function SignalVsNoise({
   const hasDip = record.decadeStepsDown > 0 && coolest.label !== record.baseline.label
 
   // If the player's own town happens to march upward every decade, the worked
-  // example comes from Cerritos instead — labelled as Cerritos, not implied to
+  // example comes from Cerritos instead — labeled as Cerritos, not implied to
   // be theirs.
   const cerritos = CERRITOS_CLIMATE_RECORD
 
@@ -1223,14 +1223,14 @@ function Agency({ record, shown }: { record: ClimateRecord; shown: string }) {
       <p className="text-gray-700 mb-6 max-w-3xl">
         {warming
           ? `The part of ${shown}'s heat that a town can change fastest is not the global average — it is the several degrees that pavement, roofs and missing shade add on top of it on a hot afternoon. That part is local, and it responds to local decisions.`
-          : `This record does not show much change for ${shown}, and that is a real result worth reporting honestly. It also does not mean there is nothing to do: how hot a given street feels on an August afternoon depends heavily on shade, pavement and roof colour, and those are local decisions everywhere.`}
+          : `This record does not show much change for ${shown}, and that is a real result worth reporting honestly. It also does not mean there is nothing to do: how hot a given street feels on an August afternoon depends heavily on shade, pavement and roof color, and those are local decisions everywhere.`}
       </p>
 
       <div className="grid gap-6 md:grid-cols-3">
         <div className="card p-6">
           <h3 className="font-heading font-bold text-lg mb-2">Shade is infrastructure</h3>
           <p className="text-gray-600 text-sm">
-            A tree over a sidewalk, a shade sail over a bus stop, a lighter-coloured roof: the EPA
+            A tree over a sidewalk, a shade sail over a bus stop, a lighter-colored roof: the EPA
             documents all three as urban heat island measures. Ask who decides where street trees go
             in your city, and whether your block is on the list.
           </p>
@@ -1238,7 +1238,7 @@ function Agency({ record, shown }: { record: ClimateRecord; shown: string }) {
         <div className="card p-6">
           <h3 className="font-heading font-bold text-lg mb-2">Heat is a safety issue</h3>
           <p className="text-gray-600 text-sm">
-            Know where your nearest cooling centre is before you need it, and know which neighbours
+            Know where your nearest cooling center is before you need it, and know which neighbors
             would struggle in a multi-day heat wave. Extreme heat is the deadliest weather hazard in
             the United States, and the deaths are overwhelmingly among people who were alone.
           </p>

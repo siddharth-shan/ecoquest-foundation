@@ -13,7 +13,7 @@ import Link from 'next/link'
 // under the grid says so.
 //
 // The Bioblitz still carries the photographer's CC BY-NC credit line inside the
-// image itself, which is what keeps republishing that photo here licence-compliant.
+// image itself, which is what keeps republishing that photo here license-compliant.
 
 export const metadata = {
   title: 'Environmental Games',
@@ -39,7 +39,7 @@ const games = [
     source: 'USGS Hydro Network',
     img: '/images/games/storm-drain.png',
     alt:
-      'Storm Drain Detective mid-trace: a blue flowline running south from the centre of ZIP 90703 in Cerritos, California, past two numbered USGS gauges to a red marker where the trace ends.',
+      'Storm Drain Detective mid-trace: a blue flowline running south from the center of ZIP 90703 in Cerritos, California, past two numbered USGS gauges to a red marker where the trace ends.',
   },
   {
     id: 'bioblitz',
@@ -173,13 +173,13 @@ export default function GamesPage() {
           </p>
           {/*
             The Bioblitz card reproduces someone else's photograph, so this line is
-            a licence condition rather than a caption. CC BY-NC 4.0 §3(a)(1) wants
-            the photographer named, the supplied notice kept, a link to the licence
+            a license condition rather than a caption. CC BY-NC 4.0 §3(a)(1) wants
+            the photographer named, the supplied notice kept, a link to the license
             and a link to the work; §3(a)(1)(B) wants the crop disclosed. The
             screenshot carries the notice in its own pixels but cannot carry a
             hyperlink, which is what §3(a)(2) allows this adjacent text to supply.
             Verified against the iNaturalist API on 2026-09-30: photo 36416485,
-            licence code cc-by-nc, is the one in the card.
+            license code cc-by-nc, is the one in the card.
           */}
           <p className="text-sm text-gray-500 max-w-3xl mx-auto mt-3 text-center">
             The Backyard Bioblitz card shows a photograph &copy; Steven Kurniawidjaja,

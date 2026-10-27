@@ -140,10 +140,10 @@ const LITTER: LitterItem[] = [
   },
   {
     id: 'can',
-    label: 'An aluminium drink can',
+    label: 'An aluminum drink can',
     icon: '🥫',
     answer: 'sinks',
-    why: 'Aluminium is roughly 2.7 times denser than water. A can fills, sinks, and settles near the outlet rather than travelling on. That is actually the good news in this list: a sunk can is findable and recyclable, unlike anything that has already broken up.',
+    why: 'Aluminum is roughly 2.7 times denser than water. A can fills, sinks, and settles near the outlet rather than traveling on. That is actually the good news in this list: a sunk can is findable and recyclable, unlike anything that has already broken up.',
   },
   {
     id: 'butt',
@@ -186,7 +186,7 @@ type LoadState =
   | { status: 'loading' }
   /** A real trace for the player's own coordinates. */
   | { status: 'live'; trace: StormDrainTrace }
-  /** The bundled Cerritos capture, always labelled as such. */
+  /** The bundled Cerritos capture, always labeled as such. */
   | { status: 'fixture'; trace: StormDrainTrace; reason: string }
   /** USGS genuinely has no mapped stream here. Not an error, and not faked. */
   | { status: 'nostream'; message: string }
@@ -332,7 +332,7 @@ function StormDrainGame({
     setPredictScore(s)
     setPhase('reveal')
     setAnnouncement(
-      `Prediction locked in. You got ${s} of 3. The real trace runs ${truth.fineDirection} for ${trace ? trace.totalKm.toFixed(1) : '0'} kilometres.`
+      `Prediction locked in. You got ${s} of 3. The real trace runs ${truth.fineDirection} for ${trace ? trace.totalKm.toFixed(1) : '0'} kilometers.`
     )
   }, [prediction, truth, trace])
 
@@ -457,7 +457,7 @@ function StormDrainGame({
               }}
               science={{
                 title: 'Log what you find, for real',
-                body: 'Marine Debris Tracker is NOAA-supported and works anywhere in the world: log each item you find at your drain and it goes into an open dataset researchers actually use. Many cities also run a formal Adopt-a-Drain programme — search your city name plus "adopt a drain" to see if yours does.',
+                body: 'Marine Debris Tracker is NOAA-supported and works anywhere in the world: log each item you find at your drain and it goes into an open dataset researchers actually use. Many cities also run a formal Adopt-a-Drain program — search your city name plus "adopt a drain" to see if yours does.',
                 href: 'https://debristracker.org/',
                 linkLabel: 'Open Marine Debris Tracker',
               }}
@@ -481,7 +481,7 @@ function StormDrainGame({
                 ? `Showing sample data from Cerritos, CA — not ${place.city}. ${load.status === 'fixture' ? load.reason : ''}`
                 : undefined
             }
-            note={`The path is USGS's NHDPlus modelled stream network, traced downstream up to ${TRACE_DISTANCE_KM} km. Storm drain pipes themselves are not mapped in any national dataset, so the trace begins at the nearest mapped stream reach — about ${truth.nearestStreamKm.toFixed(1)} km from your ZIP code's centre point — not at a curb inlet. Gauge readings are provisional USGS data subject to revision.`}
+            note={`The path is USGS's NHDPlus modeled stream network, traced downstream up to ${TRACE_DISTANCE_KM} km. Storm drain pipes themselves are not mapped in any national dataset, so the trace begins at the nearest mapped stream reach — about ${truth.nearestStreamKm.toFixed(1)} km from your ZIP code's center point — not at a curb inlet. Gauge readings are provisional USGS data subject to revision.`}
           />
 
           <PrintSheet place={place} trace={trace} truth={truth} isFixture={isFixture} />
@@ -528,7 +528,7 @@ function NoStreamPanel({
         US Geological Survey&apos;s NHDPlus network covers mapped surface streams. It has gaps
         over closed inland basins that drain to a dry lake instead of the sea, over much of
         Hawaii and the territories, and over some coastal blocks where the ZIP code&apos;s
-        centre point falls on the ocean side of the shoreline.
+        center point falls on the ocean side of the shoreline.
       </p>
       <p className="text-gray-600 mb-6">
         We could draw you a plausible-looking line to the nearest coast. We are not going to,
@@ -545,7 +545,7 @@ function NoStreamPanel({
       </div>
       <p className="text-sm text-gray-500 mt-4">
         The sample is a real captured trace from EcoQuest&apos;s home city. It will be
-        labelled as a sample throughout — it is not your location.
+        labeled as a sample throughout — it is not your location.
       </p>
     </div>
   )
@@ -739,7 +739,7 @@ function RevealStep({
         <ul className="mb-8">
           <Verdict right={prediction.direction === truth.direction}>
             You said the water heads <strong>{prediction.direction}</strong>. It actually runs{' '}
-            <strong>{truth.fineDirection}</strong> — from your ZIP code&apos;s centre point to
+            <strong>{truth.fineDirection}</strong> — from your ZIP code&apos;s center point to
             the end of the trace at {formatCoord(trace.terminus)}.
           </Verdict>
           <Verdict right={prediction.distance === truth.bucket.id}>
@@ -877,7 +877,7 @@ const VB_W = 680
 const VB_H = 440
 const VB_PAD = 38
 /**
- * Normalising the path to a fixed pathLength lets the draw-on animation use a
+ * Normalizing the path to a fixed pathLength lets the draw-on animation use a
  * constant dasharray, with no getTotalLength() call and therefore no layout
  * read on mount.
  */
@@ -922,9 +922,9 @@ function TraceMap({
 
   const desc = `A line map of the ${trace.totalKm.toFixed(
     1
-  )} kilometre downstream path traced from ${place.city}, ${place.state}. It runs ${
+  )} kilometer downstream path traced from ${place.city}, ${place.state}. It runs ${
     truth.fineDirection
-  } from the ZIP code centre point through ${trace.segments.length} mapped stream reaches and past ${
+  } from the ZIP code center point through ${trace.segments.length} mapped stream reaches and past ${
     trace.gauges.length
   } USGS monitoring stations, ending at latitude ${trace.terminus[1].toFixed(
     4
@@ -954,7 +954,7 @@ function TraceMap({
         </title>
         <desc id={descId}>{desc}</desc>
 
-        {/* Your ZIP centre is not on the stream: show the gap rather than hide it. */}
+        {/* Your ZIP center is not on the stream: show the gap rather than hide it. */}
         <line
           x1={originXY[0]}
           y1={originXY[1]}
@@ -1010,7 +1010,7 @@ function TraceMap({
       </svg>
       <figcaption className="mt-3 text-sm text-gray-600">
         <span className="inline-flex items-center gap-1.5 mr-4">
-          <span className="inline-block w-3 h-3 rounded-full bg-primary-green" aria-hidden="true" /> your ZIP centre
+          <span className="inline-block w-3 h-3 rounded-full bg-primary-green" aria-hidden="true" /> your ZIP center
         </span>
         <span className="inline-flex items-center gap-1.5 mr-4">
           <span className="inline-block w-3 h-3 rounded-full bg-accent-yellow" aria-hidden="true" /> USGS gauge
@@ -1065,7 +1065,7 @@ function TraceTextEquivalent({
 
       <ol className="mt-4 space-y-3 list-decimal list-inside text-gray-700">
         <li>
-          <strong>Start:</strong> the centre point of ZIP {place.zip}, {place.city},{' '}
+          <strong>Start:</strong> the center point of ZIP {place.zip}, {place.city},{' '}
           {place.state}, at {formatCoord(truth.origin)}. The nearest mapped stream reach is{' '}
           {truth.nearestStreamKm.toFixed(1)} km away — the pipes in between are not in any
           national dataset.

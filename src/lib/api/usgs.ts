@@ -179,7 +179,7 @@ export function makeProjection(
   const spanY = Math.max(maxLat - minLat, 1e-9)
   const scale = Math.min((width - pad * 2) / spanX, (height - pad * 2) / spanY)
 
-  // Centre whichever axis has slack, so the path is not pinned to a corner.
+  // Center whichever axis has slack, so the path is not pinned to a corner.
   const offX = (width - spanX * scale) / 2
   const offY = (height - spanY * scale) / 2
 

@@ -12,7 +12,7 @@
 // Three things here are obligations rather than features:
 //
 //  * Every photo shows its attribution as visible text. These are other people's
-//    photographs under CC licences; the credit line is the licence term. The
+//    photographs under CC licenses; the credit line is the license term. The
 //    filtering that makes this possible lives in lib/api/inaturalist.ts, which
 //    refuses to build a record for a photo it cannot credit.
 //  * The observation count is quoted, never computed or rounded into a claim.
@@ -351,7 +351,7 @@ function Bioblitz({ place, isDemo, onChangePlace }: BioblitzProps) {
   return (
     <GameShell
       title="Backyard Bioblitz"
-      tagline="Real photos of species actually recorded where you live. Learn your neighbours."
+      tagline="Real photos of species actually recorded where you live. Learn your neighbors."
       place={place}
       isDemo={isDemo}
       onChangePlace={onChangePlace}
@@ -463,7 +463,7 @@ function Bioblitz({ place, isDemo, onChangePlace }: BioblitzProps) {
               },
               { label: 'iNaturalist', href: 'https://www.inaturalist.org' },
             ]}
-            note={`Species and observation counts are research-grade records within ${load.radiusKm} km of ${placeLabel}, meaning at least two people independently agreed on each identification. Photographs belong to the observers named beneath them and are used here under the Creative Commons licence shown; photos that are not openly licensed are skipped entirely.`}
+            note={`Species and observation counts are research-grade records within ${load.radiusKm} km of ${placeLabel}, meaning at least two people independently agreed on each identification. Photographs belong to the observers named beneath them and are used here under the Creative Commons license shown; photos that are not openly licensed are skipped entirely.`}
             isFixture={isFixture}
             fixtureLabel={`Showing sample data from ${BIOBLITZ_FIXTURE_PLACE}, captured ${BIOBLITZ_FIXTURE_CAPTURED} — the live iNaturalist lookup for ${place.city}, ${place.state} is unavailable right now.`}
           />
@@ -582,7 +582,7 @@ function RoundView({
               />
             </div>
             {/*
-              Licence term, not decoration: these photographs are other people's
+              License term, not decoration: these photographs are other people's
               work and the credit line has to be readable on the page.
             */}
             <PhotoCredit species={answer} />
@@ -628,7 +628,7 @@ function RoundView({
                       .join(' ')}
                   >
                     <span className="flex items-start gap-3">
-                      {/* Icon + word, so the colour is never the only signal. */}
+                      {/* Icon + word, so the color is never the only signal. */}
                       <span aria-hidden="true" className="text-lg leading-6 w-5 shrink-0">
                         {state === 'correct' ? '✓' : state === 'wrong' ? '✗' : ''}
                       </span>
@@ -748,15 +748,15 @@ function Summary({
 }
 
 /**
- * The credit line under a photograph, which is a licence condition rather than
+ * The credit line under a photograph, which is a license condition rather than
  * a courtesy. CC BY 4.0 and its NC/SA variants share one attribution clause,
  * §3(a)(1), and it asks for four things: the photographer's name, the notice
- * iNaturalist supplied, a link to the licence itself, and a link to the work.
+ * iNaturalist supplied, a link to the license itself, and a link to the work.
  * `attribution` covers the first two. The two links cover the rest — and
  * because the photo is cropped to the frame above, §3(a)(1)(B) wants that said
  * out loud too.
  *
- * A licence code we cannot resolve to a URL degrades to plain text instead of
+ * A license code we cannot resolve to a URL degrades to plain text instead of
  * linking somewhere invented.
  */
 function PhotoCredit({ species }: { species: LocalSpecies }) {
@@ -794,7 +794,7 @@ function PhotoCredit({ species }: { species: LocalSpecies }) {
 
 /**
  * The offline half of the game. Hidden on screen by `.print-sheet` and printed
- * as a plain 5×5 grid — names only, because a page of colour photographs is a
+ * as a plain 5×5 grid — names only, because a page of color photographs is a
  * page a classroom will not print, and names-only keeps the sheet free of
  * reproduction questions about other people's licensed images.
  */

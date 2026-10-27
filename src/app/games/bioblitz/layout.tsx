@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Backyard Bioblitz - EcoQuest Foundation',
     description:
-      'Real photos of species genuinely observed near you. Learn to identify your neighbours, then go find them.',
+      'Real photos of species genuinely observed near you. Learn to identify your neighbors, then go find them.',
   },
 }
 

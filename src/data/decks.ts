@@ -418,7 +418,7 @@ export const decks: Record<string, Slide[]> = {
         'Calling ordinary worry a disorder is its own harm. So is telling someone in real distress to just recycle more.',
       ],
       notes:
-        'This slide prevents the two failure modes of the whole topic: pathologising a normal feeling, and dismissing a serious one. Say explicitly that the line between them is a clinician\'s call, not yours and not the audience\'s.',
+        'This slide prevents the two failure modes of the whole topic: pathologizing a normal feeling, and dismissing a serious one. Say explicitly that the line between them is a clinician\'s call, not yours and not the audience\'s.',
     },
     {
       eyebrow: 'Method',
@@ -430,7 +430,7 @@ export const decks: Record<string, Slide[]> = {
         'Every self-report scale inherits the honesty, mood, and self-knowledge of the person filling it in.',
       ],
       notes:
-        'The distinction between screening and diagnosis is the most important idea in the deck, and it generalises far beyond mental health. A smoke alarm is a screen. It tells you to go look. It does not tell you the house is on fire.',
+        'The distinction between screening and diagnosis is the most important idea in the deck, and it generalizes far beyond mental health. A smoke alarm is a screen. It tells you to go look. It does not tell you the house is on fire.',
     },
     {
       eyebrow: 'What we built',
@@ -512,7 +512,7 @@ export const decks: Record<string, Slide[]> = {
         'So the work is genuinely public and still effectively invisible.',
       ],
       notes:
-        'Do not moralise about people not volunteering. The honest framing is that the information is badly distributed. That reframe is the whole point of the session and it makes the audience feel capable rather than scolded.',
+        'Do not moralize about people not volunteering. The honest framing is that the information is badly distributed. That reframe is the whole point of the session and it makes the audience feel capable rather than scolded.',
     },
     {
       eyebrow: 'Scope',
@@ -550,7 +550,7 @@ export const decks: Record<string, Slide[]> = {
         'CoCoRaHS - daily precipitation readings from a backyard rain gauge.',
       ],
       notes:
-        'These are the answer for anyone who cannot get to an organised event - no car, no group, no weekend free. Demonstrate one iNaturalist observation end to end if you have time. Be accurate that not every observation becomes research-grade data; that requires community confirmation.',
+        'These are the answer for anyone who cannot get to an organized event - no car, no group, no weekend free. Demonstrate one iNaturalist observation end to end if you have time. Be accurate that not every observation becomes research-grade data; that requires community confirmation.',
     },
     {
       eyebrow: 'Method',
@@ -586,7 +586,7 @@ export const decks: Record<string, Slide[]> = {
         'A named adult contact for anyone under 18, and a way for parents to reach you.',
       ],
       notes:
-        'Emphasise permission and disposal. These are the two that get first-time organisers into genuine trouble, and neither is obvious to a student who just wants to help. If a school or troop is involved there will be extra paperwork - budget time for it.',
+        'Emphasize permission and disposal. These are the two that get first-time organizers into genuine trouble, and neither is obvious to a student who just wants to help. If a school or troop is involved there will be extra paperwork - budget time for it.',
     },
     {
       eyebrow: 'Making it count',
@@ -594,8 +594,8 @@ export const decks: Record<string, Slide[]> = {
       bullets: [
         'Log date, location, hours, and number of people - at the time, not from memory later.',
         'A public listing beforehand is stronger evidence than a photo afterwards.',
-        'Keep the organiser\'s confirmation email. A third party saying you were there outranks your own log.',
-        'This matters for service hour programmes, awards, and applications - and it is much easier done live.',
+        'Keep the organizer\'s confirmation email. A third party saying you were there outranks your own log.',
+        'This matters for service hour programs, awards, and applications - and it is much easier done live.',
       ],
       notes:
         'Frame this as honest record-keeping rather than resume-building. The rule we use: an event counts as public only if someone who had never heard of us could have found it in advance, through a channel we do not control. Say that out loud - it is a good standard for the audience to adopt.',

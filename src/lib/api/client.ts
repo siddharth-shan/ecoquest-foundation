@@ -38,7 +38,7 @@ export async function fetchJson<T>(url: string, opts: FetchOptions = {}): Promis
   let last: Result<T> = fail('network', 'Request was never attempted.')
 
   for (let attempt = 0; attempt <= retries; attempt++) {
-    if (opts.signal?.aborted) return fail('network', 'Cancelled.')
+    if (opts.signal?.aborted) return fail('network', 'Canceled.')
 
     // Per-attempt controller so a retry is not killed by the previous timeout.
     const controller = new AbortController()
@@ -65,7 +65,7 @@ export async function fetchJson<T>(url: string, opts: FetchOptions = {}): Promis
       }
     } catch (err) {
       // An outer-signal abort is a real cancellation, not a timeout.
-      if (opts.signal?.aborted) return fail('network', 'Cancelled.')
+      if (opts.signal?.aborted) return fail('network', 'Canceled.')
       last =
         err instanceof DOMException && err.name === 'AbortError'
           ? fail('timeout', 'The data service took too long to answer.')

@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Join the EcoChallenge',
-  description: 'Join the EcoQuest Foundation monthly EcoChallenge. Take on environmental missions, complete real-world conservation tasks, and make a measurable impact.',
+  description: 'Join an EcoQuest Foundation EcoChallenge: week-long missions at home or school that start and end with a real measurement, so you can see the difference you made.',
   alternates: { canonical: '/ecochallenge/join/' },
   openGraph: {
     title: 'Join the EcoChallenge - EcoQuest Foundation',
-    description: 'Monthly environmental missions with real-world conservation tasks. Join and make a measurable impact.',
+    description: 'Week-long environmental missions with a real before-and-after measurement.',
   },
 }
 

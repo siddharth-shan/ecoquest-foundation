@@ -21,6 +21,8 @@ interface FeaturedProgram {
   /** True for the real game screenshots, which are 2:1 and must not be cropped
    *  to the card frame the way an event photo can be. */
   screenshot?: boolean
+  /** The most recent real event behind the card, so it reads as active rather than evergreen. */
+  latest?: string
 }
 
 const featuredPrograms: FeaturedProgram[] = [
@@ -50,8 +52,8 @@ const featuredPrograms: FeaturedProgram[] = [
   },
   {
     title: 'EcoChallenge',
-    desc: 'Monthly interactive missions engaging students in real-world environmental actions',
-    badge: 'Monthly',
+    desc: 'Week-long missions at home or school — save energy, cut waste, conserve water — that start and end with a real measurement',
+    badge: 'At Home',
     link: '/programs#ecochallenge',
     img: '/images/events/B6239CD9-5DBE-451E-A9D3-60DBD6FDA6FE.webp',
   },
@@ -60,7 +62,9 @@ const featuredPrograms: FeaturedProgram[] = [
     desc: 'Beach and park cleanups across California, open to students, families, and community volunteers',
     badge: 'Hands-On',
     link: '/events',
-    img: '/images/events/55B367F4-481D-4671-8F55-79ED524A3829.webp',
+    img: '/images/events/friendship-park-2026-3.webp',
+    alt: 'Volunteers lined up under a park shelter with litter grabbers and bags at the Friendship Park cleanup in Cerritos',
+    latest: 'Latest: Friendship Park, Cerritos · Oct 25, 2026',
   },
 ]
 
@@ -245,6 +249,9 @@ export default function Home() {
                 <div className="p-6">
                   <h3 className="font-heading font-bold text-xl mb-3 text-primary-green">{program.title}</h3>
                   <p className="text-gray-600 mb-4">{program.desc}</p>
+                  {program.latest && (
+                    <p className="text-sm font-semibold text-primary-blue mb-4">{program.latest}</p>
+                  )}
                   <Link href={program.link} className="btn btn-outline text-sm">
                     {program.link.startsWith('/games') ? 'Play Now →' : 'Learn More →'}
                   </Link>

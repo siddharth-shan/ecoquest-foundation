@@ -1,12 +1,15 @@
 import Link from 'next/link'
+import { upcomingCampaigns } from '@/data/campaigns'
+import { ecoMissions } from '@/data/ecochallenges'
+import { HideAfter } from '@/components/shared/EventTiming'
 
 export const metadata = {
   title: 'Our Programs',
-  description: 'Explore EcoQuest Foundation educational programs including interactive environmental games, monthly EcoChallenges, and hands-on community conservation activities for K-12 students.',
+  description: 'Explore EcoQuest Foundation educational programs including interactive environmental games, self-paced EcoChallenge missions, and hands-on community conservation activities for K-12 students.',
   alternates: { canonical: '/programs/' },
   openGraph: {
     title: 'Our Programs - EcoQuest Foundation',
-    description: 'Interactive environmental games, monthly EcoChallenges, and community conservation activities for K-12 students.',
+    description: 'Interactive environmental games, self-paced EcoChallenge missions, and community conservation activities for K-12 students.',
   },
 }
 
@@ -72,7 +75,7 @@ export default function Programs() {
               <div className="section-underline ml-0" />
               <p className="text-lg mb-6 text-gray-700">
                 Free 40-minute sessions on Zoom, every other Saturday, open to anyone. Each session is built
-                on work EcoQuest has actually done — our apps, our cleanups, and our monthly challenges.
+                on work EcoQuest has actually done — our apps, our cleanups, and our EcoChallenge missions.
               </p>
               <ul className="space-y-3 mb-6">
                 {[
@@ -109,42 +112,85 @@ export default function Programs() {
 
       <section id="ecochallenge" className="section-padding">
         <div className="container-custom">
-          <div className="grid md:grid-cols-2 gap-12 items-start">
-            <div className="order-2 md:order-1">
-              <span className="text-primary-blue font-semibold uppercase text-sm">Monthly Missions</span>
+          <div className="grid md:grid-cols-[3fr_2fr] gap-12 items-start mb-10">
+            <div>
+              <span className="text-primary-blue font-semibold uppercase text-sm">At Home or School</span>
               <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">EcoChallenge</h2>
               <div className="section-underline ml-0" />
-              <p className="text-lg mb-6 text-gray-700">
-                Monthly interactive missions that engage students in real-world environmental actions, from reducing plastic use to creating habitat gardens.
+              <p className="text-lg mb-4 text-gray-700">
+                Week-long missions you can start any time. Each one begins with a measurement, asks
+                you to change something for seven days, and ends with the same measurement again — so
+                you finish with a real before-and-after, not just a promise.
               </p>
-              <p className="text-gray-600 mb-4">Example missions students can take on:</p>
-              <div className="space-y-3 mb-6">
-                {[
-                  { title: 'Energy Conservation Challenge', desc: 'Reduce household energy use through mindful daily habits.' },
-                  { title: 'Zero-Waste Week', desc: 'Cut personal waste to as close to zero as possible for one week.' },
-                  { title: 'Water Conservation Mission', desc: 'Track and reduce water usage at home and school.' },
-                ].map((challenge, i) => (
-                  <div key={i} className="border-l-4 border-primary-blue bg-white p-4 rounded">
-                    <h4 className="font-bold text-lg">{challenge.title}</h4>
-                    <p className="text-gray-600 text-sm">{challenge.desc}</p>
-                  </div>
-                ))}
-              </div>
-              <Link href="/ecochallenge/join/?challenge=Energy%20Conservation%20Challenge" className="btn btn-primary inline-block">
-                Join a Challenge
-              </Link>
+              <p className="text-gray-600">
+                Pick a mission, sign up so we know you are taking part, and send us your results when
+                you finish. Results are self-reported.
+              </p>
             </div>
-            <div className="rounded-2xl overflow-hidden h-96 relative shadow-lg bg-gray-100 order-1 md:order-2">
+            <div className="rounded-2xl overflow-hidden h-64 relative shadow-lg bg-gray-100">
               <img
                 src="/images/events/IMG_3250.webp"
                 alt="Student volunteers repainting a community basketball court"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-                <h3 className="text-3xl font-bold text-white drop-shadow">EcoChallenge</h3>
-              </div>
             </div>
+          </div>
+
+          {/* A dated, verified campaign beats the self-paced missions while it is open. */}
+          {upcomingCampaigns
+            .filter((c) => c.attendanceMode === 'online')
+            .map((c) => (
+              <HideAfter key={c.slug} endsAt={c.endDateTime}>
+                <div className="mb-10 rounded-2xl border-2 border-primary-green bg-green-50 p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-center">
+                  <div>
+                    <span className="bg-primary-green text-white text-xs font-bold uppercase tracking-wider px-2 py-1 rounded">
+                      Running now · {c.displayDate}
+                    </span>
+                    <h3 className="font-heading font-bold text-2xl text-primary-green mt-3 mb-2">{c.title}</h3>
+                    <p className="text-gray-700 mb-2">{c.description}</p>
+                    <p className="text-sm text-gray-600">
+                      <strong>Service hours:</strong> {c.serviceHours}
+                    </p>
+                  </div>
+                  <a
+                    href={c.registrationUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary whitespace-nowrap"
+                  >
+                    {c.ctaLabel} →
+                  </a>
+                </div>
+              </HideAfter>
+            ))}
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {ecoMissions.map((m) => (
+              <div key={m.slug} className="card p-6 flex flex-col border-t-4 border-primary-blue">
+                <div className="flex items-baseline justify-between gap-3 mb-2">
+                  <h3 className="font-heading font-bold text-xl text-primary-green">{m.title}</h3>
+                  <span className="text-xs font-semibold uppercase tracking-wider text-primary-blue whitespace-nowrap">
+                    {m.duration}
+                  </span>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">{m.summary}</p>
+                <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-700 mb-4">
+                  {m.steps.map((step) => (
+                    <li key={step}>{step}</li>
+                  ))}
+                </ol>
+                <p className="text-sm text-gray-600 mb-5">
+                  <strong className="text-gray-800">What to send us:</strong> {m.evidence}
+                </p>
+                <Link
+                  href={`/ecochallenge/join/?challenge=${encodeURIComponent(m.title)}`}
+                  className="btn btn-outline text-sm mt-auto self-start"
+                >
+                  Join this mission
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -17,7 +17,7 @@
 //     render path.
 //  2. PLAYABILITY. A rural ZIP can come back with a handful of species, which is
 //     not a game. `fetchLocalSpecies` widens the radius once before giving up,
-//     and gives up loudly so the caller can fall back to labelled sample data.
+//     and gives up loudly so the caller can fall back to labeled sample data.
 
 import { fetchJson, type Result } from './client'
 
@@ -70,7 +70,7 @@ export const INAT_SITE = 'https://www.inaturalist.org'
 /** Below this, the pool cannot fill ten non-repeating rounds with distractors. */
 export const MIN_USABLE_SPECIES = 40
 
-/** Starting search radius, in kilometres. */
+/** Starting search radius, in kilometers. */
 export const DEFAULT_RADIUS_KM = 25
 /** One widening attempt for a thin-data ZIP before falling back. */
 export const WIDE_RADIUS_KM = 75
@@ -110,7 +110,7 @@ export function speciesCountsUrl(lat: number, lon: number, radiusKm = DEFAULT_RA
  *
  * Rejects, in order: non-species ranks (a genus-level "photo of a gull" makes an
  * unanswerable question), missing common name (the answer buttons need words a
- * student knows), missing photo, unusable licence, missing credit line.
+ * student knows), missing photo, unusable license, missing credit line.
  */
 export function toLocalSpecies(entry: InatSpeciesCount | null | undefined): LocalSpecies | null {
   const taxon = entry?.taxon
@@ -126,7 +126,7 @@ export function toLocalSpecies(entry: InatSpeciesCount | null | undefined): Loca
 
   if (!isDisplayableLicense(photo.license_code)) return null
 
-  // A displayable licence is worthless without the credit line to display.
+  // A displayable license is worthless without the credit line to display.
   const attribution = photo.attribution?.trim()
   if (!attribution) return null
 
@@ -172,7 +172,7 @@ export interface LocalSpeciesResult {
  *
  * Widens the radius once if the first pass cannot fill a game, and reports
  * `reason: 'empty'` rather than pretending — the caller is expected to fall back
- * to labelled sample data and tell the player it did.
+ * to labeled sample data and tell the player it did.
  */
 export async function fetchLocalSpecies(
   lat: number,
@@ -217,16 +217,16 @@ export function inatExploreUrl(lat: number, lon: number, radiusKm = DEFAULT_RADI
 }
 
 /**
- * Where the licence itself lives.
+ * Where the license itself lives.
  *
- * CC BY-NC 4.0 §3(a)(1)(C) does not accept the licence's name on its own: a
+ * CC BY-NC 4.0 §3(a)(1)(C) does not accept the license's name on its own: a
  * credit line has to carry "the text of, or the URI or hyperlink to, this
  * Public License". Naming it "CC BY-NC" is therefore short of the requirement,
  * and it is also ambiguous, because 2.0 and 4.0 are not the same deal.
  *
- * iNaturalist issues its CC licences at version 4.0 and links them there from
+ * iNaturalist issues its CC licenses at version 4.0 and links them there from
  * its own photo pages, so that is the version we resolve to. Returns null for
- * a code we do not recognise rather than guessing at a URL.
+ * a code we do not recognize rather than guessing at a URL.
  */
 export function licenseUrl(code: string): string | null {
   if (code === 'cc0') return 'https://creativecommons.org/publicdomain/zero/1.0/'
@@ -243,7 +243,7 @@ export function taxonUrl(id: number): string {
 /**
  * Where this exact photograph lives on iNaturalist — the URI the attribution
  * clause wants, and a page that shows the photo beside its photographer and
- * licence, which is what §3(a)(2) accepts in place of separate links.
+ * license, which is what §3(a)(2) accepts in place of separate links.
  *
  * Derived from the image URL rather than stored, because every iNaturalist
  * photo URL already carries its id (`.../photos/36416485/medium.jpeg`), so
@@ -257,7 +257,7 @@ export function photoPageUrl(photoUrl: string, taxonId: number): string {
   return id ? `${INAT_SITE}/photos/${id}` : taxonUrl(taxonId)
 }
 
-/** Human-readable licence name for the credit line. */
+/** Human-readable license name for the credit line. */
 export function licenseLabel(code: string): string {
   switch (code) {
     case 'cc0':

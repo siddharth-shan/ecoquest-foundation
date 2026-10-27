@@ -607,7 +607,7 @@ function verdictBody(c: AirCase): string {
         1
       )}× normal) while ozone reached ${f.ozoneMax.toFixed(0)} µg/m³ and peaked at ${hourLabel(
         f.ozonePeakHour
-      )}. Ozone is not emitted by anything — it is built in the air when sunlight cooks exhaust and vapours together, so it climbs with the sun and collapses after dark.`
+      )}. Ozone is not emitted by anything — it is built in the air when sunlight cooks exhaust and vapors together, so it climbs with the sun and collapses after dark.`
     case 'inversion':
       return `PM2.5 was ${f.overnightRatio.toFixed(
         1
@@ -961,7 +961,7 @@ function CorrelateView({ round, answered, rOzone, rPm, onAnswer }: CorrelateView
             ({rPm === null ? 'not computable' : correlationWord(rPm)}).
           </p>
           <p className="text-gray-700 leading-relaxed mt-3">
-            Ozone is not emitted. It is assembled in the air out of exhaust and vapours, and the
+            Ozone is not emitted. It is assembled in the air out of exhaust and vapors, and the
             reaction runs on sunlight and heat — so the hotter the afternoon, the more of it gets
             built. Particles come straight out of something burning, and a thermometer has very
             little to say about whether something is burning. That is why one of those numbers is
@@ -1236,7 +1236,7 @@ function AirDetective({ place, isDemo, onChangePlace }: GameProps) {
             {rounds.length > accusations ? ' and one heat analysis' : ''}, all of it from{' '}
             {source === 'live' ? (
               <>
-                real modelled air data for {place.city}, {place.state}
+                real modeled air data for {place.city}, {place.state}
               </>
             ) : (
               <>the bundled Cerritos, CA sample</>
@@ -1264,7 +1264,7 @@ function AirDetective({ place, isDemo, onChangePlace }: GameProps) {
           }}
           science={{
             title: 'Run the Air Quality Flag Program',
-            body: 'A real EPA and AirNow program for schools: each morning a class checks the AQI forecast and raises the matching coloured flag, and the school adjusts outdoor activity to match. It costs a set of flags and five minutes a day, and it is genuine public-health practice rather than a simulation.',
+            body: 'A real EPA and AirNow program for schools: each morning a class checks the AQI forecast and raises the matching colored flag, and the school adjusts outdoor activity to match. It costs a set of flags and five minutes a day, and it is genuine public-health practice rather than a simulation.',
             href: FLAG_PROGRAM_URL,
             linkLabel: 'Start a flag program',
           }}

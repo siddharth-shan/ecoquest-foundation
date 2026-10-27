@@ -24,7 +24,7 @@ export interface Place {
 
 /**
  * Cerritos — EcoQuest's own city. Used so every game is instantly playable
- * without typing anything (classrooms, reviewers), and as the labelled sample
+ * without typing anything (classrooms, reviewers), and as the labeled sample
  * when a live lookup fails. Always disclosed, never passed off as the
  * player's own location.
  */
@@ -104,7 +104,7 @@ function isPlace(v: unknown): v is Place {
  *
  * These are genuinely different facts and must not be inferred from each
  * other. Cerritos IS the demo ZIP, so a real Cerritos student typing 90703
- * would otherwise be told their own neighbourhood is "a sample location" —
+ * would otherwise be told their own neighborhood is "a sample location" —
  * and EcoQuest's own community is exactly the group most likely to type it.
  */
 export interface StoredPlace {

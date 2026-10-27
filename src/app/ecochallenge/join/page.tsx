@@ -3,10 +3,16 @@
 import { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { ecoMissions } from '@/data/ecochallenges'
 
 function ChallengeForm() {
   const searchParams = useSearchParams()
-  const challengeTitle = searchParams.get('challenge') || 'Monthly EcoChallenge'
+  // The link from a mission card preselects it; anything else falls back to the
+  // first mission, and the visitor can still change it below.
+  const requested = searchParams.get('challenge')
+  const [challengeTitle, setChallengeTitle] = useState(
+    ecoMissions.find((m) => m.title === requested)?.title ?? ecoMissions[0].title
+  )
 
   const [formData, setFormData] = useState({
     firstName: '',
@@ -88,6 +94,27 @@ function ChallengeForm() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="mission" className="block text-xl font-bold text-primary-green mb-4">
+                  Your Mission
+                </label>
+                <select
+                  id="mission"
+                  value={challengeTitle}
+                  onChange={(e) => setChallengeTitle(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-green focus:border-transparent"
+                >
+                  {ecoMissions.map((m) => (
+                    <option key={m.slug} value={m.title}>
+                      {m.title} ({m.duration})
+                    </option>
+                  ))}
+                </select>
+                <p className="text-sm text-gray-500 mt-2">
+                  {ecoMissions.find((m) => m.title === challengeTitle)?.summary}
+                </p>
+              </div>
+
               <div>
                 <h3 className="text-xl font-bold text-primary-green mb-4">Your Information</h3>
                 <div className="grid md:grid-cols-2 gap-4">

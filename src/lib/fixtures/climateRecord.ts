@@ -34,7 +34,7 @@ export const CERRITOS_DECADES: DecadeWindow[] = [
   { label: '1990s', startYear: 1990, endYear: 1999, years: 10, meanDailyHigh: 74.7371, hotDaysPerYear: 31.3, complete: true },
   { label: '2000s', startYear: 2000, endYear: 2009, years: 10, meanDailyHigh: 74.395, hotDaysPerYear: 24.7, complete: true },
   { label: '2010s', startYear: 2010, endYear: 2019, years: 10, meanDailyHigh: 75.8238, hotDaysPerYear: 30.9, complete: true },
-  // Six years in, so it is drawn and labelled as unfinished and left out of the
+  // Six years in, so it is drawn and labeled as unfinished and left out of the
   // trend fit — an incomplete decade cannot be compared with a whole one.
   { label: '2020s', startYear: 2020, endYear: 2029, years: 6, meanDailyHigh: 75.396, hotDaysPerYear: 31.5, complete: false },
 ]

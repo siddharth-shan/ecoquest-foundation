@@ -5,7 +5,7 @@
 //
 // The games this replaced announced results with alert(), which blocks the main
 // thread and is invisible to a screen reader as running commentary. Anything a
-// sighted player learns from a colour change has to reach everyone else here.
+// sighted player learns from a color change has to reach everyone else here.
 
 import Link from 'next/link'
 import type { Place } from '@/lib/place'

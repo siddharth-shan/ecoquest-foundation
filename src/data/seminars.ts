@@ -137,7 +137,7 @@ export const seminars: Seminar[] = [
     description:
       'Most household conservation advice is guesswork. This session shows you how to read your own utility bills, find the three or four things in a typical home that dominate water and energy use, and measure whether a change actually did anything. Attendees leave with a worksheet and a two-week tracking challenge.',
     audience: 'Families, middle school students, and anyone curious about their bills',
-    builtOn: 'Our EcoChallenge monthly missions',
+    builtOn: 'Our EcoChallenge missions',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-your-homes-water-and-energy-footprint-tickets-1999172925035',
     hasDeck: true,
     recap: {
