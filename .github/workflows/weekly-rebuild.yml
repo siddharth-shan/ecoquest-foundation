@@ -1,0 +1,67 @@
+# Keeps the homepage's "This Week for the Planet" section fresh with no manual
+# work. The page recomputes from the visitor's date in the browser; this
+# rebuild keeps the static HTML (what crawlers and link previews see) within
+# a week of today. It also checks every official link and opens one issue if
+# any break.
+#
+# One-time setup: create a Deploy Hook in Vercel (Project → Settings → Git →
+# Deploy Hooks, branch main) and save its URL as the repository secret
+# VERCEL_DEPLOY_HOOK_URL. Without it, the rebuild step is skipped.
+
+name: Weekly rebuild and link check
+
+on:
+  schedule:
+    - cron: '0 8 * * 1' # Mondays 08:00 UTC
+  workflow_dispatch:
+
+permissions:
+  actions: write # re-enable this workflow, see the last step
+  contents: read
+  issues: write
+
+jobs:
+  weekly:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Rebuild the site
+        env:
+          HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "::notice::VERCEL_DEPLOY_HOOK_URL is not set; skipping the rebuild."
+          else
+            curl -fsS -X POST "$HOOK" > /dev/null
+            echo "Rebuild requested."
+          fi
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Check official links
+        run: node scripts/check-planet-links.mjs
+
+      - name: Open or update the broken-links issue
+        if: hashFiles('broken-links.md') != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: 'Planet calendar: broken links'
+        run: |
+          number=$(gh issue list --state open --search "in:title \"$TITLE\"" --json number,title \
+            --jq ".[] | select(.title == \"$TITLE\") | .number" | head -n1)
+          if [ -n "$number" ]; then
+            gh issue comment "$number" --body-file broken-links.md
+          else
+            gh issue create --title "$TITLE" --body-file broken-links.md
+          fi
+
+      # GitHub turns off scheduled workflows in public repos after 60 days
+      # without repository activity. Re-enabling resets that clock, so the
+      # schedule keeps running even when nobody commits.
+      - name: Keep the schedule alive
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/weekly-rebuild.yml/enable"
