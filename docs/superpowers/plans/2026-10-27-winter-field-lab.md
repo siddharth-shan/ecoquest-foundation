@@ -878,8 +878,9 @@ git commit -m "feat(events): Winter Field Lab section, shared seminar card, past
   - Don't put numbers in the slides.
   - King Tides: Task 1 confirmed this winter's statewide king tide dates on
     the official page (Dec 23–25, 2026 and Jan 21–22, 2027). Name those dates
-    and link the page; no session date is a tide day. Say no LA-area events are
-    listed unless the sources file says otherwise.
+    and link the page. No session date is a statewide tide day (a few Northern
+    California spots list Jan 23 events; don't mention them). Say no LA-area
+    events are listed unless the sources file says otherwise.
   - First flush: don't claim bacteria spike in the first storm (LA County says
     bacteria don't follow first-flush patterns). The three-day ocean advisory
     after rain is confirmed.
