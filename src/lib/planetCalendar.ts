@@ -3,6 +3,7 @@
 // All dates are the visitor's local calendar days.
 
 import { awarenessDays as defaultDays, type AwarenessDay, type DateRule } from '@/data/awarenessDays'
+import { seasons as defaultSeasons, type Season } from '@/data/seasons'
 import { ecoMissions } from '@/data/ecochallenges'
 
 export interface PlanetActivity {
@@ -157,4 +158,18 @@ export function weeklyPick(today: Date, days: AwarenessDay[] = defaultDays): Wee
   }
   const n = rotation.length
   return { activity: rotation[((weekIndex(today) % n) + n) % n] }
+}
+
+/** This month's Southern California season card. */
+export function seasonFor(today: Date, list: Season[] = defaultSeasons): Season {
+  const month = today.getMonth() + 1
+  const season = list.find((s) => s.month === month)
+  if (!season) throw new Error(`No season for month ${month}`)
+  return season
+}
+
+export function countdown(daysAway: number): string {
+  if (daysAway === 0) return 'Today'
+  if (daysAway === 1) return 'Tomorrow'
+  return `in ${daysAway} days`
 }
