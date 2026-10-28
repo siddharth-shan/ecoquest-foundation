@@ -4,6 +4,7 @@ import ImpactDashboard from '@/components/shared/ImpactDashboard'
 import CommunityVoices from '@/components/shared/Testimonials'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
 import UpcomingEvents from '@/components/shared/UpcomingEvents'
+import ThisWeekForPlanet from '@/components/home/ThisWeekForPlanet'
 
 export const metadata = {
   alternates: { canonical: '/' },
@@ -72,29 +73,62 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center bg-gradient-eco text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="relative z-10 container-custom text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-heading animate-fade-in">
+      <section className="relative bg-gradient-eco text-white overflow-clip">
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
+        <div className="absolute -bottom-32 -left-24 w-96 h-96 rounded-full bg-white/10 blur-3xl" aria-hidden="true" />
+        <div className="relative container-custom px-4 py-20 md:py-28 text-center">
+          <p className="inline-flex items-center gap-2 bg-white/15 ring-1 ring-white/30 backdrop-blur-sm text-sm font-semibold tracking-wide px-4 py-1.5 rounded-full mb-6">
+            <FaSeedling aria-hidden="true" />
+            Student-led 501(c)(3) nonprofit
+          </p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-heading animate-fade-in max-w-4xl mx-auto text-balance">
             Empowering Youth to Protect Our Planet
           </h1>
-          <p className="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto">
+          <p className="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto text-balance">
             Through interactive games, free online seminars, and hands-on conservation events
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/programs/" className="btn btn-primary text-lg">
+            <Link href="/programs/" className="btn bg-white text-primary-green hover:shadow-lg hover:-translate-y-0.5 text-lg">
               Explore Our Programs
             </Link>
             <Link href="/get-involved/" className="btn btn-secondary text-lg">
               Get Involved
             </Link>
           </div>
+
+          {/* The three ways in, each pointing at where it actually happens */}
+          <ul className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto text-left">
+            {[
+              { icon: <FaGamepad className="w-6 h-6" />, verb: 'Play', desc: 'Free games that teach ecology', href: '/games/' },
+              { icon: <FaBook className="w-6 h-6" />, verb: 'Learn', desc: 'Free online seminars, with recordings', href: '/events/#seminars' },
+              { icon: <FaHandsHelping className="w-6 h-6" />, verb: 'Act', desc: 'Hands-on park and community cleanups', href: '/events/' },
+            ].map((item) => (
+              <li key={item.verb}>
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-4 h-full bg-white/10 ring-1 ring-white/25 backdrop-blur-sm rounded-2xl px-5 py-4 hover:bg-white/20 transition-colors"
+                >
+                  <span className="shrink-0 w-12 h-12 rounded-xl bg-white text-primary-green flex items-center justify-center" aria-hidden="true">
+                    {item.icon}
+                  </span>
+                  <span>
+                    <span className="block font-heading font-bold text-lg">{item.verb}</span>
+                    <span className="block text-sm text-white/85">{item.desc}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       {/* Upcoming Events — dated, so it sits above the evergreen sections, and
           hides itself when nothing is scheduled */}
       <UpcomingEvents />
+
+      {/* This Week for the Planet — worked out from the date, never edited by hand */}
+      {/* en-CA formats as YYYY-MM-DD; Pacific time so an evening UTC build doesn't stamp tomorrow */}
+      <ThisWeekForPlanet builtOn={new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date())} />
 
       {/* Mission Section */}
       <section className="section-padding bg-gray-50">
@@ -123,32 +157,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Impact Section */}
-      <section className="section-padding bg-gradient-eco text-white">
-        <div className="container-custom">
-          <div className="section-header">
-            <h2 className="section-title">Our Impact</h2>
-            <div className="section-underline" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {[
-              { number: '4', label: 'Educational Games Built', desc: 'Interactive K-12 experiences' },
-              { number: '4', label: 'Interactive Web Apps', desc: 'Wildfire Watch, Oceanaware, MindMirror, GreenLedger' },
-              { number: '8+', label: 'Community Cleanups', desc: 'Beach & park conservation' },
-              { number: '35+', label: 'Community Members Engaged', desc: 'Through events & programs' },
-            ].map((stat, i) => (
-              <div key={i} className="p-6">
-                <div className="text-5xl md:text-6xl font-bold mb-2">{stat.number}</div>
-                <div className="text-xl font-semibold mb-1">{stat.label}</div>
-                <div className="text-sm opacity-90">{stat.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Interactive Apps Section */}
-      <section className="section-padding bg-gradient-to-br from-gray-50 to-white">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <div className="section-header">
             <h2 className="section-title">Our Interactive Apps</h2>
