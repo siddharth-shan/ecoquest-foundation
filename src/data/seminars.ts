@@ -252,7 +252,7 @@ export const seminars: Seminar[] = [
     builtOn: 'Storm Drain Detective, our game about where runoff goes',
     partner: { name: 'Heal the Bay Beach Report Card', url: 'https://beachreportcard.org/' },
     game: { name: 'Storm Drain Detective', href: '/games/storm-drain/' },
-    signupUrl: '',
+    signupUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfOu5weTpomtM0fhjLCLam6j6i3yBrzlLLK5i81OIKb4f7cmg/viewform?usp=pp_url&entry.970705970=Sat,+Nov+21+%C2%B7+First+Rain,+First+Flush:+Where+Storm+Water+Goes',
     hasDeck: true,
   },
   {
@@ -270,7 +270,7 @@ export const seminars: Seminar[] = [
     builtOn: 'Backyard Bioblitz and our California Biodiversity Challenge',
     partner: { name: 'iNaturalist', url: 'https://www.inaturalist.org/' },
     game: { name: 'Backyard Bioblitz', href: '/games/bioblitz/' },
-    signupUrl: '',
+    signupUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfOu5weTpomtM0fhjLCLam6j6i3yBrzlLLK5i81OIKb4f7cmg/viewform?usp=pp_url&entry.970705970=Sat,+Dec+5+%C2%B7+Winter+Bioblitz:+Logging+Life+in+the+Cool+Season',
     hasDeck: true,
   },
   {
@@ -290,7 +290,7 @@ export const seminars: Seminar[] = [
       name: 'Audubon Christmas Bird Count',
       url: 'https://www.audubon.org/community-science/christmas-bird-count/join-christmas-bird-count',
     },
-    signupUrl: '',
+    signupUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfOu5weTpomtM0fhjLCLam6j6i3yBrzlLLK5i81OIKb4f7cmg/viewform?usp=pp_url&entry.970705970=Sat,+Dec+19+%C2%B7+Count+the+Birds:+The+Christmas+Bird+Count+and+eBird',
     hasDeck: true,
   },
   {
@@ -308,7 +308,7 @@ export const seminars: Seminar[] = [
     builtOn: 'Your Climate Record, our game on reading long-term climate data',
     partner: { name: 'California King Tides Project', url: 'https://www.coastal.ca.gov/kingtides/' },
     game: { name: 'Your Climate Record', href: '/games/climate-record/' },
-    signupUrl: '',
+    signupUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfOu5weTpomtM0fhjLCLam6j6i3yBrzlLLK5i81OIKb4f7cmg/viewform?usp=pp_url&entry.970705970=Sat,+Jan+9+%C2%B7+King+Tides:+A+Glimpse+of+Future+Sea+Levels',
     hasDeck: true,
   },
   {
@@ -329,7 +329,7 @@ export const seminars: Seminar[] = [
       url: 'https://www.aqmd.gov/home/programs/community/community-detail?title=check-before-you-burn',
     },
     game: { name: 'Air Detective', href: '/games/air-detective/' },
-    signupUrl: '',
+    signupUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfOu5weTpomtM0fhjLCLam6j6i3yBrzlLLK5i81OIKb4f7cmg/viewform?usp=pp_url&entry.970705970=Sat,+Jan+23+%C2%B7+Smoke,+Fog+and+Fireplaces:+Winter+Air+Quality',
     hasDeck: true,
   },
 ]
