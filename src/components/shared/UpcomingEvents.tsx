@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { HiClock, HiExternalLink, HiGlobeAlt, HiLocationMarker, HiVideoCamera } from 'react-icons/hi'
 import { HideAfter, TodayBadge } from '@/components/shared/EventTiming'
 import { upcomingCampaigns, type CampaignTile } from '@/data/campaigns'
-import { seminarTile, upcomingSeminars } from '@/data/seminars'
+import { seminarSignup, seminarTile, upcomingSeminars } from '@/data/seminars'
 
 // The home page's window onto /events/. Reads the same data files as that page
 // and its schema.org markup, so it can only ever show an event that is really
@@ -56,8 +56,8 @@ function upcomingItems(): UpcomingItem[] {
       when: s.displayTime,
       where: 'Online via Zoom',
       inPerson: false,
-      href: s.eventbriteUrl || `/events/register/?event=${encodeURIComponent(s.title)}`,
-      ctaLabel: s.eventbriteUrl ? 'Register on Eventbrite' : 'Register Free',
+      href: seminarSignup(s).href,
+      ctaLabel: seminarSignup(s).shortLabel,
       anchor: '/events/#seminars',
     })),
   ]

@@ -13,11 +13,13 @@ import SeminarVideo from '@/components/shared/SeminarVideo'
 import { HideAfter, TodayBadge } from '@/components/shared/EventTiming'
 import { CAMPAIGN_BLURB, CAMPAIGN_TITLE, upcomingCampaigns } from '@/data/campaigns'
 import {
-  SEMINAR_CADENCE,
+  SERIES,
   pastSeminars,
   recordingUrl,
   seminarTile,
   seminars,
+  seriesSessions,
+  sessionNumber,
   upcomingSeminars,
 } from '@/data/seminars'
 
@@ -49,15 +51,6 @@ interface TimelineEvent {
   when?: string
   /** Set when the event was run jointly with another organization. */
   coHosted?: string
-}
-
-/**
- * Position in the series, counted over every session rather than over the
- * upcoming ones. Once session 1 has been held it leaves the upcoming list, and
- * numbering off that list would relabel session 3 as "Session 1 of 5".
- */
-function sessionNumber(slug: string) {
-  return seminars.findIndex((s) => s.slug === slug) + 1
 }
 
 /**
@@ -488,7 +481,7 @@ export default function Events() {
               actually done — our apps, our cleanups, and our monthly challenges.
             </p>
             <p className="inline-block mt-5 bg-primary-green/10 text-primary-green-dark font-semibold px-5 py-2 rounded-full text-sm">
-              🗓️ {SEMINAR_CADENCE}
+              🗓️ {SERIES['fall-2026'].cadence}
             </p>
           </div>
 
@@ -518,7 +511,7 @@ export default function Events() {
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-center gap-2 mb-2">
                           <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                            Session {sessionNumber(seminar.slug)} of {seminars.length}
+                            Session {sessionNumber(seminar)} of {seriesSessions(seminar.series).length}
                           </span>
                           <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
                             Free
@@ -663,7 +656,7 @@ export default function Events() {
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
                         <span className="bg-gray-100 text-gray-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                          Session {sessionNumber(seminar.slug)} of {seminars.length}
+                          Session {sessionNumber(seminar)} of {seriesSessions(seminar.series).length}
                         </span>
                         <span>{seminar.displayDate}</span>
                         {/* Attendance prints only when a real number was recorded. */}

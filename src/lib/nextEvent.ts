@@ -45,8 +45,9 @@ export function getNextEvent(prefer?: 'campaign' | 'seminar'): NextEvent | null 
         displayDate: s.displayDate,
         displayTime: s.displayTime,
         description: s.description,
-        href: s.eventbriteUrl || '/events/',
-        ctaLabel: 'Reserve a spot',
+        href: s.listing?.url || s.eventbriteUrl || s.signupUrl || '/events/',
+        // Fall keeps its original wording; the Winter Field Lab says "Sign up".
+        ctaLabel: s.series === 'fall-2026' ? 'Reserve a spot' : 'Sign up',
         kind: 'seminar' as const,
       },
     })),
