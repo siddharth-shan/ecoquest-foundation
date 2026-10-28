@@ -612,4 +612,460 @@ export const decks: Record<string, Slide[]> = {
         'End with a single assignment, not five. Put the events page link in chat, thank people, and mention that the slides stay online permanently so they can come back for the source list.',
     },
   ],
+
+  // ---------------------------------------------------------------------------
+  // EcoQuest Winter Field Lab. 30-minute sessions: about five minutes of hook,
+  // fifteen of hands-on work with real public tools, ten of "do this after" and
+  // Q&A. Outside facts come only from
+  // docs/superpowers/specs/2026-10-27-winter-field-lab-sources.md.
+  // ---------------------------------------------------------------------------
+  'first-flush': [
+    {
+      eyebrow: 'EcoQuest Winter Field Lab',
+      title: 'First Rain, First Flush: Where Storm Water Goes',
+      callout:
+        'Storm drains are a map you can read. In 30 minutes, you will learn to trace one from your street to the beach.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Ask in chat: do you know where the storm drain nearest your home empties out? Most people do not, and that is the point of the session.',
+    },
+    {
+      eyebrow: 'Why this matters',
+      title: 'Rain does not stop at the drain',
+      bullets: [
+        'Stormwater and urban runoff pick up trash, oil, pet waste, and other pollutants from streets and carry them into storm drains.',
+        'Here, storm drains flow to local rivers, creeks, and the ocean without being treated.',
+        'Months without rain let pollution build up, so the first storms of the season can carry more of it.',
+      ],
+      notes:
+        'Keep this slide to about five minutes. Do not say bacteria peak in the first storm: LA County monitoring found that peak stormwater bacteria counts do not follow first-flush patterns. The first-flush pattern is confirmed for pollution in general. Source: LA County Public Works stormwater pages.',
+    },
+    {
+      eyebrow: 'Hands-on, part 1',
+      title: 'Read a real stream gauge',
+      bullets: [
+        'Open USGS Water Data (waterdata.usgs.gov). It is public water data open to everyone, from monitoring locations across the country.',
+        'Find a monitoring location near you and look at its real-time readings.',
+        'Ask: what changed in the readings when it last rained?',
+      ],
+      notes:
+        'Open waterdata.usgs.gov and the live map (dashboard.waterdata.usgs.gov) in a tab before the session. Pick a Los Angeles-area stream location ahead of time and check that it has recent readings. Look this up before the session: how many monitoring locations USGS lists today. Say "open to everyone" rather than "free".',
+    },
+    {
+      eyebrow: 'Hands-on, part 2',
+      title: 'Trace a storm drain to the beach',
+      bullets: [
+        'Pick a street. Use a map to follow the downhill direction, since water runs downhill.',
+        'Where would runoff from that street enter a creek, a river, or the ocean?',
+        'Name two things on that street that could end up in the drain.',
+        'Safety: look at storm drains from the sidewalk. Do not touch runoff or step into it.',
+      ],
+      notes:
+        'Use a street near where most attendees live, or the street of the school if there is one. Use any public map. Look this up before the session: the name of the local storm drain outfall or creek this street drains to, so you can confirm students are right.',
+    },
+    {
+      eyebrow: 'Hands-on, part 3',
+      title: 'Check the beach grade',
+      bullets: [
+        'Open the Heal the Bay Beach Report Card (beachreportcard.org).',
+        'Beaches are graded A to F each week based on bacteria analysis.',
+        'It does not measure trash or toxins, so a good grade is not the whole story.',
+        'LA County health officials advise avoiding contact with ocean water for three days after significant rainfall.',
+        'Safety: do not go into the ocean after rain, especially near flowing storm drains, creeks, and rivers.',
+      ],
+      notes:
+        'Open beachreportcard.org in a tab before the session and have a beach near the audience loaded. Look this up before the session: that beach\'s current grade, so you can read it aloud. The county page is publichealth.lacounty.gov/beach. Do not read out any hotline number; point people to the page.',
+    },
+    {
+      eyebrow: 'Play it',
+      title: 'Storm Drain Detective',
+      callout: 'Our game about where runoff goes.',
+      bullets: [
+        'Play Storm Drain Detective on the EcoQuest games page after the session.',
+        'Try to match what you saw in the trace to the places runoff ends up in the game.',
+      ],
+      notes:
+        'The game is at /games/storm-drain/ on our site. Put the link in chat. Do not promise score or time targets.',
+    },
+    {
+      eyebrow: 'Do this after',
+      title: 'Start with the Beach Report Card',
+      bullets: [
+        'Go to beachreportcard.org and bookmark the beach you visit most.',
+        'Check its grade before your next beach trip, especially after rain.',
+        'Take a walk and spot the storm drains on your own block. Look only; do not touch.',
+        'Tell one person at home that the drain leads to the ocean.',
+      ],
+      notes:
+        'The official first step is the Beach Report Card itself. Give people a minute to bookmark it while you are still on the call.',
+    },
+    {
+      eyebrow: 'Q&A',
+      title: 'Questions, then your challenge',
+      callout: 'This month\'s at-home challenge: the water mission in the EcoChallenge.',
+      bullets: [
+        'Ask anything about runoff, the gauge data, or beach grades.',
+        'Join the November water mission from the EcoChallenge page on our site.',
+        'The slides and recording stay up on our seminars page.',
+      ],
+      notes:
+        'Leave at least eight minutes for questions. If you do not know an answer, say so and say what you would look up. Record the attendance count before you end the meeting and save the chat log.',
+    },
+  ],
+
+  'winter-bioblitz': [
+    {
+      eyebrow: 'EcoQuest Winter Field Lab',
+      title: 'Winter Bioblitz: Logging Life in the Cool Season',
+      callout:
+        'Winter still has life to find. In 30 minutes, you will practice photographing it and sharing it as real data.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Ask in chat: what is the last living thing you noticed outside? Keep it light. World Soil Day falls on the session date, so use it as a tie-in.',
+    },
+    {
+      eyebrow: 'Why this matters',
+      title: 'Every observation becomes data',
+      bullets: [
+        'iNaturalist helps you identify the plants and animals around you.',
+        'Every observation you share becomes data for scientists and conservationists working to understand and protect nature.',
+        'World Soil Day is celebrated every December 5, so we also look down at the ground.',
+      ],
+      notes:
+        'The iNaturalist wording is from its About page. World Soil Day is from the FAO page: it is celebrated annually on 5 December to raise awareness of the role soils play. Look this up before the session: anything about what is commonly seen in the cool season near you. Do not claim mushrooms, migrating birds, or cool-season plants are specifically attributed to iNaturalist; treat them as your own examples.',
+    },
+    {
+      eyebrow: 'Hands-on, part 1',
+      title: 'Set up iNaturalist',
+      bullets: [
+        'Open inaturalist.org.',
+        'Follow iNaturalist\'s own getting-started guide to make an account and log an observation.',
+        'Ask a parent or teacher to help you set up your account.',
+      ],
+      notes:
+        'Open inaturalist.org and its getting-started guide in a tab before the session. The exact logging steps are not on a page we have verified, so do not recite them from memory: walk through the guide on screen. Look this up before the session: the current iNaturalist account rules for young users.',
+    },
+    {
+      eyebrow: 'Hands-on, part 2',
+      title: 'Photograph living things well',
+      bullets: [
+        'Take a few photos from different angles. Get close enough to see details.',
+        'Include the whole organism and a detail, like a leaf or a face.',
+        'Never touch or disturb wildlife. Stay on trails and public land.',
+        'Note where you were. Location matters for the data.',
+      ],
+      notes:
+        'Share a good and a weak example photo if you have them from your own observations. Safety: remind students not to pick up animals or taste plants or mushrooms, and to stay with an adult when outdoors.',
+    },
+    {
+      eyebrow: 'Hands-on, part 3',
+      title: 'Look down: life in the soil',
+      bullets: [
+        'On World Soil Day, look at the ground in a yard, a park, or a planter.',
+        'What signs of life do you see? Look for plants, insects, or anything else living.',
+        'Photograph what you find and log it the same way.',
+      ],
+      notes:
+        'Give people a few minutes to go outside with a phone or camera if they can, or to look at a houseplant pot or a window view if not. Do not promise that any particular organism will be there; say it depends on the place.',
+    },
+    {
+      eyebrow: 'Play it',
+      title: 'Backyard Bioblitz',
+      callout: 'Our species-spotting game.',
+      bullets: [
+        'Play Backyard Bioblitz on the EcoQuest games page after the session.',
+        'It is a good way to practice noticing before you head outside.',
+      ],
+      notes:
+        'The game is at /games/bioblitz/ on our site. Put the link in chat.',
+    },
+    {
+      eyebrow: 'Do this after',
+      title: 'Log your first observation',
+      bullets: [
+        'Go to inaturalist.org and follow its own getting-started guide.',
+        'Log one observation this week, and one more next week.',
+        'Look at what other people near you have logged.',
+        'Share the link with a friend so they can try it too.',
+      ],
+      notes:
+        'The partner project is iNaturalist. Encourage people to start with one observation rather than a big plan.',
+    },
+    {
+      eyebrow: 'Q&A',
+      title: 'Questions, then your challenge',
+      callout: 'This month\'s at-home challenge: the zero-waste mission in the EcoChallenge.',
+      bullets: [
+        'Ask anything about photographing, identifying, or logging.',
+        'Join the December zero-waste mission from the EcoChallenge page on our site.',
+        'The slides and recording stay up on our seminars page.',
+      ],
+      notes:
+        'Leave at least eight minutes for questions. Record the attendance count before you end the meeting and save the chat log.',
+    },
+  ],
+
+  'count-the-birds': [
+    {
+      eyebrow: 'EcoQuest Winter Field Lab',
+      title: 'Count the Birds: The Christmas Bird Count and eBird',
+      callout:
+        'You can help count the birds. In 30 minutes, you will learn how to join a count and report your own sightings.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Ask in chat: what is the bird you see most often outside your window?',
+    },
+    {
+      eyebrow: 'Why this matters',
+      title: 'Volunteers have counted birds for a very long time',
+      bullets: [
+        'The Christmas Bird Count began on Christmas Day long ago as an alternative to competitive bird hunting.',
+        'Today it is one of the world\'s longest-running community science projects.',
+        'It is an annual bird census powered by volunteers.',
+      ],
+      notes:
+        'Use the exact phrase "one of the world\'s longest-running community science projects" from Audubon\'s page. Look this up before the session: the founding year, if you want to say it aloud, and how many counts or volunteers took part last year. Do not state a figure you have not checked.',
+    },
+    {
+      eyebrow: 'Hands-on, part 1',
+      title: 'Meet the Christmas Bird Count',
+      bullets: [
+        'Open the Audubon Christmas Bird Count join page.',
+        'The count takes place between December 14 and January 5 each year.',
+        'Participation is free and open to bird enthusiasts of any level.',
+        'audubon.org/community-science/christmas-bird-count/join-christmas-bird-count',
+      ],
+      notes:
+        'Open the join page in a tab before the session. The session date falls inside the count window. Audubon\'s map of local counts (the "CBC Circle Finder") was a placeholder when we checked, so do not promise people a map: say "see the official page" and point to the join page. Look this up before the session: whether the circle finder is working now, and whether a count circle covers Cerritos, Long Beach, or Los Angeles.',
+    },
+    {
+      eyebrow: 'Hands-on, part 2',
+      title: 'Recognize common winter birds',
+      bullets: [
+        'Pick three birds you see often near home. Note size, color, and shape.',
+        'Compare notes with what a field guide or bird app shows for your area.',
+        'Practice: describe a bird by size, shape, color, and behavior.',
+        'Watch from a distance. Do not chase or disturb birds.',
+      ],
+      notes:
+        'This slide is a method, not a species list. Look this up before the session: three or four common Southern California winter birds (for example from a local Audubon chapter or eBird\'s range pages) and have their photos ready. Do not state that any particular bird is present this month without checking.',
+    },
+    {
+      eyebrow: 'Hands-on, part 3',
+      title: 'Report your sightings on eBird',
+      bullets: [
+        'Open ebird.org, which calls itself the world\'s largest birding community.',
+        'Every sighting matters. A checklist records the birds you saw on a single date.',
+        'Make a checklist after a short watch at a window or park.',
+        'See the official page for how to enter a checklist.',
+      ],
+      notes:
+        'Open ebird.org and the page on sharing your sightings in a tab before the session. Do not say eBird takes sightings every day of the year; that is not confirmed. Look this up before the session: how checklists are entered on the website today.',
+    },
+    {
+      eyebrow: 'Do this after',
+      title: 'Join a count, then add your own checklist',
+      bullets: [
+        'Go to the Audubon Christmas Bird Count join page.',
+        'Follow the official page to find and register for a count near you.',
+        'Ask an adult to come with you if you are under 18.',
+        'Report your own sightings at ebird.org.',
+      ],
+      notes:
+        'The official first step is Audubon\'s join page. The page says to use its circle finder to find a count and register. We could not confirm the finder works, so tell people to check the page and, if it does not, to try Audubon\'s help hub (cbchelp.audubon.org).',
+    },
+    {
+      eyebrow: 'Q&A',
+      title: 'Questions, then your challenge',
+      callout: 'This month\'s at-home challenge: the zero-waste mission in the EcoChallenge.',
+      bullets: [
+        'Ask anything about birds, counts, or reporting.',
+        'Join the December zero-waste mission from the EcoChallenge page on our site.',
+        'The slides and recording stay up on our seminars page.',
+      ],
+      notes:
+        'Leave at least eight minutes for questions. Record the attendance count before you end the meeting and save the chat log.',
+    },
+  ],
+
+  'king-tides': [
+    {
+      eyebrow: 'EcoQuest Winter Field Lab',
+      title: 'King Tides: A Glimpse of Future Sea Levels',
+      callout:
+        'King tides show where the water may reach more often. In 30 minutes, you will learn to find the next one and read the tide.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Ask in chat: has anyone seen a very high tide at the beach? The session date is not a statewide king tide day, so this session is about planning.',
+    },
+    {
+      eyebrow: 'Why this matters',
+      title: 'The highest tides of the year',
+      bullets: [
+        'King tides are the highest high tides of the year.',
+        'They are not related to climate change, but they let us experience what higher sea level will be like.',
+        'Photos from the public help the California Coastal Commission see how sea level rise is changing the shoreline.',
+      ],
+      notes:
+        'The wording comes from the California Coastal Commission King Tides pages. Look this up before the session: how much higher than average a king tide runs (the Coastal Commission page gives a range) so you can read it from the page. Do not call king tides a result of climate change; the page says they are not related to it.',
+    },
+    {
+      eyebrow: 'Hands-on, part 1',
+      title: 'Find this winter\'s king tide dates',
+      bullets: [
+        'Open the California King Tides Project page: coastal.ca.gov/kingtides.',
+        'Statewide king tide days this winter: December 23-25, 2026 and January 21-22, 2027.',
+        'No Los Angeles-area events are listed on the page.',
+        'Use its tide map to check your own local dates and times.',
+      ],
+      notes:
+        'Open coastal.ca.gov/kingtides in a tab before the session, with the tide map (the participate page) ready. The session date is not a statewide king tide day. The page also lists a few Northern California extra dates; leave those out. Look this up before the session: whether the page has added any Los Angeles-area events, and any El Nino note on the page.',
+    },
+    {
+      eyebrow: 'Hands-on, part 2',
+      title: 'Read the tide predictions',
+      bullets: [
+        'Open NOAA Tides and Currents: tidesandcurrents.noaa.gov.',
+        'It lists official U.S. high and low tide predictions.',
+        'Choose a station near you, then find the tide predictions page.',
+        'Find the highest predicted tide for a day this winter.',
+      ],
+      notes:
+        'Open tidesandcurrents.noaa.gov/tide_predictions.html in a tab before the session and pick the station closest to your audience. Look this up before the session: which station is closest and what its predicted high is on the king tide days.',
+    },
+    {
+      eyebrow: 'Hands-on, part 3',
+      title: 'Watch safely and take a photo',
+      bullets: [
+        'Pick a safe spot well back from the water, with an adult.',
+        'Stay off wet rocks and seawalls. Waves can surprise you.',
+        'Watch the water from the safe spot and photograph a fixed landmark.',
+        'Do not seek king tide photos unless you can do it safely.',
+      ],
+      notes:
+        'The Coastal Commission page asks people not to seek king tide photos unless they can do so safely. Spend real time on this slide. Say clearly that skipping an event is always a fine choice.',
+    },
+    {
+      eyebrow: 'Play it',
+      title: 'Your Climate Record',
+      callout: 'Our game on reading long-term climate data.',
+      bullets: [
+        'Play Your Climate Record on the EcoQuest games page after the session.',
+        'Think about how reading a long record is like reading a tide table.',
+      ],
+      notes:
+        'The game is at /games/climate-record/ on our site. Put the link in chat.',
+    },
+    {
+      eyebrow: 'Do this after',
+      title: 'Plan to watch one',
+      bullets: [
+        'Go to coastal.ca.gov/kingtides and read how to take part.',
+        'Mark December 23-25 and January 21-22 on a calendar.',
+        'Use the tide map to check times, then choose a safe spot with an adult.',
+        'If it is not safe, skip it. You can still follow along online.',
+      ],
+      notes:
+        'The official first step is the Coastal Commission page and its tide map. Do not make promises about weather or wave size.',
+    },
+    {
+      eyebrow: 'Q&A',
+      title: 'Questions, then your challenge',
+      callout: 'This month\'s at-home challenge: the energy mission in the EcoChallenge.',
+      bullets: [
+        'Ask anything about tides, sea level, or the project.',
+        'Join the January energy mission from the EcoChallenge page on our site.',
+        'The slides and recording stay up on our seminars page.',
+      ],
+      notes:
+        'Leave at least eight minutes for questions. Record the attendance count before you end the meeting and save the chat log.',
+    },
+  ],
+
+  'smoke-fog-fireplaces': [
+    {
+      eyebrow: 'EcoQuest Winter Field Lab',
+      title: 'Smoke, Fog and Fireplaces: Winter Air Quality',
+      callout:
+        'Winter air can surprise you. In 30 minutes, you will learn to check the air and sign up for burn alerts.',
+      notes:
+        'Welcome people as they join. Say who you are, that EcoQuest is a student-led nonprofit, and that this session is recorded. Ask in chat: do you know anyone with a fireplace or a fire pit?',
+    },
+    {
+      eyebrow: 'Why this matters',
+      title: 'Still air holds smoke close',
+      bullets: [
+        'Emissions and stagnant weather can cause unhealthy levels of fine particulate pollution.',
+        'Wood smoke from fireplaces, fire pits, and wood stoves adds to it.',
+        'When the weather is still, smoke builds up where people breathe.',
+      ],
+      notes:
+        'The wording is from South Coast AQMD: No-Burn alerts are issued when emissions and stagnant weather cause unhealthy levels of fine particulate pollution. If you want to explain a temperature inversion, look this up before the session: EPA material says an inversion traps cold air and pollution under warmer air above it, but AQMD does not use that word, so do not attribute it to AQMD.',
+    },
+    {
+      eyebrow: 'Hands-on, part 1',
+      title: 'Is there a No-Burn alert today?',
+      bullets: [
+        'Open the South Coast AQMD page "What is a No-Burn alert?" (aqmd.gov, Check Before You Burn).',
+        'Find the No-Burn alert map and see whether an alert is in effect.',
+        'Fine particles in smoke are the pollution these alerts are about.',
+      ],
+      notes:
+        'Open the AQMD No-Burn alert page and its alert map in a tab before the session. Look this up before the session: whether an alert is in effect today, and today\'s local air-quality reading and what its color categories mean. Do not read a number from a past session.',
+    },
+    {
+      eyebrow: 'Hands-on, part 2',
+      title: 'How a No-Burn alert works',
+      bullets: [
+        'South Coast AQMD\'s Check Before You Burn program issues No-Burn alerts for residential fireplaces, outdoor fire pits, and wood stoves.',
+        'An alert lasts for a day and usually covers the whole South Coast Air Basin.',
+        'Alerts are issued each year from November 1 through the last day of February.',
+      ],
+      notes:
+        'Open the AQMD "What is a No-Burn alert" page in a tab before the session. Look this up before the session: the particle level that triggers a mandatory alert (the AQMD FAQ lists it) and whether there is an alert in effect today. Do not give a figure from memory.',
+    },
+    {
+      eyebrow: 'Hands-on, part 3',
+      title: 'Sign up for alerts',
+      bullets: [
+        'Open aqmd.gov/home/air-quality/air-alerts to sign up for AQMD Air Alerts by email.',
+        'AQMD also offers an app that sends notifications when No-Burn Days are called.',
+        'The page also has a No-Burn alert map you can check.',
+        'Ask an adult at home to sign up too.',
+      ],
+      notes:
+        'Give people two full minutes to do the sign-up live if they have an adult nearby. Never ask students to type an email address into chat. Do not read out any phone number; point to the page.',
+    },
+    {
+      eyebrow: 'Play it',
+      title: 'Air Detective',
+      callout: 'Our air-quality game.',
+      bullets: [
+        'Play Air Detective on the EcoQuest games page after the session.',
+        'Try to connect what you see in the game to the alerts we just covered.',
+      ],
+      notes:
+        'The game is at /games/air-detective/ on our site. Put the link in chat.',
+    },
+    {
+      eyebrow: 'Do this after',
+      title: 'Check before you burn',
+      bullets: [
+        'Go to the Check Before You Burn page on aqmd.gov.',
+        'Sign up for AQMD Air Alerts or download the AQMD app.',
+        'Tell your family to check the alert before using a fireplace, fire pit, or wood stove between November 1 and the end of February.',
+        'Check the air before outdoor exercise on still, smoky days.',
+      ],
+      notes:
+        'The official first step is the Check Before You Burn page: aqmd.gov/home/programs/community/community-detail?title=check-before-you-burn. Say the page URL aloud and put it in chat.',
+    },
+    {
+      eyebrow: 'Q&A',
+      title: 'Questions, then your challenge',
+      callout: 'This month\'s at-home challenge: the energy mission in the EcoChallenge.',
+      bullets: [
+        'Ask anything about air quality, alerts, or smoke.',
+        'Join the January energy mission from the EcoChallenge page on our site.',
+        'The slides and recording stay up on our seminars page.',
+      ],
+      notes:
+        'Leave at least eight minutes for questions. Record the attendance count before you end the meeting and save the chat log.',
+    },
+  ],
 }
