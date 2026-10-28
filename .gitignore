@@ -44,3 +44,9 @@ next-env.d.ts
 
 # Written by scripts/check-planet-links.mjs when links break
 broken-links.md
+
+# Apps Script sign-up form: private config (Zoom link) and generated/linked files
+/scripts/signup-form/gas/config.js
+/scripts/signup-form/gas/sessions.js
+/scripts/signup-form/.clasp.json
+/scripts/signup-form/.webapp-url

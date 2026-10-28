@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "TZ=America/Los_Angeles vitest run"
+    "test": "TZ=America/Los_Angeles vitest run",
+    "signup:build": "node scripts/signup-form/build-sessions.mjs",
+    "signup:push": "npm run signup:build && cd scripts/signup-form && npx --yes @google/clasp push --force",
+    "signup:sync": "node scripts/signup-form/sync-links.mjs"
   },
   "dependencies": {
     "next": "^14.0.4",
