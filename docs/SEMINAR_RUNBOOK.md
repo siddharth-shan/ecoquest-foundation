@@ -234,6 +234,11 @@ still before the session. Batches that were already sent are never resent.
 - If the form is ever deleted or the stored form ID is lost, delete the old
   `onSignup` trigger in the script editor's Triggers page before running `setup`
   again, so the new form gets its own trigger.
+- The form's confirmation message only says "check your email". Never put the
+  Zoom link in the form itself (description, questions, or confirmation
+  message): Google includes all of it in the public form's page source.
+- `clasp create` overwrites `gas/appsscript.json` with Google's default. Run
+  `git checkout scripts/signup-form/gas/appsscript.json` right after it.
 - `config.js`, `.clasp.json`, and `.webapp-url` are gitignored. Never commit
   them, and never paste the Zoom link into the repo or the site.
 

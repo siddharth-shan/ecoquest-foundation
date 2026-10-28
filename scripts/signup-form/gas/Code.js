@@ -53,9 +53,11 @@ function setup() {
   form.setPublishingSummary(false)
   form.setAllowResponseEdits(false)
   form.setCollectEmail(false)
+  // Never put the Zoom link here: Google embeds the confirmation message in the
+  // public form's page source, so anyone could read it without signing up.
   form.setConfirmationMessage(
-    "You're signed up! Join on Zoom (same link for every session): " + CONFIG.zoomJoinUrl +
-    ' — we have also emailed it to you. Please do not share it publicly.')
+    "You're signed up! We've emailed the Zoom link to the address you gave, from " +
+    CONFIG.replyTo + ". If it isn't in your inbox in a few minutes, check spam.")
 
   var upcoming = SESSIONS.filter(function (s) { return Date.parse(s.endDateTime) > Date.now() })
   var sessionsItem = itemByTitle(form, Q_SESSIONS).asCheckboxItem()

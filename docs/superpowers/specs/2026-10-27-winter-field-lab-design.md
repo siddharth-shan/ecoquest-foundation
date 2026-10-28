@@ -109,8 +109,9 @@ Record each source in a sources file, as `2026-10-27-this-week-v2-sources.md` do
   - a required consent checkbox.
 - **Responses** go to a linked Google Sheet, which is the attendance record for
   the Congressional Award. The public response summary is off.
-- **The Zoom link reaches people privately, three ways:**
-  - the form's confirmation message;
+- **The Zoom link reaches people privately, two ways** (amended at go-live: a
+  form's confirmation message is embedded in the public form's page source, so
+  it says "check your email" and never carries the link):
   - an automatic welcome email when someone signs up (onFormSubmit trigger);
   - an automatic reminder email two days before each session (daily
     time trigger, BCC, sent once per session).
