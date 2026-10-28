@@ -1,7 +1,7 @@
 # EcoQuest Winter Field Lab: Design
 
 Date: 2026-10-27
-Status: draft, awaiting approval
+Status: approved 2026-10-27
 
 ## Why
 
@@ -96,32 +96,51 @@ Record each source in a sources file, as `2026-10-27-this-week-v2-sources.md` do
 
 ## Signup: decided
 
-- **The user creates one Google Form for the series.** It asks which session(s),
-  name, email, grade or "adult", and for under-13s a parent/guardian consent
-  checkbox.
-  - One shared form, not one per session. That's one link to maintain, and
-    attendance per session still shows in the responses sheet. *(Claude's call.)*
-- **The Zoom link is delivered privately:** on the form's confirmation message,
-  plus a reminder email the user sends about two days before each session
-  (BCC, from the responses sheet). The Zoom waiting room stays on.
-- **The site only stores the public form URL.** The sign-up button on each
-  session card reads "Sign up (Google Form)." It opens in a new tab.
-  - If the form supports pre-filling the session, the button pre-fills it. If
-    the pre-fill entry ID isn't available yet, the button uses the plain form URL.
-  - While the form URL is empty, the button falls back to the existing
-    `/events/register/?event=…` route, as Season 1 does when `eventbriteUrl` is
-    empty.
-- The responses sheet is the attendance record for the Congressional Award.
-- **Deadline for the form:** about Nov 7, 2026, so distribution can start about
-  2 weeks before Nov 21. This is an action item for the user, not a build
-  blocker. Until the URL is pasted in, cards fall back to the existing
+- **Account:** ecoquestfoundation@gmail.com. It is already the gcloud login and
+  owns the recordings bucket. Do not use a personal or work account.
+- **The form is created and run by a Google Apps Script** kept in the repo
+  under `scripts/signup-form/`. The user asked for no manual work on the form,
+  so nobody builds or maintains it by hand.
+- **Form fields**, all in one form for the whole series *(Claude's call)*:
+  - which session(s);
+  - name;
+  - email ("a parent's or guardian's if you're under 13");
+  - grade band;
+  - a required consent checkbox.
+- **Responses** go to a linked Google Sheet, which is the attendance record for
+  the Congressional Award. The public response summary is off.
+- **The Zoom link reaches people privately, three ways:**
+  - the form's confirmation message;
+  - an automatic welcome email when someone signs up (onFormSubmit trigger);
+  - an automatic reminder email two days before each session (daily
+    time trigger, BCC, sent once per session).
+- **The Zoom link is kept out of the public repo.** It sits in a gitignored
+  `config.js` that is pushed only to the private Apps Script project. The Zoom
+  waiting room stays on.
+- **Getting the form links onto the site.** The script publishes a public JSON
+  endpoint (an Apps Script web app) that lists the form URL and each session's
+  prefilled sign-up link. These links are public anyway. The builder fetches
+  them and writes them into the seminar data.
+- **The session list comes from `src/data/seminars.ts`.** It is generated
+  into the script, so there is one source of truth.
+- **What the user must still do once.** Each step is a Google or Zoom security
+  consent that cannot be automated:
+  1. turn on "Google Apps Script API" at script.google.com/home/usersettings;
+  2. sign in once to the command-line uploader (`clasp login`) as
+     ecoquestfoundation@gmail.com;
+  3. press Run on `setup` once in the script editor and approve the permissions;
+  4. create one Zoom "recurring, no fixed time" meeting and hand over its link.
+     The free plan can't be scripted.
+- **Until the sign-up URLs are filled in,** cards fall back to the existing
   `/events/register/?event=<title>` route, as Season 1 did before its Eventbrite
-  links existed. *(Claude's call: the precedent already works.)*
-- **Optional outside listing.** Each Season 2 session may also carry an optional
-  `listingUrl`, matching campaigns. Once a city or library calendar listing
-  exists, its link shows as a small "Also listed on <name>" link and becomes the
-  schema.org `url`. The sign-up button still goes to the form. *(Claude's
-  call.)*
+  links existed.
+- **Optional outside listing.** Each Season 2 session may also carry an
+  optional `listing` (name + URL), matching campaigns. Once a city or library
+  calendar lists the session, its card shows an "Also listed on <name>" link,
+  and that listing becomes the schema.org `url`. The sign-up button still goes
+  to the form. *(Claude's call.)*
+- **Gmail's limit** is about 100 recipients a day on a free account. That is
+  enough at this size. The script logs a warning if a send would exceed it.
 
 ### Reachability (the tradeoff the user accepted)
 
@@ -193,10 +212,9 @@ JustServe. Those sites are for volunteer service, not talks.
 7. **Runbook.** Add a "Season 2: Winter Field Lab" section to
    `docs/SEMINAR_RUNBOOK.md` with these steps:
    - schedule the Zoom recurring meeting (5 occurrences, 30 min);
-   - set up the Google Form (fields above; Zoom link in the confirmation
-     message; no link in the repo);
-   - paste the form URL into the data file;
-   - send the reminder emails;
+   - the one-time Google steps above, and how to re-run `setup` after
+     sessions change;
+   - the automatic welcome and reminder emails, and how to check they ran;
    - follow the distribution checklist without Eventbrite.
 
 ## What stays the same
