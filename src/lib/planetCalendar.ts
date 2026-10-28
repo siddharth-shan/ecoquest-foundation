@@ -2,7 +2,7 @@
 // a date and nothing else — so it never needs editing and cannot go stale.
 // All dates are the visitor's local calendar days.
 
-import { awarenessDays as defaultDays, type AwarenessDay } from '@/data/awarenessDays'
+import { awarenessDays as defaultDays, type AwarenessDay, type DateRule } from '@/data/awarenessDays'
 import { ecoMissions } from '@/data/ecochallenges'
 
 export interface PlanetActivity {
@@ -105,13 +105,28 @@ export interface UpcomingDay {
   activity: PlanetActivity
 }
 
-/** The next n observances from today (inclusive), wrapping into next year. */
+/** Local midnight of a rule's date in a given year. */
+export function occurrence(rule: DateRule, year: number): Date {
+  if ('day' in rule) return new Date(year, rule.month - 1, rule.day)
+  if (rule.nth === 'last') {
+    const last = new Date(year, rule.month, 0) // day 0 of next month = last day of this one
+    return new Date(year, rule.month - 1, last.getDate() - ((last.getDay() - rule.weekday + 7) % 7))
+  }
+  const first = new Date(year, rule.month - 1, 1)
+  return new Date(year, rule.month - 1, 1 + ((rule.weekday - first.getDay() + 7) % 7) + 7 * (rule.nth - 1))
+}
+
+/**
+ * The next n observances from today (inclusive), wrapping into next year. A
+ * rule day that has passed is re-derived for next year, so its date can differ
+ * from this year's. Same-date days keep data order (Array#sort is stable).
+ */
 export function nextAwarenessDays(today: Date, n: number, days: AwarenessDay[] = defaultDays): UpcomingDay[] {
   const start = startOfDay(today)
   return days
     .map((day) => {
-      let date = new Date(start.getFullYear(), day.month - 1, day.day)
-      if (date < start) date = new Date(start.getFullYear() + 1, day.month - 1, day.day)
+      let date = occurrence(day.when, start.getFullYear())
+      if (date < start) date = occurrence(day.when, start.getFullYear() + 1)
       return { day, date, daysAway: daysBetween(start, date), activity: activityFor(day.activity) }
     })
     .sort((a, b) => a.daysAway - b.daysAway)
