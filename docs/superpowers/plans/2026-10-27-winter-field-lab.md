@@ -354,7 +354,7 @@ Task 1, use the amended text.
     displayDate: 'Saturday, November 21, 2026',
     displayTime: '11:00–11:30 AM PT',
     description:
-      'The first big rain of the season washes litter, oil, and pet waste off streets and into storm drains, and here storm drains flow to the ocean without treatment. We read real stream-gauge data from the U.S. Geological Survey, learn why health officials advise staying out of the ocean after rain, and trace a storm drain from a street to the beach.',
+      'The first big rains of the season wash litter, oil, and pet waste off streets and into storm drains, and here storm drains flow to the ocean without treatment. We read real stream-gauge data from the U.S. Geological Survey, learn why LA County health officials advise staying out of the ocean for three days after rain, and trace a storm drain from a street to the beach.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Storm Drain Detective, our game about where runoff goes',
     partner: { name: 'Heal the Bay Beach Report Card', url: 'https://beachreportcard.org/' },
@@ -372,7 +372,7 @@ Task 1, use the amended text.
     displayDate: 'Saturday, December 5, 2026',
     displayTime: '11:00–11:30 AM PT',
     description:
-      'Winter is a good time to find what lives near you: mushrooms after rain, migrating birds, and plants that only show up in the cool season. On World Soil Day, we learn how to photograph and log observations on iNaturalist so scientists can use them, and how to look for life in the soil under your feet.',
+      'Winter is still a good time to find out what lives near you. On World Soil Day, we practice photographing living things and sharing them on iNaturalist, where observations can be used by scientists, and we look for life in the soil under your feet.',
     audience: 'Students of all ages, families, and educators',
     builtOn: 'Backyard Bioblitz and our California Biodiversity Challenge',
     partner: { name: 'iNaturalist', url: 'https://www.inaturalist.org/' },
@@ -390,12 +390,12 @@ Task 1, use the amended text.
     displayDate: 'Saturday, December 19, 2026',
     displayTime: '11:00–11:30 AM PT',
     description:
-      'Every winter, volunteers count birds for the National Audubon Society’s Christmas Bird Count, one of the longest-running community-science projects there is. We cover how to recognize common Southern California winter birds, how to find a count near you, and how to report your own sightings on eBird any day of the year.',
+      'Every winter, volunteers count birds for the National Audubon Society’s Christmas Bird Count, one of the world’s longest-running community science projects. We cover how to recognize common Southern California winter birds, how to join a count through Audubon’s official page, and how to report your own sightings on eBird.',
     audience: 'Students of all ages, families, and educators',
     builtOn: 'Backyard Bioblitz, our species-spotting game',
     partner: {
       name: 'Audubon Christmas Bird Count',
-      url: 'https://www.audubon.org/conservation/science/christmas-bird-count',
+      url: 'https://www.audubon.org/community-science/christmas-bird-count/join-christmas-bird-count',
     },
     signupUrl: '',
     hasDeck: true,
@@ -410,7 +410,7 @@ Task 1, use the amended text.
     displayDate: 'Saturday, January 9, 2027',
     displayTime: '11:00–11:30 AM PT',
     description:
-      'King tides are the highest tides of the year, and they show where water may reach more often as sea levels rise. We read NOAA tide predictions, learn how the California King Tides Project collects photos from the public, and plan a safe way to photograph a king tide yourself.',
+      'King tides are the highest tides of the year, and they show where water may reach more often as sea levels rise. We read NOAA tide predictions, learn how the California King Tides Project collects photos from the public, and find this winter’s king tide dates so you can plan to watch one from a safe spot.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Your Climate Record, our game on reading long-term climate data',
     partner: { name: 'California King Tides Project', url: 'https://www.coastal.ca.gov/kingtides/' },
@@ -428,17 +428,20 @@ Task 1, use the amended text.
     displayDate: 'Saturday, January 23, 2027',
     displayTime: '11:00–11:30 AM PT',
     description:
-      'Winter air can be worse than summer air: on cold, still nights, smoke and pollution get trapped near the ground. We read live air-quality data, learn how South Coast AQMD’s Check Before You Burn program decides when wood burning is restricted, and show how to sign up for its alerts.',
+      'Winter air can be worse than you might expect: when the weather is still and stagnant, smoke from wood fires builds up where people breathe. We read live air-quality data, learn how South Coast AQMD’s Check Before You Burn program decides when wood burning is restricted, and show how to sign up for its alerts.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Air Detective, our air-quality game',
-    partner: { name: 'South Coast AQMD Check Before You Burn', url: 'https://www.aqmd.gov/' },
+    partner: {
+      name: 'South Coast AQMD Check Before You Burn',
+      url: 'https://www.aqmd.gov/home/programs/community/community-detail?title=check-before-you-burn',
+    },
     game: { name: 'Air Detective', href: '/games/air-detective/' },
     signupUrl: '',
     hasDeck: true,
   },
 ```
 
-Replace the AQMD `url` with the exact Check Before You Burn page URL from Task 1.
+Copy and URLs above were amended by the controller after Task 1 (see the sources file's findings); use them verbatim.
 
 (g) Replace everything from the `hasEnded` doc comment through the `pastSeminars`
 export with the code below. Keep `seminarTile`, `recordingUrl`, and `getSeminar`
@@ -873,9 +876,21 @@ git commit -m "feat(events): Winter Field Lab section, shared seminar card, past
   - Every factual claim must appear in the Task 1 sources file. Where a figure
     would help, the speaker note says "look this up before the session".
   - Don't put numbers in the slides.
-  - King Tides: say "check the official page for this winter's dates" unless
-    Task 1 confirmed the January 2027 dates. In that case, use the confirmed
-    dates.
+  - King Tides: Task 1 confirmed this winter's statewide king tide dates on
+    the official page (Dec 23–25, 2026 and Jan 21–22, 2027). Name those dates
+    and link the page; no session date is a tide day. Say no LA-area events are
+    listed unless the sources file says otherwise.
+  - First flush: don't claim bacteria spike in the first storm (LA County says
+    bacteria don't follow first-flush patterns). The three-day ocean advisory
+    after rain is confirmed.
+  - Count the Birds: no circle map is available (Audubon's finder is a
+    placeholder); link the join page. Don't say eBird takes sightings "any day".
+    Use "one of the world's longest-running community science projects".
+  - Winter air: AQMD's own wording is about emissions and stagnant weather; the
+    word "inversion" may appear only in speaker notes as "look this up before
+    the session". The season (Nov 1 to end of Feb) and alert sign-up are confirmed.
+  - iNaturalist logging steps are not on an official page: slides say "follow
+    iNaturalist's own getting-started guide" and link https://www.inaturalist.org/.
   - Safety notes go into the slide bullets, not only the notes:
     - King tides: stay off wet rocks and seawalls, and watch the water from a
       safe spot.
