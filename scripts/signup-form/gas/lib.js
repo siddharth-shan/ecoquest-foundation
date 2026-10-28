@@ -5,7 +5,11 @@ var PACIFIC = 'America/Los_Angeles'
 
 /** 'YYYY-MM-DD' on the Pacific calendar. */
 function pacificDay(ms) {
-  return new Intl.DateTimeFormat('en-CA', { timeZone: PACIFIC }).format(ms)
+  var parts = {}
+  new Intl.DateTimeFormat('en-US', { timeZone: PACIFIC, year: 'numeric', month: '2-digit', day: '2-digit' })
+    .formatToParts(ms)
+    .forEach(function (p) { parts[p.type] = p.value })
+  return parts.year + '-' + parts.month + '-' + parts.day
 }
 
 /** Whole days between two 'YYYY-MM-DD' strings. Noon UTC sidesteps DST. */
@@ -20,12 +24,24 @@ function choiceLabel(s) {
   return day + ' · ' + s.title
 }
 
-/** Sessions whose Pacific start date is exactly `days` Pacific days after `nowMs`. */
+/**
+ * Sessions starting 1..`days` Pacific days from `nowMs`. The window (not just
+ * exactly `days`) lets a run that was skipped, e.g. for low email quota, catch
+ * up the next day. The caller tracks which reminders were already sent.
+ */
 function dueForReminder(sessions, nowMs, days) {
   var today = pacificDay(nowMs)
   return sessions.filter(function (s) {
-    return daysBetween(today, pacificDay(Date.parse(s.startDateTime))) === days
+    var until = daysBetween(today, pacificDay(Date.parse(s.startDateTime)))
+    return until > 0 && until <= days
   })
+}
+
+/** Splits a list into consecutive groups of at most `size`. */
+function chunk(list, size) {
+  var out = []
+  for (var i = 0; i < list.length; i += size) out.push(list.slice(i, i + size))
+  return out
 }
 
 /** Unique valid emails of everyone who picked `label`. */
@@ -56,7 +72,8 @@ function welcomeEmail(sessions, joinUrl) {
     body:
       'Thanks for signing up! You picked:\n\n' + sessions.map(sessionLine).join('\n') +
       '\n\nJoin on Zoom (same link for every session):\n' + joinUrl +
-      "\n\nWe'll email a reminder two days before each one." + FOOTER,
+      "\n\nWe'll email a reminder two days before each one." + FOOTER +
+      "\n\nIf you didn't sign up, or want to be removed, reply to this email.",
   }
 }
 

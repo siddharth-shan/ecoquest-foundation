@@ -925,7 +925,7 @@ git commit -m "feat(seminars): Winter Field Lab slide decks"
   no Apps Script globals.
 - Create: `scripts/signup-form/gas/Code.js`. This is the Apps Script entry
   points.
-- Create: `scripts/signup-form/gas/config.example.js`
+- Create: `scripts/signup-form/config.example.js`
 - Create: `scripts/signup-form/build-sessions.mjs`. It writes the gitignored
   `gas/sessions.js` from `seminars.ts`.
 - Create: `scripts/signup-form/sync-links.mjs`. It fetches the web app JSON and
@@ -1114,7 +1114,7 @@ function reminderEmail(s, joinUrl) {
 }
 ```
 
-- [ ] **Step 7: Write `gas/config.example.js`.**
+- [ ] **Step 7: Write `config.example.js` (outside gas/, so clasp never pushes it).**
 
 ```js
 // Copy to config.js (gitignored) and fill in. config.js is pushed only to the
@@ -1374,7 +1374,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 - [ ] **Step 13: Commit.**
 
 ```bash
-git add .gitignore package.json scripts/signup-form/gas/appsscript.json scripts/signup-form/gas/lib.js scripts/signup-form/gas/Code.js scripts/signup-form/gas/config.example.js scripts/signup-form/build-sessions.mjs scripts/signup-form/sync-links.mjs scripts/signup-form/lib.test.mjs scripts/signup-form/sync-links.test.mjs
+git add .gitignore package.json scripts/signup-form/gas/appsscript.json scripts/signup-form/gas/lib.js scripts/signup-form/gas/Code.js scripts/signup-form/config.example.js scripts/signup-form/build-sessions.mjs scripts/signup-form/sync-links.mjs scripts/signup-form/lib.test.mjs scripts/signup-form/sync-links.test.mjs
 git commit -m "feat(signup): Apps Script sign-up form with automatic welcome and reminder emails"
 ```
 
@@ -1397,7 +1397,7 @@ git commit -m "feat(signup): Apps Script sign-up form with automatic welcome and
       1. Turn on the Apps Script API at https://script.google.com/home/usersettings.
       2. Run `cd scripts/signup-form && npx @google/clasp login` as ecoquestfoundation@gmail.com.
       3. Run `npx @google/clasp create --type standalone --title "EcoQuest Winter Field Lab sign-up" --rootDir gas`.
-      4. Copy `config.example.js` to `config.js` and add the Zoom link.
+      4. Copy `scripts/signup-form/config.example.js` to `scripts/signup-form/gas/config.js` and add the Zoom link.
       5. Run `npm run signup:push`.
       6. In the script editor, run `setup` once and approve the permissions.
       7. Run `npx @google/clasp deploy`, and save the web app URL to `scripts/signup-form/.webapp-url`.

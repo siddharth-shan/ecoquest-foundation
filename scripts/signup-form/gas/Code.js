@@ -104,23 +104,49 @@ function onSignup(e) {
   MailApp.sendEmail({ to: to[0], replyTo: CONFIG.replyTo, name: 'EcoQuest Foundation', subject: mail.subject, body: mail.body })
 }
 
+var BCC_MAX = 49 // consumer Gmail allows about 50 recipients per message
+
 function sendReminders() {
-  var form = getForm()
-  if (!form) return
-  var rows = form.getResponses().map(rowOf)
-  dueForReminder(SESSIONS, Date.now(), 2).forEach(function (s) {
-    var key = 'reminded:' + s.slug
-    if (props().getProperty(key)) return
-    var bcc = recipientsFor(rows, choiceLabel(s))
-    if (bcc.length === 0) { props().setProperty(key, 'none'); return }
-    if (bcc.length + 1 > MailApp.getRemainingDailyQuota()) {
-      console.warn('Daily email quota too low for ' + s.slug + ' (' + bcc.length + ' recipients); will retry tomorrow.')
+  var lock = LockService.getScriptLock()
+  if (!lock.tryLock(30000)) return
+  try {
+    var form = getForm()
+    if (!form) return
+    var rows = form.getResponses().map(rowOf)
+    dueForReminder(SESSIONS, Date.now(), 2).forEach(function (s) {
+      try {
+        remindSession(s, rows)
+      } catch (err) {
+        Logger.log('Reminder failed for ' + s.slug + ': ' + err)
+      }
+    })
+  } finally {
+    lock.releaseLock()
+  }
+}
+
+/** Sends one session's reminder in BCC chunks; progress is stored per chunk so a retry never resends. */
+function remindSession(s, rows) {
+  var doneKey = 'reminded:' + s.slug
+  if (props().getProperty(doneKey)) return
+  var chunks = chunk(recipientsFor(rows, choiceLabel(s)), BCC_MAX)
+  var pending = []
+  chunks.forEach(function (list, i) {
+    if (!props().getProperty(doneKey + ':' + i)) pending.push({ i: i, list: list })
+  })
+  if (pending.length) {
+    var needed = pending.reduce(function (n, c) { return n + c.list.length + 1 }, 0)
+    if (needed > MailApp.getRemainingDailyQuota()) {
+      Logger.log('Daily email quota too low for ' + s.slug + ' (' + needed + ' needed); will retry at the next daily run.')
       return
     }
     var mail = reminderEmail(s, CONFIG.zoomJoinUrl)
-    MailApp.sendEmail({ to: CONFIG.replyTo, bcc: bcc.join(','), replyTo: CONFIG.replyTo, name: 'EcoQuest Foundation', subject: mail.subject, body: mail.body })
-    props().setProperty(key, new Date().toISOString())
-  })
+    pending.forEach(function (c) {
+      MailApp.sendEmail({ to: CONFIG.replyTo, bcc: c.list.join(','), replyTo: CONFIG.replyTo, name: 'EcoQuest Foundation', subject: mail.subject, body: mail.body })
+      props().setProperty(doneKey + ':' + c.i, new Date().toISOString())
+    })
+  }
+  props().setProperty(doneKey, pending.length ? new Date().toISOString() : 'none')
 }
 
 /** Public JSON of the form links (they are public anyway). Never includes the Zoom link. */
