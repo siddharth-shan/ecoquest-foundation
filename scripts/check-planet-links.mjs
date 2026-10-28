@@ -11,12 +11,21 @@ const SOURCES = ['src/data/awarenessDays.ts', 'src/data/seasons.ts']
 const USER_AGENT = 'Mozilla/5.0 (compatible; EcoQuestLinkCheck/1.0; +https://www.ecoquestfoundation.org)'
 const TIMEOUT_MS = 10_000
 
+// Pages that open in a browser but answer 403 to GitHub's servers. Only a 403
+// is excused, so a page that is really gone (404) or down still gets reported.
+const BLOCKS_BOTS = new Set(['https://www.earthdata.nasa.gov/news/feature-articles/cloudy-chance-drizzle'])
+
 /** Every quoted http(s) URL in the text, once each, in order of appearance. */
 export function extractUrls(text) {
   return [...new Set(text.match(/https?:\/\/[^'"`\s]+/g) ?? [])]
 }
 
 const ok = (status) => status >= 200 && status < 400
+
+/** True when the check should report this URL: a failing status, unless it is a known bot block. */
+export function isBroken(url, status, blocksBots = BLOCKS_BOTS) {
+  return !ok(status) && !(status === 403 && blocksBots.has(url))
+}
 
 /** The final HTTP status for a URL, or 0 if nothing answered. HEAD, then GET; the pair is tried twice. */
 export async function checkUrl(url, fetchFn = fetch) {
@@ -44,7 +53,7 @@ async function main() {
   const texts = await Promise.all(SOURCES.map((file) => readFile(file, 'utf8')))
   const urls = extractUrls(texts.join('\n'))
   const results = await Promise.all(urls.map(async (url) => ({ url, status: await checkUrl(url) })))
-  const broken = results.filter((r) => !ok(r.status))
+  const broken = results.filter((r) => isBroken(r.url, r.status))
   console.log(`Checked ${urls.length} links, ${broken.length} broken.`)
   for (const b of broken) console.log(`  ${b.status || 'no response'}  ${b.url}`)
   if (broken.length === 0) return

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { checkUrl, extractUrls } from './check-planet-links.mjs'
+import { checkUrl, extractUrls, isBroken } from './check-planet-links.mjs'
 
 /** A fetch stand-in that answers with the given statuses (or throws the given errors) in order. */
 function fakeFetch(answers) {
@@ -48,5 +48,26 @@ describe('checkUrl', () => {
   it('reports 0 when nothing answers', async () => {
     const f = fakeFetch([new Error('a'), new Error('b'), new Error('c'), new Error('d')])
     expect(await checkUrl('https://x.org', f.fn)).toBe(0)
+  })
+})
+
+describe('isBroken', () => {
+  const blocks = new Set(['https://blocked.gov/page'])
+
+  it('excuses a 403 from a page known to block bots', () => {
+    expect(isBroken('https://blocked.gov/page', 403, blocks)).toBe(false)
+  })
+
+  it('still reports a known bot-blocking page that is gone or down', () => {
+    expect(isBroken('https://blocked.gov/page', 404, blocks)).toBe(true)
+    expect(isBroken('https://blocked.gov/page', 0, blocks)).toBe(true)
+  })
+
+  it('reports a 403 from any other page', () => {
+    expect(isBroken('https://other.gov/page', 403, blocks)).toBe(true)
+  })
+
+  it('passes working pages', () => {
+    expect(isBroken('https://other.gov/page', 200, blocks)).toBe(false)
   })
 })
