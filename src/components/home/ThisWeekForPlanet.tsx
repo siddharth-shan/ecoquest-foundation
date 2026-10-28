@@ -64,7 +64,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
             <article className="card overflow-hidden flex flex-col">
               <img src={activity.img} alt="" className="w-full h-48 sm:h-56 object-contain bg-gray-50" />
               <div className="p-6 flex flex-col flex-1">
-                <p className="text-sm font-semibold text-primary-blue mb-2">
+                <p className="text-sm font-semibold text-primary-blue-dark mb-2">
                   {because
                     ? `${because.day.name} is ${because.daysAway === 0 ? 'today' : longDate(because.date)} — so this week:`
                     : 'This week’s pick'}
@@ -78,7 +78,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
             </article>
 
             <article className="card p-6" aria-labelledby="season-heading">
-              <p className="text-sm font-semibold text-primary-blue mb-2">This season in Southern California</p>
+              <p className="text-sm font-semibold text-primary-blue-dark mb-2">This season in Southern California</p>
               <h3 id="season-heading" className="font-heading font-bold text-xl text-primary-green mb-2">
                 {season.heading}
               </h3>
@@ -93,7 +93,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
                 >
                   Source: {season.sourceLabel} ↗
                 </a>
-                <Link href={seasonActivity.href} className="text-sm font-semibold text-primary-blue hover:underline">
+                <Link href={seasonActivity.href} className="text-sm font-semibold text-primary-blue-dark hover:underline">
                   Try: {seasonActivity.title} &rarr;
                 </Link>
               </div>
@@ -134,7 +134,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
                         {day.source} ↗
                       </a>
                       <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
-                        <Link href={a.href} className="text-sm font-semibold text-primary-blue hover:underline">
+                        <Link href={a.href} className="text-sm font-semibold text-primary-blue-dark hover:underline">
                           Try: {a.title} &rarr;
                         </Link>
                         <button

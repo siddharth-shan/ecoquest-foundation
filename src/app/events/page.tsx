@@ -766,7 +766,7 @@ export default function Events() {
                   />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <div className="flex items-center gap-2 text-sm text-primary-blue font-semibold mb-2">
+                  <div className="flex items-center gap-2 text-sm text-primary-blue-dark font-semibold mb-2">
                     <span>{event.date}</span>
                     <span className="text-gray-300">•</span>
                     <span className="text-gray-500">{event.location}</span>

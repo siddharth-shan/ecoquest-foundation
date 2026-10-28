@@ -234,7 +234,7 @@ export default function ImpactPortfolio() {
                 />
                 <div className="p-6 text-center">
                   <h3 className="font-bold text-lg text-primary-green mb-1">{game.title}</h3>
-                  <div className="text-xs text-primary-blue font-semibold mb-2">{game.grades}</div>
+                  <div className="text-xs text-primary-blue-dark font-semibold mb-2">{game.grades}</div>
                   <p className="text-gray-600 text-sm">{game.desc}</p>
                 </div>
               </Link>
@@ -278,7 +278,7 @@ export default function ImpactPortfolio() {
               <div className="text-sm text-gray-600">Student articles published on Medium</div>
             </div>
             <div className="bg-blue-50 rounded-xl p-6 text-center border-2 border-blue-200">
-              <div className="text-3xl font-bold text-primary-blue">8</div>
+              <div className="text-3xl font-bold text-primary-blue-dark">8</div>
               <div className="text-sm text-gray-600">Digital products built (games + apps)</div>
             </div>
             <div className="bg-purple-50 rounded-xl p-6 text-center border-2 border-purple-200">

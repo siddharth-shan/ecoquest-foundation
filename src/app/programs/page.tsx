@@ -36,7 +36,7 @@ export default function Programs() {
               </div>
             </div>
             <div>
-              <span className="text-primary-blue font-semibold uppercase text-sm">Environmental Games</span>
+              <span className="text-primary-blue-dark font-semibold uppercase text-sm">Environmental Games</span>
               <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Games Built on Real Local Data</h2>
               <div className="section-underline ml-0" />
               <p className="text-lg mb-6 text-gray-700">
@@ -70,7 +70,7 @@ export default function Programs() {
         <div className="container-custom">
           <div className="grid md:grid-cols-2 gap-12 items-start">
             <div>
-              <span className="text-primary-blue font-semibold uppercase text-sm">Biweekly · Free · Online</span>
+              <span className="text-primary-blue-dark font-semibold uppercase text-sm">Biweekly · Free · Online</span>
               <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Online Seminar Series</h2>
               <div className="section-underline ml-0" />
               <p className="text-lg mb-6 text-gray-700">
@@ -114,7 +114,7 @@ export default function Programs() {
         <div className="container-custom">
           <div className="grid md:grid-cols-[3fr_2fr] gap-12 items-start mb-10">
             <div>
-              <span className="text-primary-blue font-semibold uppercase text-sm">At Home or School</span>
+              <span className="text-primary-blue-dark font-semibold uppercase text-sm">At Home or School</span>
               <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">EcoChallenge</h2>
               <div className="section-underline ml-0" />
               <p className="text-lg mb-4 text-gray-700">
@@ -170,7 +170,7 @@ export default function Programs() {
               <div key={m.slug} className="card p-6 flex flex-col border-t-4 border-primary-blue">
                 <div className="flex items-baseline justify-between gap-3 mb-2">
                   <h3 className="font-heading font-bold text-xl text-primary-green">{m.title}</h3>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-primary-blue whitespace-nowrap">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-primary-blue-dark whitespace-nowrap">
                     {m.duration}
                   </span>
                 </div>
@@ -210,7 +210,7 @@ export default function Programs() {
               </div>
             </div>
             <div>
-              <span className="text-primary-blue font-semibold uppercase text-sm">Hands-On Conservation</span>
+              <span className="text-primary-blue-dark font-semibold uppercase text-sm">Hands-On Conservation</span>
               <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Community Conservation Events</h2>
               <div className="section-underline ml-0" />
               <p className="text-lg mb-6 text-gray-700">
@@ -244,7 +244,7 @@ export default function Programs() {
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <div className="text-center mb-12">
-            <span className="text-primary-blue font-semibold uppercase text-sm">Digital Initiatives</span>
+            <span className="text-primary-blue-dark font-semibold uppercase text-sm">Digital Initiatives</span>
             <h2 className="text-4xl font-bold mb-4 mt-2 text-primary-green font-heading">Interactive Web Applications</h2>
             <div className="section-underline" />
             <p className="text-lg text-gray-700 max-w-3xl mx-auto">

@@ -737,7 +737,7 @@ function PredictStep({
             <span>no change</span>
             <span>+6 °F (warmer)</span>
           </div>
-          <p id="temp-readout" className="mt-3 text-2xl font-bold font-heading text-primary-blue">
+          <p id="temp-readout" className="mt-3 text-2xl font-bold font-heading text-primary-blue-dark">
             {signedF(tempDelta, 2)} °F
           </p>
         </div>
@@ -862,7 +862,7 @@ function RevealStep({ place, guess, loaded, scorecard, event, onPrint }: RevealP
 
   const strengthTone: Record<SignalStrength, string> = {
     clear: 'text-accent-orange',
-    modest: 'text-primary-blue',
+    modest: 'text-primary-blue-dark',
     noise: 'text-gray-700',
   }
 
@@ -950,7 +950,7 @@ function RevealStep({ place, guess, loaded, scorecard, event, onPrint }: RevealP
                         l.points === l.max
                           ? 'text-primary-green'
                           : l.points > 0
-                            ? 'text-primary-blue'
+                            ? 'text-primary-blue-dark'
                             : 'text-gray-700'
                       }`}
                     >

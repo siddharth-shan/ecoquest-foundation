@@ -95,7 +95,7 @@ interface TableProps {
 function DataTable({ caption, head, rows }: TableProps) {
   return (
     <details className="mt-3">
-      <summary className="cursor-pointer text-sm font-semibold text-primary-blue py-2 min-h-[44px] flex items-center">
+      <summary className="cursor-pointer text-sm font-semibold text-primary-blue-dark py-2 min-h-[44px] flex items-center">
         Show these numbers as a table
       </summary>
       <div className="overflow-x-auto">
@@ -740,7 +740,7 @@ function AccuseView({ round, answered, onAccuse }: AccuseViewProps) {
           { t: 'What season, and how warm?', b: seasonClue(c) },
         ].map((clue) => (
           <details key={clue.t} className="card p-4">
-            <summary className="cursor-pointer font-semibold text-primary-blue min-h-[44px] flex items-center">
+            <summary className="cursor-pointer font-semibold text-primary-blue-dark min-h-[44px] flex items-center">
               {clue.t}
             </summary>
             <p className="text-gray-700 mt-2 text-sm leading-relaxed">{clue.b}</p>
@@ -833,7 +833,7 @@ function AccuseView({ round, answered, onAccuse }: AccuseViewProps) {
                 href={c.curated.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-primary-blue underline text-sm mt-2 inline-block"
+                className="text-primary-blue-dark underline text-sm mt-2 inline-block"
               >
                 {c.curated.linkLabel}
               </a>

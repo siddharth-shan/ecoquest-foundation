@@ -85,7 +85,7 @@ export default function SlideDeck({ deckTitle, sessionDate, slides }: SlideDeckP
           }`}
         >
           {slide.eyebrow && (
-            <p className="text-primary-blue font-semibold uppercase tracking-wide text-sm mb-3">
+            <p className="text-primary-blue-dark font-semibold uppercase tracking-wide text-sm mb-3">
               {slide.eyebrow}
             </p>
           )}

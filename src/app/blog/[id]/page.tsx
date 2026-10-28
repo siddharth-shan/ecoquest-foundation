@@ -159,7 +159,7 @@ export default function BlogPost({ params }: { params: { id: string } }) {
               <span className="bg-primary-green/10 text-primary-green px-3 py-1 rounded-full text-sm">
                 {post.category}
               </span>
-              <span className="bg-primary-blue/10 text-primary-blue px-3 py-1 rounded-full text-sm">
+              <span className="bg-primary-blue/10 text-primary-blue-dark px-3 py-1 rounded-full text-sm">
                 Environmental Education
               </span>
               <span className="bg-accent-yellow/50 text-gray-800 px-3 py-1 rounded-full text-sm">

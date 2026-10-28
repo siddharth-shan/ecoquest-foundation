@@ -111,7 +111,7 @@ export default function Contact() {
                       <h4 className="font-semibold">Email</h4>
                       <a
                         href="mailto:ecoquestfoundation@gmail.com"
-                        className="text-primary-blue"
+                        className="text-primary-blue-dark"
                       >
                         ecoquestfoundation@gmail.com
                       </a>

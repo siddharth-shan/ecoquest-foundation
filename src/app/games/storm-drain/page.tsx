@@ -620,7 +620,7 @@ function PredictStep({
 
   return (
     <div className="card p-8">
-      <p className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-primary-blue rounded-full px-3 py-1 mb-4">
+      <p className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-primary-blue-dark rounded-full px-3 py-1 mb-4">
         Step 1 of 3 · Commit first
       </p>
       <h2 className="font-heading font-bold text-3xl mb-3 text-primary-green">
@@ -729,7 +729,7 @@ function RevealStep({
   return (
     <>
       <div className="card p-8 mb-8">
-        <p className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-primary-blue rounded-full px-3 py-1 mb-4">
+        <p className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-primary-blue-dark rounded-full px-3 py-1 mb-4">
           Step 2 of 3 · The real answer
         </p>
         <h2 className="font-heading font-bold text-3xl mb-6 text-primary-green">
@@ -779,7 +779,7 @@ function RevealStep({
                     href={g.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-semibold text-primary-blue underline hover:no-underline"
+                    className="font-semibold text-primary-blue-dark underline hover:no-underline"
                   >
                     {g.name}
                   </a>
@@ -1116,7 +1116,7 @@ function LitterStep({
 
   return (
     <div className="card p-8">
-      <p className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-primary-blue rounded-full px-3 py-1 mb-4">
+      <p className="inline-block text-xs font-bold uppercase tracking-wider text-white bg-primary-blue-dark rounded-full px-3 py-1 mb-4">
         Step 3 of 3 · Item {index + 1} of {LITTER.length}
       </p>
       <h2 className="font-heading font-bold text-3xl mb-2 text-primary-green">

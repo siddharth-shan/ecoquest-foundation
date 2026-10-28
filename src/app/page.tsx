@@ -260,7 +260,7 @@ export default function Home() {
                   <h3 className="font-heading font-bold text-xl mb-3 text-primary-green">{program.title}</h3>
                   <p className="text-gray-600 mb-4">{program.desc}</p>
                   {program.latest && (
-                    <p className="text-sm font-semibold text-primary-blue mb-4">{program.latest}</p>
+                    <p className="text-sm font-semibold text-primary-blue-dark mb-4">{program.latest}</p>
                   )}
                   <Link href={program.link} className="btn btn-outline text-sm">
                     {program.link.startsWith('/games') ? 'Play Now →' : 'Learn More →'}

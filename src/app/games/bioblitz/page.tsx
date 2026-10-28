@@ -367,7 +367,7 @@ function Bioblitz({ place, isDemo, onChangePlace }: BioblitzProps) {
           <p className="text-gray-600">
             We could not assemble enough licensed photos to ask a fair question. Try a different
             ZIP code, or{' '}
-            <Link href="/games/" className="text-primary-blue underline">
+            <Link href="/games/" className="text-primary-blue-dark underline">
               pick another game
             </Link>
             .
@@ -680,7 +680,7 @@ function RoundView({
               href={`https://www.inaturalist.org/taxa/${answer.id}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-3 text-primary-blue underline hover:no-underline"
+              className="inline-block mt-3 text-primary-blue-dark underline hover:no-underline"
             >
               Read about the {answer.commonName} on iNaturalist
             </a>

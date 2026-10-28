@@ -44,7 +44,7 @@ export default function DataSourceNote({
               href={s.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-blue underline hover:no-underline"
+              className="text-primary-blue-dark underline hover:no-underline"
             >
               {s.label}
             </a>

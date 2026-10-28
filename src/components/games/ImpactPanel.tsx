@@ -86,7 +86,7 @@ export default function ImpactPanel({
           <div className="card p-6">
             <div className="text-3xl mb-3" aria-hidden="true">📅</div>
             <h3 className="font-heading font-bold text-xl mb-1">{event.title}</h3>
-            <p className="text-sm font-semibold text-primary-blue mb-2">
+            <p className="text-sm font-semibold text-primary-blue-dark mb-2">
               {event.displayDate} · {event.displayTime}
             </p>
             <p className="text-gray-600 mb-4 line-clamp-4">{event.description}</p>

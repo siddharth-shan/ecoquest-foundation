@@ -52,7 +52,7 @@ export default function Navbar() {
             <div className="flex flex-col">
               <div className="text-xl font-bold font-heading leading-none whitespace-nowrap">
                 <span className="text-primary-green">Eco</span>
-                <span className="text-primary-blue">Quest</span>
+                <span className="text-primary-blue-dark">Quest</span>
               </div>
               <span className="text-[10px] font-semibold text-gray-500 tracking-wide">FOUNDATION</span>
             </div>

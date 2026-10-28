@@ -134,7 +134,7 @@ export default function BlogList({ posts }: { posts: BlogPost[] }) {
                   )}
                   <div className="p-6">
                     <div className="flex gap-2 mb-3 flex-wrap">
-                      <div className="inline-block bg-primary-blue/10 text-primary-blue px-3 py-1 rounded-full text-xs font-semibold">
+                      <div className="inline-block bg-primary-blue/10 text-primary-blue-dark px-3 py-1 rounded-full text-xs font-semibold">
                         {post.category}
                       </div>
                       {post.externalUrl && (

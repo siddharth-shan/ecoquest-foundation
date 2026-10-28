@@ -130,7 +130,7 @@ export default function GamesPage() {
 
                   <div className="mb-4">
                     <div className="text-sm font-semibold text-gray-700 mb-2">Age Range:</div>
-                    <span className="inline-block bg-primary-blue/10 text-primary-blue px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="inline-block bg-primary-blue/10 text-primary-blue-dark px-3 py-1 rounded-full text-sm font-medium">
                       {game.ageRange}
                     </span>
                   </div>
