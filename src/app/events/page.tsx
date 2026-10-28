@@ -6,20 +6,21 @@ import {
   HiExternalLink,
   HiGlobeAlt,
   HiLocationMarker,
-  HiVideoCamera,
 } from 'react-icons/hi'
 import EventCarousel from '@/components/shared/EventCarousel'
 import SeminarVideo from '@/components/shared/SeminarVideo'
 import { HideAfter, TodayBadge } from '@/components/shared/EventTiming'
 import { CAMPAIGN_BLURB, CAMPAIGN_TITLE, upcomingCampaigns } from '@/data/campaigns'
+import SeminarCard from '@/components/shared/SeminarCard'
+import { winterChallengeFor } from '@/lib/winterChallenge'
 import {
   SERIES,
   pastSeminars,
   recordingUrl,
-  seminarTile,
-  seminars,
+  seminarPublicUrl,
   seriesSessions,
   sessionNumber,
+  upcomingIn,
   upcomingSeminars,
 } from '@/data/seminars'
 
@@ -28,12 +29,12 @@ const SITE_URL = 'https://www.ecoquestfoundation.org'
 export const metadata = {
   title: 'Events & Online Seminars',
   description:
-    'EcoQuest Foundation runs a free biweekly online environmental seminar series plus hands-on beach and park cleanups across California, including the October Environmental Action Campaign. See upcoming dates and register.',
+    'EcoQuest Foundation runs free online environmental series — the Winter Field Lab, every other Saturday from November through January — plus hands-on beach and park cleanups across California. See upcoming dates and sign up.',
   alternates: { canonical: '/events/' },
   openGraph: {
     title: 'Events & Online Seminars - EcoQuest Foundation',
     description:
-      'Free biweekly online environmental seminars and hands-on community conservation events in California.',
+      'Free online environmental sessions and hands-on community conservation events in California.',
   },
 }
 
@@ -70,9 +71,9 @@ function SeminarSeriesJsonLd() {
     eventStatus: 'https://schema.org/EventScheduled',
     location: {
       '@type': 'VirtualLocation',
-      // Point at the registration page, not the raw Zoom room — a join link
+      // Point at the public sign-up page, not the raw Zoom room — a join link
       // published in page source invites uninvited guests.
-      url: seminar.eventbriteUrl || `${SITE_URL}/events/`,
+      url: seminarPublicUrl(seminar, SITE_URL),
     },
     image: [`${SITE_URL}/logo.png`],
     organizer: {
@@ -90,9 +91,11 @@ function SeminarSeriesJsonLd() {
       price: '0',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
-      url: seminar.eventbriteUrl || `${SITE_URL}/events/`,
-      validFrom: '2026-08-29T00:00:00-07:00',
+      url: seminarPublicUrl(seminar, SITE_URL),
+      validFrom:
+        seminar.series === 'fall-2026' ? '2026-08-29T00:00:00-07:00' : '2026-10-28T00:00:00-07:00',
     },
+    superEvent: { '@type': 'EventSeries', name: SERIES[seminar.series].name },
   }))
 
   return (
@@ -174,6 +177,9 @@ function CampaignJsonLd() {
 }
 
 export default function Events() {
+  const challenge = winterChallengeFor()
+  const fallUpcoming = upcomingIn('fall-2026')
+  const winterUpcoming = upcomingIn('winter-2026')
   const featuredEvents: FeaturedEvent[] = [
     {
       title: 'Friendship Park Cleanup',
@@ -244,7 +250,7 @@ export default function Events() {
         <div className="container-custom">
           <h1 className="text-5xl font-bold mb-4 font-heading">Events &amp; Online Seminars</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            A free biweekly online seminar series, plus hands-on beach and park cleanups across California
+            Free online series every other Saturday, plus hands-on beach and park cleanups across California
           </p>
         </div>
       </div>
@@ -470,138 +476,64 @@ export default function Events() {
         </section>
       )}
 
-      {/* Online Seminar Series — the recurring, open-to-anyone program */}
-      <section id="seminars" className="section-padding">
-        <div className="container-custom">
-          <div className="section-header">
-            <h2 className="section-title">Online Seminar Series</h2>
-            <div className="section-underline" />
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-              Free 40-minute sessions on Zoom, open to anyone. Each one is built on work EcoQuest has
-              actually done — our apps, our cleanups, and our monthly challenges.
-            </p>
-            <p className="inline-block mt-5 bg-primary-green/10 text-primary-green-dark font-semibold px-5 py-2 rounded-full text-sm">
-              🗓️ {SERIES['fall-2026'].cadence}
-            </p>
-          </div>
+      {/* Online series — the recurring, open-to-anyone program. The Winter
+          Field Lab is the live series from Nov 21; the Fall series stays above
+          it only while it has sessions left. The #seminars anchor is linked
+          from the homepage, so it moves to whichever series is live. */}
+      {winterUpcoming.length > 0 && (
+        <section id={fallUpcoming.length ? 'winter-field-lab' : 'seminars'} className="section-padding">
+          <div className="container-custom">
+            <div className="section-header">
+              <h2 className="section-title">{SERIES['winter-2026'].name}</h2>
+              <div className="section-underline" />
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto">{SERIES['winter-2026'].pitch}</p>
+              <p className="inline-block mt-5 bg-primary-green/10 text-primary-green-dark font-semibold px-5 py-2 rounded-full text-sm">
+                🗓️ {SERIES['winter-2026'].cadence}
+              </p>
+              {challenge && (
+                <p className="mt-3 text-sm text-gray-700">
+                  {challenge.month}&apos;s at-home challenge:{' '}
+                  <Link href={challenge.href} className="font-semibold text-primary-green-dark hover:underline">
+                    {challenge.mission.title}
+                  </Link>
+                </p>
+              )}
+            </div>
 
-          {upcomingSeminars.length > 0 ? (
             <div className="space-y-6 max-w-5xl mx-auto">
-              {upcomingSeminars.map((seminar) => (
-                <HideAfter key={seminar.slug} endsAt={seminar.endDateTime}>
-                  <article className="card border-l-4 border-primary-green">
-                    <div className="p-6 md:p-8 flex gap-5 md:gap-7">
-                      {/* Date tile. Sessions are two weeks apart, so the date is
-                          the thing a reader scans for — it gets its own anchor
-                          instead of a line in the meta row. Hidden on phones,
-                          where a 64px column would squeeze the text into a
-                          gutter; the meta row carries the date there instead. */}
-                      <div className="hidden sm:block shrink-0 w-16 md:w-20 self-start rounded-xl border border-primary-green/25 bg-primary-green/5 py-3 text-center">
-                        <div className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-500">
-                          {seminarTile(seminar).top}
-                        </div>
-                        <div className="text-2xl md:text-3xl font-bold leading-tight text-primary-green-dark font-heading">
-                          {seminarTile(seminar).main}
-                        </div>
-                        <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wide text-gray-600">
-                          {seminarTile(seminar).bottom}
-                        </div>
-                      </div>
-
-                      <div className="min-w-0 flex-1">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <span className="bg-primary-green/10 text-primary-green-dark text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                            Session {sessionNumber(seminar)} of {seriesSessions(seminar.series).length}
-                          </span>
-                          <span className="bg-amber-100 text-amber-800 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                            Free
-                          </span>
-                          <TodayBadge startsAt={seminar.startDateTime} endsAt={seminar.endDateTime} />
-                        </div>
-
-                        <h3 className="font-bold text-xl md:text-2xl mb-3 text-gray-900 font-heading leading-snug">
-                          {seminar.title}
-                        </h3>
-
-                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-gray-600 mb-4">
-                          <span className="sm:hidden inline-flex items-center gap-1.5">
-                            <HiCalendar className="text-primary-green shrink-0" aria-hidden />
-                            <span className="font-medium text-gray-800">{seminar.displayDate}</span>
-                          </span>
-                          <span className="inline-flex items-center gap-1.5">
-                            <HiClock className="text-primary-green shrink-0" aria-hidden />
-                            <span className="font-medium text-gray-800">{seminar.displayTime}</span>
-                          </span>
-                          <span className="inline-flex items-center gap-1.5">
-                            <HiVideoCamera className="text-primary-green shrink-0" aria-hidden />
-                            Online via Zoom
-                          </span>
-                        </div>
-
-                        <p className="text-gray-700 leading-relaxed mb-5 max-w-prose">
-                          {seminar.description}
-                        </p>
-
-                        <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm border-t border-gray-100 pt-4">
-                          <div>
-                            <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
-                              Who it&apos;s for
-                            </dt>
-                            <dd className="text-gray-700">{seminar.audience}</dd>
-                          </div>
-                          <div>
-                            <dt className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-0.5">
-                              Built on
-                            </dt>
-                            <dd className="text-gray-700">{seminar.builtOn}</dd>
-                          </div>
-                        </dl>
-                      </div>
-                    </div>
-
-                    {/* Naming Eventbrite in the link text is the legitimacy
-                        signal: registration is held by a ticketing platform, not
-                        by a form on our own site. Their logo is deliberately not
-                        used — the wordmark is their trademark and we have no
-                        partnership with them to display it. */}
-                    <div className="bg-gray-50 border-t border-gray-100 px-6 md:px-8 py-4 flex flex-col sm:flex-row sm:items-center gap-3">
-                      <div className="flex flex-wrap items-center gap-3">
-                        {seminar.eventbriteUrl ? (
-                          <a
-                            href={seminar.eventbriteUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                          >
-                            Register on Eventbrite
-                            <HiExternalLink className="text-base opacity-80" aria-hidden />
-                          </a>
-                        ) : (
-                          <Link
-                            href={`/events/register/?event=${encodeURIComponent(seminar.title)}`}
-                            className="btn btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap"
-                          >
-                            Register Free
-                          </Link>
-                        )}
-                        {seminar.hasDeck && (
-                          <Link
-                            href={`/seminars/${seminar.slug}/`}
-                            className="btn btn-outline whitespace-nowrap text-sm px-4"
-                          >
-                            Preview Slides
-                          </Link>
-                        )}
-                      </div>
-                      <p className="text-xs text-gray-500 sm:ml-auto sm:text-right">
-                        Hosted by EcoQuest Foundation, a 501(c)(3) nonprofit
-                      </p>
-                    </div>
-                  </article>
-                </HideAfter>
+              {winterUpcoming.map((s) => (
+                <SeminarCard key={s.slug} seminar={s} />
               ))}
             </div>
-          ) : (
+          </div>
+        </section>
+      )}
+
+      {fallUpcoming.length > 0 && (
+        <section id="seminars" className="section-padding pt-0">
+          <div className="container-custom">
+            <div className="section-header">
+              <h2 className="section-title">{SERIES['fall-2026'].name}</h2>
+              <div className="section-underline" />
+              <p className="text-gray-600 text-lg max-w-3xl mx-auto">{SERIES['fall-2026'].pitch}</p>
+              <p className="inline-block mt-5 bg-primary-green/10 text-primary-green-dark font-semibold px-5 py-2 rounded-full text-sm">
+                🗓️ {SERIES['fall-2026'].cadence}
+              </p>
+            </div>
+
+            <div className="space-y-6 max-w-5xl mx-auto">
+              {fallUpcoming.map((s) => (
+                <SeminarCard key={s.slug} seminar={s} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Keeps the #seminars anchor alive once no series has sessions left. */}
+      {winterUpcoming.length === 0 && fallUpcoming.length === 0 && (
+        <section id="seminars" className="section-padding">
+          <div className="container-custom">
             <p className="text-center text-gray-600">
               Dates for the next series are being finalized.{' '}
               <Link href="/contact/" className="text-primary-green font-semibold hover:underline">
@@ -609,107 +541,117 @@ export default function Events() {
               </Link>{' '}
               to be notified.
             </p>
-          )}
+          </div>
+        </section>
+      )}
 
-          <p className="text-center text-sm text-gray-500 mt-8 max-w-2xl mx-auto">
-            Every session has a permanent slide-deck page on this site, so you can read through one
-            you missed or revisit it afterward.
-            Registration is free and there is no minimum age.
-          </p>
-        </div>
-      </section>
+      <p className="text-center text-sm text-gray-500 pb-12 px-4 max-w-2xl mx-auto">
+        Every session has a permanent slide-deck page on this site, so you can read through one you
+        missed or revisit it afterward. Sign-up is free and there is no minimum age; under-13s sign up
+        with a parent&apos;s or guardian&apos;s email.
+      </p>
 
-      {/* Past Sessions — renders only once a session has actually been held */}
+      {/* Past Series — renders only once a session has actually been held */}
       {pastSeminars.length > 0 && (
         <section className="section-padding pt-0">
           <div className="container-custom max-w-5xl">
             <div className="section-header">
-              <h2 className="section-title">Past Sessions</h2>
+              <h2 className="section-title">Past Series</h2>
               <div className="section-underline" />
               <p className="text-gray-600 text-lg">
                 Missed one? Watch the recording and flip through the slides at your own pace.
                 Every deck stays online at a permanent link.
               </p>
             </div>
-            <div className="space-y-6">
-              {pastSeminars.map((seminar) => {
-                const recording = seminar.recap?.recording
-                return (
-                  <article
-                    key={seminar.slug}
-                    className={`bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm ${
-                      recording
-                        ? 'grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-5 md:gap-7 items-center'
-                        : 'border-l-4 border-l-gray-300'
-                    }`}
-                  >
-                    {recording && (
-                      <SeminarVideo
-                        src={recordingUrl(recording)}
-                        poster={recording.poster}
-                        title={seminar.title}
-                        durationSeconds={recording.durationSeconds}
-                        label={recording.label}
-                      />
-                    )}
-
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
-                        <span className="bg-gray-100 text-gray-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
-                          Session {sessionNumber(seminar)} of {seriesSessions(seminar.series).length}
-                        </span>
-                        <span>{seminar.displayDate}</span>
-                        {/* Attendance prints only when a real number was recorded. */}
-                        {typeof seminar.recap?.attendees === 'number' && (
-                          <>
-                            <span className="text-gray-300" aria-hidden>
-                              •
-                            </span>
-                            <span>{seminar.recap.attendees} attended</span>
-                          </>
-                        )}
-                      </div>
-
-                      <h3 className="font-bold text-xl md:text-2xl mb-2 text-gray-900 font-heading leading-snug">
-                        {seminar.title}
-                      </h3>
-
-                      {/* No recap summary means nobody has written one, so fall
-                          back to the published description rather than invent one. */}
-                      {seminar.recap?.summary ? (
-                        <p className="text-gray-700 max-w-prose">{seminar.recap.summary}</p>
-                      ) : (
-                        <p className="text-gray-600 max-w-prose line-clamp-3">{seminar.description}</p>
-                      )}
-
-                      <div className="flex flex-wrap items-center gap-3 mt-4">
-                        {seminar.hasDeck && (
-                          <Link
-                            href={`/seminars/${seminar.slug}/`}
-                            className="btn btn-outline text-sm px-4 whitespace-nowrap"
+            {(['winter-2026', 'fall-2026'] as const).map((id) => {
+              const held = pastSeminars.filter((s) => s.series === id)
+              if (held.length === 0) return null
+              return (
+                <div key={id} className="mb-10">
+                  <h3 className="text-xl font-bold text-gray-800 font-heading mb-4">{SERIES[id].name}</h3>
+                  <div className="space-y-6">
+                    {held.map((seminar) => {
+                        const recording = seminar.recap?.recording
+                        return (
+                          <article
+                            key={seminar.slug}
+                            className={`bg-white border border-gray-200 rounded-2xl p-5 md:p-6 shadow-sm ${
+                              recording
+                                ? 'grid md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] gap-5 md:gap-7 items-center'
+                                : 'border-l-4 border-l-gray-300'
+                            }`}
                           >
-                            View the slide deck
-                          </Link>
-                        )}
-                        {recording && (
-                          <a
-                            href={recordingUrl(recording)}
-                            download
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-green-dark hover:underline"
-                          >
-                            <HiDownload aria-hidden />
-                            Download MP4
-                          </a>
-                        )}
-                      </div>
-                    </div>
-                  </article>
-                )
-              })}
-            </div>
+                            {recording && (
+                              <SeminarVideo
+                                src={recordingUrl(recording)}
+                                poster={recording.poster}
+                                title={seminar.title}
+                                durationSeconds={recording.durationSeconds}
+                                label={recording.label}
+                              />
+                            )}
+
+                            <div className="min-w-0">
+                              <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-2">
+                                <span className="bg-gray-100 text-gray-700 text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded">
+                                  Session {sessionNumber(seminar)} of {seriesSessions(seminar.series).length}
+                                </span>
+                                <span>{seminar.displayDate}</span>
+                                {/* Attendance prints only when a real number was recorded. */}
+                                {typeof seminar.recap?.attendees === 'number' && (
+                                  <>
+                                    <span className="text-gray-300" aria-hidden>
+                                      •
+                                    </span>
+                                    <span>{seminar.recap.attendees} attended</span>
+                                  </>
+                                )}
+                              </div>
+
+                              <h4 className="font-bold text-xl md:text-2xl mb-2 text-gray-900 font-heading leading-snug">
+                                {seminar.title}
+                              </h4>
+
+                              {/* No recap summary means nobody has written one, so fall
+                                  back to the published description rather than invent one. */}
+                              {seminar.recap?.summary ? (
+                                <p className="text-gray-700 max-w-prose">{seminar.recap.summary}</p>
+                              ) : (
+                                <p className="text-gray-600 max-w-prose line-clamp-3">{seminar.description}</p>
+                              )}
+
+                              <div className="flex flex-wrap items-center gap-3 mt-4">
+                                {seminar.hasDeck && (
+                                  <Link
+                                    href={`/seminars/${seminar.slug}/`}
+                                    className="btn btn-outline text-sm px-4 whitespace-nowrap"
+                                  >
+                                    View the slide deck
+                                  </Link>
+                                )}
+                                {recording && (
+                                  <a
+                                    href={recordingUrl(recording)}
+                                    download
+                                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-green-dark hover:underline"
+                                  >
+                                    <HiDownload aria-hidden />
+                                    Download MP4
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+                          </article>
+                        )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </section>
       )}
+
 
       {/* Cleanup CTA */}
       <section className="section-padding pt-0">
