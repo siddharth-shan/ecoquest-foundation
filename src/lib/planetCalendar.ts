@@ -173,3 +173,49 @@ export function countdown(daysAway: number): string {
   if (daysAway === 1) return 'Tomorrow'
   return `in ${daysAway} days`
 }
+
+export function slugify(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+const yyyymmdd = (d: Date) =>
+  `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`
+
+/** RFC 5545 TEXT escaping. */
+function escapeText(s: string): string {
+  return s.replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n')
+}
+
+/** RFC 5545 §3.1: lines over 75 octets continue after CRLF + space. The copy is ASCII, so characters are octets. */
+function fold(line: string): string {
+  const parts = [line.slice(0, 75)]
+  for (let i = 75; i < line.length; i += 74) parts.push(` ${line.slice(i, i + 74)}`)
+  return parts.join('\r\n')
+}
+
+/** A one-event .ics file for an observance, as an all-day event on its date. */
+export function icsFor(u: UpcomingDay, now: Date = new Date()): string {
+  const start = u.date
+  const end = new Date(start.getFullYear(), start.getMonth(), start.getDate() + 1)
+  const stamp = now.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '')
+  return (
+    [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//EcoQuest Foundation//This Week for the Planet//EN',
+      'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      `UID:${slugify(u.day.name)}-${yyyymmdd(start)}@ecoquestfoundation.org`,
+      `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${yyyymmdd(start)}`,
+      `DTEND;VALUE=DATE:${yyyymmdd(end)}`,
+      `SUMMARY:${escapeText(u.day.name)}`,
+      `DESCRIPTION:${escapeText(`${u.day.why}\n${u.day.url}`)}`,
+      `URL:${u.day.url}`,
+      'END:VEVENT',
+      'END:VCALENDAR',
+    ]
+      .map(fold)
+      .join('\r\n') + '\r\n'
+  )
+}
