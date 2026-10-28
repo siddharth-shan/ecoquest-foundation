@@ -31,9 +31,11 @@ describe('icsFor', () => {
   it('is a calendar with one all-day event ending the next day', () => {
     expect(lines[0]).toBe('BEGIN:VCALENDAR')
     expect(lines).toContain('VERSION:2.0')
+    expect(lines[lines.indexOf('CALSCALE:GREGORIAN') + 1]).toBe('METHOD:PUBLISH')
     expect(lines).toContain('BEGIN:VEVENT')
     expect(lines).toContain('DTSTART;VALUE=DATE:20261231')
     expect(lines).toContain('DTEND;VALUE=DATE:20270101')
+    expect(lines[lines.indexOf('DTEND;VALUE=DATE:20270101') + 1]).toBe('TRANSP:TRANSPARENT')
     expect(lines).toContain('DTSTAMP:20261027T150405Z')
     expect(lines).toContain('END:VEVENT')
     expect(lines.at(-2)).toBe('END:VCALENDAR')
@@ -47,6 +49,11 @@ describe('icsFor', () => {
     expect(lines).toContain('SUMMARY:Test\\, Day\\; One')
     expect(lines).toContain('DESCRIPTION:Why\\, really.\\nhttps://example.org/day')
     expect(lines).toContain('URL:https://example.org/day')
+  })
+
+  it('escapes backslash, semicolon, comma and newline', () => {
+    const out = icsFor(upcoming({ name: 'a\\b;c,d\ne' }, new Date(2026, 11, 31)), stamp)
+    expect(out.split('\r\n')).toContain('SUMMARY:a\\\\b\\;c\\,d\\ne')
   })
 
   it('uses CRLF everywhere and ends with one', () => {

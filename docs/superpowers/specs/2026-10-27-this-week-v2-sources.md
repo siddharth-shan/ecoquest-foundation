@@ -245,7 +245,7 @@ Month assignment is editorial. Several sources do not name a specific month, so 
 - sourceLabel: NASA Earthdata / NOAA
 - sourceUrl: https://www.earthdata.nasa.gov/news/feature-articles/cloudy-chance-drizzle
 - quote: "Embedded within the low-lying clouds that give rise to what Southern Californians call May Gray and June Gloom" (search excerpt). Second source https://www.noaa.gov/jetstream/ocean/marine-layer: "This is particularly seen along the coasts of Central and Southern California." (search excerpt). NOAA's definition of marine layer as "cool air under warm air" was NOT captured verbatim — drop that clause or re-check before using; safest text: "Southern Californians call the low coastal clouds of late spring May Gray and June Gloom. NOAA notes marine layers are particularly seen along the coasts of Central and Southern California."
-- note: NASA is not on the suggested-org list (NOAA is). Prefer the NOAA URL as sourceUrl if only one is shown.
+- note: The shown source is now the NASA Earthdata page (https://www.earthdata.nasa.gov/news/feature-articles/cloudy-chance-drizzle), because the NOAA page does not use the nicknames "May Gray" or "June Gloom." Text and sourceLabel were updated to match what the NASA page supports.
 - action: climate-record
 
 ### July

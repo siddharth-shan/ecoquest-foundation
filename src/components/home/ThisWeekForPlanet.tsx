@@ -116,7 +116,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
                         <span className="font-semibold text-gray-800">{day.name}</span>
                         <span
                           className={`text-xs font-semibold rounded-full px-2 py-0.5 ${
-                            daysAway === 0 ? 'bg-primary-green text-white' : 'bg-gray-100 text-gray-600'
+                            daysAway === 0 ? 'bg-primary-green-dark text-white' : 'bg-gray-100 text-gray-600'
                           }`}
                         >
                           {countdown(daysAway)}
@@ -140,7 +140,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
                         <button
                           type="button"
                           onClick={() => downloadIcs(u)}
-                          aria-label={`Add ${day.name} to your calendar`}
+                          aria-label={`Add to calendar: ${day.name}`}
                           className="text-sm text-gray-600 hover:text-primary-green underline"
                         >
                           Add to calendar

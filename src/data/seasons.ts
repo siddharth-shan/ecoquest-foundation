@@ -60,9 +60,9 @@ export const seasons: Season[] = [
   {
     month: 6,
     heading: 'May Gray, June Gloom',
-    text: 'Southern Californians call the low coastal clouds of late spring "May Gray" and "June Gloom." NOAA notes that marine layers are especially common along the coasts of Central and Southern California.',
-    sourceLabel: 'NOAA',
-    sourceUrl: 'https://www.noaa.gov/jetstream/ocean/marine-layer',
+    text: 'Each year, Southern Californians see a long run of gray, overcast days known as "May Gray" and "June Gloom." Heavy cloud banks roll in off the ocean and sometimes bring a light drizzle.',
+    sourceLabel: 'NASA Earthdata',
+    sourceUrl: 'https://www.earthdata.nasa.gov/news/feature-articles/cloudy-chance-drizzle',
     activity: 'climate-record',
   },
   {

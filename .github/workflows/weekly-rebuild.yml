@@ -25,13 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Rebuild the site
+        continue-on-error: true
         env:
           HOOK: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
         run: |
           if [ -z "$HOOK" ]; then
             echo "::notice::VERCEL_DEPLOY_HOOK_URL is not set; skipping the rebuild."
           else
-            curl -fsS -X POST "$HOOK" > /dev/null
+            curl -fsS --retry 3 -X POST "$HOOK" > /dev/null
             echo "Rebuild requested."
           fi
 
@@ -62,6 +63,7 @@ jobs:
       # without repository activity. Re-enabling resets that clock, so the
       # schedule keeps running even when nobody commits.
       - name: Keep the schedule alive
+        if: always()
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/weekly-rebuild.yml/enable"
