@@ -197,10 +197,11 @@ is gitignored and is pushed only to the private Apps Script project.
 
 **The sign-up form (automatic).** The script creates a Google Form and a linked
 Google Sheet. When someone signs up, it sends a welcome email with the Zoom link.
-At 9 AM Pacific, it sends a reminder two days before each session, and it writes
-the session's links into `src/data/seminars.ts` for the site.
+At 9 AM Pacific each day, it sends a reminder to sign-ups for any session in the
+next two days. It also publishes each session's sign-up link, which
+`npm run signup:sync` writes into `src/data/seminars.ts` for the site.
 
-One-time steps:
+One-time steps (steps 3–8 run from `scripts/signup-form`):
 
 1. Turn on the Apps Script API at https://script.google.com/home/usersettings.
 2. Run `cd scripts/signup-form && npx @google/clasp login` as ecoquestfoundation@gmail.com.
@@ -212,8 +213,8 @@ One-time steps:
 8. Run `npm run signup:sync`, then commit `seminars.ts`.
 
 **When sessions change:** edit `seminars.ts`, run `npm run signup:push`, run
-`setup` again in the editor (or wait; nothing else is needed for date text), then
-run `npm run signup:sync`.
+`setup` again in the editor so the form's session choices update, then run
+`npm run signup:sync`.
 
 **Checking it ran:** look at the script editor's Executions page, and at the
 Sent folder of ecoquestfoundation@gmail.com.
@@ -242,15 +243,15 @@ still before the session. Batches that were already sent are never resent.
 - social posts.
 
 When a calendar publishes a session, add `listing: { name, url }` to that
-session in `seminars.ts`. Don't post seminars on Idealist or JustServe (see that
-section above).
+session in `seminars.ts`. Don't post seminars on Idealist or JustServe (see the
+Idealist and JustServe section below).
 
 **Attendance record.** The linked Google Sheet, exported at the end of the
 season for the Congressional Award file.
 
 ---
 
-## Distribution — do this for every session, ~2 weeks ahead
+## Distribution — do this for every session, ~2 weeks ahead (Season 1; Season 2 skips Eventbrite)
 
 The test that matters: **could a stranger who has never heard of EcoQuest have
 found this event in advance, through a channel EcoQuest does not control?**
