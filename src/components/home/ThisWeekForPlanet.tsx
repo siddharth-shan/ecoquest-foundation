@@ -38,7 +38,7 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <article className="card overflow-hidden lg:col-span-3 flex flex-col">
-            <img src={activity.img} alt="" className="w-full h-56 object-cover" />
+            <img src={activity.img} alt="" className="w-full aspect-[2/1] object-cover" />
             <div className="p-6 flex flex-col flex-1">
               <p className="text-sm font-semibold text-primary-blue mb-2">
                 {because
