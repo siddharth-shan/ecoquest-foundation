@@ -3,8 +3,8 @@
 // Reads the same source of truth the /events page and its schema.org markup use,
 // so a game can never advertise an event that is not really happening. If both
 // lists are empty the games show no event at all — an invented one is worse than
-// none. Prefers a third-party listing URL over our own form, because that is the
-// link that proves the event was actually distributed publicly.
+// none. The button always goes to the sign-up link; a third-party listing is
+// only used as the schema.org url.
 
 import { upcomingCampaigns } from '@/data/campaigns'
 import { seminarSignup, upcomingSeminars } from '@/data/seminars'

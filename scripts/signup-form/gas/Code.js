@@ -79,8 +79,13 @@ function setup() {
 function syncSessions(form) {
   var upcoming = upcomingSessions(SESSIONS, Date.now())
   var sessionsItem = itemByTitle(form, Q_SESSIONS).asCheckboxItem()
+  // Forms rejects an empty choice list, so once every session has ended just
+  // close the form. Only ever close it here: a form closed by hand stays closed.
+  if (upcoming.length === 0) {
+    form.setAcceptingResponses(false)
+    return
+  }
   sessionsItem.setChoiceValues(upcoming.map(choiceLabel))
-  form.setAcceptingResponses(upcoming.length > 0)
 
   var links = {}
   upcoming.forEach(function (s) {
@@ -176,7 +181,11 @@ function sendReminders() {
     } catch (err) {
       console.warn('Could not sync form choices: ' + String(err && err.message || 'unknown error'))
     }
-    retryPendingWelcomes()
+    try {
+      retryPendingWelcomes()
+    } catch (err) {
+      console.warn('Could not retry pending welcomes: ' + String(err && err.message || 'unknown error'))
+    }
     var rows = form.getResponses().map(rowOf)
     dueForReminder(SESSIONS, Date.now(), 2).forEach(function (s) {
       try {
