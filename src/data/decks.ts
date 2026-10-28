@@ -863,7 +863,7 @@ export const decks: Record<string, Slide[]> = {
       eyebrow: 'Do this after',
       title: 'Join a count, then add your own checklist',
       bullets: [
-        'Go to the Audubon Christmas Bird Count join page.',
+        'Go to the Audubon Christmas Bird Count join page: https://www.audubon.org/community-science/christmas-bird-count/join-christmas-bird-count',
         'Follow the official page to find and register for a count near you.',
         'Ask an adult to come with you if you are under 18.',
         'Report your own sightings at ebird.org.',
@@ -1047,7 +1047,7 @@ export const decks: Record<string, Slide[]> = {
       eyebrow: 'Do this after',
       title: 'Check before you burn',
       bullets: [
-        'Go to the Check Before You Burn page on aqmd.gov.',
+        'Go to the Check Before You Burn page: https://www.aqmd.gov/home/programs/community/community-detail?title=check-before-you-burn',
         'Sign up for AQMD Air Alerts or download the AQMD app.',
         'Tell your family to check the alert before using a fireplace, fire pit, or wood stove between November 1 and the end of February.',
         'Check the air before outdoor exercise on still, smoky days.',
