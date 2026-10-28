@@ -29,7 +29,7 @@ const SITE_URL = 'https://www.ecoquestfoundation.org'
 export const metadata = {
   title: 'Events & Online Seminars',
   description:
-    'EcoQuest Foundation runs free online environmental series — the Winter Field Lab, every other Saturday from November through January — plus hands-on beach and park cleanups across California. See upcoming dates and sign up.',
+    'EcoQuest Foundation runs free online environmental series — the Winter Field Lab, every other Saturday from November through January with a holiday break Dec 26–Jan 2 — plus hands-on beach and park cleanups across California. See upcoming dates and sign up.',
   alternates: { canonical: '/events/' },
   openGraph: {
     title: 'Events & Online Seminars - EcoQuest Foundation',
@@ -250,7 +250,7 @@ export default function Events() {
         <div className="container-custom">
           <h1 className="text-5xl font-bold mb-4 font-heading">Events &amp; Online Seminars</h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Free online series every other Saturday, plus hands-on beach and park cleanups across California
+            Free online series every other Saturday (with a holiday break Dec 26–Jan 2), plus hands-on beach and park cleanups across California
           </p>
         </div>
       </div>
@@ -478,10 +478,12 @@ export default function Events() {
 
       {/* Online series — the recurring, open-to-anyone program. The Winter
           Field Lab is the live series from Nov 21; the Fall series stays above
-          it only while it has sessions left. The #seminars anchor is linked
-          from the homepage, so it moves to whichever series is live. */}
+          it only while it has sessions left. The homepage links Winter
+          sessions to #winter-field-lab and Fall to #seminars. */}
       {winterUpcoming.length > 0 && (
-        <section id={fallUpcoming.length ? 'winter-field-lab' : 'seminars'} className="section-padding">
+        <section id="winter-field-lab" className="section-padding">
+          {/* Other pages link to #seminars; keep it working when Fall is over. */}
+          {fallUpcoming.length === 0 && <span id="seminars" />}
           <div className="container-custom">
             <div className="section-header">
               <h2 className="section-title">{SERIES['winter-2026'].name}</h2>

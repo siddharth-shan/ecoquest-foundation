@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest'
 
 const ctx = vm.createContext({})
 vm.runInContext(readFileSync(new URL('./gas/lib.js', import.meta.url), 'utf8'), ctx)
-const { choiceLabel, chunk, dueForReminder, pacificDay, recipientsFor, reminderEmail, welcomeEmail } = ctx
+const { addPendingWelcome, choiceLabel, chunk, dueForReminder, pacificDay, recipientsFor, reminderEmail, upcomingSessions, welcomeEmail } = ctx
 
 const S = [
   { slug: 'first-flush', title: 'First Rain', displayDate: 'Saturday, November 21, 2026', displayTime: '11:00–11:30 AM PT', startDateTime: '2026-11-21T11:00:00-08:00' },
@@ -76,5 +76,31 @@ describe('emails', () => {
     expect(w.body).toContain('King Tides')
     expect(w.body).toContain('https://zoom.example/j/1')
     expect(w.body).toContain("If you didn't sign up, or want to be removed, reply to this email.")
+  })
+})
+
+describe('upcomingSessions', () => {
+  const E = S.map((s) => ({ ...s, endDateTime: s.startDateTime.replace('11:00:00', '11:30:00') }))
+  it('keeps sessions that have not ended, with their choice text unchanged', () => {
+    const now = Date.parse('2026-12-01T09:00:00-08:00')
+    expect(upcomingSessions(E, now).map((s) => choiceLabel(s))).toEqual(['Sat, Jan 9 · King Tides'])
+  })
+  it('keeps a session until it ends', () => {
+    expect(upcomingSessions(E, Date.parse('2026-11-21T11:10:00-08:00')).length).toBe(2)
+  })
+  it('is empty once every session has ended', () => {
+    expect(upcomingSessions(E, Date.parse('2027-01-10T09:00:00-08:00')).length).toBe(0)
+  })
+})
+
+describe('addPendingWelcome', () => {
+  it('adds a recipient with their sessions', () => {
+    expect(plain(addPendingWelcome([], ' A@x.org ', ['first-flush']))).toEqual([{ to: 'a@x.org', slugs: ['first-flush'] }])
+  })
+  it('merges repeats for the same address without duplicate slugs', () => {
+    const once = addPendingWelcome([], 'a@x.org', ['first-flush'])
+    expect(plain(addPendingWelcome(once, 'A@x.org', ['first-flush', 'king-tides']))).toEqual([
+      { to: 'a@x.org', slugs: ['first-flush', 'king-tides'] },
+    ])
   })
 })

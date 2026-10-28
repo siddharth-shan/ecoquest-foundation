@@ -47,7 +47,7 @@ function setup() {
   }
 
   form.setDescription(
-    'Free 30-minute online sessions on Zoom, every other Saturday at 11:00 AM Pacific. ' +
+    'Free 30-minute online sessions on Zoom, every other Saturday at 11:00 AM Pacific, with a holiday break Dec 26–Jan 2. ' +
     "We'll email you the Zoom link right away and a reminder two days before each session. " +
     'Run by EcoQuest Foundation, a 501(c)(3) nonprofit.')
   form.setPublishingSummary(false)
@@ -59,7 +59,25 @@ function setup() {
     "You're signed up! We've emailed the Zoom link to the address you gave, from " +
     CONFIG.replyTo + ". If it isn't in your inbox in a few minutes, check spam.")
 
-  var upcoming = SESSIONS.filter(function (s) { return Date.parse(s.endDateTime) > Date.now() })
+  syncSessions(form)
+
+  ensureTrigger('onSignup', function () {
+    ScriptApp.newTrigger('onSignup').forForm(form).onFormSubmit().create()
+  })
+  ensureTrigger('sendReminders', function () {
+    ScriptApp.newTrigger('sendReminders').timeBased().everyDays(1).atHour(9).inTimezone(PACIFIC).create()
+  })
+  Logger.log(props().getProperty('links'))
+}
+
+/**
+ * Keeps the form current: only sessions that have not ended stay as checkbox
+ * choices (their text is unchanged, so earlier responses still match), the form
+ * stops accepting responses when none remain, and the public links are rebuilt.
+ * Called from setup() and at the start of each daily sendReminders().
+ */
+function syncSessions(form) {
+  var upcoming = upcomingSessions(SESSIONS, Date.now())
   var sessionsItem = itemByTitle(form, Q_SESSIONS).asCheckboxItem()
   sessionsItem.setChoiceValues(upcoming.map(choiceLabel))
   form.setAcceptingResponses(upcoming.length > 0)
@@ -71,14 +89,6 @@ function setup() {
       .toPrefilledUrl()
   })
   props().setProperty('links', JSON.stringify({ formUrl: form.getPublishedUrl(), sessions: links }))
-
-  ensureTrigger('onSignup', function () {
-    ScriptApp.newTrigger('onSignup').forForm(form).onFormSubmit().create()
-  })
-  ensureTrigger('sendReminders', function () {
-    ScriptApp.newTrigger('sendReminders').timeBased().everyDays(1).atHour(9).inTimezone(PACIFIC).create()
-  })
-  Logger.log(props().getProperty('links'))
 }
 
 function ensureTrigger(fn, create) {
@@ -102,8 +112,55 @@ function onSignup(e) {
   var picked = SESSIONS.filter(function (s) { return row.sessions.indexOf(choiceLabel(s)) !== -1 })
   var to = recipientsFor([row], row.sessions[0] || '')
   if (!to.length || !picked.length) return
-  var mail = welcomeEmail(picked, CONFIG.zoomJoinUrl)
-  MailApp.sendEmail({ to: to[0], replyTo: CONFIG.replyTo, name: 'EcoQuest Foundation', subject: mail.subject, body: mail.body })
+  var lock = LockService.getScriptLock()
+  var locked = lock.tryLock(30000)
+  try {
+    if (!trySendWelcome(to[0], picked)) {
+      // Keep the recipient and sessions (never the link) so the daily run retries.
+      var slugs = picked.map(function (s) { return s.slug })
+      props().setProperty('pendingWelcomes', JSON.stringify(addPendingWelcome(readPending(), to[0], slugs)))
+    }
+  } finally {
+    if (locked) lock.releaseLock()
+  }
+}
+
+function readPending() {
+  try {
+    return JSON.parse(props().getProperty('pendingWelcomes') || '[]')
+  } catch (err) {
+    return []
+  }
+}
+
+/** Sends one welcome email. Returns false (and logs, without the link) on failure or no quota. */
+function trySendWelcome(to, picked) {
+  try {
+    if (MailApp.getRemainingDailyQuota() < 1) {
+      console.warn('Welcome email deferred: daily email quota used up.')
+      return false
+    }
+    var mail = welcomeEmail(picked, CONFIG.zoomJoinUrl)
+    MailApp.sendEmail({ to: to, replyTo: CONFIG.replyTo, name: 'EcoQuest Foundation', subject: mail.subject, body: mail.body })
+    return true
+  } catch (err) {
+    console.warn('Welcome email failed; will retry at the next daily run: ' + String(err && err.message || 'unknown error'))
+    return false
+  }
+}
+
+/** Retries welcomes that could not be sent earlier; clears each one on success. */
+function retryPendingWelcomes() {
+  var pending = readPending()
+  if (!pending.length) return
+  var left = []
+  pending.forEach(function (p) {
+    var picked = SESSIONS.filter(function (s) { return p.slugs.indexOf(s.slug) !== -1 })
+    if (!picked.length || !trySendWelcome(p.to, picked)) {
+      if (picked.length) left.push(p)
+    }
+  })
+  props().setProperty('pendingWelcomes', JSON.stringify(left))
 }
 
 var BCC_MAX = 49 // consumer Gmail allows about 50 recipients per message
@@ -114,6 +171,12 @@ function sendReminders() {
   try {
     var form = getForm()
     if (!form) return
+    try {
+      syncSessions(form)
+    } catch (err) {
+      console.warn('Could not sync form choices: ' + String(err && err.message || 'unknown error'))
+    }
+    retryPendingWelcomes()
     var rows = form.getResponses().map(rowOf)
     dueForReminder(SESSIONS, Date.now(), 2).forEach(function (s) {
       try {

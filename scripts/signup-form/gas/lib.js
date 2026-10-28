@@ -37,6 +37,25 @@ function dueForReminder(sessions, nowMs, days) {
   })
 }
 
+/** Sessions that have not ended yet. These are the form's checkbox choices. */
+function upcomingSessions(sessions, nowMs) {
+  return sessions.filter(function (s) { return Date.parse(s.endDateTime) > nowMs })
+}
+
+/** Adds a pending welcome (recipient + session slugs), merging repeats for the same address. */
+function addPendingWelcome(list, to, slugs) {
+  var out = list.map(function (p) { return { to: p.to, slugs: p.slugs.slice() } })
+  var addr = String(to).trim().toLowerCase()
+  for (var i = 0; i < out.length; i++) {
+    if (out[i].to === addr) {
+      slugs.forEach(function (sl) { if (out[i].slugs.indexOf(sl) === -1) out[i].slugs.push(sl) })
+      return out
+    }
+  }
+  out.push({ to: addr, slugs: slugs.slice() })
+  return out
+}
+
 /** Splits a list into consecutive groups of at most `size`. */
 function chunk(list, size) {
   var out = []

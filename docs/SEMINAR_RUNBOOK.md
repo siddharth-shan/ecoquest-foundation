@@ -229,6 +229,9 @@ still before the session. Batches that were already sent are never resent.
 - Reminders match sign-ups by the session's choice text on the form. If you
   change a session's title or date after people have signed up, those earlier
   sign-ups won't match and won't get a reminder. Email them yourself from the Sheet.
+- To stop emails to someone, delete their response in the Form (Responses →
+  Individual → trash icon). Deleting their row in the Sheet alone does NOT stop
+  reminders, because reminders read the form's responses.
 - Someone who signs up after the reminder has gone out still gets the welcome
   email with the link.
 - If the form is ever deleted or the stored form ID is lost, delete the old

@@ -910,12 +910,11 @@ export const decks: Record<string, Slide[]> = {
       title: 'Find this winter\'s king tide dates',
       bullets: [
         'Open the California King Tides Project page: coastal.ca.gov/kingtides.',
-        'Statewide king tide days this winter: December 23-25, 2026 and January 21-22, 2027.',
-        'No Los Angeles-area events are listed on the page.',
+        'Statewide king tide days this winter: December 23-25, 2026 (already passed) and January 21-22, 2027.',
         'Use its tide map to check your own local dates and times.',
       ],
       notes:
-        'Open coastal.ca.gov/kingtides in a tab before the session, with the tide map (the participate page) ready. The session date is not a statewide king tide day. The page also lists a few Northern California extra dates; leave those out. Look this up before the session: whether the page has added any Los Angeles-area events, and any El Nino note on the page.',
+        'Open coastal.ca.gov/kingtides in a tab before the session, with the tide map (the participate page) ready. The session date is not a statewide king tide day. The page also lists a few Northern California extra dates; leave those out. When we checked, no Los Angeles-area events were listed on the page. Look this up before the session: whether that is still true or the page has added any Los Angeles-area events, and any El Nino note on the page.',
     },
     {
       eyebrow: 'Hands-on, part 2',
@@ -957,7 +956,7 @@ export const decks: Record<string, Slide[]> = {
       title: 'Plan to watch one',
       bullets: [
         'Go to coastal.ca.gov/kingtides and read how to take part.',
-        'Mark December 23-25 and January 21-22 on a calendar.',
+        'Mark January 21-22, 2027 on a calendar.',
         'Use the tide map to check times, then choose a safe spot with an adult.',
         'If it is not safe, skip it. You can still follow along online.',
       ],

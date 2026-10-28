@@ -29,6 +29,11 @@ interface UpcomingItem {
   anchor: string
 }
 
+/** Winter sessions live in the Winter Field Lab section of /events/; Fall in the seminars section. */
+export function seminarAnchor(s: { series: string }): string {
+  return s.series === 'winter-2026' ? '/events/#winter-field-lab' : '/events/#seminars'
+}
+
 function upcomingItems(): UpcomingItem[] {
   return [
     ...upcomingCampaigns.map((c) => ({
@@ -58,7 +63,7 @@ function upcomingItems(): UpcomingItem[] {
       inPerson: false,
       href: seminarSignup(s).href,
       ctaLabel: seminarSignup(s).shortLabel,
-      anchor: '/events/#seminars',
+      anchor: seminarAnchor(s),
     })),
   ]
     // Soonest to close first: a cleanup happening today outranks a month-long

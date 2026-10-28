@@ -7,7 +7,7 @@
 // link that proves the event was actually distributed publicly.
 
 import { upcomingCampaigns } from '@/data/campaigns'
-import { upcomingSeminars } from '@/data/seminars'
+import { seminarSignup, upcomingSeminars } from '@/data/seminars'
 
 export interface NextEvent {
   title: string
@@ -45,7 +45,7 @@ export function getNextEvent(prefer?: 'campaign' | 'seminar'): NextEvent | null 
         displayDate: s.displayDate,
         displayTime: s.displayTime,
         description: s.description,
-        href: s.listing?.url || s.eventbriteUrl || s.signupUrl || '/events/',
+        href: seminarSignup(s).href,
         // Fall keeps its original wording; the Winter Field Lab says "Sign up".
         ctaLabel: s.series === 'fall-2026' ? 'Reserve a spot' : 'Sign up',
         kind: 'seminar' as const,
