@@ -183,6 +183,73 @@ route is the reliable one.
 
 ---
 
+## Season 2: Winter Field Lab
+
+Season 2 is a second biweekly online series. Its sign-up form, welcome emails,
+and reminders run on a Google Apps Script, not on Eventbrite. The script lives
+in `scripts/signup-form/`, and its session list is generated from
+`src/data/seminars.ts`, so the form and the site cannot disagree about dates.
+
+**Zoom.** Use one "Recurring meeting — No Fixed Time" in the Zoom web UI, so a
+single link works for every date. Use the same waiting room and mute settings as
+Season 1. The link goes only into `scripts/signup-form/gas/config.js`. That file
+is gitignored and is pushed only to the private Apps Script project.
+
+**The sign-up form (automatic).** The script creates a Google Form and a linked
+Google Sheet. When someone signs up, it sends a welcome email with the Zoom link.
+At 9 AM Pacific, it sends a reminder two days before each session, and it writes
+the session's links into `src/data/seminars.ts` for the site.
+
+One-time steps:
+
+1. Turn on the Apps Script API at https://script.google.com/home/usersettings.
+2. Run `cd scripts/signup-form && npx @google/clasp login` as ecoquestfoundation@gmail.com.
+3. Run `npx @google/clasp create --type standalone --title "EcoQuest Winter Field Lab sign-up" --rootDir gas`.
+4. Copy `scripts/signup-form/config.example.js` to `scripts/signup-form/gas/config.js` and add the Zoom link.
+5. Run `npm run signup:push`.
+6. In the script editor, run `setup` once and approve the permissions.
+7. Run `npx @google/clasp deploy`, and save the web app URL to `scripts/signup-form/.webapp-url`.
+8. Run `npm run signup:sync`, then commit `seminars.ts`.
+
+**When sessions change:** edit `seminars.ts`, run `npm run signup:push`, run
+`setup` again in the editor (or wait; nothing else is needed for date text), then
+run `npm run signup:sync`.
+
+**Checking it ran:** look at the script editor's Executions page, and at the
+Sent folder of ecoquestfoundation@gmail.com.
+
+**Limits.** Reminders go out in BCC batches of up to 49 recipients, which is the
+free Gmail per-message limit. The daily send limit is about 100 recipients, and
+it is shared with welcome emails. If a send would exceed the quota, the run logs
+a warning. If the quota is short or a send fails, the run retries the next day,
+still before the session. Batches that were already sent are never resent.
+
+**Good to know:**
+- Reminders match sign-ups by the session's choice text on the form. If you
+  change a session's title or date after people have signed up, those earlier
+  sign-ups won't match and won't get a reminder. Email them yourself from the Sheet.
+- Someone who signs up after the reminder has gone out still gets the welcome
+  email with the link.
+- If the form is ever deleted or the stored form ID is lost, delete the old
+  `onSignup` trigger in the script editor's Triggers page before running `setup`
+  again, so the new form gets its own trigger.
+- `config.js`, `.clasp.json`, and `.webapp-url` are gitignored. Never commit
+  them, and never paste the Zoom link into the repo or the site.
+
+**Distribution (no Eventbrite).** Season 2's outside proof comes from:
+- the city and library calendar submissions (once per series);
+- newsletter archive URLs;
+- social posts.
+
+When a calendar publishes a session, add `listing: { name, url }` to that
+session in `seminars.ts`. Don't post seminars on Idealist or JustServe (see that
+section above).
+
+**Attendance record.** The linked Google Sheet, exported at the end of the
+season for the Congressional Award file.
+
+---
+
 ## Distribution — do this for every session, ~2 weeks ahead
 
 The test that matters: **could a stranger who has never heard of EcoQuest have
@@ -325,6 +392,7 @@ count into a corroborated one:
 - The deck URL
 - Newsletter archive URL for the announcement
 - Prep time, logged honestly and separately from delivery time
+- Winter Field Lab sign-up sheet (Google Sheet export)
 
 **On double-counting:** hours generally count once, toward one program. Cleanups
 run jointly with a Scout troop are noted as co-hosted on the Events page for
