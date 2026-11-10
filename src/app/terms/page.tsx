@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ogImage } from '@/lib/og'
 
 export const metadata = {
   title: 'Terms of Service',
@@ -7,6 +8,7 @@ export const metadata = {
   openGraph: {
     title: 'Terms of Service - EcoQuest Foundation',
     description: 'Terms for using EcoQuest Foundation website resources, programs, events, and challenge registrations.',
+    images: ogImage('terms', 'EcoQuest Foundation terms of service'),
   },
 }
 

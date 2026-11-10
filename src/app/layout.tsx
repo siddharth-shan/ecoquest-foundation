@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { ogImage } from '@/lib/og'
 
 const SITE_URL = 'https://www.ecoquestfoundation.org'
 const SITE_NAME = 'EcoQuest Foundation'
@@ -47,21 +48,11 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/logo.png',
-        width: 512,
-        height: 512,
-        alt: 'EcoQuest Foundation Logo',
-      },
-    ],
+    images: ogImage('home', 'EcoQuest Foundation — Empowering Youth to Protect Our Planet'),
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'EcoQuest Foundation - Empowering Youth to Protect Our Planet',
-    description: SITE_DESCRIPTION,
-    images: ['/logo.png'],
-  },
+  // Card type only. With no title or image here, X falls back to each page's
+  // own Open Graph tags instead of showing the homepage's on every link.
+  twitter: { card: 'summary_large_image' },
   robots: {
     index: true,
     follow: true,

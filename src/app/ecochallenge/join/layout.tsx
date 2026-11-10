@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ogImage } from '@/lib/og'
 
 export const metadata: Metadata = {
   title: 'Join the EcoChallenge',
@@ -7,6 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Join the EcoChallenge - EcoQuest Foundation',
     description: 'Week-long environmental missions with a real before-and-after measurement.',
+    images: ogImage('ecochallenge-join', 'Join the EcoQuest EcoChallenge'),
   },
 }
 

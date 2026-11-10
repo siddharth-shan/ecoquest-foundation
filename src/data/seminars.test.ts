@@ -19,7 +19,7 @@ function fake(over: Partial<Seminar>): Seminar {
     slug: 'x', title: 'A & B', shortTitle: 'x', series: 'winter-2026',
     startDateTime: '2026-11-21T11:00:00-08:00', endDateTime: '2026-11-21T11:30:00-08:00',
     displayDate: 'Saturday, November 21, 2026', displayTime: '11:00–11:30 AM PT',
-    description: '', audience: '', builtOn: '', hasDeck: false, ...over,
+    description: '', metaDescription: '', audience: '', builtOn: '', hasDeck: false, ...over,
   }
 }
 
@@ -48,6 +48,13 @@ describe('series', () => {
     expect(SERIES['winter-2026'].cadence).toBe(
       'Every other Saturday, 11:00–11:30 AM Pacific · holiday break Dec 26–Jan 2',
     )
+  })
+
+  it('gives every session a meta description that fits a search result', () => {
+    for (const s of seminars) {
+      expect(s.metaDescription.length).toBeGreaterThan(50)
+      expect(s.metaDescription.length).toBeLessThanOrEqual(160)
+    }
   })
 
   it('keeps slugs unique across series', () => {

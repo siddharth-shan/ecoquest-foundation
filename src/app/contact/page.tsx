@@ -145,7 +145,7 @@ export default function Contact() {
               },
               {
                 q: 'Are programs suitable for classrooms?',
-                a: 'Yes. Our digital resources are designed to align with environmental science learning objectives for middle and high school students.',
+                a: 'Yes. Our four games are free, run in a browser with no account, and each comes with a printable classroom sheet. They are built on public science data and written for middle and high school students.',
               },
               {
                 q: 'How can students get involved?',

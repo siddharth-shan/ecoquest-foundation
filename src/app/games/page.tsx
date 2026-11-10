@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ogImage } from '@/lib/og'
 
 // The four games were rebuilt in September 2026 around a single rule: every
 // number a player sees is fetched live from a public scientific dataset for
@@ -24,6 +25,7 @@ export const metadata = {
     title: 'Environmental Games - EcoQuest Foundation',
     description:
       'Free games built on real public data for your own neighborhood: local biodiversity, storm drain tracing, air-quality forensics, and your town’s 75-year climate record.',
+    images: ogImage('games', 'EcoQuest Foundation environmental games'),
   },
 }
 

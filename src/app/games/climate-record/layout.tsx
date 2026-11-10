@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ogImage } from '@/lib/og'
 
 export const metadata: Metadata = {
   title: 'Your Climate Record',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Your Climate Record - EcoQuest Foundation',
     description:
       'Commit to a prediction about your town, then check it against 75 years of real daily temperature data. An environmental education game about signal, noise, and local action.',
+    images: ogImage('game-climate-record', 'Your Climate Record, a free EcoQuest game'),
   },
 }
 

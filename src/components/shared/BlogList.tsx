@@ -17,7 +17,7 @@ export interface BlogPost {
   externalUrl?: string // Optional external link (e.g., Medium)
 }
 
-const categories = ['All', 'Student Story', 'Competition']
+const categories = ['All', 'Event', 'Project', 'Competition', 'Student Story']
 
 export default function BlogList({ posts }: { posts: BlogPost[] }) {
   const [filter, setFilter] = useState('All')

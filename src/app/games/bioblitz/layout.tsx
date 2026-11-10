@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ogImage } from '@/lib/og'
 
 export const metadata: Metadata = {
   title: 'Backyard Bioblitz',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Backyard Bioblitz - EcoQuest Foundation',
     description:
       'Real photos of species genuinely observed near you. Learn to identify your neighbors, then go find them.',
+    images: ogImage('game-bioblitz', 'Backyard Bioblitz, a free EcoQuest game'),
   },
 }
 

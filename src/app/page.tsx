@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { FaGamepad, FaBook, FaHandsHelping, FaSeedling } from 'react-icons/fa'
 import ImpactDashboard from '@/components/shared/ImpactDashboard'
-import CommunityVoices from '@/components/shared/Testimonials'
 import NewsletterSignup from '@/components/shared/NewsletterSignup'
 import UpcomingEvents from '@/components/shared/UpcomingEvents'
 import ThisWeekForPlanet from '@/components/home/ThisWeekForPlanet'
@@ -276,13 +275,6 @@ export default function Home() {
       <section className="section-padding bg-gray-50">
         <div className="container-custom">
           <ImpactDashboard />
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <CommunityVoices />
         </div>
       </section>
 

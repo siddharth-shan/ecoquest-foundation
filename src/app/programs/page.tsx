@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { upcomingCampaigns } from '@/data/campaigns'
 import { ecoMissions } from '@/data/ecochallenges'
 import { HideAfter } from '@/components/shared/EventTiming'
+import { ogImage } from '@/lib/og'
 
 export const metadata = {
   title: 'Our Programs',
@@ -10,6 +11,7 @@ export const metadata = {
   openGraph: {
     title: 'Our Programs - EcoQuest Foundation',
     description: 'Interactive environmental games, self-paced EcoChallenge missions, and community conservation activities for K-12 students.',
+    images: ogImage('programs', 'EcoQuest Foundation programs'),
   },
 }
 
@@ -375,7 +377,7 @@ export default function Programs() {
                   </li>
                 </ul>
                 <div className="bg-purple-50 border border-purple-200 rounded-lg p-3 mb-4">
-                  <p className="text-xs font-semibold text-purple-700">🏆 Top 500 Finalist — 2026 Blue Ocean Student Entrepreneur Competition</p>
+                  <p className="text-xs font-semibold text-purple-700">🏆 Top 500 Finalist — 2026 Blue Ocean Entrepreneurship Competition</p>
                 </div>
                 <a
                   href="https://mindmirror-pilot.vercel.app/"

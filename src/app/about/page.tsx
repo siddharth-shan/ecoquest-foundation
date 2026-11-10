@@ -1,3 +1,5 @@
+import { ogImage } from '@/lib/og'
+
 export const metadata = {
   title: 'About Us',
   description: 'Learn about EcoQuest Foundation\'s mission, vision, and impact in environmental education and youth engagement. A student-led nonprofit inspiring the next generation of environmental stewards.',
@@ -5,6 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'About EcoQuest Foundation',
     description: 'Learn about EcoQuest Foundation\'s mission, vision, and impact in environmental education and youth engagement.',
+    images: ogImage('about', 'About EcoQuest Foundation'),
   },
 }
 

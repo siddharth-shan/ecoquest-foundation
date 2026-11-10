@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ogImage } from '@/lib/og'
 
 export const metadata: Metadata = {
   title: 'Storm Drain Detective',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Storm Drain Detective - EcoQuest Foundation',
     description:
       'Predict where your street’s water goes, then watch the real USGS downstream trace draw itself. Free K-12 environmental education from EcoQuest Foundation.',
+    images: ogImage('game-storm-drain', 'Storm Drain Detective, a free EcoQuest game'),
   },
 }
 

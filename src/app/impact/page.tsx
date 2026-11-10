@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ogImage } from '@/lib/og'
 
 export const metadata = {
   title: 'Impact Portfolio',
@@ -7,6 +8,7 @@ export const metadata = {
   openGraph: {
     title: 'Impact Portfolio - EcoQuest Foundation',
     description: 'Student-led environmental impact: national competitions, community cleanups, educational games, and conservation initiatives.',
+    images: ogImage('impact', 'EcoQuest Foundation impact portfolio'),
   },
 }
 
@@ -330,7 +332,7 @@ export default function ImpactPortfolio() {
               Top 500 Finalist
             </div>
             <h3 className="text-2xl font-bold text-gray-800 mb-3 font-heading">
-              2026 Blue Ocean Student Entrepreneur Competition
+              2026 Blue Ocean Entrepreneurship Competition
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Our <strong>MindMirror</strong> app was named a <strong>Top 500 Finalist</strong> in the world&apos;s

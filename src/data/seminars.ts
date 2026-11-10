@@ -97,6 +97,11 @@ export interface Seminar {
   displayTime: string
   /** What the session covers, in plain language, for the public listing. */
   description: string
+  /**
+   * One or two sentences for search results and link previews, 160 characters
+   * at most. The full description above is far too long for either.
+   */
+  metaDescription: string
   /** Who it is aimed at — shown on the card. */
   audience: string
   /** The existing EcoQuest work this session is built on. */
@@ -136,6 +141,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:40 AM PT',
     description:
       'Wildfire data is public, but almost nobody knows how to read it. We walk through where live fire and air-quality data actually comes from, what a containment percentage does and does not tell you, and how to check conditions near your own home. Includes a live walkthrough of the Wildfire Watch app EcoQuest students built.',
+    metaDescription:
+      'Where live fire and air-quality data comes from, what a containment percentage does and does not tell you, and how to check conditions near your own home.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Wildfire Watch, our student-built fire tracking app',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-reading-real-wildfire-data-tickets-1999171951122',
@@ -159,6 +166,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:40 AM PT',
     description:
       'A cleanup is not just picking up trash — it is a data collection exercise. Using what we have found at our own Seal Beach cleanups, we cover how volunteers log debris, why the categories matter, how that data reaches researchers and policymakers, and how to run a cleanup that actually produces useful numbers.',
+    metaDescription:
+      'A cleanup is also data collection: how volunteers log debris, why the categories matter, and how those numbers reach researchers and policymakers.',
     audience: 'Students, Scout troops, and community volunteers',
     builtOn: 'Our Seal Beach and Save Our Beach cleanups',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-what-a-beach-cleanup-actually-tells-us-tickets-1999172924032',
@@ -182,6 +191,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:40 AM PT',
     description:
       'Most household conservation advice is guesswork. This session shows you how to read your own utility bills, find the three or four things in a typical home that dominate water and energy use, and measure whether a change actually did anything. Attendees leave with a worksheet and a two-week tracking challenge.',
+    metaDescription:
+      'How to read your own utility bills, find the few things that dominate water and energy use at home, and measure whether a change made a difference.',
     audience: 'Families, middle school students, and anyone curious about their bills',
     builtOn: 'Our EcoChallenge missions',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-your-homes-water-and-energy-footprint-tickets-1999172925035',
@@ -205,6 +216,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:40 AM PT',
     description:
       'Worry about the climate is common, and for a lot of students it is the part of environmental science nobody talks about. We look at what climate anxiety actually is, what researchers have measured — including a 2021 Lancet Planetary Health survey of 10,000 people aged 16 to 25 across ten countries — and what EcoQuest students learned building MindMirror, a student research pilot that screens for depression risk from a short voice recording. We will be specific about what MindMirror does and does not do: it is a screening pilot rather than a diagnosis, and the climate anxiety module we designed for it has not been built. This session is about reading research carefully and being honest about what you have actually shipped. It is not medical advice.',
+    metaDescription:
+      'What climate anxiety is, what researchers have measured, and what EcoQuest students learned building MindMirror, a student research pilot. Not medical advice.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Published climate anxiety research, and MindMirror — our student-built mental health screening pilot',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-climate-anxiety-and-how-we-built-mindmirror-tickets-1999172929047',
@@ -228,6 +241,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:40 AM PT',
     description:
       'How to find the environmental work already happening near you and plug into it — city parks and rec programs, watershed groups, library seed libraries, and volunteer platforms. We also cover how to organize your own small cleanup, from permits to supplies to logging service hours properly.',
+    metaDescription:
+      'How to find the environmental work already happening near you and join it, and how to organize your own small cleanup, from permits to service hours.',
     audience: 'Students seeking service hours, parents, and community organizers',
     builtOn: 'Three years of running our own community cleanups',
     eventbriteUrl: 'https://www.eventbrite.com/e/ecoquest-seminar-conservation-in-your-own-neighborhood-tickets-1999172932056',
@@ -248,6 +263,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:30 AM PT',
     description:
       'The first big rains of the season wash litter, oil, and pet waste off streets and into storm drains, and here storm drains flow to the ocean without treatment. We read real stream-gauge data from the U.S. Geological Survey, learn why LA County health officials advise staying out of the ocean for three days after rain, and trace a storm drain from a street to the beach.',
+    metaDescription:
+      'Where the first rains of the season carry street litter and oil: reading USGS stream-gauge data and tracing a storm drain from the street to the beach.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Storm Drain Detective, our game about where runoff goes',
     partner: { name: 'Heal the Bay Beach Report Card', url: 'https://beachreportcard.org/' },
@@ -266,6 +283,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:30 AM PT',
     description:
       'Winter is still a good time to find out what lives near you. On World Soil Day, we practice photographing living things and sharing them on iNaturalist, where observations can be used by scientists, and we look for life in the soil under your feet.',
+    metaDescription:
+      'On World Soil Day, practice photographing living things, sharing them on iNaturalist, and looking for life in the soil under your feet.',
     audience: 'Students of all ages, families, and educators',
     builtOn: 'Backyard Bioblitz and our California Biodiversity Challenge',
     partner: { name: 'iNaturalist', url: 'https://www.inaturalist.org/' },
@@ -284,6 +303,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:30 AM PT',
     description:
       'Every winter, volunteers count birds for the National Audubon Society’s Christmas Bird Count, one of the world’s longest-running community science projects. We cover how to recognize common Southern California winter birds, how to join a count through Audubon’s official page, and how to report your own sightings on eBird.',
+    metaDescription:
+      'How to recognize common Southern California winter birds, join the Audubon Christmas Bird Count, and report your own sightings on eBird.',
     audience: 'Students of all ages, families, and educators',
     builtOn: 'Backyard Bioblitz, our species-spotting game',
     partner: {
@@ -304,6 +325,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:30 AM PT',
     description:
       'King tides are the highest tides of the year, and they show where water may reach more often as sea levels rise. We read NOAA tide predictions, learn how the California King Tides Project collects photos from the public, and find this winter’s king tide dates so you can plan to watch one from a safe spot.',
+    metaDescription:
+      'King tides show where water may reach more often as seas rise. Read NOAA tide predictions and find this winter’s king tide dates.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Your Climate Record, our game on reading long-term climate data',
     partner: { name: 'California King Tides Project', url: 'https://www.coastal.ca.gov/kingtides/' },
@@ -322,6 +345,8 @@ export const seminars: Seminar[] = [
     displayTime: '11:00–11:30 AM PT',
     description:
       'Winter air can be worse than you might expect: when the weather is still and stagnant, smoke from wood fires builds up where people breathe. We read live air-quality data, learn how South Coast AQMD’s Check Before You Burn program decides when wood burning is restricted, and show how to sign up for its alerts.',
+    metaDescription:
+      'Why still winter weather traps wood smoke, how to read live air-quality data, and how South Coast AQMD’s Check Before You Burn alerts work.',
     audience: 'Middle and high school students, families, and educators',
     builtOn: 'Air Detective, our air-quality game',
     partner: {

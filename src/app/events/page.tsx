@@ -23,6 +23,7 @@ import {
   upcomingIn,
   upcomingSeminars,
 } from '@/data/seminars'
+import { ogImage } from '@/lib/og'
 
 const SITE_URL = 'https://www.ecoquestfoundation.org'
 
@@ -35,6 +36,7 @@ export const metadata = {
     title: 'Events & Online Seminars - EcoQuest Foundation',
     description:
       'Free online environmental sessions and hands-on community conservation events in California.',
+    images: ogImage('events', 'EcoQuest Foundation events and online seminars'),
   },
 }
 
@@ -224,6 +226,7 @@ export default function Events() {
           coHosted: 'Co-hosted with a local Scout troop',
         },
         { name: 'Artesia Park Cleanup', location: 'Artesia, CA' },
+        { name: 'Cerritos Park East Cleanup', location: 'Cerritos, CA' },
       ],
     },
     {

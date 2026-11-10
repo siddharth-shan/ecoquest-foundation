@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ogImage } from '@/lib/og'
 
 export const metadata: Metadata = {
   title: 'Air Detective',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
     title: 'Air Detective - EcoQuest Foundation',
     description:
       'A forensics game over real hourly air-quality data for your own ZIP. Learn why PM2.5 and ozone are different pollutants with different causes - and when the honest answer is "not enough evidence".',
+    images: ogImage('game-air-detective', 'Air Detective, a free EcoQuest game'),
   },
 }
 

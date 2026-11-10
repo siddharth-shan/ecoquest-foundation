@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ogImage } from '@/lib/og'
 
 export const metadata = {
   title: 'Get Involved',
@@ -7,6 +8,7 @@ export const metadata = {
   openGraph: {
     title: 'Get Involved - EcoQuest Foundation',
     description: 'Volunteer, partner, or donate to support environmental education and youth conservation programs.',
+    images: ogImage('get-involved', 'Get involved with EcoQuest Foundation'),
   },
 }
 

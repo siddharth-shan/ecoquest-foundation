@@ -2,7 +2,8 @@ import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import SlideDeck from '@/components/shared/SlideDeck'
 import { decks } from '@/data/decks'
-import { getSeminar, seminars } from '@/data/seminars'
+import { getSeminar, seminars, SERIES } from '@/data/seminars'
+import { ogImage } from '@/lib/og'
 
 /** Static export: one page per seminar that has a deck. */
 export function generateStaticParams() {
@@ -20,11 +21,12 @@ export async function generateMetadata({
 
   return {
     title: `${seminar.title} — Seminar Slides`,
-    description: seminar.description,
+    description: seminar.metaDescription,
     alternates: { canonical: `/seminars/${seminar.slug}/` },
     openGraph: {
-      title: `${seminar.title} - EcoQuest Online Seminar Series`,
-      description: seminar.description,
+      title: `${seminar.title} - ${SERIES[seminar.series].name}`,
+      description: seminar.metaDescription,
+      images: ogImage(`seminar-${seminar.slug}`, `${seminar.title} — ${SERIES[seminar.series].name}`),
     },
   }
 }
@@ -51,5 +53,12 @@ export default async function SeminarDeckPage({
     callout,
   }))
 
-  return <SlideDeck deckTitle={seminar.title} sessionDate={seminar.displayDate} slides={slides} />
+  return (
+    <SlideDeck
+      deckTitle={seminar.title}
+      seriesName={SERIES[seminar.series].name}
+      sessionDate={seminar.displayDate}
+      slides={slides}
+    />
+  )
 }

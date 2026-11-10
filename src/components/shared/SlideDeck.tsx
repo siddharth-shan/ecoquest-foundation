@@ -24,6 +24,8 @@ export interface PublicSlide {
 
 interface SlideDeckProps {
   deckTitle: string
+  /** The series this deck belongs to, shown under the title. */
+  seriesName: string
   sessionDate: string
   slides: PublicSlide[]
 }
@@ -33,7 +35,7 @@ interface SlideDeckProps {
  * permanent public URL. Arrow keys navigate; "F" enters fullscreen for
  * screen-sharing over Zoom. Print the page to get a PDF.
  */
-export default function SlideDeck({ deckTitle, sessionDate, slides }: SlideDeckProps) {
+export default function SlideDeck({ deckTitle, seriesName, sessionDate, slides }: SlideDeckProps) {
   const [current, setCurrent] = useState(0)
   const [presenting, setPresenting] = useState(false)
 
@@ -72,7 +74,7 @@ export default function SlideDeck({ deckTitle, sessionDate, slides }: SlideDeckP
               ← Back to Events
             </Link>
             <h1 className="text-3xl md:text-4xl font-bold mt-3 mb-2 font-heading">{deckTitle}</h1>
-            <p className="text-white/90">EcoQuest Online Seminar Series · {sessionDate}</p>
+            <p className="text-white/90">{seriesName} · {sessionDate}</p>
           </div>
         </div>
       )}

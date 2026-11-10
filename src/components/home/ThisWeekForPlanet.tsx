@@ -62,7 +62,16 @@ export default function ThisWeekForPlanet({ builtOn }: { builtOn: string }) {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3 flex flex-col gap-8">
             <article className="card overflow-hidden flex flex-col">
-              <img src={activity.img} alt="" className="w-full h-48 sm:h-56 object-contain bg-gray-50" />
+              {activity.img ? (
+                <img src={activity.img} alt="" className="w-full h-48 sm:h-56 object-contain bg-gray-50" />
+              ) : (
+                <div className="bg-gradient-eco text-white h-48 sm:h-56 flex flex-col items-center justify-center gap-3">
+                  <span className="text-7xl" aria-hidden="true">{activity.icon}</span>
+                  {activity.tag && (
+                    <span className="text-sm font-semibold uppercase tracking-wide text-white/90">{activity.tag}</span>
+                  )}
+                </div>
+              )}
               <div className="p-6 flex flex-col flex-1">
                 <p className="text-sm font-semibold text-primary-blue-dark mb-2">
                   {because

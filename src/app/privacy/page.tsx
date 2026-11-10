@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ogImage } from '@/lib/og'
 
 export const metadata = {
   title: 'Privacy Policy',
@@ -7,6 +8,7 @@ export const metadata = {
   openGraph: {
     title: 'Privacy Policy - EcoQuest Foundation',
     description: 'How EcoQuest Foundation collects, uses, and protects information from website visitors and program participants.',
+    images: ogImage('privacy', 'EcoQuest Foundation privacy policy'),
   },
 }
 

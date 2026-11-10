@@ -11,17 +11,27 @@ export interface PlanetActivity {
   kind: 'mission' | 'game' | 'event'
   title: string
   summary: string
-  img: string
+  /** A real screenshot or photo of this activity. Left out when there is none. */
+  img?: string
+  /** Shown in place of a picture when `img` is absent. */
+  icon?: string
+  /** Small line under the icon, e.g. "EcoChallenge · 1 week". */
+  tag?: string
   cta: string
   href: string
 }
+
+// Missions are done at home, so we have no photo of one. They get an icon
+// panel rather than an unrelated event photo.
+const missionIcons: Record<string, string> = { energy: '💡', 'zero-waste': '♻️', water: '💧' }
 
 const missions: PlanetActivity[] = ecoMissions.map((m) => ({
   key: m.slug,
   kind: 'mission',
   title: m.title,
   summary: m.summary,
-  img: '/images/events/IMG_3250.webp',
+  icon: missionIcons[m.slug] ?? '🌍',
+  tag: `EcoChallenge · ${m.duration}`,
   cta: 'Start this mission',
   href: `/ecochallenge/join/?challenge=${encodeURIComponent(m.title)}`,
 }))
