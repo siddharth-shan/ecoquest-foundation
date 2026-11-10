@@ -121,7 +121,7 @@ export default function Contact() {
                     <span className="text-2xl mr-3">📍</span>
                     <div>
                       <h4 className="font-semibold">Location</h4>
-                      <p className="text-gray-600">Los Angeles, California</p>
+                      <p className="text-gray-600">Cerritos, California</p>
                     </div>
                   </div>
                 </div>

@@ -143,7 +143,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               { icon: <FaGamepad className="w-12 h-12" />, title: 'Digital Learning', desc: 'Age-appropriate games and challenges making ecology fun and impactful' },
-              { icon: <FaBook className="w-12 h-12" />, title: 'Educational Standards', desc: 'Content aligned with environmental science standards' },
+              { icon: <FaBook className="w-12 h-12" />, title: 'Real Science Data', desc: 'Games built on public datasets from USGS, iNaturalist, and Copernicus' },
               { icon: <FaHandsHelping className="w-12 h-12" />, title: 'Community Action', desc: 'Beach and park cleanups with local organizations' },
               { icon: <FaSeedling className="w-12 h-12" />, title: 'Youth-Driven', desc: 'Designed by students, for students' },
             ].map((item, i) => (

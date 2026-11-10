@@ -28,9 +28,9 @@ export default function BlogPage() {
     },
     {
       id: 'ocean-plastic',
-      title: 'The Ocean Plastic Crisis: What I Learned After 100 Days of Beach Cleanups',
+      title: 'The Ocean Plastic Crisis: What I Learned After Many Days of Beach Cleanups',
       excerpt:
-        'A student\'s 100-day journey collecting beach trash reveals shocking truths about ocean plastic pollution. Complete with data, wildlife encounters, and actionable solutions everyone can implement today.',
+        'What a student learned about ocean plastic pollution from collecting beach trash. Complete with data, wildlife encounters, and actionable solutions everyone can implement today.',
       date: 'November 18, 2025',
       category: 'Student Story',
       author: 'Student Conservation Team',

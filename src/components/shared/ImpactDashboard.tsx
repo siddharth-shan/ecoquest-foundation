@@ -1,7 +1,3 @@
-'use client'
-
-import { useState, useEffect } from 'react'
-
 interface ImpactMetric {
   icon: string
   value: number
@@ -11,84 +7,52 @@ interface ImpactMetric {
   description: string
 }
 
-const targetValues = [8, 35, 4, 2, 3]
+// Plain values, not a count-up animation: the numbers must be in the served HTML
+// so search engines and link previews never see "0".
+const metrics: ImpactMetric[] = [
+  {
+    icon: '🏖️',
+    value: 8,
+    label: 'Community Cleanups',
+    suffix: '+',
+    color: 'from-yellow-500 to-orange-600',
+    description: 'Beach and park cleanups across Southern California',
+  },
+  {
+    icon: '👥',
+    value: 35,
+    label: 'Community Members Engaged',
+    suffix: '+',
+    color: 'from-blue-500 to-cyan-600',
+    description: 'Volunteers across our cleanup events',
+  },
+  {
+    icon: '🎮',
+    value: 4,
+    label: 'Educational Games Built',
+    suffix: '',
+    color: 'from-green-600 to-teal-600',
+    description: 'Interactive learning experiences for K-12 students',
+  },
+  {
+    icon: '🚀',
+    value: 2,
+    label: 'Apps in National Competitions',
+    suffix: '',
+    color: 'from-purple-500 to-indigo-600',
+    description: 'Congressional App Challenge, Blue Ocean',
+  },
+  {
+    icon: '✍️',
+    value: 3,
+    label: 'Student Articles Published',
+    suffix: '+',
+    color: 'from-indigo-500 to-purple-600',
+    description: 'Original research and guides on Medium',
+  },
+]
 
 export default function ImpactDashboard() {
-  const [metrics, setMetrics] = useState<ImpactMetric[]>([
-    {
-      icon: '🏖️',
-      value: 0,
-      label: 'Community Cleanups',
-      suffix: '+',
-      color: 'from-yellow-500 to-orange-600',
-      description: 'Beach and park cleanups across Southern California',
-    },
-    {
-      icon: '👥',
-      value: 0,
-      label: 'Community Members Engaged',
-      suffix: '+',
-      color: 'from-blue-500 to-cyan-600',
-      description: 'Volunteers across our cleanup events',
-    },
-    {
-      icon: '🎮',
-      value: 0,
-      label: 'Educational Games Built',
-      suffix: '',
-      color: 'from-green-600 to-teal-600',
-      description: 'Interactive learning experiences for K-12 students',
-    },
-    {
-      icon: '🚀',
-      value: 0,
-      label: 'Apps in National Competitions',
-      suffix: '',
-      color: 'from-purple-500 to-indigo-600',
-      description: 'Congressional App Challenge, Blue Ocean',
-    },
-    {
-      icon: '✍️',
-      value: 0,
-      label: 'Student Articles Published',
-      suffix: '+',
-      color: 'from-indigo-500 to-purple-600',
-      description: 'Original research and guides on Medium',
-    },
-  ])
-
-  useEffect(() => {
-    // Animate numbers on mount
-    const duration = 2000
-    const steps = 60
-    const stepDuration = duration / steps
-
-    let currentStep = 0
-    const interval = setInterval(() => {
-      currentStep++
-      const progress = currentStep / steps
-
-      setMetrics((prev) =>
-        prev.map((metric, index) => ({
-          ...metric,
-          value: Math.floor(targetValues[index] * progress),
-        }))
-      )
-
-      if (currentStep >= steps) {
-        clearInterval(interval)
-        setMetrics((prev) =>
-          prev.map((metric, index) => ({
-            ...metric,
-            value: targetValues[index],
-          }))
-        )
-      }
-    }, stepDuration)
-
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <div className="bg-white rounded-2xl shadow-xl p-8">
       <div className="text-center mb-8">

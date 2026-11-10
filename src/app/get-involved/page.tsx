@@ -78,7 +78,7 @@ export default function GetInvolved() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               { icon: '⛺', title: 'Scout Troops', desc: 'We welcome local Scout troops at our service events; happy to align activities with troop service hour and merit badge goals where applicable' },
-              { icon: '🏫', title: 'Schools', desc: 'NGSS-aligned programs, field trips, and professional development for educators' },
+              { icon: '🏫', title: 'Schools', desc: 'Free games built on public science data, each with a printable classroom sheet, plus free online seminars' },
               { icon: '🌱', title: 'Community Orgs', desc: 'Collaborate on conservation events and educational outreach' },
             ].map((partner, i) => (
               <div key={i} className="card p-6">

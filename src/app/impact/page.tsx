@@ -13,12 +13,13 @@ export const metadata = {
 export default function ImpactPortfolio() {
   const milestones = [
     { year: '2024', title: 'Founded EcoQuest Foundation', desc: 'Student-led nonprofit focused on environmental education through technology' },
-    { year: '2024', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup, Recycling Hero, Carbon Quest' },
+    { year: '2024', title: 'Built Our First Educational Games', desc: 'Four browser games for K-12 students, since retired and replaced' },
     { year: '2024', title: 'First Community Cleanups', desc: 'Launched our community cleanups at Seal Beach and Cerritos-area parks' },
     { year: '2025', title: 'Launched Interactive Apps', desc: 'Wildfire Watch, Oceanaware Guardian, and MindMirror web applications' },
     { year: '2025', title: 'National Competition Entries', desc: 'Congressional App Challenge, Blue Ocean Competition' },
     { year: '2025', title: 'Published Student Research', desc: 'Original articles on monarch butterflies, ocean plastic, and wildfire prevention' },
     { year: '2026', title: 'Blue Ocean Top 500 Finalist', desc: 'MindMirror named a Top 500 Finalist among 23,000+ students from 173 countries' },
+    { year: '2026', title: 'Rebuilt All Four Games on Live Data', desc: 'Storm Drain Detective, Backyard Bioblitz, Air Detective, and Your Climate Record' },
     { year: '2026', title: 'Launched GreenLedger', desc: 'A civic sustainability dashboard turning Cerritos’s city budget into interactive environmental action' },
   ]
 
@@ -96,7 +97,7 @@ export default function ImpactPortfolio() {
               { number: '8+', label: 'Cleanups' },
               { number: '35+', label: 'Volunteers' },
               { number: '4', label: 'Games' },
-              { number: '3', label: 'Competition Apps' },
+              { number: '2', label: 'Competition Apps' },
               { number: '3+', label: 'Published Articles' },
             ].map((stat, i) => (
               <div key={i}>

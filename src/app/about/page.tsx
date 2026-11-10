@@ -28,7 +28,7 @@ export default function About() {
                 At EcoQuest Foundation, our mission is to <strong>inspire and educate youth and the broader public about environmental conservation and sustainability</strong> through innovative, interactive, and engaging digital experiences.
               </p>
               <p className="text-gray-600 leading-relaxed mb-4">
-                We design and maintain age-appropriate websites, educational games, and challenges that make learning about ecological issues fun and impactful. Our digital content is crafted to align with environmental science standards, supporting both formal and informal learning environments.
+                We design and maintain age-appropriate websites, educational games, and challenges that make learning about ecological issues fun and impactful. Our games are built on public scientific data, with each source named on the page where it appears, for use in classrooms and at home.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 Beyond the screen, we host hands-on conservation events—such as beach and park cleanups—open to students, local Scout troops, families, and community volunteers, empowering young people to take real-world action for a healthier planet.
@@ -54,7 +54,7 @@ export default function About() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: '🎮', title: 'Built 4 Educational Games', desc: 'Guardians of the Green, Ocean Cleanup Challenge, Recycling Hero, and Carbon Footprint Quest for K-12 students.' },
+              { icon: '🎮', title: 'Built 4 Educational Games', desc: 'Storm Drain Detective, Backyard Bioblitz, Air Detective, and Your Climate Record, each built on live public science data.' },
               { icon: '🏛️', title: 'Entered National Competitions', desc: 'Submitted apps to the Congressional App Challenge and the Blue Ocean Entrepreneurship Competition.' },
               { icon: '🏖️', title: 'Recurring Community Cleanups', desc: 'Ongoing cleanups at Seal Beach, Cerritos Heritage Park, and Cerritos Park East, mobilizing 35+ volunteers.' },
               { icon: '✍️', title: 'Student-Published Research', desc: 'Original articles on monarch conservation, ocean plastic crisis, and wildfire prevention published on Medium.' },
@@ -160,7 +160,7 @@ export default function About() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: '🌍 Environmental Stewardship', desc: 'Protecting our planet for future generations through education and action.' },
-              { title: '🎓 Educational Excellence', desc: 'High-quality, research-backed content meeting educational standards.' },
+              { title: '🎓 Educational Excellence', desc: 'Clear, accurate content that names its sources.' },
               { title: '🤝 Community Collaboration', desc: 'Partnering with schools, scouts, and organizations for collective impact.' },
               { title: '💡 Innovation', desc: 'Leveraging technology and creativity for accessible environmental education.' },
               { title: '🌱 Youth Empowerment', desc: 'Young people have the power to drive change and deserve platforms to lead.' },

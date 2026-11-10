@@ -86,19 +86,19 @@ export default function Resources() {
       id: 8,
       type: 'activity',
       category: 'activities',
-      title: 'Project Learning Tree Activities',
-      desc: 'Environmental education activities for students K-12',
-      tag: 'All Grades',
-      url: 'https://www.plt.org/educator-tips/plt-activities/',
+      title: 'Project Learning Tree Activities for Families',
+      desc: 'Free nature activities for ages 3 to 15, for the backyard, a park, or indoors',
+      tag: 'Ages 3-15',
+      url: 'https://www.plt.org/activities-for-families/',
       external: true
     },
     {
       id: 9,
       type: 'activity',
       category: 'activities',
-      title: 'Nature Scavenger Hunt',
-      desc: 'Outdoor biodiversity exploration activity with printable worksheets',
-      tag: 'Outdoor',
+      title: 'NWF Wildlife Guide',
+      desc: 'Look up North American plants and animals from the National Wildlife Federation',
+      tag: 'Reference',
       url: 'https://www.nwf.org/Educational-Resources/Wildlife-Guide',
       external: true
     },
@@ -154,8 +154,8 @@ export default function Resources() {
       id: 13,
       type: 'blog',
       category: 'blog',
-      title: 'Monarch Butterfly Conservation',
-      desc: 'Student research on declining monarch populations and habitat restoration',
+      title: 'Monarch Butterfly Conservation: A California Native Plants Guide',
+      desc: 'A student-written guide to milkweed, nectar plants, and monarch waystations',
       tag: 'Student Written',
       url: 'https://medium.com/@siddharth.shanmugaraja/monarch-butterfly-conservation-a-california-native-plants-guide-34e7ffcf660f',
       external: true
@@ -164,10 +164,20 @@ export default function Resources() {
       id: 14,
       type: 'blog',
       category: 'blog',
-      title: 'California Native Plants Guide',
-      desc: 'A guide to native plants perfect for school and home gardens',
+      title: 'The Ocean Plastic Crisis',
+      desc: 'What a student learned about ocean plastic pollution from beach cleanups',
       tag: 'Student Written',
-      url: 'https://medium.com/@siddharth.shanmugaraja/monarch-butterfly-conservation-a-california-native-plants-guide-34e7ffcf660f',
+      url: 'https://medium.com/@siddharth.shanmugaraja/the-ocean-plastic-crisis-what-i-learned-after-many-days-of-beach-cleanups-e9f5afe35bba',
+      external: true
+    },
+    {
+      id: 16,
+      type: 'blog',
+      category: 'blog',
+      title: 'Creating Defensible Space',
+      desc: 'A student guide to wildfire prevention around California homes',
+      tag: 'Student Written',
+      url: 'https://medium.com/@siddharth.shanmugaraja/wildfire-prevention-a142b111d97f',
       external: true
     },
   ]
@@ -331,12 +341,12 @@ export default function Resources() {
 
       <section className="section-padding bg-gradient-eco text-white">
         <div className="container-custom text-center">
-          <h2 className="text-4xl font-bold mb-4 font-heading">Educator Resources</h2>
+          <h2 className="text-4xl font-bold mb-4 font-heading">For Educators</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Access lesson plans, NGSS alignment guides, and assessment tools designed for educators.
+            Each of our games comes with a printable classroom sheet, and every seminar slide deck stays online for free.
           </p>
-          <Link href="/contact/" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
-            Contact Us for Educator Access
+          <Link href="/games/" className="btn bg-white text-primary-green hover:bg-gray-100 text-lg px-10">
+            See the Games
           </Link>
         </div>
       </section>
