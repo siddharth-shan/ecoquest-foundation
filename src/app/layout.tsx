@@ -38,8 +38,11 @@ export const metadata: Metadata = {
   creator: 'EcoQuest Foundation',
   publisher: 'EcoQuest Foundation',
   icons: {
-    icon: '/favicon.ico',
-    apple: '/logo.png',
+    icon: [
+      { url: '/favicon.ico', sizes: '48x48' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
   openGraph: {
     title: 'EcoQuest Foundation - Empowering Youth to Protect Our Planet',
