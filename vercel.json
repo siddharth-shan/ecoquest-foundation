@@ -55,5 +55,25 @@
       "destination": "/games/climate-record/",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/index.txt",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/:path*/index.txt",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    }
   ]
 }
