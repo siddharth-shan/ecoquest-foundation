@@ -54,11 +54,63 @@ export default async function SeminarDeckPage({
   }))
 
   return (
-    <SlideDeck
-      deckTitle={seminar.title}
-      seriesName={SERIES[seminar.series].name}
-      sessionDate={seminar.displayDate}
-      slides={slides}
-    />
+    <>
+      <SlideDeck
+        deckTitle={seminar.title}
+        seriesName={SERIES[seminar.series].name}
+        sessionDate={seminar.displayDate}
+        slides={slides}
+      />
+
+      {/* The deck above is a client component that shows one slide at a time, so
+          on its own the page's HTML holds only the first slide. This section is
+          rendered on the server and carries the whole deck as text: readable
+          without stepping through, and by search engines and screen readers. */}
+      <section className="container-custom pb-16">
+        <div className="max-w-3xl">
+          <h2 className="text-2xl font-bold text-primary-green font-heading mb-3">
+            About this session
+          </h2>
+          <p className="text-gray-700 text-lg mb-4">{seminar.description}</p>
+          <dl className="text-gray-700 space-y-1 mb-10">
+            <div>
+              <dt className="inline font-semibold">When: </dt>
+              <dd className="inline">
+                {seminar.displayDate}, {seminar.displayTime}
+              </dd>
+            </div>
+            <div>
+              <dt className="inline font-semibold">For: </dt>
+              <dd className="inline">{seminar.audience}</dd>
+            </div>
+            <div>
+              <dt className="inline font-semibold">Built on: </dt>
+              <dd className="inline">{seminar.builtOn}</dd>
+            </div>
+          </dl>
+
+          <h2 className="text-2xl font-bold text-primary-green font-heading mb-6">
+            Slide outline
+          </h2>
+          <ol className="space-y-6">
+            {slides.map((slide, i) => (
+              <li key={i} className="border-l-4 border-gray-200 pl-5">
+                <h3 className="text-lg font-bold text-gray-900">
+                  {i + 1}. {slide.title}
+                </h3>
+                {slide.callout && <p className="text-gray-800 font-semibold mt-1">{slide.callout}</p>}
+                {slide.bullets && (
+                  <ul className="list-disc pl-5 mt-2 space-y-1 text-gray-700">
+                    {slide.bullets.map((bullet, j) => (
+                      <li key={j}>{bullet}</li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    </>
   )
 }
